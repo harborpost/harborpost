@@ -113,15 +113,15 @@
   <div class="slider-container">
     <div class="slides" id="slides">
       <div class="slide">
-        <img src="https://i.imgur.com/yPllNse.jpeg" alt="Japan Water Tank">
+        <img src="https://i.imgur.com/yPllNse.jpeg" alt="CRISPR">
         <div class="title">CRISPR-CAS9 CAN EDIT GENES AT THE MOLECULAR LEVEL AND ELIMINATE DISEASES</div>
       </div>
       <div class="slide">
-        <img src="https://i.imgur.com/xT8zCgG.jpeg" alt="Japan Water Tank">
+        <img src="https://i.imgur.com/xT8zCgG.jpeg" alt="3D Prosthetics">
         <div class="title">3-D PRINTED PROSTHETICS</div>
       </div>
       <div class="slide">
-        <img src="https://i.imgur.com/FQAwEe7.jpeg" alt="Japan Water Tank">
+        <img src="https://i.imgur.com/FQAwEe7.jpeg" alt="Library of Alexandria">
         <div class="title">HOW THE LIBRARY OF ALEXANDRIA WAS DESTROYED— AND WHAT WE LOST</div>
       </div>
       <div class="slide">
@@ -137,10 +137,18 @@
     let currentSlide = 0;
     const slides = document.getElementById("slides");
     const totalSlides = slides.children.length;
+    let isSliding = false;
 
     function moveSlide(step) {
+      if (isSliding) return;
+      isSliding = true;
+
       currentSlide = (currentSlide + step + totalSlides) % totalSlides;
       slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      slides.addEventListener('transitionend', () => {
+        isSliding = false;
+      }, { once: true });
     }
   </script>
 </body>
