@@ -5,30 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harbor Post</title>
   <style>
-    /* Full blue background */
     body {
       margin: 0;
-      background-color: #0033cc; /* a nice strong blue */
+      background-color: #0033cc;
       color: white;
       font-family: Arial, sans-serif;
     }
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background-color: #002299; /* a darker blue for the header */
+      background-color: #002299;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-
     h1 {
       margin: 0;
       font-weight: bold;
       font-size: 1.8rem;
       letter-spacing: 2px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -37,14 +33,43 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
-
     nav a:hover {
       color: #99ccff;
     }
-
     nav {
       display: flex;
       align-items: center;
+    }
+    main {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .image-container, .text-container {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .text-container {
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    @media (max-width: 700px) {
+      main {
+        flex-direction: column;
+      }
+      .image-container, .text-container {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
@@ -57,5 +82,16 @@
       <a href="#">Tech</a>
     </nav>
   </header>
+
+  <main>
+    <div class="image-container">
+      <img src="images/IMG_9747.jpeg" alt="Japan's 50,000 ton water tank" />
+    </div>
+    <div class="text-container">
+      Japan's 50,000 ton water tank can tell us about the universe
+    </div>
+  </main>
 </body>
 </html>
+
+
