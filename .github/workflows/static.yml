@@ -1,43 +1,95 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harbor Post</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0033cc;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #002299;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    h1 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #99ccff;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    main {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .image-container, .text-container {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .text-container {
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    @media (max-width: 700px) {
+      main {
+        flex-direction: column;
+      }
+      .image-container, .text-container {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HARBOR POST.</h1>
+    <nav>
+      <a href="#">Science</a>
+      <a href="#">History</a>
+      <a href="#">Tech</a>
+    </nav>
+  </header>
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  <main>
+    <div class="image-container">
+      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan's 50,000 ton water tank" />
+    </div>
+    <div class="text-container">
+      Japan's 50,000 ton water tank can tell us about the universe
+    </div>
+  </main>
+</body>
+</html>
