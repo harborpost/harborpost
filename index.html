@@ -3,135 +3,122 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Harbor Post</title>
+<title>HARBOR POST.</title>
 <style>
-  * {
-    box-sizing: border-box;
-  }
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  body {
+    margin: 0;
     background-color: #043F77;
+    font-family: Arial, sans-serif;
     color: white;
   }
+
   header {
     display: flex;
     align-items: center;
-    padding: 20px 40px;
-    border-bottom: 3px solid white;
-    font-weight: 700;
-    font-size: 30px;
-    letter-spacing: 1.5px;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background-color: #022B54;
   }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
   nav {
-    margin-left: auto;
+    display: flex;
+    gap: 30px;
   }
+
   nav a {
     color: white;
     text-decoration: none;
-    margin-left: 35px;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 18px;
-  }
-  nav a:hover {
-    text-decoration: underline;
-    color: #cce4ff;
+    transition: color 0.3s ease;
   }
 
-  /* Slider Container - slightly larger now */
-  .slider-container {
-    max-width: 1200px;
-    height: 600px; /* increased height */
-    margin: 40px auto;
-    background: #0651a4;
-    border-radius: 8px;
+  nav a:hover {
+    color: #80BFFF;
+  }
+
+  .slider {
+    position: relative;
+    max-width: 90vw;
+    margin: 30px auto 60px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    background-color: #022B54;
   }
 
   .slides {
     display: flex;
-    transition: transform 0.6s ease;
-    height: 100%;
+    transition: transform 0.5s ease-in-out;
   }
 
   .slide {
-    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 30px 40px;
     display: flex;
+    gap: 30px;
     align-items: center;
-    padding: 20px 40px;
-    height: 100%;
+    color: white;
   }
 
   .slide img {
-    width: 55%;
-    height: 100%;
+    width: 50%;
+    height: auto;
+    object-fit: contain;
     border-radius: 6px;
-    object-fit: contain; /* keep entire image visible without zoom/crop */
-    /* Removed box-shadow to eliminate extra box */
-    flex-shrink: 0;
-    background: transparent; /* just to be safe */
-    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    background: #0b3a75;
   }
 
-  .slide-text {
-    margin-left: 40px;
-    font-size: 1.7rem; /* slightly bigger */
-    font-weight: 600;
-    max-width: 40%;
-    line-height: 1.3;
+  .slide .title {
+    width: 50%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  /* Navigation Buttons */
-  .nav-buttons {
-    text-align: center;
-    margin-top: 15px;
-  }
-  .nav-button {
+  /* Arrow buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px; /* half height to center vertically */
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 0;
     background: transparent;
     border: none;
-    color: white;
-    font-size: 30px;
-    margin: 0 20px;
-    padding: 8px 15px;
-    cursor: pointer;
+    user-select: none;
     transition: color 0.3s ease;
-    font-weight: 700;
-  }
-  .nav-button:hover {
-    color: #cce4ff;
+    z-index: 10;
   }
 
-  @media (max-width: 920px) {
-    .slider-container {
-      height: 450px;
-      max-width: 90vw;
-    }
-    .slide {
-      flex-direction: column;
-      padding: 15px 20px;
-    }
-    .slide img, .slide-text {
-      max-width: 100%;
-      margin: 0;
-    }
-    .slide img {
-      height: 280px;
-      width: auto;
-      margin-bottom: 15px;
-    }
-    .slide-text {
-      margin-left: 0;
-      font-size: 1.4rem;
-      max-width: 100%;
-    }
+  .prev:hover, .next:hover {
+    color: #ddd;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
   }
 </style>
 </head>
 <body>
-
 <header>
-  HARBOR POST.
+  <h1>HARBOR POST.</h1>
   <nav>
     <a href="#">Science</a>
     <a href="#">History</a>
@@ -139,57 +126,58 @@
   </nav>
 </header>
 
-<div class="slider-container">
-  <div class="slides" id="slides">
+<div class="slider">
+  <div class="slides">
     <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Article 1" />
-      <div class="slide-text">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
+      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank" />
+      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
     </div>
     <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Article 2" />
-      <div class="slide-text">DISCOVERIES IN SCIENCE THAT WILL SHAPE TOMORROW</div>
+      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank" />
+      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
     </div>
     <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Article 3" />
-      <div class="slide-text">HISTORICAL SECRETS UNCOVERED IN ANCIENT RUINS</div>
+      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank" />
+      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
     </div>
     <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Article 4" />
-      <div class="slide-text">THE FUTURE OF TECHNOLOGY: INNOVATIONS TO WATCH</div>
+      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank" />
+      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
     </div>
   </div>
-</div>
-
-<div class="nav-buttons">
-  <button class="nav-button" onclick="prevSlide()">&lt;</button>
-  <button class="nav-button" onclick="nextSlide()">&gt;</button>
+  <button class="prev">&#8249;</button>
+  <button class="next">&#8250;</button>
 </div>
 
 <script>
-  const slides = document.getElementById('slides');
+  const slides = document.querySelector('.slides');
+  const slideCount = document.querySelectorAll('.slide').length;
   let currentIndex = 0;
-  const totalSlides = slides.children.length;
 
-  function updateSlider() {
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  function updateSlidePosition() {
     slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
-  }
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    updateSlidePosition();
+  });
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlider();
-  }
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateSlidePosition();
+  });
 
-  // Auto slide every 6 seconds
-  setInterval(nextSlide, 6000);
+  // Optional: auto rotate every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateSlidePosition();
+  }, 5000);
 </script>
-
 </body>
 </html>
-
 
 
