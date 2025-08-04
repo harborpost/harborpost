@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harbor Post</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Full blue background */
+    body {
+      margin: 0;
+      background-color: #0033cc; /* a nice strong blue */
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #002299; /* a darker blue for the header */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #99ccff;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+  </style>
 </head>
-<body class="bg-blue-800 text-white font-sans p-10 min-h-screen">
-  <h1 class="text-4xl font-bold text-center mb-6">Harbor Post</h1>
-  <div class="bg-white text-gray-900 p-6 rounded-lg max-w-2xl mx-auto shadow-lg">
-    <p>
-      <strong>Harbor Post</strong> is a minimalist blog layout inspired by clean typography and tranquil color schemes.
-      It provides a comfortable reading experience with its soothing blue tones and structured layout.
-      Designed for writers, developers, and creatives, Harbor Post brings your stories to life in an environment that emphasizes clarity and calm.
-      Whether you're sharing tutorials, product news, or personal thoughts, this layout ensures your words stand out with elegance and ease.
-    </p>
-  </div>
+<body>
+  <header>
+    <h1>HARBOR POST.</h1>
+    <nav>
+      <a href="#">Science</a>
+      <a href="#">History</a>
+      <a href="#">Tech</a>
+    </nav>
+  </header>
 </body>
 </html>
