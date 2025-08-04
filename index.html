@@ -39,25 +39,20 @@
       overflow: hidden;
     }
 
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+    .slides {
+      display: flex;
+      width: 400%;
       height: 100%;
+      transition: transform 0.6s ease;
+    }
+
+    .slide {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px;
       box-sizing: border-box;
-      transition: opacity 0.6s ease;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .slide.active {
-      opacity: 1;
-      pointer-events: auto;
     }
 
     .slide img {
@@ -69,7 +64,7 @@
 
     .slide .title {
       width: 50%;
-      font-size: 36px; /* Bigger text */
+      font-size: 36px;
       line-height: 1.4;
       font-weight: bold;
       word-wrap: break-word;
@@ -116,21 +111,23 @@
   </header>
 
   <div class="slider-container">
-    <div class="slide active">
-      <img src="https://i.imgur.com/eAvzKrV.jpeg" alt="Japan Water Tank">
-      <div class="title">CRISPR-Cas9 can edit genes at the molecular level and eliminate diseases</div>
-    </div>
-    <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank">
-      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
-    </div>
-    <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank">
-      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
-    </div>
-    <div class="slide">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank">
-      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="https://i.imgur.com/yPllNse.jpeg" alt="Japan Water Tank">
+        <div class="title">CRISPR-CAS9 CAN EDIT GENES AT THE MOLECULAR LEVEL AND ELIMINATE DISEASES</div>
+      </div>
+      <div class="slide">
+        <img src="https://i.imgur.com/xT8zCgG.jpeg" alt="Japan Water Tank">
+        <div class="title">3-D PRINTED PROSTHETICS</div>
+      </div>
+      <div class="slide">
+        <img src="https://i.imgur.com/FQAwEe7.jpeg" alt="Japan Water Tank">
+        <div class="title">HOW THE LIBRARY OF ALEXANDRIA WAS DESTROYED— AND WHAT WE LOST</div>
+      </div>
+      <div class="slide">
+        <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank">
+        <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
+      </div>
     </div>
     <button class="prev" onclick="moveSlide(-1)">&#8249;</button>
     <button class="next" onclick="moveSlide(1)">&#8250;</button>
@@ -138,21 +135,15 @@
 
   <script>
     let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-    }
+    const slides = document.getElementById("slides");
+    const totalSlides = slides.children.length;
 
     function moveSlide(step) {
-      currentSlide = (currentSlide + step + slides.length) % slides.length;
-      showSlide(currentSlide);
+      currentSlide = (currentSlide + step + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
-
-    // Auto slide
-    setInterval(() => moveSlide(1), 6000);
   </script>
 </body>
 </html>
+
+    
