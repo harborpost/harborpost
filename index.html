@@ -32,74 +32,50 @@
       font-size: 16px;
     }
 
-    .slider-container {
-      position: relative;
-      width: 100%;
-      height: 75vh;
-      overflow: hidden;
-    }
-
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
       padding: 40px;
       box-sizing: border-box;
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
-      pointer-events: none;
     }
 
-    .slide.active {
-      opacity: 1;
-      pointer-events: auto;
+    .article-box {
+      background-color: #0256a1;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
     }
 
-    .slide img {
-      width: 50%;
-      max-height: 100%;
-      object-fit: contain;
-      margin-right: 30px;
+    .article-box:hover {
+      transform: scale(1.02);
     }
 
-    .slide .title {
-      width: 50%;
-      font-size: 36px;
-      line-height: 1.4;
+    .article-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-title {
+      padding: 15px;
+      font-size: 18px;
       font-weight: bold;
-      word-wrap: break-word;
+      text-align: left;
     }
 
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 45%;
-      width: 40px;
-      height: 40px;
-      color: white;
-      font-weight: bold;
-      font-size: 32px;
-      background: transparent;
-      border: none;
-      user-select: none;
-      z-index: 10;
+    /* Responsive for smaller screens */
+    @media (max-width: 1000px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .prev:hover, .next:hover {
-      color: #ccc;
-    }
-
-    .prev {
-      left: 10px;
-    }
-
-    .next {
-      right: 10px;
+    @media (max-width: 600px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -113,42 +89,24 @@
     </nav>
   </header>
 
-  <div class="slider-container">
-    <div class="slide active">
+  <div class="grid-container">
+    <div class="article-box">
       <img src="https://i.imgur.com/yPllNse.jpeg" alt="CRISPR">
-      <div class="title">CRISPR-CAS9 CAN EDIT GENES AT THE MOLECULAR LEVEL AND ELIMINATE DISEASES</div>
+      <div class="article-title">CRISPR-CAS9 CAN EDIT GENES AT THE MOLECULAR LEVEL AND ELIMINATE DISEASES</div>
     </div>
-    <div class="slide">
+    <div class="article-box">
       <img src="https://i.imgur.com/xT8zCgG.jpeg" alt="3D Prosthetics">
-      <div class="title">3-D PRINTED PROSTHETICS</div>
+      <div class="article-title">3-D PRINTED PROSTHETICS</div>
     </div>
-    <div class="slide">
+    <div class="article-box">
       <img src="https://i.imgur.com/FQAwEe7.jpeg" alt="Library of Alexandria">
-      <div class="title">HOW THE LIBRARY OF ALEXANDRIA WAS DESTROYED— AND WHAT WE LOST</div>
+      <div class="article-title">HOW THE LIBRARY OF ALEXANDRIA WAS DESTROYED— AND WHAT WE LOST</div>
     </div>
-    <div class="slide">
+    <div class="article-box">
       <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan Water Tank">
-      <div class="title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
+      <div class="article-title">JAPAN'S 50,000 TON WATER TANK COULD FIND ANSWERS TO THE UNIVERSE</div>
     </div>
-    <button class="prev" onclick="changeSlide(-1)">&#8249;</button>
-    <button class="next" onclick="changeSlide(1)">&#8250;</button>
   </div>
-
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-    }
-
-    function changeSlide(step) {
-      currentSlide = (currentSlide + step + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
-  </script>
 </body>
 </html>
 
