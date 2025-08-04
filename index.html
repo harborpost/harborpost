@@ -2,95 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harbor Post</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARBOR POST.</title>
   <style>
     body {
       margin: 0;
-      background-color: #0033cc;
-      color: white;
+      padding: 0;
+      background-color: #1e3a8a; /* Deep blue */
       font-family: Arial, sans-serif;
+      color: white;
     }
+
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #002299;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      background-color: #1e40af;
+      padding: 20px;
+      text-align: center;
     }
-    h1 {
+
+    header h1 {
       margin: 0;
-      font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 2.5rem;
       letter-spacing: 2px;
     }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: #1d4ed8;
+      padding: 10px 0;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      font-weight: bold;
+      font-size: 1.1rem;
     }
+
     nav a:hover {
-      color: #99ccff;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    main {
-      display: flex;
-      padding: 2rem;
-      gap: 2rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .image-container, .text-container {
-      flex: 1 1 45%;
-      min-width: 300px;
-    }
-    .image-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-    .text-container {
-      font-size: 1.3rem;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-    @media (max-width: 700px) {
-      main {
-        flex-direction: column;
-      }
-      .image-container, .text-container {
-        flex: 1 1 100%;
-      }
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>HARBOR POST.</h1>
-    <nav>
-      <a href="#">donket</a>
-      <a href="#">History</a>
-      <a href="#">Tech</a>
-    </nav>
   </header>
 
-  <main>
-    <div class="image-container">
-      <img src="https://i.imgur.com/DjJ5MPx.jpeg" alt="Japan's 50,000 ton water tank" />
-    </div>
-    <div class="text-container">
-      Japan's 50,000 ton water tank can tell us about the universe
-    </div>
-  </main>
+  <nav>
+    <a href="#">dang</a>
+    <a href="#">History</a>
+    <a href="#">Tech</a>
+  </nav>
 </body>
 </html>
 
