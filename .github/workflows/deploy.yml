@@ -1,4 +1,7 @@
-name: Deploy static site to GitHub Pages
+name: Deploy to GitHub Pages
+
+permissions:
+  contents: write
 
 on:
   push:
@@ -8,15 +11,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        publish_branch: gh-pages
+      - uses: actions/checkout@v3
+      # other steps here...
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # or your actual publish dir
