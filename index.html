@@ -64,11 +64,11 @@
     .landing-section {
       display: flex;
       padding: 40px;
-      height: calc(100vh - 100px); /* viewport height minus header */
+      height: calc(100vh - 100px); /* viewport minus header */
       gap: 40px;
-      flex-wrap: wrap;
-      align-items: flex-start;
+      flex-wrap: nowrap;
       justify-content: center;
+      align-items: center;
     }
 
     .large-image {
@@ -79,27 +79,32 @@
       position: relative;
     }
 
-    /* Vertical line floating next to the large image */
-    .vertical-line {
-      width: 4px;
-      height: 80%;
-      background-color: black;
-      margin-left: 20px;
-      align-self: flex-start; /* aligns with top of left image */
-    }
-
-    .text-container {
+    /* Right column */
+    .right-column {
       flex: 1 1 45%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* align paragraph to top */
+      justify-content: center; /* centers entire group vertically */
+      align-items: flex-start; /* aligns left */
       height: 100%;
+    }
+
+    .text-container {
+      margin-bottom: 20px;
     }
 
     .text-container p {
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 400px;
+      margin: 0;
+    }
+
+    .vertical-line {
+      width: 4px;
+      height: 200px;
+      background-color: black;
+      margin: 0 20px 20px 0;
     }
 
     .horizontal-line {
@@ -112,7 +117,7 @@
 
     .small-image {
       width: 100%;
-      flex: 1;
+      height: 150px;
       background-color: #cccccc;
       border-radius: 8px;
     }
@@ -123,9 +128,13 @@
         flex-direction: column;
         height: auto;
       }
-      .large-image, .text-container, .small-image {
+      .large-image, .right-column, .small-image {
         flex: 1 1 100%;
         height: auto;
+      }
+      .right-column {
+        justify-content: flex-start;
+        align-items: center;
       }
       .text-container p {
         text-align: center;
@@ -135,6 +144,9 @@
       }
       .horizontal-line {
         width: 90%;
+      }
+      .small-image {
+        height: 200px;
       }
     }
   </style>
@@ -167,15 +179,17 @@
   <!-- Landing section -->
   <div class="landing-section">
     <div class="large-image"></div>
-    <div class="vertical-line"></div>
-    <div class="text-container">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur pretium tincidunt lacus, sit amet scelerisque massa.
-      </p>
+    <div class="right-column">
+      <div class="text-container">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
       <div class="horizontal-line"></div>
       <div class="small-image"></div>
     </div>
   </div>
 </body>
 </html>
+
 
