@@ -58,69 +58,63 @@
       }
     }
 
-    /* Magazine layout */
-    .section {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 40px 0;
-      align-items: flex-start;
+    /* Magazine grid container */
+    .magazine-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 0 40px;
+      padding: 40px;
+      grid-auto-rows: 200px;
     }
 
-    .section-title {
-      width: 100%;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .image-left {
-      flex: 1 1 50%;
-      height: 400px;
-      background-color: #cccccc;
+    .article-box {
       position: relative;
-    }
-
-    .image-right {
-      flex: 1 1 50%;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #cccccc; /* placeholder */
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 10px;
     }
 
-    .image-right .img-box {
-      flex: 1;
-      height: 190px;
-      background-color: #cccccc;
-    }
-
-    .image-overlay {
+    .article-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
-    hr {
-      border: 0;
-      height: 4px;
-      background-color: black;
-      margin: 40px 0;
+    .article-title {
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      margin: 0;
     }
+
+    /* Staggered layout for magazine effect */
+    .article-box:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .article-box:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+    .article-box:nth-child(3) { grid-column: span 1; grid-row: span 2; }
+    .article-box:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+    .article-box:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+    .article-box:nth-child(6) { grid-column: span 1; grid-row: span 2; }
+    .article-box:nth-child(7) { grid-column: span 2; grid-row: span 1; }
+    .article-box:nth-child(8) { grid-column: span 1; grid-row: span 1; }
+    .article-box:nth-child(9) { grid-column: span 1; grid-row: span 2; }
+    .article-box:nth-child(10) { grid-column: span 2; grid-row: span 2; }
+    .article-box:nth-child(11) { grid-column: span 1; grid-row: span 1; }
+    .article-box:nth-child(12) { grid-column: span 1; grid-row: span 1; }
 
     /* Responsive adjustments */
     @media (max-width: 900px) {
-      .section {
-        flex-direction: column;
-      }
-      .image-left, .image-right .img-box {
-        flex: 1 1 100%;
-        height: 250px;
-      }
+      .article-box { grid-column: span 1 !important; grid-row: span 1 !important; height: 250px; }
     }
   </style>
 </head>
@@ -149,77 +143,21 @@
     typeWriter();
   </script>
 
-  <!-- Sections -->
-  <div class="section">
-    <div class="section-title">Amazing Discovery 1</div>
-    <div class="image-left">
-      <div class="image-overlay">Amazing Discovery 1</div>
-    </div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
+  <!-- Magazine-style grid -->
+  <div class="magazine-container">
+    <div class="article-box"><div class="article-title">Amazing Discovery 1</div></div>
+    <div class="article-box"><div class="article-title">Science Breakthrough 2</div></div>
+    <div class="article-box"><div class="article-title">Historic Event 3</div></div>
+    <div class="article-box"><div class="article-title">Technology Marvel 4</div></div>
+    <div class="article-box"><div class="article-title">Innovation Highlight 5</div></div>
+    <div class="article-box"><div class="article-title">Exploration Story 6</div></div>
+    <div class="article-box"><div class="article-title">Space Discovery 7</div></div>
+    <div class="article-box"><div class="article-title">Medical Breakthrough 8</div></div>
+    <div class="article-box"><div class="article-title">Ancient Mystery 9</div></div>
+    <div class="article-box"><div class="article-title">Tech Revolution 10</div></div>
+    <div class="article-box"><div class="article-title">Innovation Spotlight 11</div></div>
+    <div class="article-box"><div class="article-title">Exploration Insight 12</div></div>
   </div>
-
-  <hr>
-
-  <div class="section">
-    <div class="section-title">Science Breakthrough 2</div>
-    <div class="image-left">
-      <div class="image-overlay">Science Breakthrough 2</div>
-    </div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="section">
-    <div class="section-title">Historic Event 3</div>
-    <div class="image-left">
-      <div class="image-overlay">Historic Event 3</div>
-    </div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- Duplicate sections to simulate 30 images -->
-  <div class="section">
-    <div class="section-title">Technology Marvel 4</div>
-    <div class="image-left"><div class="image-overlay">Technology Marvel 4</div></div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="section">
-    <div class="section-title">Innovation Highlight 5</div>
-    <div class="image-left"><div class="image-overlay">Innovation Highlight 5</div></div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="section">
-    <div class="section-title">Exploration Story 6</div>
-    <div class="image-left"><div class="image-overlay">Exploration Story 6</div></div>
-    <div class="image-right">
-      <div class="img-box"></div>
-      <div class="img-box"></div>
-    </div>
-  </div>
-
 </body>
 </html>
+
