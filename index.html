@@ -20,21 +20,20 @@
       align-items: center;
     }
 
-    header h1 {
+    .header-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    h1 {
       margin: 0;
       font-size: 32px;
-      text-align: center;
-      flex: 1;
       white-space: nowrap;
       overflow: hidden;
       border-right: 0.15em solid white;
-      animation: typing 2s steps(12, end), blink 0.75s step-end infinite;
-    }
-
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
+      width: 0;
+      animation: typing 2s steps(12, end) forwards;
     }
 
     nav a {
@@ -43,20 +42,17 @@
       font-size: 16px;
     }
 
-    /* Typing animation */
     @keyframes typing {
       from { width: 0; }
-      to { width: 12ch; } /* 12 characters for "Harbor Post" */
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+      to { width: 12ch; } /* 12 characters for "HARBOR POST." */
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Harbor Post</h1>
+    <div class="header-center">
+      <h1>HARBOR POST.</h1>
+    </div>
     <nav>
       <a href="#">About Us</a>
     </nav>
