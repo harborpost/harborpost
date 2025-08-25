@@ -31,9 +31,9 @@
       font-size: 32px;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 0.15em solid white;
+      border-right: 0.15em solid white; /* optional for typing effect */
       width: 0;
-      animation: typing 2s steps(12, end) forwards;
+      animation: typing 2s steps(12, start) forwards;
     }
 
     nav a {
@@ -44,7 +44,7 @@
 
     @keyframes typing {
       from { width: 0; }
-      to { width: 12ch; } /* 12 characters for "HARBOR POST." */
+      to { width: 12ch; } /* exactly 12 characters: HARBOR POST. */
     }
   </style>
 </head>
@@ -59,4 +59,3 @@
   </header>
 </body>
 </html>
-
