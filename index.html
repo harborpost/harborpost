@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harbor Post</title>
   <style>
     body {
@@ -30,10 +30,6 @@
       margin: 0;
       font-size: 32px;
       white-space: nowrap;
-      overflow: hidden;
-      border-right: 0.15em solid white; /* optional for typing effect */
-      width: 0;
-      animation: typing 2s steps(12, start) forwards;
     }
 
     nav a {
@@ -41,21 +37,32 @@
       text-decoration: none;
       font-size: 16px;
     }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 12ch; } /* exactly 12 characters: HARBOR POST. */
-    }
   </style>
 </head>
 <body>
   <header>
     <div class="header-center">
-      <h1>HARBOR POST.</h1>
+      <h1 id="typed-text"></h1>
     </div>
     <nav>
       <a href="#">About Us</a>
     </nav>
   </header>
+
+  <script>
+    const text = "HARBOR POST.";
+    const typedText = document.getElementById("typed-text");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typedText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 150); // adjust speed here (ms)
+      }
+    }
+
+    typeWriter();
+  </script>
 </body>
 </html>
