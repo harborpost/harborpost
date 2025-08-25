@@ -8,35 +8,57 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: white; /* white background */
+      background-color: white;
       color: black;
     }
 
     header {
-      background-color: white; /* white header to match background */
-      padding: 40px 20px; /* more padding for larger header */
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
+      padding: 20px 20px;
     }
 
     .header-center {
-      flex: 1;
+      flex: 1 1 100%;
       display: flex;
       justify-content: center;
+      overflow-x: hidden;
     }
 
     h1 {
       margin: 0;
-      font-size: 72px; /* larger font */
+      font-size: clamp(40px, 8vw, 72px); /* responsive font */
       color: black;
       white-space: nowrap;
     }
 
+    nav {
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 10px; /* for small screens if wrapped */
+    }
+
     nav a {
-      color: black;
+      text-transform: uppercase;
       text-decoration: none;
-      font-size: 20px; /* slightly larger nav link */
+      color: black;
+      font-size: clamp(16px, 2vw, 20px);
+      margin-left: 20px;
+    }
+
+    /* Adjust nav for very small screens */
+    @media (max-width: 500px) {
+      nav {
+        justify-content: center;
+        margin-top: 15px;
+      }
+      nav a {
+        margin-left: 10px;
+      }
     }
   </style>
 </head>
@@ -59,7 +81,7 @@
       if (index < text.length) {
         typedText.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 100); // adjust speed
+        setTimeout(typeWriter, 180); // slower typing for readability
       }
     }
 
