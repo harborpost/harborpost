@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harbor Post Landing Layout</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
       background-color: white;
       color: black;
@@ -61,15 +63,17 @@
     /* Landing section */
     .landing-section {
       display: flex;
-      flex-wrap: wrap;
       padding: 40px;
+      height: calc(100vh - 100px); /* viewport height minus header */
       gap: 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
       justify-content: center;
     }
 
     .large-image {
       flex: 1 1 45%;
-      height: 500px;
+      height: 100%;
       background-color: #cccccc;
       border-radius: 8px;
       position: relative;
@@ -78,10 +82,9 @@
     /* Vertical line floating next to the large image */
     .vertical-line {
       width: 4px;
-      height: 200px;
+      height: 80%;
       background-color: black;
       margin-left: 20px;
-      margin-top: 0;
       align-self: flex-start; /* aligns with top of left image */
     }
 
@@ -89,7 +92,8 @@
       flex: 1 1 45%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* aligns paragraph to top of image */
+      justify-content: flex-start; /* align paragraph to top */
+      height: 100%;
     }
 
     .text-container p {
@@ -98,32 +102,30 @@
       max-width: 400px;
     }
 
-    /* Floating horizontal line */
     .horizontal-line {
-      width: 50%; /* not full width */
+      width: 80%;
       height: 4px;
       background-color: black;
-      margin: 40px auto;
+      margin: 20px 0 10px 0;
       border-radius: 2px;
     }
 
     .small-image {
-      width: 60%;
-      height: 300px;
+      width: 100%;
+      flex: 1;
       background-color: #cccccc;
       border-radius: 8px;
-      margin: 0 auto 60px auto;
     }
 
     /* Responsive adjustments */
     @media (max-width: 900px) {
       .landing-section {
         flex-direction: column;
-        align-items: center;
+        height: auto;
       }
-      .large-image, .text-container {
+      .large-image, .text-container, .small-image {
         flex: 1 1 100%;
-        height: 300px;
+        height: auto;
       }
       .text-container p {
         text-align: center;
@@ -131,12 +133,8 @@
       .vertical-line {
         display: none;
       }
-      .small-image {
-        width: 90%;
-        height: 250px;
-      }
       .horizontal-line {
-        width: 80%;
+        width: 90%;
       }
     }
   </style>
@@ -174,11 +172,10 @@
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur pretium tincidunt lacus, sit amet scelerisque massa.
       </p>
+      <div class="horizontal-line"></div>
+      <div class="small-image"></div>
     </div>
   </div>
-
-  <!-- Horizontal line and smaller image below -->
-  <div class="horizontal-line"></div>
-  <div class="small-image"></div>
 </body>
 </html>
+
