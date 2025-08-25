@@ -19,7 +19,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 15px 30px; /* reduced padding */
     }
 
     .header-center {
@@ -55,25 +55,27 @@
         align-items: center;
       }
       nav {
-        margin-top: 15px;
+        margin-top: 10px;
         justify-content: center;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 50px);
       }
     }
 
     /* Landing section */
     .landing-section {
       display: flex;
-      padding: 40px;
-      height: calc(100vh - 100px); /* viewport minus header */
-      gap: 40px;
+      padding: 20px 30px; /* reduced padding */
+      gap: 30px;
       flex-wrap: nowrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* align top to reduce blank space */
     }
 
     .large-image {
       flex: 0 0 45%;
-      height: 65vh; /* scaled to fit viewport */
+      height: 60vh; /* slightly smaller for less vertical space */
       background-color: #cccccc;
       border-radius: 8px;
       position: relative;
@@ -84,9 +86,8 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* vertically center group */
+      justify-content: flex-start; /* top align */
       align-items: center;
-      height: 65vh; /* same as image for symmetry */
       gap: 20px;
     }
 
@@ -115,7 +116,7 @@
     /* Vertical line floating between large image and right column */
     .vertical-line {
       width: 4px;
-      height: 60%; /* aligns with large image */
+      height: 60%; 
       background-color: black;
       margin: 0 20px;
       align-self: center;
@@ -125,7 +126,7 @@
     @media (max-width: 900px) {
       .landing-section {
         flex-direction: column;
-        height: auto;
+        gap: 20px;
       }
       .large-image, .right-column {
         flex: 1 1 100%;
@@ -188,5 +189,4 @@
   </div>
 </body>
 </html>
-
 
