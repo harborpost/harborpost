@@ -12,12 +12,13 @@
       color: black;
     }
 
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      flex-wrap: nowrap; /* prevent wrapping on desktop */
+      flex-wrap: nowrap;
     }
 
     .header-center {
@@ -37,7 +38,7 @@
     nav {
       display: flex;
       align-items: center;
-      flex-shrink: 0; /* prevent shrinking */
+      flex-shrink: 0;
     }
 
     nav a {
@@ -48,7 +49,6 @@
       margin-left: 20px;
     }
 
-    /* On small screens, stack elements */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -59,9 +59,46 @@
         justify-content: center;
       }
     }
+
+    /* Grid layout for articles */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .article-box {
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .article-box img {
+      width: 100%;
+      height: 200px;
+      background-color: #cccccc; /* placeholder gray */
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .article-title {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="header-center">
       <h1 id="typed-text"></h1>
@@ -71,6 +108,35 @@
     </nav>
   </header>
 
+  <!-- Grid Layout -->
+  <div class="grid-container">
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Amazing Discovery 1</div>
+    </div>
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Science Breakthrough 2</div>
+    </div>
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Historic Event 3</div>
+    </div>
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Technology Marvel 4</div>
+    </div>
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Innovation Highlight 5</div>
+    </div>
+    <div class="article-box">
+      <img alt="Image Placeholder">
+      <div class="article-title">Exploration Story 6</div>
+    </div>
+  </div>
+
+  <!-- Typing Script -->
   <script>
     const text = "HARBOR POST.";
     const typedText = document.getElementById("typed-text");
@@ -80,7 +146,7 @@
       if (index < text.length) {
         typedText.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 180); // typing speed
+        setTimeout(typeWriter, 180); // adjust typing speed
       }
     }
 
@@ -88,4 +154,3 @@
   </script>
 </body>
 </html>
-
