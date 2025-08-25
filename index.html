@@ -72,8 +72,8 @@
     }
 
     .large-image {
-      flex: 1 1 45%;
-      height: 100%;
+      flex: 0 0 45%;
+      height: 65vh; /* scaled to fit viewport */
       background-color: #cccccc;
       border-radius: 8px;
       position: relative;
@@ -81,45 +81,44 @@
 
     /* Right column */
     .right-column {
-      flex: 1 1 45%;
+      flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* centers entire group vertically */
-      align-items: flex-start; /* aligns left */
-      height: 100%;
-    }
-
-    .text-container {
-      margin-bottom: 20px;
+      justify-content: center; /* vertically center group */
+      align-items: center;
+      height: 65vh; /* same as image for symmetry */
+      gap: 20px;
     }
 
     .text-container p {
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 400px;
+      text-align: center;
       margin: 0;
-    }
-
-    .vertical-line {
-      width: 4px;
-      height: 200px;
-      background-color: black;
-      margin: 0 20px 20px 0;
     }
 
     .horizontal-line {
       width: 80%;
       height: 4px;
       background-color: black;
-      margin: 20px 0 10px 0;
       border-radius: 2px;
     }
 
     .small-image {
-      width: 100%;
+      width: 80%;
       height: 150px;
       background-color: #cccccc;
       border-radius: 8px;
+    }
+
+    /* Vertical line floating between large image and right column */
+    .vertical-line {
+      width: 4px;
+      height: 60%; /* aligns with large image */
+      background-color: black;
+      margin: 0 20px;
+      align-self: center;
     }
 
     /* Responsive adjustments */
@@ -128,13 +127,9 @@
         flex-direction: column;
         height: auto;
       }
-      .large-image, .right-column, .small-image {
+      .large-image, .right-column {
         flex: 1 1 100%;
         height: auto;
-      }
-      .right-column {
-        justify-content: flex-start;
-        align-items: center;
       }
       .text-container p {
         text-align: center;
@@ -146,6 +141,7 @@
         width: 90%;
       }
       .small-image {
+        width: 90%;
         height: 200px;
       }
     }
@@ -179,6 +175,7 @@
   <!-- Landing section -->
   <div class="landing-section">
     <div class="large-image"></div>
+    <div class="vertical-line"></div>
     <div class="right-column">
       <div class="text-container">
         <p>
