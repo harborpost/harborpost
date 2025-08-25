@@ -60,40 +60,56 @@
       }
     }
 
-    /* Grid layout for articles */
-    .grid-container {
+    /* Magazine-style grid */
+    .magazine-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      gap: 20px;
       padding: 40px;
-      box-sizing: border-box;
+      grid-auto-rows: 200px; /* base row height */
     }
 
     .article-box {
       background-color: #f0f0f0;
       border-radius: 8px;
       overflow: hidden;
+      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 15px;
+      justify-content: flex-end;
+      padding: 10px;
       text-align: center;
     }
 
     .article-box img {
       width: 100%;
-      height: 200px;
-      background-color: #cccccc; /* placeholder gray */
+      height: 100%;
       object-fit: cover;
-      display: block;
       border-radius: 4px;
+      background-color: #cccccc;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
     .article-title {
-      margin-top: 15px;
-      font-size: 18px;
+      position: relative;
+      z-index: 1;
+      color: white;
       font-weight: bold;
-      color: black;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin: 0;
+    }
+
+    /* Stagger some boxes for a magazine vibe */
+    .article-box:nth-child(1) { grid-row: span 2; }
+    .article-box:nth-child(4) { grid-row: span 2; }
+
+    @media (max-width: 800px) {
+      .article-box:nth-child(1),
+      .article-box:nth-child(4) { grid-row: span 1; }
     }
   </style>
 </head>
@@ -108,30 +124,30 @@
     </nav>
   </header>
 
-  <!-- Grid Layout -->
-  <div class="grid-container">
+  <!-- Magazine-style grid -->
+  <div class="magazine-grid">
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Amazing Discovery 1</div>
     </div>
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Science Breakthrough 2</div>
     </div>
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Historic Event 3</div>
     </div>
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Technology Marvel 4</div>
     </div>
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Innovation Highlight 5</div>
     </div>
     <div class="article-box">
-      <img alt="Image Placeholder">
+      <img alt="Placeholder Image">
       <div class="article-title">Exploration Story 6</div>
     </div>
   </div>
@@ -146,7 +162,7 @@
       if (index < text.length) {
         typedText.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 180); // adjust typing speed
+        setTimeout(typeWriter, 180);
       }
     }
 
