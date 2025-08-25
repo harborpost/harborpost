@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harbor Post</title>
+  <title>Harbor Post Magazine Layout</title>
   <style>
     body {
       margin: 0;
@@ -18,14 +18,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      flex-wrap: nowrap;
     }
 
     .header-center {
       flex: 1;
       display: flex;
       justify-content: center;
-      overflow-x: hidden;
     }
 
     h1 {
@@ -60,56 +58,69 @@
       }
     }
 
-    /* Magazine-style grid */
-    .magazine-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Magazine layout */
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 40px 0;
+      align-items: flex-start;
       gap: 20px;
-      padding: 40px;
-      grid-auto-rows: 200px; /* base row height */
+      padding: 0 40px;
     }
 
-    .article-box {
-      background-color: #f0f0f0;
-      border-radius: 8px;
-      overflow: hidden;
+    .section-title {
+      width: 100%;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .image-left {
+      flex: 1 1 50%;
+      height: 400px;
+      background-color: #cccccc;
       position: relative;
+    }
+
+    .image-right {
+      flex: 1 1 50%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 10px;
-      text-align: center;
+      gap: 20px;
     }
 
-    .article-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
+    .image-right .img-box {
+      flex: 1;
+      height: 190px;
       background-color: #cccccc;
+    }
+
+    .image-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    .article-title {
-      position: relative;
-      z-index: 1;
+      bottom: 10px;
+      left: 10px;
       color: white;
+      font-size: 1.5rem;
       font-weight: bold;
-      font-size: 1.2rem;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-      margin: 0;
     }
 
-    /* Stagger some boxes for a magazine vibe */
-    .article-box:nth-child(1) { grid-row: span 2; }
-    .article-box:nth-child(4) { grid-row: span 2; }
+    hr {
+      border: 0;
+      height: 4px;
+      background-color: black;
+      margin: 40px 0;
+    }
 
-    @media (max-width: 800px) {
-      .article-box:nth-child(1),
-      .article-box:nth-child(4) { grid-row: span 1; }
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .section {
+        flex-direction: column;
+      }
+      .image-left, .image-right .img-box {
+        flex: 1 1 100%;
+        height: 250px;
+      }
     }
   </style>
 </head>
@@ -124,40 +135,10 @@
     </nav>
   </header>
 
-  <!-- Magazine-style grid -->
-  <div class="magazine-grid">
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Amazing Discovery 1</div>
-    </div>
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Science Breakthrough 2</div>
-    </div>
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Historic Event 3</div>
-    </div>
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Technology Marvel 4</div>
-    </div>
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Innovation Highlight 5</div>
-    </div>
-    <div class="article-box">
-      <img alt="Placeholder Image">
-      <div class="article-title">Exploration Story 6</div>
-    </div>
-  </div>
-
-  <!-- Typing Script -->
   <script>
     const text = "HARBOR POST.";
     const typedText = document.getElementById("typed-text");
     let index = 0;
-
     function typeWriter() {
       if (index < text.length) {
         typedText.innerHTML += text.charAt(index);
@@ -165,8 +146,80 @@
         setTimeout(typeWriter, 180);
       }
     }
-
     typeWriter();
   </script>
+
+  <!-- Sections -->
+  <div class="section">
+    <div class="section-title">Amazing Discovery 1</div>
+    <div class="image-left">
+      <div class="image-overlay">Amazing Discovery 1</div>
+    </div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-title">Science Breakthrough 2</div>
+    <div class="image-left">
+      <div class="image-overlay">Science Breakthrough 2</div>
+    </div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-title">Historic Event 3</div>
+    <div class="image-left">
+      <div class="image-overlay">Historic Event 3</div>
+    </div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Duplicate sections to simulate 30 images -->
+  <div class="section">
+    <div class="section-title">Technology Marvel 4</div>
+    <div class="image-left"><div class="image-overlay">Technology Marvel 4</div></div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-title">Innovation Highlight 5</div>
+    <div class="image-left"><div class="image-overlay">Innovation Highlight 5</div></div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-title">Exploration Story 6</div>
+    <div class="image-left"><div class="image-overlay">Exploration Story 6</div></div>
+    <div class="image-right">
+      <div class="img-box"></div>
+      <div class="img-box"></div>
+    </div>
+  </div>
+
 </body>
 </html>
