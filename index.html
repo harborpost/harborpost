@@ -106,8 +106,8 @@
     }
 
     .horizontal-line {
-      width: 125%; /* slightly longer */
-      max-width: 500px; /* optional cap */
+      width: 125%;
+      max-width: 500px;
       height: 4px;
       background-color: black;
       border-radius: 2px;
@@ -115,10 +115,10 @@
 
     .small-image {
       width: 80%;
-      height: 150px;
+      height: 200px; /* increased height */
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: -40px; /* keeps it close to horizontal line */
+      /* keep it at bottom, remove negative margin */
     }
 
     @media (max-width: 900px) {
@@ -127,7 +127,7 @@
       .text-container p { text-align: center; }
       .image-divider { display: none; }
       .horizontal-line { width: 90%; max-width: none; }
-      .small-image { width: 90%; height: 200px; margin-top: 0; }
+      .small-image { width: 90%; height: 200px; }
     }
   </style>
 </head>
