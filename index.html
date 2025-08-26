@@ -53,7 +53,6 @@
       gap: 30px;
       justify-content: center;
       align-items: flex-start;
-      position: relative;
     }
 
     .large-image-wrapper {
@@ -82,19 +81,19 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 70vh; /* match big image */
-      gap: 0;
+      justify-content: space-between; /* aligns top row with top, bottom row with bottom */
+      height: 70vh; /* match left big box */
+      gap: 20px;
     }
 
     .box-row {
       display: flex;
       gap: 15px;
-      flex: 1; /* each row takes equal half of column */
+      flex: 0 0 48%; /* optional: each row takes ~half of right column */
     }
 
     .box {
-      flex: 1;
+      flex: 1; /* fills row width */
       background-color: #cccccc;
       border-radius: 8px;
       height: 100%; /* fills row height */
@@ -103,16 +102,20 @@
     @media (max-width: 900px) {
       .landing-section {
         flex-direction: column;
-        align-items: center;
         gap: 20px;
+        align-items: center;
       }
       .large-image-wrapper, .right-column {
         flex: 1 1 100%;
         height: auto;
       }
       .image-divider { display: none; }
-      .box-row { flex-direction: row; gap: 10px; height: auto; }
-      .box { height: 100px; }
+      .box-row {
+        flex-direction: row;
+        gap: 10px;
+        height: 100px;
+      }
+      .box { height: 100%; }
     }
   </style>
 </head>
@@ -158,5 +161,4 @@
   </div>
 </body>
 </html>
-
 
