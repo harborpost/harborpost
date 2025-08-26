@@ -3,168 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post Landing Layout</title>
+<title>Landing Page with Left Image</title>
 <style>
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: Arial, sans-serif;
-  background-color: white;
-  color: black;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-}
-
-.header-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(40px, 8vw, 72px);
-  color: black;
-  white-space: nowrap;
-}
-
-nav a {
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
-  font-size: clamp(16px, 2vw, 20px);
-  margin-left: 20px;
-}
-
-@media (max-width: 600px) {
-  header { flex-direction: column; align-items: center; }
-  nav { margin-top: 10px; justify-content: center; }
-  h1 { font-size: clamp(30px, 6vw, 50px); }
-}
-
+/* Container for the full landing section */
 .landing-section {
   display: flex;
-  padding: 20px 30px;
-  gap: 30px;
-  justify-content: center;
-  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
 }
 
-.large-image-wrapper {
-  position: relative;
-  flex: 0 0 45%;
-  margin-top: 15px;
+/* Left image takes 50% of the viewport */
+.landing-left {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.large-image img {
+.landing-left img {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  object-fit: cover; /* trims image to fit the box exactly */
-}
-
-.image-divider {
-  position: absolute;
-  top: -15px;
-  left: 105%;
-  width: 4px;
-  height: calc(100% + 30px);
-  background-color: black;
-  border-radius: 2px;
-}
-
-.right-column {
-  flex: 0 0 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* top row aligns top, bottom aligns bottom */
-  height: 70vh; /* matches left big box */
-  padding-left: 20px;
-  box-sizing: border-box;
-}
-
-.box-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex: 1; /* each row takes half height of right column */
-}
-
-.box {
-  flex: 0 0 45%;
-  border-radius: 8px;
-  overflow: hidden; /* ensures image is cropped to box */
-}
-
-.box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* trims image to fit box exactly */
+  object-fit: cover; /* Crop to fit box without distortion */
   display: block;
 }
 
-@media (max-width: 900px) {
-  .landing-section { flex-direction: column; gap: 20px; align-items: center; }
-  .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
-  .image-divider { display: none; }
-  .box-row { gap: 10px; }
-  .box img { width: 100%; height: 100%; }
-  .right-column { padding-left: 0; }
+/* Right side placeholder (you can add content here later) */
+.landing-right {
+  width: 50%;
+  height: 100%;
+  background-color: #f5f5f5; /* Light gray background */
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="header-center">
-    <h1 id="typed-text"></h1>
-  </div>
-  <nav>
-    <a href="#">About Us</a>
-  </nav>
-</header>
-
-<script>
-const text = "HARBOR POST.";
-const typedText = document.getElementById("typed-text");
-let index = 0;
-function typeWriter() {
-  if (index < text.length) {
-    typedText.innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeWriter, 180);
-  }
-}
-typeWriter();
-</script>
 
 <div class="landing-section">
-  <!-- BIG LEFT IMAGE -->
-  <div class="large-image-wrapper">
-    <img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Big Image">
-    <div class="image-divider"></div>
+  <!-- Left Image -->
+  <div class="landing-left">
+    <img id="left-image" src="https://i.imgur.com/CwoZOFE.jpeg" alt="Landing Image">
   </div>
 
-  <!-- RIGHT COLUMN -->
-  <div class="right-column">
-    <!-- TOP ROW -->
-    <div class="box-row">
-      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Left"></div>
-      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Right"></div>
-    </div>
-    <!-- BOTTOM ROW -->
-    <div class="box-row">
-      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Left"></div>
-      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
-    </div>
+  <!-- Right Side (empty for now) -->
+  <div class="landing-right">
+    <!-- Add right side content here -->
   </div>
 </div>
+
+<!-- Optional: Dynamic URL change via JavaScript -->
+<script>
+// Example: Change image dynamically
+// document.getElementById('left-image').src = "NEW_IMAGE_URL_HERE";
+</script>
+
 </body>
 </html>
+
 
 
 
