@@ -103,10 +103,27 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* top content stays at top, small image at bottom */
+      justify-content: space-between; /* top content top, small image bottom */
       align-items: center;
       height: 70vh; /* match large image height */
       gap: 20px;
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .horizontal-line {
+      width: 80%;
+      height: 4px;
+      background-color: black;
+      border-radius: 2px;
+      margin: auto 0; /* centers vertically between text and small image */
     }
 
     .text-container p {
@@ -115,13 +132,6 @@
       max-width: 400px;
       text-align: center;
       margin: 0;
-    }
-
-    .horizontal-line {
-      width: 80%;
-      height: 4px;
-      background-color: black;
-      border-radius: 2px;
     }
 
     .small-image {
@@ -189,7 +199,7 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div>
+      <div class="text-block">
         <div class="text-container">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -197,11 +207,12 @@
         </div>
         <div class="horizontal-line"></div>
       </div>
-      <div class="small-image"></div> <!-- now aligned to bottom -->
+      <div class="small-image"></div>
     </div>
   </div>
 </body>
 </html>
+
 
 
 
