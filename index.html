@@ -53,7 +53,7 @@
       padding: 20px 30px;
       gap: 30px;
       justify-content: center;
-      align-items: flex-end;
+      align-items: flex-start;
       position: relative;
     }
 
@@ -82,48 +82,28 @@
 
     .right-column {
       flex: 0 0 45%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end; /* bottom aligned */
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
       height: 70vh;
+      align-items: center;
+      justify-items: center;
     }
 
-    .spacer {
-      flex: 0 0 100%; /* doubled spacer height for moving line higher */
-    }
-
-    .text-container {
-      text-align: center;
-      max-width: 400px;
-      margin-bottom: 10px;
-    }
-
-    .horizontal-line {
-      width: 125%;
-      max-width: 500px;
-      height: 4px;
-      background-color: black;
-      border-radius: 2px;
-      margin-bottom: 10px;
-    }
-
-    .small-image {
-      width: 80%;
-      flex-grow: 1; /* fills space below horizontal line */
+    .box {
+      width: 90%;
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: auto; /* keeps bottom aligned */
+      aspect-ratio: 1 / 1; /* keeps boxes square */
     }
 
     @media (max-width: 900px) {
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
-      .text-container p { text-align: center; }
+      .right-column { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 15px; }
+      .box { width: 90%; }
       .image-divider { display: none; }
-      .horizontal-line { width: 90%; max-width: none; }
-      .small-image { width: 90%; height: 200px; flex-grow: 0; }
-      .spacer { flex: 0 0 40%; } /* adjust for mobile */
     }
   </style>
 </head>
@@ -157,21 +137,14 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="spacer"></div> <!-- doubled spacer to move line higher -->
-      <div class="text-container">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-      <div class="horizontal-line"></div>
-      <div class="small-image"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
     </div>
   </div>
 </body>
 </html>
-
-
-
 
 
 
