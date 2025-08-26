@@ -82,28 +82,31 @@
 
     .right-column {
       flex: 0 0 45%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* distributes top and bottom rows */
       height: 70vh;
-      align-items: center;
-      justify-items: center;
+    }
+
+    .box-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .box {
-      width: 90%;
+      flex: 1 1 48%; /* two boxes per row */
       background-color: #cccccc;
       border-radius: 8px;
-      aspect-ratio: 1 / 1; /* keeps boxes square */
+      aspect-ratio: 1 / 1; /* keeps square */
     }
 
     @media (max-width: 900px) {
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
-      .right-column { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 15px; }
-      .box { width: 90%; }
       .image-divider { display: none; }
+      .box-row { gap: 15px; }
+      .box { width: 48%; }
     }
   </style>
 </head>
@@ -137,15 +140,18 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+      <div class="box-row">
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div class="box-row">
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
     </div>
   </div>
 </body>
 </html>
-
 
 
 
