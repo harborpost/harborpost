@@ -87,16 +87,10 @@
       justify-content: flex-end; /* bottom aligned */
       align-items: center;
       height: 70vh;
-      gap: 10px;
     }
 
-    .horizontal-line {
-      width: 125%;
-      max-width: 500px;
-      height: 4px;
-      background-color: black;
-      border-radius: 2px;
-      margin-bottom: 10px; /* spacing before small image */
+    .spacer {
+      flex: 0 0 50%; /* pushes the horizontal line down */
     }
 
     .text-container {
@@ -105,12 +99,21 @@
       margin-bottom: 10px;
     }
 
+    .horizontal-line {
+      width: 125%;
+      max-width: 500px;
+      height: 4px;
+      background-color: black;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
     .small-image {
       width: 80%;
       flex-grow: 1; /* fills space below horizontal line */
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: auto; /* bottom aligned with large image */
+      margin-top: auto; /* keeps bottom aligned */
     }
 
     @media (max-width: 900px) {
@@ -120,6 +123,7 @@
       .image-divider { display: none; }
       .horizontal-line { width: 90%; max-width: none; }
       .small-image { width: 90%; height: 200px; flex-grow: 0; }
+      .spacer { flex: 0 0 20%; } /* less height on mobile */
     }
   </style>
 </head>
@@ -153,6 +157,7 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
+      <div class="spacer"></div> <!-- pushes horizontal line down -->
       <div class="text-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
