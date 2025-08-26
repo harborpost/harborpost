@@ -30,7 +30,7 @@ header {
 
 h1 {
   margin: 0;
-  font-size: clamp(40px, 8vw, 72px);
+  font-size: clamp(30px, 5vw, 60px);
   white-space: nowrap;
 }
 
@@ -38,7 +38,7 @@ nav a {
   text-transform: uppercase;
   text-decoration: none;
   color: black;
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(14px, 2vw, 18px);
   margin-left: 20px;
 }
 
@@ -47,14 +47,14 @@ nav a {
   display: flex;
   width: 100%;
   height: calc(100vh - 60px); /* full viewport minus header */
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
-  gap: 20px;
+  gap: 10px;
 }
 
 /* Left image */
 .large-image-wrapper {
-  flex: 0 0 48%;
+  flex: 0 0 45%; /* slightly smaller to fit divider and right side */
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -67,9 +67,16 @@ nav a {
   display: block;
 }
 
+/* Vertical divider */
+.image-divider {
+  width: 4px;
+  background-color: black;
+  flex-shrink: 0;
+}
+
 /* Right column */
 .right-column {
-  flex: 0 0 48%;
+  flex: 0 0 45%; /* slightly smaller to fit left + divider */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -89,20 +96,11 @@ nav a {
   display: block;
 }
 
-/* Vertical divider */
-.image-divider {
-  width: 4px;
-  background-color: black;
-  margin-left: 2%;
-  margin-right: 2%;
-}
-
 /* Responsive */
 @media (max-width: 900px) {
   .landing-section {
     flex-direction: column;
     height: auto;
-    gap: 15px;
   }
   .large-image-wrapper, .right-column {
     flex: 1 1 100%;
@@ -113,6 +111,7 @@ nav a {
     grid-template-rows: auto auto;
     gap: 10px;
   }
+  .image-divider { display: none; }
 }
 </style>
 </head>
