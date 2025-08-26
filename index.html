@@ -60,17 +60,17 @@
       flex: 0 0 45%;
     }
 
-    .large-image {
+    .large-image img {
       width: 100%;
       height: 70vh;
-      background-color: #cccccc;
       border-radius: 8px;
+      object-fit: cover;
     }
 
     .image-divider {
       position: absolute;
       top: 0;
-      left: 102%; /* shifted slightly to the right */
+      left: 102%;
       width: 4px;
       height: 100%;
       background-color: black;
@@ -81,22 +81,23 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* aligns top row with top, bottom row with bottom */
-      height: 70vh; /* match left big box */
+      justify-content: space-between;
+      height: 70vh;
       gap: 20px;
     }
 
     .box-row {
       display: flex;
       gap: 15px;
-      flex: 0 0 48%; /* each row takes roughly half of right column */
+      flex: 0 0 48%;
     }
 
-    .box {
-      flex: 1; /* fills row width */
-      background-color: #cccccc;
+    .box img {
+      flex: 1;
+      width: 100%;
+      height: 100%;
       border-radius: 8px;
-      height: 100%; /* fills row height */
+      object-fit: cover;
     }
 
     @media (max-width: 900px) {
@@ -115,7 +116,7 @@
         gap: 10px;
         height: 100px;
       }
-      .box { height: 100%; }
+      .box img { height: 100%; }
     }
   </style>
 </head>
@@ -130,6 +131,7 @@
   </header>
 
   <script>
+    // Typed header animation
     const text = "HARBOR POST.";
     const typedText = document.getElementById("typed-text");
     let index = 0;
@@ -144,21 +146,27 @@
   </script>
 
   <div class="landing-section">
+    <!-- BIG LEFT IMAGE -->
     <div class="large-image-wrapper">
-      <div class="large-image"></div>
+      <img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Big Image">
       <div class="image-divider"></div>
     </div>
+
+    <!-- RIGHT COLUMN -->
     <div class="right-column">
+      <!-- TOP ROW -->
       <div class="box-row">
-        <div class="box"></div>
-        <div class="box"></div>
+        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Left"></div>
+        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Right"></div>
       </div>
+      <!-- BOTTOM ROW -->
       <div class="box-row">
-        <div class="box"></div>
-        <div class="box"></div>
+        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Left"></div>
+        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
       </div>
     </div>
   </div>
 </body>
 </html>
+
 
