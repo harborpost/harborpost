@@ -9,11 +9,10 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: white;
-  color: black;
   height: 100%;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -30,7 +29,6 @@ header {
 h1 {
   margin: 0;
   font-size: clamp(40px, 8vw, 72px);
-  color: black;
   white-space: nowrap;
 }
 
@@ -48,49 +46,54 @@ nav a {
   h1 { font-size: clamp(30px, 6vw, 50px); }
 }
 
+/* Landing section */
 .landing-section {
   display: flex;
   width: 100%;
-  height: calc(100vh - 60px); /* Adjust for header height */
+  height: calc(100vh - 60px); /* adjust for header */
+  gap: 30px;
+  padding: 20px 30px;
+  box-sizing: border-box;
 }
 
+/* Left image */
 .large-image-wrapper {
   position: relative;
-  flex: 0 0 50%; /* exactly half the width */
-  height: 100%;
-  overflow: hidden;
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 .large-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* crop image to fit box */
-  display: block;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+/* Vertical divider */
 .image-divider {
   position: absolute;
   top: 0;
-  left: 100%;
+  right: -2px;
   width: 4px;
   height: 100%;
   background-color: black;
+  border-radius: 2px;
 }
 
+/* Right column */
 .right-column {
-  flex: 0 0 50%; /* other half of screen */
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  box-sizing: border-box;
+  justify-content: space-between; /* top and bottom rows align */
 }
 
 .box-row {
   display: flex;
-  justify-content: space-between;
   gap: 15px;
-  flex: 1; /* evenly split rows vertically */
+  flex: 1;
 }
 
 .box {
@@ -106,9 +109,17 @@ nav a {
   display: block;
 }
 
+/* Responsive */
 @media (max-width: 900px) {
-  .landing-section { flex-direction: column; height: auto; }
-  .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
+  .landing-section {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+  .large-image-wrapper, .right-column {
+    flex: 1 1 100%;
+    height: auto;
+  }
   .image-divider { display: none; }
   .box-row { gap: 10px; }
 }
@@ -140,9 +151,9 @@ typeWriter();
 </script>
 
 <div class="landing-section">
-  <!-- BIG LEFT IMAGE -->
+  <!-- LEFT IMAGE -->
   <div class="large-image-wrapper">
-    <img id="main-left-image" src="https://i.imgur.com/CwoZOFE.jpeg" alt="Big Image">
+    <img id="main-left-image" src="https://i.imgur.com/CwoZOFE.jpeg" alt="Large Image">
     <div class="image-divider"></div>
   </div>
 
@@ -161,13 +172,12 @@ typeWriter();
   </div>
 </div>
 
-<!-- Optional: dynamically change left image URL -->
+<!-- Optional: change left image dynamically -->
 <script>
-// Example: Change left image dynamically
+// Example: change left image URL
 // document.getElementById('main-left-image').src = "NEW_IMAGE_URL_HERE";
 </script>
 
 </body>
 </html>
-
 
