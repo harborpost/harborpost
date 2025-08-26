@@ -84,8 +84,8 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* pushes rows to top and bottom */
-      height: 70vh; /* same height as big image */
+      justify-content: space-between; /* top row at top, bottom row at bottom */
+      height: 70vh; /* same as big image */
       padding-left: 20px;
       box-sizing: border-box;
     }
@@ -94,22 +94,23 @@
       display: flex;
       justify-content: space-between;
       gap: 15px;
-      height: 48%; /* each row takes almost half of right column */
+      flex: 0 0 48%; /* each row is roughly half the height of right column */
     }
 
     .box {
       flex: 0 0 48%;
       background-color: #cccccc;
       border-radius: 8px;
-      height: 100%; /* fills row height */
+      height: 100%; /* fill row height */
+      aspect-ratio: auto; /* remove forced square */
     }
 
     @media (max-width: 900px) {
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
       .image-divider { display: none; }
-      .box-row { gap: 10px; height: auto; }
-      .box { width: 45%; height: auto; aspect-ratio: 1 / 1; }
+      .box-row { gap: 10px; flex: none; height: auto; }
+      .box { width: 45%; height: auto; }
       .right-column { padding-left: 0; }
     }
   </style>
@@ -156,7 +157,6 @@
   </div>
 </body>
 </html>
-
 
 
 
