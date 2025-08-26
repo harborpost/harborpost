@@ -58,22 +58,22 @@ nav a {
 .large-image-wrapper {
   position: relative;
   flex: 0 0 45%;
-  margin-top: 15px;
+  height: auto;
 }
 
 .large-image img {
   width: 100%;
-  height: 70vh;
+  height: 100%;
   border-radius: 8px;
-  object-fit: cover; /* image fills box and crops if needed */
+  object-fit: cover;
 }
 
 .image-divider {
   position: absolute;
-  top: -15px;
-  left: 105%;
+  top: 0;
+  left: 102%;
   width: 4px;
-  height: calc(100% + 30px);
+  height: 100%;
   background-color: black;
   border-radius: 2px;
 }
@@ -82,17 +82,14 @@ nav a {
   flex: 0 0 45%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* top row aligns top, bottom row aligns bottom */
-  height: 70vh; /* match left big box */
-  padding-left: 20px; /* space from vertical line */
-  box-sizing: border-box;
+  justify-content: space-between;
+  height: 500px; /* fixed height to control alignment */
 }
 
 .box-row {
   display: flex;
-  justify-content: space-between;
-  gap: 15px; /* space between boxes horizontally */
-  flex: 1; /* each row takes half of right-column height */
+  gap: 15px;
+  flex: 1;
 }
 
 .box img {
@@ -160,7 +157,6 @@ typeWriter();
 </div>
 </body>
 </html>
-
 
 
 
