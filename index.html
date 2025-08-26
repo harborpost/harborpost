@@ -103,7 +103,7 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* top block top, small image bottom */
+      justify-content: space-between; /* top block stays top, small image bottom */
       align-items: center;
       height: 70vh; /* match large image height */
     }
@@ -112,7 +112,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; /* reduced gap between text and horizontal line */
+      gap: 0; /* remove gap so horizontal line moves up */
+      margin-bottom: 10px; /* optional small spacing before small image */
     }
 
     .text-container p {
@@ -120,7 +121,7 @@
       line-height: 1.6;
       max-width: 400px;
       text-align: center;
-      margin: 0;
+      margin: 0 0 0 0; /* remove bottom margin */
     }
 
     .horizontal-line {
@@ -208,6 +209,7 @@
   </div>
 </body>
 </html>
+
 
 
 
