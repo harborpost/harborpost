@@ -58,22 +58,22 @@ nav a {
 .large-image-wrapper {
   position: relative;
   flex: 0 0 45%;
-  height: auto;
+  margin-top: 15px;
 }
 
 .large-image img {
   width: 100%;
-  height: 100%;
+  height: 100%;  /* match the box height */
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: cover; /* trims image to fit box */
 }
 
 .image-divider {
   position: absolute;
-  top: 0;
-  left: 102%;
+  top: -15px;
+  left: 105%;
   width: 4px;
-  height: 100%;
+  height: calc(100% + 30px);
   background-color: black;
   border-radius: 2px;
 }
@@ -82,22 +82,25 @@ nav a {
   flex: 0 0 45%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 500px; /* fixed height to control alignment */
+  justify-content: space-between; /* top row aligns top, bottom row aligns bottom */
+  height: 70vh; /* match large image height */
+  padding-left: 20px; /* space from vertical line */
+  box-sizing: border-box;
 }
 
 .box-row {
   display: flex;
-  gap: 15px;
-  flex: 1;
+  justify-content: space-between;
+  gap: 15px; /* horizontal spacing */
+  flex: 1; /* each row takes half the right column height */
 }
 
 .box img {
-  flex: 0 0 45%;
+  flex: 0 0 45%; /* each box roughly half row width */
   width: 100%;
-  height: 100%;
+  height: 100%; /* fills the box height */
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: cover; /* trims image to fit */
 }
 
 @media (max-width: 900px) {
