@@ -90,7 +90,7 @@
     }
 
     .spacer {
-      flex: 0 0 50%; /* pushes the horizontal line down */
+      flex: 0 0 100%; /* doubled spacer height for moving line higher */
     }
 
     .text-container {
@@ -123,7 +123,7 @@
       .image-divider { display: none; }
       .horizontal-line { width: 90%; max-width: none; }
       .small-image { width: 90%; height: 200px; flex-grow: 0; }
-      .spacer { flex: 0 0 20%; } /* less height on mobile */
+      .spacer { flex: 0 0 40%; } /* adjust for mobile */
     }
   </style>
 </head>
@@ -157,7 +157,7 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="spacer"></div> <!-- pushes horizontal line down -->
+      <div class="spacer"></div> <!-- doubled spacer to move line higher -->
       <div class="text-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
