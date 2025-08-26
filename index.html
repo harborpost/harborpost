@@ -84,7 +84,8 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      height: 70vh; /* match large image */
+      justify-content: space-between; /* pushes rows to top and bottom */
+      height: 70vh; /* same height as big image */
       padding-left: 20px;
       box-sizing: border-box;
     }
@@ -93,30 +94,22 @@
       display: flex;
       justify-content: space-between;
       gap: 15px;
-    }
-
-    .box-row.top {
-      align-items: flex-start; /* top row hugs the top */
-    }
-
-    .box-row.bottom {
-      margin-top: auto; /* pushes this row down */
-      align-items: flex-end; /* bottom row hugs the bottom */
+      height: 48%; /* each row takes almost half of right column */
     }
 
     .box {
-      flex: 0 0 45%;
+      flex: 0 0 48%;
       background-color: #cccccc;
       border-radius: 8px;
-      aspect-ratio: 1 / 1; /* keep square */
+      height: 100%; /* fills row height */
     }
 
     @media (max-width: 900px) {
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
       .image-divider { display: none; }
-      .box-row { gap: 10px; }
-      .box { width: 45%; }
+      .box-row { gap: 10px; height: auto; }
+      .box { width: 45%; height: auto; aspect-ratio: 1 / 1; }
       .right-column { padding-left: 0; }
     }
   </style>
@@ -151,11 +144,11 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="box-row top">
+      <div class="box-row">
         <div class="box"></div>
         <div class="box"></div>
       </div>
-      <div class="box-row bottom">
+      <div class="box-row">
         <div class="box"></div>
         <div class="box"></div>
       </div>
