@@ -71,6 +71,7 @@
       flex-wrap: nowrap;
       justify-content: center;
       align-items: flex-start; /* align top to reduce blank space */
+      position: relative;
     }
 
     .large-image {
@@ -80,6 +81,26 @@
       border-radius: 8px;
       position: relative;
       margin-top: 15px; /* nudged slightly more down */
+    }
+
+    /* Vertical line between columns */
+    .vertical-line {
+      width: 4px;
+      height: 60%; 
+      background-color: black;
+      margin: 0 20px;
+      align-self: center;
+    }
+
+    /* New vertical line to the right of the large image */
+    .image-divider {
+      position: absolute;
+      top: calc(15px - 20px); /* 20px above the image’s top margin */
+      left: calc(45% + 10px); /* right edge of the large image + small gap */
+      width: 4px;
+      height: calc(70vh + 40px); /* slightly taller than image */
+      background-color: black;
+      border-radius: 2px;
     }
 
     /* Right column */
@@ -114,15 +135,6 @@
       border-radius: 8px;
     }
 
-    /* Vertical line floating between large image and right column */
-    .vertical-line {
-      width: 4px;
-      height: 60%; 
-      background-color: black;
-      margin: 0 20px;
-      align-self: center;
-    }
-
     /* Responsive adjustments */
     @media (max-width: 900px) {
       .landing-section {
@@ -136,8 +148,9 @@
       .text-container p {
         text-align: center;
       }
-      .vertical-line {
-        display: none;
+      .vertical-line,
+      .image-divider {
+        display: none; /* hide lines on mobile */
       }
       .horizontal-line {
         width: 90%;
@@ -177,6 +190,7 @@
   <!-- Landing section -->
   <div class="landing-section">
     <div class="large-image"></div>
+    <div class="image-divider"></div> <!-- new vertical line -->
     <div class="vertical-line"></div>
     <div class="right-column">
       <div class="text-container">
@@ -190,5 +204,4 @@
   </div>
 </body>
 </html>
-
 
