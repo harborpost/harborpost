@@ -12,6 +12,7 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background-color: white;
 }
 
 /* Header */
@@ -19,7 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 20px 40px; /* more space around header */
 }
 
 .header-center {
@@ -39,24 +40,26 @@ nav a {
   text-decoration: none;
   color: black;
   font-size: clamp(14px, 2vw, 18px);
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 /* Landing section */
 .landing-section {
   display: flex;
   width: 100%;
-  height: calc(100vh - 60px); /* full viewport minus header */
-  padding: 10px;
+  height: calc(100vh - 100px); /* extra space for header and bottom padding */
+  padding: 40px; /* more breathing space around images */
   box-sizing: border-box;
-  gap: 10px;
+  gap: 30px; /* space between left image, divider, and right column */
+  align-items: center; /* vertically center images */
+  justify-content: center;
 }
 
 /* Left image */
 .large-image-wrapper {
-  flex: 0 0 45%; /* slightly smaller to fit divider and right side */
+  flex: 0 0 45%; /* leave space for right column + divider */
   height: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -69,23 +72,24 @@ nav a {
 
 /* Vertical divider */
 .image-divider {
-  width: 4px;
+  width: 6px; /* slightly thicker for visual separation */
   background-color: black;
   flex-shrink: 0;
+  border-radius: 3px;
 }
 
 /* Right column */
 .right-column {
-  flex: 0 0 45%; /* slightly smaller to fit left + divider */
+  flex: 0 0 45%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  gap: 15px; /* more space between right images */
   height: 100%;
 }
 
 .box {
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -96,11 +100,13 @@ nav a {
   display: block;
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .landing-section {
     flex-direction: column;
     height: auto;
+    padding: 20px;
+    gap: 20px;
   }
   .large-image-wrapper, .right-column {
     flex: 1 1 100%;
@@ -157,12 +163,6 @@ typeWriter();
     <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
   </div>
 </div>
-
-<!-- Optional: dynamic left image -->
-<script>
-// Example: change left image dynamically
-// document.getElementById('main-left-image').src = "NEW_IMAGE_URL_HERE";
-</script>
 
 </body>
 </html>
