@@ -1,172 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harbor Post Landing Layout</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Post Landing Layout</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
 
-    .header-center {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(40px, 8vw, 72px);
-      color: black;
-      white-space: nowrap;
-    }
+h1 {
+  margin: 0;
+  font-size: clamp(40px, 8vw, 72px);
+  color: black;
+  white-space: nowrap;
+}
 
-    nav a {
-      text-transform: uppercase;
-      text-decoration: none;
-      color: black;
-      font-size: clamp(16px, 2vw, 20px);
-      margin-left: 20px;
-    }
+nav a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  font-size: clamp(16px, 2vw, 20px);
+  margin-left: 20px;
+}
 
-    @media (max-width: 600px) {
-      header { flex-direction: column; align-items: center; }
-      nav { margin-top: 10px; justify-content: center; }
-      h1 { font-size: clamp(30px, 6vw, 50px); }
-    }
+@media (max-width: 600px) {
+  header { flex-direction: column; align-items: center; }
+  nav { margin-top: 10px; justify-content: center; }
+  h1 { font-size: clamp(30px, 6vw, 50px); }
+}
 
-    .landing-section {
-      display: flex;
-      padding: 20px 30px;
-      gap: 30px;
-      justify-content: center;
-      align-items: flex-start;
-    }
+.landing-section {
+  display: flex;
+  padding: 20px 30px;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-    .large-image-wrapper {
-      position: relative;
-      flex: 0 0 45%;
-    }
+.large-image-wrapper {
+  position: relative;
+  flex: 0 0 45%;
+}
 
-    .large-image img {
-      width: 100%;
-      height: 70vh;
-      border-radius: 8px;
-      object-fit: cover; /* image fills box, crops if needed */
-    }
+.large-image img {
+  width: 100%;
+  height: 70vh;
+  border-radius: 8px;
+  object-fit: cover;
+}
 
-    .image-divider {
-      position: absolute;
-      top: 0;
-      left: 102%;
-      width: 4px;
-      height: 100%;
-      background-color: black;
-      border-radius: 2px;
-    }
+.image-divider {
+  position: absolute;
+  top: 0;
+  left: 102%;
+  width: 4px;
+  height: 100%;
+  background-color: black;
+  border-radius: 2px;
+}
 
-    .right-column {
-      flex: 0 0 45%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* top row aligns top, bottom row aligns bottom */
-      height: 70vh; /* matches large image height */
-      gap: 20px;
-    }
+.right-column {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70vh;
+}
 
-    .box-row {
-      display: flex;
-      gap: 15px;
-      flex: 0 0 48%; /* each row roughly half of column height */
-    }
+.box-row {
+  display: flex;
+  gap: 15px;
+  flex: 1; /* each row takes half of right-column */
+}
 
-    .box img {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      border-radius: 8px;
-      object-fit: cover; /* fills box, crops if needed */
-    }
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
-    @media (max-width: 900px) {
-      .landing-section {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-      }
-      .large-image-wrapper, .right-column {
-        flex: 1 1 100%;
-        height: auto;
-      }
-      .image-divider { display: none; }
-      .box-row {
-        flex-direction: row;
-        gap: 10px;
-        height: 100px;
-      }
-      .box img { height: 100%; }
-    }
-  </style>
+@media (max-width: 900px) {
+  .landing-section {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .large-image-wrapper, .right-column {
+    flex: 1 1 100%;
+    height: auto;
+  }
+  .image-divider { display: none; }
+  .box-row {
+    flex-direction: row;
+    gap: 10px;
+    height: 100px;
+  }
+  .box img { height: 100%; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="header-center">
-      <h1 id="typed-text"></h1>
+<header>
+  <div class="header-center">
+    <h1 id="typed-text"></h1>
+  </div>
+  <nav>
+    <a href="#">About Us</a>
+  </nav>
+</header>
+
+<script>
+const text = "HARBOR POST.";
+const typedText = document.getElementById("typed-text");
+let index = 0;
+function typeWriter() {
+  if (index < text.length) {
+    typedText.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 180);
+  }
+}
+typeWriter();
+</script>
+
+<div class="landing-section">
+  <!-- BIG LEFT IMAGE -->
+  <div class="large-image-wrapper">
+    <img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Big Image">
+    <div class="image-divider"></div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-column">
+    <!-- TOP ROW -->
+    <div class="box-row">
+      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Left"></div>
+      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Right"></div>
     </div>
-    <nav>
-      <a href="#">About Us</a>
-    </nav>
-  </header>
-
-  <script>
-    const text = "HARBOR POST.";
-    const typedText = document.getElementById("typed-text");
-    let index = 0;
-    function typeWriter() {
-      if (index < text.length) {
-        typedText.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 180);
-      }
-    }
-    typeWriter();
-  </script>
-
-  <div class="landing-section">
-    <!-- BIG LEFT IMAGE -->
-    <div class="large-image-wrapper">
-      <img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Big Image">
-      <div class="image-divider"></div>
-    </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="right-column">
-      <!-- TOP ROW -->
-      <div class="box-row">
-        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Left"></div>
-        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Right"></div>
-      </div>
-      <!-- BOTTOM ROW -->
-      <div class="box-row">
-        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Left"></div>
-        <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
-      </div>
+    <!-- BOTTOM ROW -->
+    <div class="box-row">
+      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Left"></div>
+      <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
     </div>
   </div>
+</div>
 </body>
 </html>
+
 
 
 
