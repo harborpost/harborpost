@@ -86,10 +86,11 @@
     /* Vertical line between columns */
     .image-divider {
       position: absolute;
-      top: 15px; /* same as large-image margin-top */
-      left: calc(45% + 25px); /* between left image and right column */
+      left: calc(45% + 40px); /* pushed further right so it sits between image + text */
+      top: 50%;
+      transform: translateY(-50%);
       width: 4px;
-      height: calc(70vh + 30px); /* 15px above + 15px below = balanced */
+      height: calc(100% + 30px); /* extends evenly above and below */
       background-color: black;
       border-radius: 2px;
     }
