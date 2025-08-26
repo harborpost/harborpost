@@ -111,9 +111,8 @@
     .text-block {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0; /* remove gap so horizontal line moves up */
-      margin-bottom: 10px; /* optional small spacing before small image */
+      align-items: center; /* keeps horizontal line centered */
+      gap: 10px; /* space between text and horizontal line */
     }
 
     .text-container p {
@@ -121,7 +120,7 @@
       line-height: 1.6;
       max-width: 400px;
       text-align: center;
-      margin: 0 0 0 0; /* remove bottom margin */
+      margin: 0;
     }
 
     .horizontal-line {
@@ -136,6 +135,7 @@
       height: 150px;
       background-color: #cccccc;
       border-radius: 8px;
+      margin-top: -20px; /* moves top closer to horizontal line */
     }
 
     /* Responsive adjustments */
@@ -160,6 +160,7 @@
       .small-image {
         width: 90%;
         height: 200px;
+        margin-top: 0;
       }
     }
   </style>
@@ -209,6 +210,7 @@
   </div>
 </body>
 </html>
+
 
 
 
