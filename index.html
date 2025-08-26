@@ -83,20 +83,12 @@
       margin-top: 15px; /* nudged slightly more down */
     }
 
-    /* Vertical line between columns */
-    .vertical-line {
-      width: 4px;
-      height: 60%; 
-      background-color: black;
-      margin: 0 20px;
-      align-self: center;
-    }
-
-    /* New vertical line to the right of the large image */
+    /* Vertical line between columns (new version, centered in the gap) */
     .image-divider {
       position: absolute;
       top: calc(15px - 20px); /* 20px above the image’s top margin */
-      left: calc(45% + 10px); /* right edge of the large image + small gap */
+      left: 50%; /* places line midway between left and right columns */
+      transform: translateX(-50%); /* ensure true centering */
       width: 4px;
       height: calc(70vh + 40px); /* slightly taller than image */
       background-color: black;
@@ -148,9 +140,8 @@
       .text-container p {
         text-align: center;
       }
-      .vertical-line,
       .image-divider {
-        display: none; /* hide lines on mobile */
+        display: none; /* hide line on mobile */
       }
       .horizontal-line {
         width: 90%;
@@ -190,8 +181,7 @@
   <!-- Landing section -->
   <div class="landing-section">
     <div class="large-image"></div>
-    <div class="image-divider"></div> <!-- new vertical line -->
-    <div class="vertical-line"></div>
+    <div class="image-divider"></div> <!-- new vertical line centered between columns -->
     <div class="right-column">
       <div class="text-container">
         <p>
