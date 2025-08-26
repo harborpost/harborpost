@@ -71,10 +71,10 @@
 
     .image-divider {
       position: absolute;
-      top: -15px;
+      top: -15px; /* vertical line extends 15px above image */
       left: 105%;
       width: 4px;
-      height: calc(100% + 30px);
+      height: calc(100% + 30px); /* 15px top + 15px bottom */
       background-color: black;
       border-radius: 2px;
     }
@@ -83,7 +83,7 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-between; /* bottom small image stays aligned */
       align-items: center;
       height: 70vh;
     }
@@ -93,7 +93,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 70vh;
+      height: 70vh; /* same as large image */
       gap: 10px;
     }
 
@@ -115,10 +115,11 @@
 
     .small-image {
       width: 80%;
-      height: 200px; /* increased height */
+      height: 180px; /* can adjust as needed */
       background-color: #cccccc;
       border-radius: 8px;
-      /* keep it at bottom, remove negative margin */
+      /* top margin to match gap above large image's vertical line */
+      margin-top: 15px; 
     }
 
     @media (max-width: 900px) {
@@ -127,7 +128,7 @@
       .text-container p { text-align: center; }
       .image-divider { display: none; }
       .horizontal-line { width: 90%; max-width: none; }
-      .small-image { width: 90%; height: 200px; }
+      .small-image { width: 90%; height: 200px; margin-top: 0; }
     }
   </style>
 </head>
@@ -174,7 +175,6 @@
   </div>
 </body>
 </html>
-
 
 
 
