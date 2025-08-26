@@ -86,16 +86,17 @@
       flex-direction: column;
       justify-content: space-between; /* distributes top and bottom rows */
       height: 70vh;
+      padding: 10px; /* space around all boxes */
     }
 
     .box-row {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 10px; /* space between boxes */
     }
 
     .box {
-      flex: 1 1 48%; /* two boxes per row */
+      flex: 1 1 45%; /* slightly smaller boxes */
       background-color: #cccccc;
       border-radius: 8px;
       aspect-ratio: 1 / 1; /* keeps square */
@@ -105,8 +106,8 @@
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
       .image-divider { display: none; }
-      .box-row { gap: 15px; }
-      .box { width: 48%; }
+      .box-row { gap: 10px; }
+      .box { width: 45%; }
     }
   </style>
 </head>
@@ -152,7 +153,6 @@
   </div>
 </body>
 </html>
-
 
 
 
