@@ -53,7 +53,6 @@
       padding: 20px 30px;
       gap: 30px;
       justify-content: center;
-      align-items: flex-start;
       position: relative;
     }
 
@@ -81,10 +80,8 @@
     }
 
     .right-column {
+      position: relative;
       flex: 0 0 45%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* top row at top, bottom row at bottom */
       height: 70vh; /* same as big image */
       padding-left: 20px;
       box-sizing: border-box;
@@ -93,24 +90,32 @@
     .box-row {
       display: flex;
       justify-content: space-between;
-      gap: 15px;
-      flex: 0 0 48%; /* each row is roughly half the height of right column */
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+
+    .box-row.top {
+      top: 0;
+    }
+
+    .box-row.bottom {
+      bottom: 0;
     }
 
     .box {
       flex: 0 0 48%;
       background-color: #cccccc;
       border-radius: 8px;
-      height: 100%; /* fill row height */
-      aspect-ratio: auto; /* remove forced square */
+      aspect-ratio: 1 / 1; /* keep square */
     }
 
     @media (max-width: 900px) {
       .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
       .image-divider { display: none; }
-      .box-row { gap: 10px; flex: none; height: auto; }
-      .box { width: 45%; height: auto; }
+      .box-row { position: relative; gap: 10px; margin-bottom: 10px; }
+      .box { width: 45%; aspect-ratio: 1 / 1; }
       .right-column { padding-left: 0; }
     }
   </style>
@@ -145,11 +150,11 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="box-row">
+      <div class="box-row top">
         <div class="box"></div>
         <div class="box"></div>
       </div>
-      <div class="box-row">
+      <div class="box-row bottom">
         <div class="box"></div>
         <div class="box"></div>
       </div>
@@ -157,6 +162,7 @@
   </div>
 </body>
 </html>
+
 
 
 
