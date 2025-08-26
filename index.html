@@ -20,7 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px; /* more space around header */
+  padding: 20px 40px;
 }
 
 .header-center {
@@ -47,17 +47,18 @@ nav a {
 .landing-section {
   display: flex;
   width: 100%;
-  height: calc(100vh - 100px); /* extra space for header and bottom padding */
-  padding: 40px; /* more breathing space around images */
+  height: calc(100vh - 100px); /* header + extra padding */
+  padding: 40px;
   box-sizing: border-box;
-  gap: 30px; /* space between left image, divider, and right column */
-  align-items: center; /* vertically center images */
+  gap: 30px;
+  align-items: flex-start; /* shift images slightly upward */
   justify-content: center;
+  position: relative; /* for vertical divider positioning */
 }
 
 /* Left image */
 .large-image-wrapper {
-  flex: 0 0 45%; /* leave space for right column + divider */
+  flex: 0 0 45%;
   height: 100%;
   border-radius: 12px;
   overflow: hidden;
@@ -70,21 +71,13 @@ nav a {
   display: block;
 }
 
-/* Vertical divider */
-.image-divider {
-  width: 6px; /* slightly thicker for visual separation */
-  background-color: black;
-  flex-shrink: 0;
-  border-radius: 3px;
-}
-
 /* Right column */
 .right-column {
   flex: 0 0 45%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 15px; /* more space between right images */
+  gap: 15px;
   height: 100%;
 }
 
@@ -100,13 +93,25 @@ nav a {
   display: block;
 }
 
-/* Responsive adjustments */
+/* Vertical divider exactly in the middle */
+.image-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%; /* middle of the landing section */
+  transform: translateX(-50%);
+  width: 4px;
+  background-color: black;
+  border-radius: 2px;
+  z-index: 10; /* ensures it floats above background */
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .landing-section {
     flex-direction: column;
     height: auto;
     padding: 20px;
-    gap: 20px;
   }
   .large-image-wrapper, .right-column {
     flex: 1 1 100%;
@@ -152,9 +157,6 @@ typeWriter();
     <img id="main-left-image" src="https://i.imgur.com/CwoZOFE.jpeg" alt="Large Image">
   </div>
 
-  <!-- Vertical divider -->
-  <div class="image-divider"></div>
-
   <!-- Right column with 4 images -->
   <div class="right-column">
     <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Top Left"></div>
@@ -162,7 +164,11 @@ typeWriter();
     <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Left"></div>
     <div class="box"><img src="https://i.imgur.com/CwoZOFE.jpeg" alt="Bottom Right"></div>
   </div>
+
+  <!-- Vertical divider -->
+  <div class="image-divider"></div>
 </div>
 
 </body>
 </html>
+
