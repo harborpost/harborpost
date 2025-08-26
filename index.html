@@ -54,6 +54,7 @@
       gap: 30px;
       justify-content: center;
       position: relative;
+      align-items: flex-end; /* aligns bottoms of columns */
     }
 
     .large-image-wrapper {
@@ -83,18 +84,19 @@
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end; /* bottom aligned */
       align-items: center;
       height: 70vh;
+      gap: 10px;
     }
 
     .text-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 70vh;
+      justify-content: flex-start; /* horizontal line stays at top of text-block */
       gap: 10px;
+      width: 100%;
     }
 
     .text-container p {
@@ -115,19 +117,18 @@
 
     .small-image {
       width: 80%;
-      height: 400px; /* really stretched upward */
+      flex-grow: 1; /* small image stretches upward to fill space above horizontal line */
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: auto; /* keeps bottom aligned */
     }
 
     @media (max-width: 900px) {
-      .landing-section { flex-direction: column; gap: 20px; }
+      .landing-section { flex-direction: column; gap: 20px; align-items: center; }
       .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
       .text-container p { text-align: center; }
       .image-divider { display: none; }
       .horizontal-line { width: 90%; max-width: none; }
-      .small-image { width: 90%; height: 200px; margin-top: 0; }
+      .small-image { width: 90%; height: 200px; flex-grow: 0; }
     }
   </style>
 </head>
@@ -174,6 +175,7 @@
   </div>
 </body>
 </html>
+
 
 
 
