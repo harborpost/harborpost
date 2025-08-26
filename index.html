@@ -106,7 +106,7 @@
     }
 
     .horizontal-line {
-      width: 125%;
+      width: 125%; /* slightly longer line */
       max-width: 500px;
       height: 4px;
       background-color: black;
@@ -115,11 +115,10 @@
 
     .small-image {
       width: 80%;
-      height: 180px; /* can adjust as needed */
+      height: 260px; /* taller so top moves closer to horizontal line */
       background-color: #cccccc;
       border-radius: 8px;
-      /* top margin to match gap above large image's vertical line */
-      margin-top: 15px; 
+      margin-top: auto; /* keeps bottom aligned with large image */
     }
 
     @media (max-width: 900px) {
@@ -175,6 +174,7 @@
   </div>
 </body>
 </html>
+
 
 
 
