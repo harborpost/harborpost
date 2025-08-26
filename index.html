@@ -58,21 +58,22 @@ nav a {
 .large-image-wrapper {
   position: relative;
   flex: 0 0 45%;
+  margin-top: 15px;
 }
 
 .large-image img {
   width: 100%;
   height: 70vh;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: cover; /* image fills box and crops if needed */
 }
 
 .image-divider {
   position: absolute;
-  top: 0;
-  left: 102%;
+  top: -15px;
+  left: 105%;
   width: 4px;
-  height: 100%;
+  height: calc(100% + 30px);
   background-color: black;
   border-radius: 2px;
 }
@@ -81,40 +82,34 @@ nav a {
   flex: 0 0 45%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 70vh;
+  justify-content: space-between; /* top row aligns top, bottom row aligns bottom */
+  height: 70vh; /* match left big box */
+  padding-left: 20px; /* space from vertical line */
+  box-sizing: border-box;
 }
 
 .box-row {
   display: flex;
-  gap: 15px;
-  flex: 1; /* each row takes half of right-column */
+  justify-content: space-between;
+  gap: 15px; /* space between boxes horizontally */
+  flex: 1; /* each row takes half of right-column height */
 }
 
 .box img {
+  flex: 0 0 45%;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 @media (max-width: 900px) {
-  .landing-section {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-  .large-image-wrapper, .right-column {
-    flex: 1 1 100%;
-    height: auto;
-  }
+  .landing-section { flex-direction: column; gap: 20px; align-items: center; }
+  .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
   .image-divider { display: none; }
-  .box-row {
-    flex-direction: row;
-    gap: 10px;
-    height: 100px;
-  }
-  .box img { height: 100%; }
+  .box-row { gap: 10px; }
+  .box img { width: 45%; }
+  .right-column { padding-left: 0; }
 }
 </style>
 </head>
@@ -165,6 +160,7 @@ typeWriter();
 </div>
 </body>
 </html>
+
 
 
 
