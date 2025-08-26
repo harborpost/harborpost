@@ -63,9 +63,9 @@ nav a {
 
 .large-image img {
   width: 100%;
-  height: 100%;  /* match the box height */
+  height: 100%;
   border-radius: 8px;
-  object-fit: cover; /* trims image to fit box */
+  object-fit: cover; /* fills the box, trims image */
 }
 
 .image-divider {
@@ -82,25 +82,24 @@ nav a {
   flex: 0 0 45%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* top row aligns top, bottom row aligns bottom */
-  height: 70vh; /* match large image height */
-  padding-left: 20px; /* space from vertical line */
+  justify-content: space-between; /* top row aligns top, bottom aligns bottom */
+  height: 70vh; /* match left big box */
+  padding-left: 20px;
   box-sizing: border-box;
 }
 
 .box-row {
   display: flex;
   justify-content: space-between;
-  gap: 15px; /* horizontal spacing */
-  flex: 1; /* each row takes half the right column height */
+  gap: 15px;
+  flex: 1; /* each row fills half of right column */
 }
 
 .box img {
-  flex: 0 0 45%; /* each box roughly half row width */
   width: 100%;
-  height: 100%; /* fills the box height */
+  height: 100%;
   border-radius: 8px;
-  object-fit: cover; /* trims image to fit */
+  object-fit: cover; /* trims image to fit box */
 }
 
 @media (max-width: 900px) {
