@@ -14,7 +14,6 @@
       color: black;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -35,12 +34,6 @@
       white-space: nowrap;
     }
 
-    nav {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
     nav a {
       text-transform: uppercase;
       text-decoration: none;
@@ -50,27 +43,16 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav {
-        margin-top: 10px;
-        justify-content: center;
-      }
-      h1 {
-        font-size: clamp(30px, 6vw, 50px);
-      }
+      header { flex-direction: column; align-items: center; }
+      nav { margin-top: 10px; justify-content: center; }
+      h1 { font-size: clamp(30px, 6vw, 50px); }
     }
 
-    /* Landing section */
     .landing-section {
       display: flex;
       padding: 20px 30px;
       gap: 30px;
-      flex-wrap: nowrap;
       justify-content: center;
-      align-items: flex-start;
       position: relative;
     }
 
@@ -87,32 +69,33 @@
       border-radius: 8px;
     }
 
-    /* Vertical line attached to large image */
     .image-divider {
       position: absolute;
-      top: -15px; /* 15px above image */
-      left: 105%; /* slightly to the right of the image */
+      top: -15px;
+      left: 105%;
       width: 4px;
-      height: calc(100% + 30px); /* 15px above + 15px below */
+      height: calc(100% + 30px);
       background-color: black;
       border-radius: 2px;
     }
 
-    /* Right column */
     .right-column {
       flex: 0 0 45%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* top block stays top, small image bottom */
+      justify-content: space-between;
       align-items: center;
-      height: 70vh; /* match large image height */
+      height: 70vh;
     }
 
+    /* Top block (text + horizontal line) aligned vertically to center of large image */
     .text-block {
       display: flex;
       flex-direction: column;
-      align-items: center; /* keeps horizontal line centered */
-      gap: 10px; /* space between text and horizontal line */
+      align-items: center;
+      justify-content: center; /* vertical center */
+      height: 70vh; /* same as large image */
+      gap: 10px;
     }
 
     .text-container p {
@@ -135,38 +118,20 @@
       height: 150px;
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: -20px; /* moves top closer to horizontal line */
+      margin-top: -40px; /* moves top closer to horizontal line */
     }
 
-    /* Responsive adjustments */
     @media (max-width: 900px) {
-      .landing-section {
-        flex-direction: column;
-        gap: 20px;
-      }
-      .large-image-wrapper, .right-column {
-        flex: 1 1 100%;
-        height: auto;
-      }
-      .text-container p {
-        text-align: center;
-      }
-      .image-divider {
-        display: none; /* hide line on mobile */
-      }
-      .horizontal-line {
-        width: 90%;
-      }
-      .small-image {
-        width: 90%;
-        height: 200px;
-        margin-top: 0;
-      }
+      .landing-section { flex-direction: column; gap: 20px; }
+      .large-image-wrapper, .right-column { flex: 1 1 100%; height: auto; }
+      .text-container p { text-align: center; }
+      .image-divider { display: none; }
+      .horizontal-line { width: 90%; }
+      .small-image { width: 90%; height: 200px; margin-top: 0; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="header-center">
       <h1 id="typed-text"></h1>
@@ -190,7 +155,6 @@
     typeWriter();
   </script>
 
-  <!-- Landing section -->
   <div class="landing-section">
     <div class="large-image-wrapper">
       <div class="large-image"></div>
