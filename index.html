@@ -53,8 +53,8 @@
       padding: 20px 30px;
       gap: 30px;
       justify-content: center;
+      align-items: flex-end;
       position: relative;
-      align-items: flex-end; /* bottom aligned */
     }
 
     .large-image-wrapper {
@@ -90,37 +90,27 @@
       gap: 10px;
     }
 
-    .text-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start; /* horizontal line at top of text block */
-      gap: 10px;
-      width: 100%;
-    }
-
-    .text-container p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 400px;
-      text-align: center;
-      margin: 0;
-    }
-
     .horizontal-line {
       width: 125%;
       max-width: 500px;
       height: 4px;
       background-color: black;
       border-radius: 2px;
+      margin-bottom: 10px; /* spacing before small image */
+    }
+
+    .text-container {
+      text-align: center;
+      max-width: 400px;
+      margin-bottom: 10px;
     }
 
     .small-image {
       width: 80%;
-      flex-grow: 1; /* small image stretches upward */
+      flex-grow: 1; /* fills space below horizontal line */
       background-color: #cccccc;
       border-radius: 8px;
-      margin-top: auto; /* keeps bottom aligned */
+      margin-top: auto; /* bottom aligned with large image */
     }
 
     @media (max-width: 900px) {
@@ -163,19 +153,18 @@
       <div class="image-divider"></div>
     </div>
     <div class="right-column">
-      <div class="text-block">
-        <div class="text-container">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-        <div class="horizontal-line"></div>
+      <div class="text-container">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
       </div>
+      <div class="horizontal-line"></div>
       <div class="small-image"></div>
     </div>
   </div>
 </body>
 </html>
+
 
 
 
