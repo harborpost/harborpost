@@ -15,11 +15,6 @@ html, body {
   background-color: white;
 }
 
-/* Make the typed text black */
-#typed-text {
-  color: black;
-}
-
 /* Header */
 header {
   display: flex;
@@ -34,18 +29,17 @@ header {
   justify-content: center;
 }
 
-h1 {
+h1, nav a {
   margin: 0;
   font-size: clamp(30px, 5vw, 60px);
   white-space: nowrap;
+  color: black;
+  text-decoration: none;
 }
 
 nav a {
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
   font-size: clamp(14px, 2vw, 18px);
-  margin-left: 25px;
+  text-transform: uppercase;
 }
 
 /* Landing section */
@@ -53,7 +47,7 @@ nav a {
   display: flex;
   width: 100%;
   height: calc(100vh - 100px);
-  padding: 10px 40px 40px 40px; /* reduced top padding */
+  padding: 10px 40px 40px 40px;
   box-sizing: border-box;
   gap: 30px;
   align-items: center;
@@ -66,6 +60,10 @@ nav a {
   height: 100%;
   border-radius: 12px;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s ease forwards;
+  animation-delay: 1s;
 }
 
 .large-image-wrapper img {
@@ -96,13 +94,36 @@ nav a {
 .box {
   border-radius: 12px;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 1s ease forwards;
 }
+
+.box:nth-child(1) { animation-delay: 1.2s; }
+.box:nth-child(2) { animation-delay: 1.4s; }
+.box:nth-child(3) { animation-delay: 1.6s; }
+.box:nth-child(4) { animation-delay: 1.8s; }
 
 .box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Slide-in animations */
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive adjustments */
@@ -133,22 +154,28 @@ nav a {
     <h1 id="typed-text"></h1>
   </div>
   <nav>
-    <a href="#">About Us</a>
+    <a href="#" id="typed-link"></a>
   </nav>
 </header>
 
 <script>
-const text = "HARBOR POST.";
-const typedText = document.getElementById("typed-text");
-let index = 0;
-function typeWriter() {
-  if (index < text.length) {
-    typedText.innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeWriter, 180);
+function typeWriterEffect(element, text, delay=180, startDelay=0) {
+  let index = 0;
+  function type() {
+    if (index < text.length) {
+      element.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(type, delay);
+    }
   }
+  setTimeout(type, startDelay);
 }
-typeWriter();
+
+const mainTitle = document.getElementById("typed-text");
+const aboutLink = document.getElementById("typed-link");
+
+typeWriterEffect(mainTitle, "HARBOR POST.", 180, 0);       // start immediately
+typeWriterEffect(aboutLink, "ABOUT US.", 150, 2200);      // starts after main title finishes
 </script>
 
 <div class="landing-section">
@@ -171,4 +198,3 @@ typeWriter();
 
 </body>
 </html>
-
