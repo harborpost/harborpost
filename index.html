@@ -40,6 +40,24 @@ h1, nav a {
 nav a {
   font-size: clamp(14px, 2vw, 18px);
   text-transform: uppercase;
+  position: relative;
+}
+
+/* underline hover effect */
+nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: black;
+  width: 0;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* Landing section */
@@ -97,6 +115,12 @@ nav a {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.box:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 /* Responsive adjustments */
@@ -118,6 +142,7 @@ nav a {
   }
   .image-divider { display: none; }
 }
+
 </style>
 </head>
 <body>
@@ -132,7 +157,7 @@ nav a {
 </header>
 
 <script>
-function typeWriterEffect(element, text, delay=220) { // slightly slower typing
+function typeWriterEffect(element, text, delay=220) {
   let index = 0;
   function type() {
     if (index < text.length) {
@@ -145,17 +170,22 @@ function typeWriterEffect(element, text, delay=220) { // slightly slower typing
 }
 
 const mainTitle = document.getElementById("typed-text");
-const aboutLink = document.getElementById("typed-link");
+const dateElement = document.getElementById("typed-link");
 
-// both type at the same time
+// Get today's date
+const today = new Date();
+const options = { year: "numeric", month: "long", day: "numeric" }; 
+const dateString = today.toLocaleDateString(undefined, options) + "."; 
+
+// Type out title and date
 typeWriterEffect(mainTitle, "HARBOR POST.", 220);
-typeWriterEffect(aboutLink, "ABOUT US.", 220);
+typeWriterEffect(dateElement, dateString.toUpperCase(), 220);
 </script>
 
 <div class="landing-section">
   <!-- Left Image -->
   <div class="large-image-wrapper">
-    <img id="main-left-image" src="https://i.imgur.com/zexRy12.jpeg" alt="Large Image">
+    <img id="main-left-image" src="https://i.imgur.com/zexRy12.jpeg" alt="Large Image" loading="lazy">
   </div>
 
   <!-- Vertical divider -->
@@ -163,13 +193,14 @@ typeWriterEffect(aboutLink, "ABOUT US.", 220);
 
   <!-- Right column with 4 images -->
   <div class="right-column">
-    <div class="box"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt="Top Left"></div>
-    <div class="box"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt="Top Right"></div>
-    <div class="box"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt="Bottom Left"></div>
-    <div class="box"><img src="https://i.imgur.com/qafObwS.jpeg" alt="Bottom Right"></div>
+    <div class="box"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt="Top Left" loading="lazy"></div>
+    <div class="box"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt="Top Right" loading="lazy"></div>
+    <div class="box"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt="Bottom Left" loading="lazy"></div>
+    <div class="box"><img src="https://i.imgur.com/qafObwS.jpeg" alt="Bottom Right" loading="lazy"></div>
   </div>
 </div>
 
 </body>
 </html>
+
 
