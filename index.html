@@ -61,9 +61,8 @@ nav a {
   border-radius: 12px;
   overflow: hidden;
   opacity: 0;
-  transform: translateX(-50px);
-  animation: slideInLeft 1s ease forwards;
-  animation-delay: 1s;
+  transform: translateX(-60px);
+  animation: slideInLeft 1.8s ease forwards;
 }
 
 .large-image-wrapper img {
@@ -79,6 +78,9 @@ nav a {
   background-color: black;
   flex-shrink: 0;
   border-radius: 3px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.8s ease forwards;
 }
 
 /* Right column */
@@ -95,14 +97,9 @@ nav a {
   border-radius: 12px;
   overflow: hidden;
   opacity: 0;
-  transform: translateX(50px);
-  animation: slideInRight 1s ease forwards;
+  transform: translateX(60px);
+  animation: slideInRight 1.8s ease forwards;
 }
-
-.box:nth-child(1) { animation-delay: 1.2s; }
-.box:nth-child(2) { animation-delay: 1.4s; }
-.box:nth-child(3) { animation-delay: 1.6s; }
-.box:nth-child(4) { animation-delay: 1.8s; }
 
 .box img {
   width: 100%;
@@ -111,7 +108,7 @@ nav a {
   display: block;
 }
 
-/* Slide-in animations */
+/* Animations */
 @keyframes slideInLeft {
   to {
     opacity: 1;
@@ -123,6 +120,13 @@ nav a {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -159,7 +163,7 @@ nav a {
 </header>
 
 <script>
-function typeWriterEffect(element, text, delay=180, startDelay=0) {
+function typeWriterEffect(element, text, delay=220) { // slightly slower typing
   let index = 0;
   function type() {
     if (index < text.length) {
@@ -168,14 +172,15 @@ function typeWriterEffect(element, text, delay=180, startDelay=0) {
       setTimeout(type, delay);
     }
   }
-  setTimeout(type, startDelay);
+  type();
 }
 
 const mainTitle = document.getElementById("typed-text");
 const aboutLink = document.getElementById("typed-link");
 
-typeWriterEffect(mainTitle, "HARBOR POST.", 180, 0);       // start immediately
-typeWriterEffect(aboutLink, "ABOUT US.", 150, 2200);      // starts after main title finishes
+// both type at the same time
+typeWriterEffect(mainTitle, "HARBOR POST.", 220);
+typeWriterEffect(aboutLink, "ABOUT US.", 220);
 </script>
 
 <div class="landing-section">
