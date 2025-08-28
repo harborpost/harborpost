@@ -5,23 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Article 1 - Harbor Post</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
+html, body {
   margin: 0;
-  padding: 40px;
-  line-height: 1.6;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
 }
-a { text-decoration: none; color: blue; }
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 2px solid black;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+h1, nav a {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 60px);
+  white-space: nowrap;
+  color: black;
+  text-decoration: none;
+}
+
+nav a {
+  font-size: clamp(14px, 2vw, 18px);
+  text-transform: uppercase;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: black;
+  width: 100%;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+/* Article Layout */
+.article-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.article-title {
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.article-body {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.8;
+  text-align: left;
+}
 </style>
 </head>
 <body>
 
-<a href="index.html">← Back to Home</a>
-<h1>Article 1 Title</h1>
-<img src="https://i.imgur.com/zexRy12.jpeg" alt="Article Image" style="width:100%;max-width:800px;border-radius:12px;">
-<p>
-  This is where the article content goes. You can write text, add images, or anything else.
-</p>
+<!-- Header (Harbor Post + Date) -->
+<header>
+  <div class="header-center">
+    <h1><a href="index.html" style="color: black; text-decoration: none;">HARBOR POST.</a></h1>
+  </div>
+  <nav>
+    <a href="#" id="date-link"></a>
+  </nav>
+</header>
+
+<!-- Article Content -->
+<div class="article-container">
+  <div class="article-title">Article 1 Title Goes Here</div>
+  <div class="article-body">
+    <p>
+      This is where the article content goes. You can write a few paragraphs here in a large, readable font.  
+      The text is left-aligned for easy reading and scales well for both desktop and mobile users.
+    </p>
+    <p>
+      Add as much text as you need. You can also include links, bold text, and other HTML formatting inside the article body. 
+      This layout keeps it simple and clean — just like a modern news site.
+    </p>
+  </div>
+</div>
+
+<script>
+// Insert today's date (no typewriter effect)
+const dateElement = document.getElementById("date-link");
+const today = new Date();
+const options = { year: "numeric", month: "long", day: "numeric" };
+dateElement.textContent = today.toLocaleDateString(undefined, options).toUpperCase() + ".";
+</script>
 
 </body>
 </html>
