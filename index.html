@@ -18,13 +18,13 @@ html, body {
 }
 
 /* Header (blue strip) */
-header {
+header, footer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px 40px;
   position: relative;
-  background: #004aad; /* Professional deep blue header strip */
+  background: #004aad; /* Professional deep blue strip */
   color: #ffffff;
 }
 
@@ -54,6 +54,15 @@ h1 {
   padding: 6px 12px;
   border-radius: 4px;
   background: rgba(255,255,255,0.15);
+}
+
+/* Footer text */
+footer p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Typing intro overlay (full screen at start) */
@@ -244,6 +253,11 @@ h1 {
     </a>
   </div>
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>Follow us @harborpost on TikTok</p>
+</footer>
 
 <script>
 // Edition stamp
