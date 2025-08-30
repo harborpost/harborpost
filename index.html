@@ -9,13 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-html, body {
+body {
   margin: 0;
   padding: 0;
   background: #f7f5f1;
   font-family: 'Roboto Slab', serif;
   color: #222;
-  overflow-x: hidden;
 }
 
 /* Paper texture overlay */
@@ -74,12 +73,6 @@ h1 {
   font-weight: 600;
 }
 
-.edition-text::before {
-  content: "✦ ";
-  font-size: 12px;
-  color: #555;
-}
-
 /* Typing overlay */
 .typing-overlay {
   position: fixed;
@@ -100,47 +93,43 @@ h1 {
   overflow: hidden;
 }
 
-/* Layout (restored exactly as OG) */
+/* --- ORIGINAL LAYOUT RECREATED --- */
 .landing-section {
   display: flex;
   padding: 40px;
   gap: 20px;
 }
 
-/* Left big image */
 .left {
   flex: 3;
 }
 .left img {
   width: 100%;
-  height: auto;
   border-radius: 12px;
   display: block;
   filter: sepia(0.15) contrast(1.05);
   transition: transform 0.6s ease, filter 0.5s ease;
 }
 .left img:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   filter: sepia(0.25) contrast(1.1);
 }
 
-/* Right 4-box grid */
 .right {
   flex: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  gap: 20px;
 }
 .right img {
   width: 100%;
-  height: auto;
   border-radius: 10px;
   display: block;
   filter: sepia(0.15) contrast(1.05);
   transition: transform 0.6s ease, filter 0.5s ease, box-shadow 0.5s ease;
 }
 .right img:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
   filter: sepia(0.25) contrast(1.1);
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
