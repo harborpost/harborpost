@@ -73,6 +73,8 @@ h1 {
   font-size: clamp(36px, 6vw, 72px); /* Match h1 size */
   font-weight: 700;
   color: #fdfcf8;
+  letter-spacing: 1px;           /* match h1 */
+  text-transform: uppercase;     /* match h1 */
   z-index: 1000;
   overflow: hidden;
 }
@@ -82,7 +84,10 @@ h1 {
   white-space: nowrap;
 }
 
-/* Floating animation */
+/* Ensure transform aligns from top-left corner */
+#typingText { transform-origin: left top; }
+
+/* Floating animation (no fade) */
 .float-up {
   transition: transform 1.5s ease;
 }
@@ -201,7 +206,7 @@ h1 {
 </div>
 
 <header>
-  <h1 id="mainTitle">HARBOR POST</h1>
+  <h1 id="mainTitle">HARBOR POST.</h1>
   <div class="edition-text" id="edition"></div>
 </header>
 
@@ -240,42 +245,58 @@ const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
 const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
 
-// Typing effect
-const text = "Harbor Post";
+// Ensure both overlay text and header text match exactly (with period)
+const mainTitle = document.getElementById("mainTitle");
+mainTitle.textContent = "HARBOR POST.";
+
+// Build typed text from the same content (so it's guaranteed identical)
+const rawTyped = mainTitle.textContent.trim(); // "HARBOR POST."
+const typedSource = rawTyped; // already uppercase; overlay also forces uppercase via CSS
+
 let i = 0;
 const speed = 120;
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typingText").textContent += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  } else {
-    const overlay = document.getElementById("typingOverlay");
-    const typingText = document.getElementById("typingText");
-    const mainTitle = document.getElementById("mainTitle");
 
-    // Get target position of the main title
-    const targetRect = mainTitle.getBoundingClientRect();
-    const overlayRect = typingText.getBoundingClientRect();
+function startTyping() {
+  function typeWriter() {
+    if (i < typedSource.length) {
+      document.getElementById("typingText").textContent += typedSource.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      const overlay = document.getElementById("typingOverlay");
+      const typingText = document.getElementById("typingText");
 
-    const deltaX = targetRect.left + targetRect.width/2 - (overlayRect.left + overlayRect.width/2);
-    const deltaY = targetRect.top + targetRect.height/2 - (overlayRect.top + overlayRect.height/2);
+      // Measure AFTER typing completes (fonts are loaded) for pixel-perfect match
+      const targetRect = mainTitle.getBoundingClientRect();
+      const srcRect = typingText.getBoundingClientRect();
 
-    // Animate toward the header
-    typingText.classList.add("float-up");
-    typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1)`;
+      // Move typed text's top-left corner to header's top-left
+      const deltaX = targetRect.left - srcRect.left;
+      const deltaY = targetRect.top - srcRect.top;
 
-    // After animation, clear overlay and swap to real header
-    setTimeout(() => {
-      overlay.style.background = "transparent";  // remove dark bg
-      overlay.style.pointerEvents = "none";      // let clicks through
-      mainTitle.style.opacity = "1";             // show real header
-      typingText.style.display = "none";         // hide duplicate text
-      document.getElementById("landing").style.opacity = "1";
-    }, 1600);
+      typingText.classList.add("float-up");
+      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+      // After animation, make overlay transparent and swap control to the real header
+      setTimeout(() => {
+        overlay.style.background = "transparent";
+        overlay.style.pointerEvents = "none";
+        mainTitle.style.opacity = "1";      // reveal permanent header
+        typingText.style.display = "none";  // hide duplicate
+        document.getElementById("landing").style.opacity = "1";
+      }, 1500);
+    }
   }
+  typeWriter();
 }
-window.onload = typeWriter;
+
+// Wait for fonts to load to avoid measurement mismatch
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(startTyping);
+} else {
+  // Fallback
+  window.addEventListener('load', startTyping);
+}
 </script>
 
 </body>
