@@ -93,16 +93,8 @@ h1 {
 }
 
 /* Floating animation */
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translate(-50vw, -40vh) scale(0.6); opacity: 0; }
-}
-
 .float-up {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: floatUp 1.5s ease forwards;
+  transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
 /* Landing layout */
@@ -268,16 +260,27 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, speed);
   } else {
-    // Float up
     const overlay = document.getElementById("typingOverlay");
     const typingText = document.getElementById("typingText");
-    typingText.classList.add("float-up");
+    const mainTitle = document.getElementById("mainTitle");
 
-    // After float up, hide overlay and reveal main page
+    // Get target position of the main title
+    const targetRect = mainTitle.getBoundingClientRect();
+    const overlayRect = typingText.getBoundingClientRect();
+
+    const deltaX = targetRect.left + targetRect.width/2 - (overlayRect.left + overlayRect.width/2);
+    const deltaY = targetRect.top + targetRect.height/2 - (overlayRect.top + overlayRect.height/2);
+
+    // Animate toward the header
+    typingText.classList.add("float-up");
+    typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1)`;
+    typingText.style.opacity = "0";
+
+    // After animation, hide overlay and reveal page
     setTimeout(() => {
       overlay.style.display = "none";
       document.getElementById("landing").style.opacity = "1";
-      document.getElementById("mainTitle").style.opacity = "1";
+      mainTitle.style.opacity = "1";
     }, 1600);
   }
 }
@@ -286,5 +289,3 @@ window.onload = typeWriter;
 
 </body>
 </html>
-
-
