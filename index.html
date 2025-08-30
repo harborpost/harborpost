@@ -188,12 +188,19 @@ function typeWriterEffect(element, text, delay=220) {
 const mainTitle = document.getElementById("typed-text");
 const dateElement = document.getElementById("typed-link");
 
-const today = new Date();
-const options = { year: "numeric", month: "long", day: "numeric" }; 
-const dateString = today.toLocaleDateString(undefined, options) + "."; 
+// Month names in ALL CAPS
+const months = [
+  "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
+  "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+];
 
+const today = new Date();
+const monthName = months[today.getMonth()];
+const editionString = `${monthName} EDITION.`;
+
+// Typewriter effects
 typeWriterEffect(mainTitle, "HARBOR POST.", 220);
-typeWriterEffect(dateElement, dateString.toUpperCase(), 220);
+typeWriterEffect(dateElement, editionString, 220);
 </script>
 
 <div class="landing-section">
