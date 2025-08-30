@@ -56,6 +56,34 @@ h1 {
   background: #fdfcf8;
 }
 
+/* Typing intro overlay */
+.typing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f9f6f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 600;
+  color: #1a1a1a;
+  z-index: 1000;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 0.8s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
 /* Landing layout */
 .landing-section {
   display: flex;
@@ -66,6 +94,8 @@ h1 {
   gap: 30px;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 /* Left feature image */
@@ -162,12 +192,17 @@ h1 {
 </head>
 <body>
 
+<!-- Typing Intro -->
+<div class="typing-overlay" id="typingOverlay">
+  <span id="typingText"></span><span class="cursor">.</span>
+</div>
+
 <header>
   <h1>HARBOR POST</h1>
   <div class="edition-text" id="edition"></div>
 </header>
 
-<div class="landing-section">
+<div class="landing-section" id="landing">
   <!-- Left Image -->
   <div class="large-image-wrapper">
     <a href="article1.html">
@@ -196,13 +231,30 @@ h1 {
 </div>
 
 <script>
-// Add edition dynamically
+// Edition stamp
 const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
                 "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
+
+// Typing effect
+const text = "Harbor Post";
+let i = 0;
+const speed = 120;
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typingText").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  } else {
+    setTimeout(() => {
+      document.getElementById("typingOverlay").style.display = "none";
+      document.getElementById("landing").style.opacity = "1";
+    }, 800);
+  }
+}
+window.onload = typeWriter;
 </script>
 
 </body>
 </html>
-
