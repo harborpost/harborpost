@@ -82,16 +82,6 @@ h1 {
   white-space: nowrap;
 }
 
-.cursor {
-  display: inline-block;
-  animation: blink 0.8s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
 /* Floating animation */
 .float-up {
   transition: transform 1.5s ease;
@@ -207,7 +197,7 @@ h1 {
 
 <!-- Typing Intro -->
 <div class="typing-overlay" id="typingOverlay">
-  <span id="typingText"></span><span class="cursor">.</span>
+  <span id="typingText"></span>
 </div>
 
 <header>
