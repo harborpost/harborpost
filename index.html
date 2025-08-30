@@ -12,7 +12,7 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: Arial, sans-serif;
-  background: #fdfcf8; /* Softer off-white background */
+  background: #fdfcf8; /* Softer off-white */
   color: #111;
   overflow-x: hidden;
 }
@@ -24,12 +24,12 @@ header {
   align-items: center;
   padding: 30px 40px;
   position: relative;
-  background: #004aad; /* Professional deep blue header strip */
+  background: #004aad;
   color: #ffffff;
+  z-index: 1001; /* above slide panel */
 }
 
 h1 {
-  font-family: Arial, sans-serif;
   font-size: clamp(36px, 6vw, 72px);
   font-weight: bold;
   letter-spacing: 1px;
@@ -45,7 +45,6 @@ h1 {
   right: 40px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: Arial, sans-serif;
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -63,11 +62,10 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #004aad; /* Blue overlay at start */
+  background: #004aad;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
   font-size: clamp(36px, 6vw, 72px);
   font-weight: bold;
   color: #fdfcf8;
@@ -88,6 +86,21 @@ h1 {
   transition: transform 1.5s ease;
 }
 
+/* Sliding panel */
+.slide-panel {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fdfcf8;
+  z-index: 900; /* Just under overlay */
+  transition: bottom 1.2s ease-in-out;
+}
+.slide-panel.active {
+  bottom: 0;
+}
+
 /* Landing layout */
 .landing-section {
   display: flex;
@@ -100,7 +113,7 @@ h1 {
   justify-content: center;
   opacity: 0;
   transition: opacity 1s ease;
-  background: #fdfcf8; /* Softer off-white background */
+  background: #fdfcf8;
 }
 
 /* Image styling */
@@ -200,6 +213,9 @@ h1 {
   <span id="typingText"></span>
 </div>
 
+<!-- Sliding panel -->
+<div class="slide-panel" id="slidePanel"></div>
+
 <header>
   <h1 id="mainTitle">HARBOR POST.</h1>
   <div class="edition-text" id="edition"></div>
@@ -240,8 +256,7 @@ document.getElementById("edition").textContent = months[today.getMonth()] + " ED
 const mainTitle = document.getElementById("mainTitle");
 mainTitle.textContent = "HARBOR POST.";
 
-const rawTyped = mainTitle.textContent.trim();
-const typedSource = rawTyped;
+const typedSource = mainTitle.textContent.trim();
 
 let i = 0;
 const speed = 120;
@@ -265,12 +280,20 @@ function startTyping() {
       typingText.classList.add("float-up");
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
+      // After float animation
       setTimeout(() => {
-        overlay.style.background = "transparent";
-        overlay.style.pointerEvents = "none";
-        mainTitle.style.opacity = "1";
-        typingText.style.display = "none";
-        document.getElementById("landing").style.opacity = "1";
+        // Trigger the panel slide-up
+        const slidePanel = document.getElementById("slidePanel");
+        slidePanel.classList.add("active");
+
+        // After panel has slid up, reveal content
+        setTimeout(() => {
+          overlay.style.background = "transparent";
+          overlay.style.pointerEvents = "none";
+          mainTitle.style.opacity = "1";
+          typingText.style.display = "none";
+          document.getElementById("landing").style.opacity = "1";
+        }, 1200);
       }, 1500);
     }
   }
