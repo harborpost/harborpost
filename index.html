@@ -23,87 +23,48 @@ html, body {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: white;
+  background-color: #0d47a1; /* Sleek modern blue */
+  color: white; /* Default text color */
 }
 
 /* Header */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centered since dropdown removed */
   align-items: center;
   padding: 12px 40px;
   position: relative;
-  margin-top: 15px; /* Gentle downward shift */
-}
-
-/* Dropdown menu */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  font-size: clamp(14px, 2vw, 18px);
-  text-transform: uppercase;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  border-radius: 6px;
-  z-index: 10;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 16px;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+  margin-top: 15px;
 }
 
 /* Center title */
 .header-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
 }
 
 h1 {
   margin: 0;
   font-size: clamp(30px, 5vw, 60px);
   white-space: nowrap;
-  color: black;
+  color: white;
 }
 
-/* Edition text (right side) */
+/* Edition text (right side, kept centered below title) */
 .edition-text {
   font-size: clamp(14px, 2vw, 18px);
   text-transform: uppercase;
-  position: relative;
-  cursor: default;
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
 }
 
 .edition-text::after {
   content: "";
   display: block;
   height: 2px;
-  background: black;
+  background: white;
   width: 100%;
   position: absolute;
   bottom: -4px;
@@ -147,7 +108,7 @@ h1 {
 /* Vertical divider */
 .image-divider {
   width: 6px;
-  background-color: black;
+  background-color: white;
   flex-shrink: 0;
   border-radius: 3px;
 }
@@ -209,17 +170,6 @@ h1 {
 <body>
 
 <header>
-  <!-- Dropdown menu on left -->
-  <div class="dropdown">
-    <button class="dropbtn">Review Material</button>
-    <div class="dropdown-content">
-      <a href="European History.html">European History</a>
-      <a href="US History.html">US History</a>
-      <a href="Government.html">Government</a>
-      <a href="macroeconomics.html">Macroeconomics</a>
-    </div>
-  </div>
-
   <!-- Centered title -->
   <div class="header-center">
     <h1 id="typed-text"></h1>
@@ -257,7 +207,7 @@ const editionString = `${monthName} EDITION.`;
 
 // Typewriter effects
 typeWriterEffect(mainTitle, "HARBOR POST.", 220);
-dateElement.innerHTML = editionString; // Static edition text
+dateElement.innerHTML = editionString;
 </script>
 
 <div class="landing-section">
@@ -298,4 +248,3 @@ dateElement.innerHTML = editionString; // Static edition text
 
 </body>
 </html>
-
