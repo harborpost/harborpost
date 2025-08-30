@@ -178,26 +178,17 @@ h1 {
   to { opacity: 1; }
 }
 
-/* Custom cursor effect */
-a, .box img, .large-image-wrapper img {
-  cursor: none;
-}
-
-body {
-  cursor: none;
-}
-
-body::before {
-  content: "";
+/* Custom cursor */
+.cursor {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border: 2px solid #222;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
   z-index: 3000;
+  transition: transform 0.08s ease;
 }
 </style>
 </head>
@@ -233,6 +224,9 @@ body::before {
   </div>
 </div>
 
+<!-- Custom cursor -->
+<div class="cursor"></div>
+
 <script>
 // Edition text
 const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
@@ -257,12 +251,11 @@ function type() {
 }
 window.onload = type;
 
-// Custom cursor follow
-const cursor = document.body;
+// Cursor follow
+const cursor = document.querySelector(".cursor");
 document.addEventListener("mousemove", e => {
-  cursor.style.setProperty("--x", e.clientX + "px");
-  cursor.style.setProperty("--y", e.clientY + "px");
-  document.body::before
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
 });
 </script>
 </body>
