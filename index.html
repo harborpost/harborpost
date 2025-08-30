@@ -38,7 +38,7 @@ h1 {
   color: #fdfcf8;
   margin: 0;
   opacity: 0; /* Start hidden */
-  transition: opacity 1s ease;
+  transition: opacity 0.3s ease;
 }
 
 /* Edition "stamp" */
@@ -94,7 +94,7 @@ h1 {
 
 /* Floating animation */
 .float-up {
-  transition: transform 1.5s ease, opacity 1.5s ease;
+  transition: transform 1.5s ease;
 }
 
 /* Landing layout */
@@ -274,13 +274,14 @@ function typeWriter() {
     // Animate toward the header
     typingText.classList.add("float-up");
     typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1)`;
-    typingText.style.opacity = "0";
 
-    // After animation, hide overlay and reveal page
+    // After animation, clear overlay and swap to real header
     setTimeout(() => {
-      overlay.style.display = "none";
+      overlay.style.background = "transparent";  // remove dark bg
+      overlay.style.pointerEvents = "none";      // let clicks through
+      mainTitle.style.opacity = "1";             // show real header
+      typingText.style.display = "none";         // hide duplicate text
       document.getElementById("landing").style.opacity = "1";
-      mainTitle.style.opacity = "1";
     }, 1600);
   }
 }
