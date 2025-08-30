@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post – Vintage Culture</title>
+<title>Harbor Post</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@ h1 {
   min-height: calc(100vh - 120px);
   padding: 40px;
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
@@ -120,7 +120,7 @@ h1 {
 
 /* Left large image */
 .large-image-wrapper {
-  flex: 0 0 50%;
+  flex: 0 0 55%;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -150,6 +150,7 @@ h1 {
   flex: 0 0 40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 20px;
 }
 
@@ -176,19 +177,6 @@ h1 {
 /* Fade in animation */
 @keyframes fadeIn {
   to { opacity: 1; }
-}
-
-/* Custom cursor */
-.cursor {
-  position: fixed;
-  width: 22px;
-  height: 22px;
-  border: 2px solid #222;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 3000;
-  transition: transform 0.08s ease;
 }
 </style>
 </head>
@@ -224,9 +212,6 @@ h1 {
   </div>
 </div>
 
-<!-- Custom cursor -->
-<div class="cursor"></div>
-
 <script>
 // Edition text
 const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
@@ -250,13 +235,6 @@ function type() {
   }
 }
 window.onload = type;
-
-// Cursor follow
-const cursor = document.querySelector(".cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
 </script>
 </body>
 </html>
