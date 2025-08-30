@@ -4,156 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harbor Post</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f1ec;
-      color: #222;
-      position: relative;
-    }
-
-    /* subtle paper texture */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-      opacity: 0.07;
-      z-index: -1;
+      font-family: 'Georgia', serif;
+      background-color: #fdfbf7;
+      color: #333;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px 20px;
+      padding: 40px 20px 20px;
     }
+
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4em;
-      margin: 0;
+      font-size: 3rem;
       letter-spacing: 2px;
-      position: relative;
+      margin: 0;
     }
-    header h1::after {
-      content: "An Independent Cultural Journal";
-      display: block;
-      font-family: 'Roboto', sans-serif;
-      font-size: 0.5em;
-      margin-top: 8px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #444;
+
+    .typing {
+      font-size: 1rem;
+      font-style: italic;
+      color: #666;
+      border-right: 2px solid #666;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .edition {
-      margin-top: 12px;
-      font-size: 0.9em;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      display: inline-block;
-      padding: 6px 12px;
-      border: 1px solid #000;
-      border-radius: 20px;
-      background: #fff;
-      font-weight: 500;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #444;
+      cursor: pointer;
     }
 
     .landing-section {
       display: flex;
       padding: 40px;
       gap: 20px;
-      align-items: stretch;
     }
 
-    /* left big image */
     .left {
-      flex: 1;
-      display: flex;
+      flex: 3;
     }
     .left img {
       width: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      filter: sepia(0.15) contrast(1.05);
-      transition: transform 0.6s ease, filter 0.5s ease;
-    }
-    .left img:hover {
-      transform: scale(1.02);
-      filter: sepia(0.25) contrast(1.1);
+      height: auto;
+      border-radius: 8px;
     }
 
-    /* right 2x2 grid */
     .right {
-      flex: 1;
+      flex: 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
       gap: 20px;
     }
     .right img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-      filter: sepia(0.15) contrast(1.05);
-      transition: transform 0.6s ease, filter 0.5s ease, box-shadow 0.5s ease;
-    }
-    .right img:hover {
-      transform: scale(1.04);
-      filter: sepia(0.25) contrast(1.1);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    }
-
-    /* typing effect */
-    .typing {
-      text-align: center;
-      margin: 30px 0;
-      font-size: 1.2em;
-      color: #444;
-      min-height: 1.5em;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+      height: auto;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Harbor Post</h1>
-    <div class="edition">✦ January Edition ✦</div>
     <div class="typing" id="typing"></div>
+    <div class="edition">Edition I • August 2025</div>
   </header>
 
   <section class="landing-section">
     <div class="left">
-      <img src="https://images.unsplash.com/photo-1523655223304-2c7b2b3b3b64?auto=format&fit=crop&w=1000&q=80" alt="Main cultural feature">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Large Feature">
     </div>
     <div class="right">
-      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=500&q=80" alt="Culture 1">
-      <img src="https://images.unsplash.com/photo-1487412720507-7a9e4d04cc6f?auto=format&fit=crop&w=500&q=80" alt="Culture 2">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80" alt="Culture 3">
-      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=500&q=80" alt="Culture 4">
+      <img src="https://images.unsplash.com/photo-1499084732479-de2c02d45fc4" alt="Small Feature 1">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Small Feature 2">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Small Feature 3">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="Small Feature 4">
     </div>
   </section>
 
   <script>
-    const text = "Exploring culture, style, and ideas with a timeless lens.";
-    const typingDiv = document.getElementById("typing");
+    const text = "An Independent Cultural Journal";
+    const typingElement = document.getElementById("typing");
     let i = 0;
 
-    function type() {
+    function typeWriter() {
       if (i < text.length) {
-        typingDiv.innerHTML = text.substring(0, i+1) + "<span style='border-right:2px solid #444;animation:blink 0.7s infinite;'></span>";
+        typingElement.textContent += text.charAt(i);
         i++;
-        setTimeout(type, 60);
+        setTimeout(typeWriter, 80);
       } else {
-        typingDiv.innerHTML = text; // remove cursor at end
+        typingElement.style.borderRight = "none";
       }
     }
-
-    window.onload = type;
+    window.onload = typeWriter;
   </script>
 </body>
 </html>
