@@ -1,1049 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Macroeconomics Study Guide</title>
-<meta name="description" content="A complete Macroeconomics study guide organized by units with definitions, formulas, examples, quick checks, and mini FRQs." />
-
+<meta name="description" content="A complete macroeconomics study guide organized by units with detailed notes, formulas, examples, and graph guides." />
 <style>
-:root{
-  --bg:#ffffff;
-  --surface:#f6f7fb;
-  --card:#ffffff;
-  --ink:#121417;
-  --muted:#6b7280;
-  --accent:#2563eb;
-  --accent-ink:#0b3aa9;
-  --ok:#10b981;
-  --warn:#f59e0b;
-  --danger:#ef4444;
-  --ring:rgba(37,99,235,.25);
-  --shadow:0 8px 24px rgba(2,6,23,.08);
-  --radius:16px;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.6;
-}
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f7fb;
+    --card:#ffffff;
+    --ink:#121417;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-ink:#064663;
+    --ok:#10b981;
+    --warn:#f59e0b;
+    --danger:#ef4444;
+    --ring:rgba(14,165,233,.25);
+    --shadow:0 8px 24px rgba(2,6,23,.08);
+    --radius:16px;
+    --maxw:1200px;
+  }
+  *{ box-sizing:border-box }
+  html,body{ height:100% }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
+    line-height:1.6;
+  }
 
-/* Header */
-.site-header{
-  position:sticky; top:0; z-index:40;
-  backdrop-filter:saturate(180%) blur(10px);
-  background:color-mix(in srgb, var(--bg) 85%, #fff 15%);
-  border-bottom:1px solid #eaeef6;
-}
-.header-inner{
-  max-width:1200px; margin:0 auto; padding:14px 18px;
-  display:grid; gap:10px; grid-template-columns: 1fr auto;
-  align-items:center;
-}
-.title-wrap h1{
-  margin:0; font-size:clamp(20px, 2.2vw, 28px); font-weight:800; letter-spacing:.2px;
-}
-.title-wrap p{ margin:0; color:var(--muted); font-size:14px}
-.controls{
-  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
-}
-input[type="search"]{
-  width:min(46vw,360px);
-  padding:10px 12px; border:1px solid #e5e7eb; border-radius:12px; background:#fff; color:inherit;
-  outline:0; box-shadow: inset 0 1px 0 rgba(0,0,0,.02);
-}
-input[type="search"]:focus{border-color:var(--accent); box-shadow:0 0 0 4px var(--ring)}
-select,button{
-  appearance:none; border:1px solid #e5e7eb; background:#fff; color:inherit;
-  padding:10px 12px; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,.02);
-}
-.btn{
-  display:inline-flex; gap:8px; align-items:center; font-weight:600;
-}
-button.primary{ background:var(--accent); color:#fff; border-color:transparent }
-button.ghost{ background:#fff }
+  /* Header */
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    background:linear-gradient(180deg,#0ea5e9 0%, #0284c7 100%);
+    color:#fff; box-shadow:0 2px 12px rgba(2,6,23,.2);
+  }
+  .header-inner{
+    max-width:var(--maxw); margin:0 auto; padding:18px;
+    display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center;
+  }
+  .title h1{ margin:0; font-size:clamp(22px,2.4vw,32px); font-weight:800; letter-spacing:.2px }
+  .title p{ margin:2px 0 0; opacity:.9; font-size:14px }
+  .nav-links a{
+    color:#fff; text-decoration:none; font-weight:700; margin-left:14px; padding:8px 10px; border-radius:10px;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  .nav-links a:hover{ background:rgba(255,255,255,.12) }
 
-/* Layout */
-.layout{
-  max-width:1200px; margin:0 auto; padding:18px;
-  display:grid; grid-template-columns: 280px 1fr; gap:18px;
-}
-@media (max-width: 980px){
-  .layout{ grid-template-columns: 1fr }
-}
-.sidebar{
-  position:sticky; top:72px; align-self:start;
-  display:flex; flex-direction:column; gap:10px;
-}
-.card{
-  background:var(--card); border:1px solid #eaeef6; border-radius:var(--radius); box-shadow:var(--shadow);
-}
-.sidebar .card{ padding:14px }
-.nav{
-  display:flex; flex-direction:column; gap:8px; max-height:calc(100svh - 120px); overflow:auto; padding-right:4px;
-}
-.nav a{
-  display:grid; grid-template-columns: 1fr auto; align-items:center;
-  gap:10px; text-decoration:none; color:inherit; padding:10px 10px; border-radius:12px;
-}
-.nav a:hover{ background:var(--surface) }
-.nav .badge{
-  font-size:12px; color:#0b6b44; background:color-mix(in srgb, var(--ok) 14%, #fff 86%);
-  border:1px solid color-mix(in srgb, var(--ok) 24%, #fff 76%); padding:2px 6px; border-radius:999px;
-}
-.progress{
-  height:8px; background:#eef2f7; border-radius:999px; overflow:hidden;
-}
-.progress > span{ display:block; height:100%; width:0%; background:var(--accent); transition:width .25s ease }
+  /* Layout */
+  .layout{
+    max-width:var(--maxw); margin:0 auto; padding:18px;
+    display:grid; grid-template-columns: 280px 1fr; gap:18px;
+  }
+  @media (max-width: 980px){
+    .layout{ grid-template-columns: 1fr }
+  }
 
-/* Main content */
-main{ display:flex; flex-direction:column; gap:16px }
-.unit{
-  padding:16px; border-radius:var(--radius); border:1px solid #eaeef6; background:var(--card); box-shadow:var(--shadow);
-}
-.unit-header{
-  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-}
-.unit h2{ margin:0; font-size:clamp(18px,1.8vw,22px) }
-.unit-meta{ color:var(--muted); font-size:13px }
-.tag{
-  padding:2px 8px; border-radius:999px; border:1px solid #e5e7eb; font-size:12px; color:#374151; background:#fff;
-}
-.topiclist{ display:grid; gap:10px; margin-top:10px }
-details.topic{
-  border:1px solid #eaeef6; border-radius:12px; background:var(--surface);
-}
-details.topic[open]{ background:#fff; border-color:#dfe6f2; }
-details.topic summary{
-  list-style:none; cursor:pointer; padding:12px 14px; font-weight:700; display:flex; align-items:center; gap:10px;
-}
-details.topic summary::-webkit-details-marker{ display:none }
-.topic-body{ padding:0 14px 14px 14px; display:grid; gap:10px }
-.kicker{ font-size:13px; color:var(--muted); margin:0 }
-.grid-2{
-  display:grid; grid-template-columns:1fr 1fr; gap:12px;
-}
-@media (max-width: 800px){ .grid-2{ grid-template-columns:1fr } }
-.box{
-  padding:12px; border:1px dashed #e1e6ef; border-radius:12px; background:#fff;
-}
-.box h4{ margin:0 0 6px 0 }
-ul,ol{ margin:0; padding-left:18px }
-small.muted{ color:var(--muted) }
-label.check{
-  display:inline-flex; align-items:center; gap:8px; user-select:none;
-  font-weight:600;
-}
-label.check input{ transform:translateY(1px) }
-pre{
-  margin:0; padding:10px; background:#0b1220; color:#e2e8f0; border-radius:10px; overflow:auto;
-  font-size:.95rem;
-}
+  /* Sidebar */
+  aside{
+    position:sticky; top:84px; align-self:start;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .card{
+    background:var(--card); border:1px solid #eaeef6; border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:14px;
+  }
+  .toc a{
+    display:block; text-decoration:none; color:inherit; padding:8px 10px; border-radius:10px;
+  }
+  .toc a:hover{ background:var(--surface) }
+  .hint{ font-size:13px; color:var(--muted) }
 
-/* Search highlight */
-mark.search-hit{ background: #fff3a3; padding:0 2px }
+  /* Main content */
+  main{ display:flex; flex-direction:column; gap:18px }
+  section.unit{
+    padding:18px; border:1px solid #eaeef6; border-radius:var(--radius); background:#fff; box-shadow:var(--shadow);
+  }
+  section.unit h2{
+    margin:0 0 6px 0; color:#0f172a; font-size:clamp(18px,2.2vw,26px)
+  }
+  .kicker{ margin:0 0 10px 0; color:var(--muted); font-size:14px }
+  h3{ margin:14px 0 6px 0 }
+  p{ margin:8px 0 }
+  ul,ol{ margin:6px 0 8px 22px }
 
-/* Back to top */
-.backtop{
-  position:fixed; right:18px; bottom:18px; z-index:50;
-  border-radius:999px; padding:10px 12px;
-  box-shadow:var(--shadow);
-}
+  /* Content blocks */
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+  @media (max-width: 800px){ .grid-2{ grid-template-columns:1fr } }
+  .box{
+    padding:12px; border-radius:12px; border:1px solid #e5e7eb; background:#fff;
+  }
+  .def{ border-left:4px solid var(--accent); background:#f0f9ff }
+  .formula{ border-left:4px solid #6366f1; background:#eef2ff }
+  .example{ border-left:4px solid var(--ok); background:#ecfdf5 }
+  .graph{ border-left:4px solid #f97316; background:#fff7ed }
+  .pitfall{ border-left:4px solid var(--warn); background:#fffbeb }
+  .takeaway{ border-left:4px solid #0ea5e9; background:#e0f2fe }
 
-/* Print */
-@media print{
-  .site-header, .sidebar, .backtop, .controls{ display:none !important }
-  .layout{ padding:0 }
-  .unit{ break-inside:avoid; border:none; box-shadow:none }
-  details.topic{ border:1px solid #bbb }
-  details.topic[open] > summary{ border-bottom:1px solid #ddd }
-}
+  code, .k{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.95em; background:#f5f7fb; padding:1px 6px; border-radius:6px; border:1px solid #e5e7eb }
 
-/* Empty search */
-.empty{
-  padding:22px; border:1px dashed #e1e6ef; background:var(--surface); border-radius:12px; color:var(--muted);
-}
-
-/* Reveal buttons */
-.reveal{
-  display:inline-block; margin-top:8px; border:1px solid #e5e7eb; border-radius:10px; padding:6px 10px; cursor:pointer; background:#fff;
-}
-.reveal + .answer{ display:none; margin-top:8px; }
-.reveal.open + .answer{ display:block; }
+  /* Back to top */
+  #backtop{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    border:none; border-radius:999px; padding:10px 12px; cursor:pointer;
+    background:var(--accent); color:#fff; box-shadow:var(--shadow); display:none;
+  }
+  #backtop:hover{ filter:brightness(1.05) }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="title-wrap">
+    <div class="title">
       <h1>Macroeconomics Study Guide</h1>
-      <p>Structured by units with definitions, formulas, worked examples, quick checks, graphs-to-know, and mini FRQs.</p>
+      <p>Complete notes by unit: definitions, formulas, examples, graph guides, and key takeaways.</p>
     </div>
-    <div class="controls">
-      <input id="search" type="search" placeholder="Search terms, formulas, or topics…" aria-label="Search" />
-      <select id="domainFilter" aria-label="Filter by domain">
-        <option value="all">Show: All</option>
-        <option value="u1">Unit 1 — Concepts</option>
-        <option value="u2">Unit 2 — Indicators</option>
-        <option value="u3">Unit 3 — AD–AS</option>
-        <option value="u4">Unit 4 — Financial Sector</option>
-        <option value="u5">Unit 5 — Long-Run</option>
-        <option value="u6">Unit 6 — Open Economy</option>
-      </select>
-      <button id="expandAll" class="btn ghost" title="Expand all topics">Expand All</button>
-      <button id="collapseAll" class="btn ghost" title="Collapse all topics">Collapse All</button>
-      <button id="resetProgress" class="btn" title="Clear saved progress">Reset Progress</button>
-      <button id="printBtn" class="btn primary" title="Print or save to PDF">Print</button>
-    </div>
+    <nav class="nav-links">
+      <a href="#u1">Unit 1</a>
+      <a href="#u2">Unit 2</a>
+      <a href="#u3">Unit 3</a>
+      <a href="#u4">Unit 4</a>
+      <a href="#u5">Unit 5</a>
+      <a href="#u6">Unit 6</a>
+    </nav>
   </div>
 </header>
 
 <div class="layout">
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar">
+  <aside>
     <div class="card">
-      <strong>Units</strong>
-      <div class="nav" id="nav">
-        <!-- Filled dynamically -->
+      <strong>On this page</strong>
+      <div class="toc">
+        <a href="#u1">Unit 1 — Basic Economic Concepts</a>
+        <a href="#u2">Unit 2 — Indicators & Business Cycles</a>
+        <a href="#u3">Unit 3 — National Income & Price Determination</a>
+        <a href="#u4">Unit 4 — Financial Sector</a>
+        <a href="#u5">Unit 5 — Stabilization & Long-Run</a>
+        <a href="#u6">Unit 6 — Open Economy</a>
       </div>
+      <p class="hint">Tip: Read the <em>Definitions</em> and <em>Formulas</em> boxes first, then the examples.</p>
     </div>
     <div class="card">
-      <strong>Tips</strong>
-      <ul style="margin-top:8px">
-        <li>Use <em>Search</em> to filter topics and highlight matches.</li>
-        <li>Mark topics done; progress saves automatically.</li>
-        <li>Click <em>Reveal</em> to see worked solutions and answers.</li>
-        <li>Print to generate a clean PDF for offline review.</li>
+      <strong>How to use</strong>
+      <ul style="margin:8px 0 0 18px">
+        <li>Skim each unit’s <em>takeaways</em>.</li>
+        <li>Study the <em>graph guides</em> to visualize shifts.</li>
+        <li>Rework the examples with your own numbers.</li>
       </ul>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main id="content">
-    <!-- ===================== UNIT 1 ===================== -->
-    <section class="unit" data-domain="u1" id="unit-1">
-      <div class="unit-header">
-        <h2>Unit 1 — Basic Economic Concepts</h2>
-        <div class="unit-meta"><span class="tag">Key ideas: scarcity, tradeoffs, PPC, comparative advantage, S&D.</span></div>
+  <main>
+
+    <!-- =========================
+         UNIT 1
+    ========================== -->
+    <section id="u1" class="unit">
+      <h2>Unit 1 — Basic Economic Concepts</h2>
+      <p class="kicker">Scarcity forces choices. Choices create costs. Good models help us see trade-offs.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Core Definitions</h3>
+          <ul>
+            <li><strong>Scarcity:</strong> Limited resources vs unlimited wants.</li>
+            <li><strong>Trade-off:</strong> Choosing more of one thing means less of another.</li>
+            <li><strong>Opportunity Cost:</strong> Value of the best alternative forgone.</li>
+            <li><strong>Marginal Analysis:</strong> Compare marginal benefit (MB) with marginal cost (MC); choose where MB ≥ MC.</li>
+          </ul>
+        </div>
+        <div class="box formula">
+          <h3>Key Relationships</h3>
+          <ul>
+            <li><span class="k">Net Benefit = Total Benefit − Total Cost</span></li>
+            <li><span class="k">Optimal Quantity</span> occurs near MB = MC.</li>
+            <li><span class="k">Opp. Cost of X = Loss of Y / Gain of X</span> (from a trade-off table).</li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">Core question: with scarce resources and unlimited wants, how do we choose?</p>
-      <div class="progress" data-progress="unit-1"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u1-scarcity">
-          <summary>Scarcity, Trade-offs, & Opportunity Cost</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Definitions</h4>
-                <ul>
-                  <li><b>Scarcity</b>: limited resources vs. unlimited wants.</li>
-                  <li><b>Trade-off</b>: choosing more of one thing means less of another.</li>
-                  <li><b>Opportunity Cost (OC)</b>: highest-valued alternative forgone.</li>
-                  <li><b>Marginal Analysis</b>: compare MB vs. MC at the next unit.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Formulas & Rules</h4>
-                <ul>
-                  <li>Net Benefit = Total Benefit − Total Cost</li>
-                  <li>Choose Q where <b>MB ≥ MC</b> (stop when MB falls below MC).</li>
-                </ul>
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="box">
-                <h4>Quick Check</h4>
-                <p>You can study Econ or Math for 1 hour. Econ yields +12 pts, Math +10 pts on your practice test. OC of Econ?</p>
-                <button class="reveal">Reveal</button>
-                <div class="answer"><b>10 points</b> (the Math gain you give up).</div>
-              </div>
-              <div class="box">
-                <h4>Graph to Know</h4>
-                <p>MB/MC curves: optimal at intersection; continue while MB≥MC.</p>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box graph">
+        <h3>Production Possibilities Curve (PPC)</h3>
+        <ul>
+          <li>Points <em>on</em> the curve: efficient; <em>inside</em>: inefficient; <em>outside</em>: unattainable (without growth).</li>
+          <li>Bowed-out PPC: increasing opportunity cost; straight PPC: constant opportunity cost.</li>
+          <li>Growth shifts the entire PPC outward (more resources, better technology, human capital).</li>
+        </ul>
+      </div>
 
-        <details class="topic" id="u1-ppf">
-          <summary>Production Possibilities Frontier (PPF) & Growth</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Points <b>on</b> PPF: efficient • <b>inside</b>: inefficient • <b>outside</b>: currently unattainable.</li>
-                  <li>Bowed-out PPF: increasing OC as you reallocate resources.</li>
-                  <li>Growth: ↑ resources, ↑ technology, ↑ human capital → PPF shifts outward.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Calculate OC</h4>
-                <pre>OC of X = (loss of Y) / (gain of X)</pre>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Worked Example</h4>
-              <p>Moving from A to B: pizzas +20, robots −5 ⇒ OC of 1 pizza = 5/20 = 0.25 robots.</p>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box example">
+          <h3>Worked Example — Opportunity Cost</h3>
+          <p>A worker can produce either 10 loaves of bread or 5 shirts per day. The opportunity cost of 1 shirt is <span class="k">2 loaves</span> (10/5). The opportunity cost of 1 loaf is <span class="k">0.5 shirt</span>.</p>
+          <p><em>Use:</em> These ratios drive comparative advantage and terms of trade.</p>
+        </div>
+        <div class="box def">
+          <h3>Comparative vs. Absolute Advantage</h3>
+          <ul>
+            <li><strong>Absolute advantage:</strong> Produce more with the same inputs.</li>
+            <li><strong>Comparative advantage:</strong> Lower opportunity cost — basis for specialization and gains from trade.</li>
+            <li><strong>Terms of Trade:</strong> Acceptable price range lies between each party’s opportunity cost.</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u1-compadv">
-          <summary>Comparative Advantage & Terms of Trade</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Definitions</h4>
-                <ul>
-                  <li><b>Absolute advantage</b>: produces more with same inputs.</li>
-                  <li><b>Comparative advantage</b>: lower OC → basis for trade.</li>
-                  <li>Mutually beneficial <b>Terms of Trade</b> lie <i>between</i> opportunity costs.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Example (Output method)</h4>
-                <pre>A: 10 wheat or 5 cloth  → OC(1 wheat)=0.5 cloth
-B: 6  wheat or 6 cloth  → OC(1 wheat)=1   cloth
-A has CA in wheat; B in cloth. Terms of trade for 1 wheat: (0.5, 1) cloth.</pre>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="u1-sd">
-          <summary>Demand & Supply, Equilibrium, Price Controls</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Shifters</h4>
-                <ul>
-                  <li><b>Demand</b>: income, tastes, related goods, expectations, #buyers.</li>
-                  <li><b>Supply</b>: input costs, technology, taxes/subsidies, expectations, #sellers.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Policies</h4>
-                <ul>
-                  <li>Binding <b>ceiling</b> ⇒ shortage & DWL.</li>
-                  <li>Binding <b>floor</b> ⇒ surplus & DWL.</li>
-                  <li>Tax wedge → burden falls more on the less elastic side.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Mini FRQ</h4>
-              <p>Show and explain the impact of a per-unit tax on consumer/producer surplus and deadweight loss.</p>
-              <button class="reveal">Scoring Guide</button>
-              <div class="answer">
-                Correctly labeled supply/demand graph; shift to S+tax; new P<sub>c</sub>/P<sub>p</sub>, Q↓; shaded CS/PS loss, tax revenue rectangle, DWL triangle; note incidence vs. elasticity.
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Scarcity → choices → opportunity costs. Always think at the margin.</li>
+          <li>PPC shows efficiency and growth; trade can allow consumption beyond a country’s PPC.</li>
+          <li>Comparative advantage (not absolute) determines who should specialize in what.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== UNIT 2 ===================== -->
-    <section class="unit" data-domain="u2" id="unit-2">
-      <div class="unit-header">
-        <h2>Unit 2 — Economic Indicators & the Business Cycle</h2>
-        <div class="unit-meta"><span class="tag">GDP, price indices, inflation, unemployment, cycle phases.</span></div>
+    <!-- =========================
+         UNIT 2
+    ========================== -->
+    <section id="u2" class="unit">
+      <h2>Unit 2 — Economic Indicators & the Business Cycle</h2>
+      <p class="kicker">How we measure the economy: output, prices, and labor markets — and how they move over time.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>GDP Basics</h3>
+          <ul>
+            <li><strong>GDP:</strong> Market value of all final goods & services produced within a country in a given period.</li>
+            <li>Excludes: intermediate goods, used goods, purely financial transactions, household production, illegal markets (usually).</li>
+            <li><strong>Expenditure approach:</strong> <span class="k">Y = C + I + G + (X − M)</span>.</li>
+            <li><strong>Income approach:</strong> Wages + Rent + Interest + Profit (should ≈ expenditure approach).</li>
+          </ul>
+        </div>
+        <div class="box formula">
+          <h3>Real vs. Nominal & Price Indices</h3>
+          <ul>
+            <li><strong>Nominal GDP:</strong> Output valued at current prices.</li>
+            <li><strong>Real GDP:</strong> Output valued at base-year prices.</li>
+            <li><strong>GDP Deflator:</strong> <span class="k">Deflator = (Nominal / Real) × 100</span></li>
+            <li><strong>Inflation (via CPI):</strong> <span class="k">π ≈ (CPIₜ − CPIₜ₋₁)/CPIₜ₋₁ × 100</span></li>
+            <li><strong>Real interest rate:</strong> <span class="k">r ≈ i − π</span></li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">Measure output, prices, and labor to track the macroeconomy.</p>
-      <div class="progress" data-progress="unit-2"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u2-gdp">
-          <summary>GDP: Concepts, Components, & Real vs. Nominal</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key</h4>
-                <ul>
-                  <li>Final goods/services within borders in a period.</li>
-                  <li>Expenditure: <b>Y = C + I + G + (X − M)</b>.</li>
-                  <li>Nominal vs. Real (adjust for prices).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Formulas</h4>
-                <pre>Real GDP = (Nominal GDP / GDP Deflator) × 100
-Growth rate ≈ %Δ Real GDP</pre>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Worked Example</h4>
-              <pre>Nominal = 5,000; Deflator = 125 → Real = 5,000 / 1.25 = 4,000</pre>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box example">
+          <h3>Worked Example — Real vs. Nominal GDP</h3>
+          <p>Suppose Nominal GDP = 1,100 and GDP Deflator = 110. Then <span class="k">Real GDP = 1,100 / 1.10 = 1,000</span>.</p>
+          <p>If next year Real GDP rises to 1,030, real growth ≈ <span class="k">3%</span>.</p>
+        </div>
+        <div class="box pitfall">
+          <h3>Common Pitfalls</h3>
+          <ul>
+            <li>CPI overstates inflation due to substitution and new-goods bias.</li>
+            <li>Nominal wage increases can still mean lower <em>real</em> wages if inflation is higher.</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u2-cpi">
-          <summary>Price Indices & Inflation (CPI, Deflator)</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>CPI</h4>
-                <pre>Inflation ≈ (CPI_t − CPI_{t−1}) / CPI_{t−1} × 100</pre>
-                <small class="muted">Biases: substitution, new products, quality changes.</small>
-              </div>
-              <div class="box">
-                <h4>Interest Rates</h4>
-                <pre>Real i ≈ Nominal i − Inflation</pre>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Quick Check</h4>
-              <p>Nominal i = 6%, inflation = 8%. Real i?</p>
-              <button class="reveal">Reveal</button>
-              <div class="answer"><b>−2%</b> (borrowers gain, lenders lose).</div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Unemployment</h3>
+          <ul>
+            <li><strong>Labor Force:</strong> Employed + Unemployed (actively seeking).</li>
+            <li><strong>Unemployment rate:</strong> <span class="k">U / Labor Force × 100</span></li>
+            <li>Types: frictional (search), structural (skills mismatch), cyclical (business cycle), seasonal.</li>
+            <li><strong>Natural rate (NRU):</strong> Frictional + Structural (when output at potential).</li>
+          </ul>
+        </div>
+        <div class="box graph">
+          <h3>Business Cycle & Output Gaps</h3>
+          <ul>
+            <li>Phases: expansion → peak → contraction → trough.</li>
+            <li><strong>Recessionary gap:</strong> Actual output &lt; potential (higher cyclical unemployment).</li>
+            <li><strong>Inflationary gap:</strong> Actual output &gt; potential (low unemployment, rising inflation pressure).</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u2-unemp">
-          <summary>Unemployment: Types & Natural Rate</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Types</h4>
-                <ul>
-                  <li><b>Frictional</b> (search), <b>Structural</b> (mismatch), <b>Cyclical</b> (downturns).</li>
-                  <li>NRU when only frictional + structural remain.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Rates</h4>
-                <pre>Labor Force = Employed + Unemployed
-Unemp. rate = Unemployed / Labor Force × 100</pre>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Mini FRQ</h4>
-              <p>Explain why unemployment can rise even as jobs are created.</p>
-              <button class="reveal">Sample Answer</button>
-              <div class="answer">If labor force participation increases (more people start looking), unemployed count rises initially; frictional unemployment can rise with better matching.</div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="u2-cycle">
-          <summary>Business Cycle & Output Gaps</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Phases</h4>
-                <ul><li>Expansion → Peak → Contraction → Trough.</li></ul>
-              </div>
-              <div class="box">
-                <h4>Gaps</h4>
-                <ul>
-                  <li>Inflationary gap: actual &gt; potential (overheating).</li>
-                  <li>Recessionary gap: actual &lt; potential.</li>
-                </ul>
-              </div>
-            </div>
-            <small class="muted">Okun’s law links output gap and cyclical unemployment (directionally).</small>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Use Real GDP to compare output; use CPI/Deflator to track prices.</li>
+          <li>Inflation distorts nominal values — convert to real.</li>
+          <li>NRU exists even at potential output; cyclical unemployment indicates gaps.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== UNIT 3 ===================== -->
-    <section class="unit" data-domain="u3" id="unit-3">
-      <div class="unit-header">
-        <h2>Unit 3 — National Income & Price Determination (AD–AS)</h2>
-        <div class="unit-meta"><span class="tag">AD, SRAS, LRAS, multipliers, fiscal policy, stabilizers.</span></div>
+    <!-- =========================
+         UNIT 3
+    ========================== -->
+    <section id="u3" class="unit">
+      <h2>Unit 3 — National Income & Price Determination (AD–AS)</h2>
+      <p class="kicker">Short-run fluctuations, long-run potential, and how the economy self-corrects.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Aggregate Demand (AD)</h3>
+          <ul>
+            <li><strong>AD = C + I + G + (X − M)</strong></li>
+            <li>Downward sloping due to wealth effect, interest-rate effect, and net export effect.</li>
+            <li><strong>Shifters:</strong> changes in C, I, G, NX (consumer confidence, taxes, investment expectations, foreign income, exchange rates).</li>
+          </ul>
+        </div>
+        <div class="box def">
+          <h3>Aggregate Supply (AS)</h3>
+          <ul>
+            <li><strong>SRAS:</strong> Upward sloping (sticky wages/prices). Shifts with input costs (wages, commodities), productivity, taxes/regulation, expectations.</li>
+            <li><strong>LRAS:</strong> Vertical at potential output (full employment). Shifts with resources, technology, institutions, human capital.</li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">Model short-run fluctuations and policy effects on output & prices.</p>
-      <div class="progress" data-progress="unit-3"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u3-adas">
-          <summary>AD–AS Model: Shifters & Equilibrium</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>AD</h4>
-                <ul><li>Components: C, I, G, NX. Shifters: taxes, wealth, confidence, interest rates, exchange rate, foreign income.</li></ul>
-              </div>
-              <div class="box">
-                <h4>AS</h4>
-                <ul>
-                  <li>SRAS: sticky wages/prices; shifters—input prices, productivity, taxes/regulation.</li>
-                  <li>LRAS vertical at potential output (full employment).</li>
-                </ul>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Self-Correction</h4>
-              <p>From recession, SRAS shifts right (wages fall); from inflation, SRAS shifts left (wages rise) in the long run.</p>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box graph">
+        <h3>Equilibrium & Gaps</h3>
+        <ul>
+          <li>Short-run equilibrium at AD ∩ SRAS; price level and output determined there.</li>
+          <li>Long-run equilibrium when AD ∩ SRAS ∩ LRAS.</li>
+          <li>Recessionary gap: AD intersects SRAS left of LRAS → unemployment &gt; NRU.</li>
+          <li>Inflationary gap: AD intersects SRAS right of LRAS → unemployment &lt; NRU.</li>
+        </ul>
+        <p><em>Self-correction:</em> In a recession, wages fall → SRAS shifts right toward LRAS. In an inflation, wages rise → SRAS shifts left.</p>
+      </div>
 
-        <details class="topic" id="u3-mult">
-          <summary>Multipliers & Spending vs. Tax Changes</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <pre>Spending Multiplier = 1 / (1 − MPC) = 1 / MPS
-Tax Multiplier      = − MPC / MPS
-Balanced Budget Mult ≈ 1</pre>
-              </div>
-              <div class="box">
-                <h4>Worked Example</h4>
-                <pre>MPC = 0.75 → Mult = 4
-ΔG = +50 → ΔY ≈ +200
-ΔT = −50 → ΔY ≈ (−0.75/0.25)* (−50) = +150</pre>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box formula">
+          <h3>Multipliers</h3>
+          <ul>
+            <li><strong>Spending multiplier:</strong> <span class="k">1 / (1 − MPC) = 1 / MPS</span></li>
+            <li><strong>Tax multiplier:</strong> <span class="k">− MPC / MPS</span></li>
+            <li><strong>Balanced budget multiplier ≈ 1</strong></li>
+          </ul>
+        </div>
+        <div class="box example">
+          <h3>Worked Example — Closing a Recessionary Gap</h3>
+          <p>Output gap = $200b; MPC = 0.8 → spending multiplier = <span class="k">1 / 0.2 = 5</span>. A $40b ↑ in government spending could close the gap (40 × 5 = 200).</p>
+          <p>Using a tax cut instead: tax multiplier = <span class="k">−0.8 / 0.2 = −4</span>; need a $50b tax cut (50 × 4 = 200).</p>
+        </div>
+      </div>
 
-        <details class="topic" id="u3-fiscal">
-          <summary>Fiscal Policy & Automatic Stabilizers</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Discretionary</h4>
-                <ul><li>Change G or T to close gaps; crowding out risk via ↑ i → ↓ I.</li></ul>
-              </div>
-              <div class="box">
-                <h4>Automatic</h4>
-                <ul><li>Progressive taxes, unemployment insurance smooth cycles without new laws.</li></ul>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Mini FRQ</h4>
-              <p>Show a recessionary gap and one fiscal action to close it; explain impact on interest rates and investment.</p>
-              <button class="reveal">Scoring Guide</button>
-              <div class="answer">AD right via ↑G or ↓T; possible ↑ i in money/loanable funds → partial crowding out of I; output rises toward potential.</div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box pitfall">
+        <h3>Watch Out</h3>
+        <ul>
+          <li>Shifts vs. movements along AD/AS — rate changes cause movement along AD via interest-rate effect, not an AD shift.</li>
+          <li>Supply shocks (oil) shift SRAS, not AD.</li>
+        </ul>
+      </div>
+
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>AD changes drive short-run output; SRAS changes drive cost-push inflation.</li>
+          <li>Long-run output is set by LRAS (resources & productivity), not by the price level.</li>
+          <li>Multipliers amplify fiscal changes; size depends on MPC/MPS.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== UNIT 4 ===================== -->
-    <section class="unit" data-domain="u4" id="unit-4">
-      <div class="unit-header">
-        <h2>Unit 4 — Financial Sector & Monetary Policy</h2>
-        <div class="unit-meta"><span class="tag">Money & banking, money market, monetary policy, loanable funds.</span></div>
+    <!-- =========================
+         UNIT 4
+    ========================== -->
+    <section id="u4" class="unit">
+      <h2>Unit 4 — Financial Sector</h2>
+      <p class="kicker">Money, banks, interest rates, and how policy moves from reserves to the real economy.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Money & Banking</h3>
+          <ul>
+            <li>Functions: medium of exchange, unit of account, store of value.</li>
+            <li>Types: commodity, fiat. <strong>M1</strong> (currency + checkable deposits), <strong>M2</strong> (M1 + savings, small time deposits, money market funds).</li>
+            <li>Fractional reserve banking: banks keep required reserves (rr) and loan the rest.</li>
+          </ul>
+        </div>
+        <div class="box formula">
+          <h3>Money Creation</h3>
+          <ul>
+            <li><strong>Simple money multiplier ≈</strong> <span class="k">1 / rr</span> (upper bound; leakages reduce it).</li>
+            <li><strong>Excess reserves =</strong> Actual reserves − Required reserves.</li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">How money is created and how policy transmits to the real economy.</p>
-      <div class="progress" data-progress="unit-4"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u4-money">
-          <summary>Money, Banks, & Money Creation</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key</h4>
-                <ul>
-                  <li>Functions: medium of exchange, unit of account, store of value.</li>
-                  <li>Required reserves rr; excess reserves ER used to lend.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Formulas</h4>
-                <pre>Simple Money Multiplier ≈ 1 / rr
-ER = Actual Reserves − Required Reserves</pre>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Worked T-Account</h4>
-              <pre>Deposit +$1,000; rr=10%
-Req Res = $100; ER = $900 → New loans up to $900 → potential ΔMS ≈ $9,000</pre>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box graph">
+          <h3>Money Market</h3>
+          <ul>
+            <li>Vertical money supply (set by central bank) vs. downward-sloping money demand.</li>
+            <li>Open market purchase → MS shifts right → lower nominal i → ↑ investment → ↑ AD.</li>
+            <li>Open market sale → MS left → higher i → ↓ I → ↓ AD.</li>
+          </ul>
+        </div>
+        <div class="box def">
+          <h3>Loanable Funds Market</h3>
+          <ul>
+            <li>Real interest rate on y-axis; supply = national saving; demand = investment (plus gov’t deficits).</li>
+            <li>↑ budget deficit → demand for funds ↑ (or supply of national saving ↓) → r<sub>real</sub> ↑ → crowding out of private investment.</li>
+            <li>↑ capital inflows from abroad → supply of funds ↑ → r<sub>real</sub> ↓ → investment ↑.</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u4-mm">
-          <summary>Money Market & Monetary Policy Tools</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Money Market</h4>
-                <ul><li>MS vertical (set by central bank), MD downward in nominal i.</li></ul>
-              </div>
-              <div class="box">
-                <h4>Tools</h4>
-                <ul>
-                  <li>Open market ops (buy ↑MS, sell ↓MS).</li>
-                  <li>Discount rate, rr, interest on reserves.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Transmission</h4>
-              <p>↑MS → ↓i → ↑Investment → AD↑ → Y, P rise (short run).</p>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Monetary Policy Tools</h3>
+          <ul>
+            <li>Open market operations (buy/sell bonds).</li>
+            <li>Reserve requirement (rarely used for fine-tuning).</li>
+            <li>Discount rate & interest on reserves.</li>
+          </ul>
+        </div>
+        <div class="box example">
+          <h3>Worked Example — T-Account</h3>
+          <p>Bank has $100 in deposits; rr = 10% → required reserves = $10. If reserves = $20, excess reserves = $10; new loans up to $10. With a simple multiplier of 10, <em>maximum</em> potential money creation = $100 (if fully lent & re-deposited with no leakages).</p>
+        </div>
+      </div>
 
-        <details class="topic" id="u4-lf">
-          <summary>Loanable Funds: Real Interest Rate & Capital Markets</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Market</h4>
-                <ul>
-                  <li>Supply: national saving; Demand: investment.</li>
-                  <li>Gov’t deficits → ↑ demand for funds → r<sub>real</sub>↑ → crowding out.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Quick Check</h4>
-                <p>Foreign capital inflow increases—what happens to r<sub>real</sub> and I?</p>
-                <button class="reveal">Reveal</button>
-                <div class="answer">Supply of funds shifts right → r<sub>real</sub> falls → Investment rises.</div>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Money market sets nominal i in the short run; loanable funds sets r<sub>real</sub> via saving & investment.</li>
+          <li>Open market purchases lower i → stimulate investment and AD; sales do the opposite.</li>
+          <li>Deficits can crowd out investment by raising real interest rates.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== UNIT 5 ===================== -->
-    <section class="unit" data-domain="u5" id="unit-5">
-      <div class="unit-header">
-        <h2>Unit 5 — Long-Run Consequences of Stabilization Policies</h2>
-        <div class="unit-meta"><span class="tag">Phillips curve, inflation expectations, growth, debt, crowding out.</span></div>
+    <!-- =========================
+         UNIT 5
+    ========================== -->
+    <section id="u5" class="unit">
+      <h2>Unit 5 — Stabilization Policies & Long-Run Consequences</h2>
+      <p class="kicker">How fiscal and monetary tools affect inflation, unemployment, and growth — in the short and long run.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Fiscal Policy</h3>
+          <ul>
+            <li><strong>Expansionary:</strong> ↑ G or ↓ T to close recessionary gaps (AD →).</li>
+            <li><strong>Contractionary:</strong> ↓ G or ↑ T to close inflationary gaps (AD ←).</li>
+            <li><strong>Automatic stabilizers:</strong> taxes & transfers that vary with income (progressive tax, unemployment benefits) — reduce volatility without new laws.</li>
+            <li><strong>Lags:</strong> recognition, decision, implementation.</li>
+          </ul>
+        </div>
+        <div class="box def">
+          <h3>Monetary Policy</h3>
+          <ul>
+            <li><strong>Expansionary:</strong> buy bonds → MS ↑ → i ↓ → I ↑ → AD →</li>
+            <li><strong>Contractionary:</strong> sell bonds → MS ↓ → i ↑ → I ↓ → AD ←</li>
+            <li>Strengths: speed & flexibility; Limits: liquidity traps, expectations, weak credit demand.</li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">What persists after policies and expectations adjust?</p>
-      <div class="progress" data-progress="unit-5"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u5-pc">
-          <summary>Phillips Curve: Short-Run vs. Long-Run</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Relationships</h4>
-                <ul>
-                  <li>SRPC: inverse inflation–unemployment trade-off.</li>
-                  <li>LRPC: vertical at NRU (no long-run trade-off).</li>
-                  <li>Expected inflation shifts SRPC.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Shock Example</h4>
-                <p>Negative supply shock → inflation↑ & unemployment↑ → SRPC shifts <b>right</b>.</p>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box graph">
+          <h3>Phillips Curve</h3>
+          <ul>
+            <li><strong>SRPC:</strong> inverse short-run relationship between inflation and unemployment.</li>
+            <li><strong>LRPC:</strong> vertical at NRU; no long-run trade-off.</li>
+            <li>Expected inflation shifts SRPC: if expectations rise, SRPC shifts up/right.</li>
+          </ul>
+        </div>
+        <div class="box example">
+          <h3>Worked Link — AD–AS and Phillips</h3>
+          <p>AD → (expansion) raises price level and output → unemployment falls (move down along SRPC); persistent demand-pull inflation can shift expectations → SRPC shifts up (long-run unemployment returns to NRU).</p>
+        </div>
+      </div>
 
-        <details class="topic" id="u5-growth">
-          <summary>Economic Growth & Productivity</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Sources</h4>
-                <ul><li>Capital deepening, technology, human capital, institutions.</li></ul>
-              </div>
-              <div class="box">
-                <h4>Policies</h4>
-                <ul><li>Investment incentives, education, R&amp;D, stable rules of law.</li></ul>
-              </div>
-            </div>
-            <div class="box">
-              <h4>Graph Link</h4>
-              <p>LRAS and PPC shift outward with sustained growth.</p>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Growth & LRAS</h3>
+          <ul>
+            <li>LRAS shifts right with higher productivity, capital formation, technology, and labor force growth.</li>
+            <li>Policy levers: education/human capital, infrastructure, R&amp;D, institutions & rule of law.</li>
+          </ul>
+        </div>
+        <div class="box pitfall">
+          <h3>Budget Deficits, Debt, & Crowding Out</h3>
+          <ul>
+            <li>Deficits add to public debt; sustained deficits can raise r<sub>real</sub> and crowd out private investment.</li>
+            <li>But during recessions, well-targeted deficits may raise future growth if they fund productive investment.</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u5-debt">
-          <summary>Deficits, Debt, & Crowding Out</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key</h4>
-                <ul>
-                  <li>Deficit: G &gt; T this year; Debt: accumulation of past deficits.</li>
-                  <li>Large deficits can raise r<sub>real</sub> → ↓ private I (crowding out).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Mini FRQ</h4>
-                <p>Use loanable funds to show long-run impact of persistent deficits on growth.</p>
-                <button class="reveal">Scoring Guide</button>
-                <div class="answer">Demand for funds right → r<sub>real</sub>↑ → I↓ → slower capital accumulation → slower LR growth.</div>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Short-run trade-off (SRPC) disappears in the long run (LRPC at NRU).</li>
+          <li>Use fiscal/monetary to close gaps, but watch lags, expectations, and crowding out.</li>
+          <li>Long-run growth is supply-side: shift LRAS via productivity and capital.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== UNIT 6 ===================== -->
-    <section class="unit" data-domain="u6" id="unit-6">
-      <div class="unit-header">
-        <h2>Unit 6 — Open Economy: International Trade & Finance</h2>
-        <div class="unit-meta"><span class="tag">BoP, forex, exchange rates, net exports, capital flows.</span></div>
+    <!-- =========================
+         UNIT 6
+    ========================== -->
+    <section id="u6" class="unit">
+      <h2>Unit 6 — Open Economy: International Trade & Finance</h2>
+      <p class="kicker">How goods, services, and capital cross borders — and how exchange rates connect everything.</p>
+
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Balance of Payments (BOP)</h3>
+          <ul>
+            <li><strong>Current account:</strong> goods/services trade (NX), income flows, transfers.</li>
+            <li><strong>Financial (capital) account:</strong> asset transactions (bonds, stocks, real assets).</li>
+            <li>They sum to ~0 (ignoring statistical discrepancy): a current account deficit is offset by a financial account surplus.</li>
+          </ul>
+        </div>
+        <div class="box def">
+          <h3>Foreign Exchange (FOREX)</h3>
+          <ul>
+            <li>Price of a currency (e.g., USD/JPY) set by supply and demand.</li>
+            <li><strong>Drivers of demand for a currency:</strong> foreign purchases of that country’s goods/assets, higher relative interest rates, relatively lower inflation, expected appreciation.</li>
+            <li>Appreciation makes exports dearer, imports cheaper → NX falls; depreciation does the opposite.</li>
+          </ul>
+        </div>
       </div>
-      <p class="kicker">How goods, services, and capital move across borders and affect AD.</p>
-      <div class="progress" data-progress="unit-6"><span></span></div>
 
-      <div class="topiclist">
-        <details class="topic" id="u6-bop">
-          <summary>Balance of Payments (BoP)</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Accounts</h4>
-                <ul>
-                  <li><b>Current</b>: goods/services, income, transfers.</li>
-                  <li><b>Financial</b> (capital): asset flows (stocks, bonds, real assets).</li>
-                  <li>BoP sums to ~0 (ignoring statistical discrepancy).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Quick Check</h4>
-                <p>US investor buys UK bond: which account changes?</p>
-                <button class="reveal">Reveal</button>
-                <div class="answer">Financial (capital) account: US outflow (purchase of foreign asset).</div>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box graph">
+          <h3>Policy & Exchange Rates</h3>
+          <ul>
+            <li><strong>Expansionary fiscal</strong> (closed economy: AD →) can raise r<sub>real</sub> (via deficits) → foreign capital inflows → currency appreciates → NX ↓ (net export effect dampens AD).</li>
+            <li><strong>Expansionary monetary</strong> lowers i → currency depreciates → NX ↑ → reinforces AD.</li>
+            <li>Fixed exchange rate regimes require central bank intervention (buy/sell currency) and adequate reserves.</li>
+          </ul>
+        </div>
+        <div class="box example">
+          <h3>Worked Example — FOREX Shift</h3>
+          <p>If domestic interest rates rise relative to abroad, foreigners demand more domestic bonds → demand for domestic currency ↑ → appreciation. Expect NX to fall as exports become relatively more expensive.</p>
+        </div>
+      </div>
 
-        <details class="topic" id="u6-forex">
-          <summary>Foreign Exchange Market & Exchange Rates</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Determinants</h4>
-                <ul>
-                  <li>Relative interest rates, price levels (inflation), income, tastes, expectations.</li>
-                  <li>↑ domestic r<sub>real</sub> → currency appreciates (capital inflow).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>NX Link</h4>
-                <p>Appreciation → exports ↓, imports ↑ → NX ↓ → AD ↓.</p>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="grid-2">
+        <div class="box def">
+          <h3>Trade Policies</h3>
+          <ul>
+            <li>Tariffs: raise domestic prices, reduce imports, generate tariff revenue, create deadweight loss.</li>
+            <li>Quotas: limit quantity; similar welfare effects without revenue (unless quota licenses are sold).</li>
+            <li>Protection helps some producers but reduces total surplus.</li>
+          </ul>
+        </div>
+        <div class="box pitfall">
+          <h3>Watch Out</h3>
+          <ul>
+            <li>“Strong currency is always good” — not true: it hurts exporters.</li>
+            <li>“Trade deficit means weak economy” — not necessarily; often linked to strong capital inflows.</li>
+          </ul>
+        </div>
+      </div>
 
-        <details class="topic" id="u6-policy">
-          <summary>Policy, Capital Flows, & the Open Economy</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Monetary/Fiscal</h4>
-                <ul>
-                  <li>Expansionary monetary → r↓ → capital outflow → depreciation → NX↑ → AD↑.</li>
-                  <li>Expansionary fiscal → r↑ (if deficit) → capital inflow → appreciation → NX↓ (offset).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Mini FRQ</h4>
-                <p>Show how a domestic rate cut affects the currency and net exports.</p>
-                <button class="reveal">Scoring Guide</button>
-                <div class="answer">Money market MS↑ → i↓; Forex: supply of domestic currency ↑ / demand ↓ → depreciation; NX rises; AD shifts right.</div>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+      <div class="box takeaway">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>BOP links trade flows with capital flows; they offset.</li>
+          <li>Exchange rates respond to interest rates, inflation, income, and expectations.</li>
+          <li>Open-economy effects can reinforce or weaken domestic policy impacts on AD.</li>
+        </ul>
       </div>
     </section>
 
-    <div id="noResults" class="empty" style="display:none">No matches. Try a different keyword or clear filters.</div>
   </main>
 </div>
 
-<button class="backtop" id="backtop" title="Back to top">↑</button>
+<button id="backtop" aria-label="Back to top">↑</button>
 
 <script>
-/* =========================
-   Data & helpers
-========================= */
-const units = [
-  { id:"unit-1", title:"Unit 1 — Basic Economic Concepts", domain:"u1" },
-  { id:"unit-2", title:"Unit 2 — Economic Indicators & Business Cycle", domain:"u2" },
-  { id:"unit-3", title:"Unit 3 — National Income & Price Determination", domain:"u3" },
-  { id:"unit-4", title:"Unit 4 — Financial Sector & Monetary Policy", domain:"u4" },
-  { id:"unit-5", title:"Unit 5 — Long-Run Consequences of Stabilization", domain:"u5" },
-  { id:"unit-6", title:"Unit 6 — Open Economy: Trade & Finance", domain:"u6" },
-];
-
-const storeKey = "macroGuide.v1";
-const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
-if(!saved.topics){ saved.topics = {}; }
-if(!saved.unitOpen){ saved.unitOpen = {}; }
-
-/* =========================
-   Sidebar nav + progress
-========================= */
-const nav = document.getElementById("nav");
-const content = document.getElementById("content");
-
-function calcUnitProgress(unitId){
-  const unitEl = document.getElementById(unitId);
-  const checks = unitEl.querySelectorAll('input[type="checkbox"][data-topic-complete]');
-  if(checks.length === 0) return 0;
-  const done = Array.from(checks).filter(c => c.checked).length;
-  return Math.round(done / checks.length * 100);
-}
-
-function renderNav(){
-  nav.innerHTML = "";
-  units.forEach(u=>{
-    const a = document.createElement("a");
-    a.href = `#${u.id}`;
-    a.dataset.domain = u.domain;
-    a.innerHTML = `<span>${u.title}</span><span class="badge" id="p-${u.id}">0%</span>`;
-    nav.appendChild(a);
-    const barWrap = document.createElement("div");
-    barWrap.className = "progress";
-    barWrap.style.margin = "0 10px 10px 10px";
-    const bar = document.createElement("span");
-    bar.id = `bar-${u.id}`;
-    barWrap.appendChild(bar);
-    nav.appendChild(barWrap);
+  // Back-to-top behavior only (no progress/print/quiz features)
+  const back = document.getElementById('backtop');
+  window.addEventListener('scroll', ()=>{
+    back.style.display = (window.scrollY > 400) ? '' : 'none';
   });
-  updateAllProgress();
-}
-
-function updateAllProgress(){
-  units.forEach(u=>{
-    const pct = calcUnitProgress(u.id);
-    const badge = document.getElementById(`p-${u.id}`);
-    const bar = document.getElementById(`bar-${u.id}`);
-    if(badge) badge.textContent = pct + "%";
-    if(bar) bar.style.width = pct + "%";
-    const inUnit = document.querySelector(`[data-progress="${u.id}"] > span`);
-    if(inUnit){ inUnit.style.width = pct + "%"; }
-  });
-}
-
-/* =========================
-   Restore state
-========================= */
-function restoreState(){
-  document.querySelectorAll('input[type="checkbox"][data-topic-complete]').forEach(cb=>{
-    const id = cb.closest("details.topic").id;
-    cb.checked = !!saved.topics[id];
-    cb.addEventListener("change", ()=>{
-      saved.topics[id] = cb.checked;
-      localStorage.setItem(storeKey, JSON.stringify(saved));
-      updateAllProgress();
-    });
-  });
-
-  document.querySelectorAll('details.topic').forEach(d=>{
-    const id = d.id;
-    if(saved.unitOpen[id] !== undefined){
-      d.open = !!saved.unitOpen[id];
-    }
-    d.addEventListener("toggle", ()=>{
-      saved.unitOpen[id] = d.open;
-      localStorage.setItem(storeKey, JSON.stringify(saved));
-    });
-  });
-
-  updateAllProgress();
-}
-
-/* =========================
-   Search & highlight
-========================= */
-const searchEl = document.getElementById("search");
-const noResults = document.getElementById("noResults");
-
-function clearMarks(root){
-  root.querySelectorAll("mark.search-hit").forEach(m=>{
-    const t = document.createTextNode(m.textContent);
-    m.replaceWith(t);
-  });
-}
-
-function highlightMatches(root, term){
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-  const parts = [];
-  const re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "i");
-  while(walker.nextNode()){
-    const node = walker.currentNode;
-    if(!node.nodeValue.trim()) continue;
-    const idx = node.nodeValue.search(re);
-    if(idx >= 0){
-      const match = node.nodeValue.slice(idx).match(re)[0];
-      const span = document.createElement("span");
-      const before = node.nodeValue.slice(0, idx);
-      const after  = node.nodeValue.slice(idx + match.length);
-      if(before) span.appendChild(document.createTextNode(before));
-      const mark = document.createElement("mark"); mark.className="search-hit"; mark.textContent = match;
-      span.appendChild(mark);
-      if(after) span.appendChild(document.createTextNode(after));
-      parts.push({node, span});
-    }
-  }
-  parts.forEach(({node, span})=>node.parentNode.replaceChild(span, node));
-}
-
-function applySearch(){
-  const q = searchEl.value.trim();
-  const topics = Array.from(document.querySelectorAll("details.topic"));
-  let visibleCount = 0;
-
-  topics.forEach(t=>{
-    clearMarks(t);
-    if(q === ""){
-      t.style.display = "";
-      visibleCount++;
-      return;
-    }
-    const text = t.innerText.toLowerCase();
-    const hit = text.includes(q.toLowerCase());
-    t.style.display = hit ? "" : "none";
-    if(hit){
-      highlightMatches(t, q);
-      visibleCount++;
-    }
-  });
-
-  noResults.style.display = visibleCount === 0 ? "" : "none";
-}
-searchEl.addEventListener("input", applySearch);
-
-/* =========================
-   Domain filter
-========================= */
-const domainFilter = document.getElementById("domainFilter");
-function applyFilter(){
-  const val = domainFilter.value;
-  document.querySelectorAll(".unit").forEach(u=>{
-    const match = val==="all" || u.dataset.domain === val;
-    u.style.display = match ? "" : "none";
-  });
-  document.querySelectorAll("#nav a").forEach(a=>{
-    const domain = a.dataset.domain;
-    a.style.display = (val==="all" || val===domain) ? "" : "none";
-  });
-}
-domainFilter.addEventListener("change", applyFilter);
-
-/* =========================
-   Buttons
-========================= */
-document.getElementById("expandAll").addEventListener("click", ()=>{
-  document.querySelectorAll('details.topic').forEach(d=>{ d.open = true; saved.unitOpen[d.id] = true; });
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-});
-document.getElementById("collapseAll").addEventListener("click", ()=>{
-  document.querySelectorAll('details.topic').forEach(d=>{ d.open = false; saved.unitOpen[d.id] = false; });
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-});
-document.getElementById("resetProgress").addEventListener("click", ()=>{
-  if(!confirm("Clear all saved topic completions?")) return;
-  document.querySelectorAll('input[type="checkbox"][data-topic-complete]').forEach(cb=> cb.checked = false);
-  saved.topics = {};
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-  updateAllProgress();
-});
-document.getElementById("printBtn").addEventListener("click", ()=>{
-  const wasOpen = [];
-  document.querySelectorAll('details.topic').forEach(d=>{
-    wasOpen.push({id:d.id, open:d.open});
-    d.open = true;
-  });
-  setTimeout(()=>{ window.print();
-    wasOpen.forEach(s=>{
-      const d = document.getElementById(s.id);
-      if(d) d.open = s.open;
-    });
-  }, 50);
-});
-
-/* =========================
-   Reveal buttons
-========================= */
-document.addEventListener("click", (e)=>{
-  if(e.target.classList.contains("reveal")){
-    e.target.classList.toggle("open");
-  }
-});
-
-/* =========================
-   Back to top
-========================= */
-const backtop = document.getElementById("backtop");
-backtop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));
-window.addEventListener("scroll", ()=>{
-  backtop.style.display = (window.scrollY > 400) ? "" : "none";
-});
-backtop.style.display = "none";
-
-/* =========================
-   Build nav & init
-========================= */
-function initOpenStates(){
-  document.querySelectorAll('details.topic').forEach(d=>{
-    const id = d.id;
-    if(saved.unitOpen[id] !== undefined) d.open = !!saved.unitOpen[id];
-  });
-}
-function init(){
-  // Build nav
-  const nav = document.getElementById("nav");
-  nav.innerHTML = "";
-  units.forEach(u=>{
-    const a = document.createElement("a");
-    a.href = `#${u.id}`;
-    a.dataset.domain = u.domain;
-    a.innerHTML = `<span>${u.title}</span><span class="badge" id="p-${u.id}">0%</span>`;
-    nav.appendChild(a);
-    const barWrap = document.createElement("div");
-    barWrap.className = "progress";
-    barWrap.style.margin = "0 10px 10px 10px";
-    const bar = document.createElement("span");
-    bar.id = `bar-${u.id}`;
-    barWrap.appendChild(bar);
-    nav.appendChild(barWrap);
-  });
-
-  restoreState();
-  applyFilter();
-  applySearch();
-  initOpenStates();
-}
-document.addEventListener("DOMContentLoaded", init);
+  back.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
 </script>
 
 </body>
 </html>
-
-
