@@ -95,7 +95,7 @@ h1 {
   font-size: clamp(14px, 2vw, 18px);
   text-transform: uppercase;
   position: relative;
-  cursor: default; /* no pointer cursor */
+  cursor: default;
 }
 
 .edition-text::after {
@@ -225,7 +225,7 @@ h1 {
   </div>
 
   <!-- Edition statement on right -->
-  <div class="edition-text" id="typed-link"></div>
+  <div class="edition-text" id="edition"></div>
 </header>
 
 <script>
@@ -242,7 +242,7 @@ function typeWriterEffect(element, text, delay=220) {
 }
 
 const mainTitle = document.getElementById("typed-text");
-const dateElement = document.getElementById("typed-link");
+const editionElement = document.getElementById("edition");
 
 // Month names in ALL CAPS
 const months = [
@@ -254,9 +254,11 @@ const today = new Date();
 const monthName = months[today.getMonth()];
 const editionString = `${monthName} EDITION.`;
 
-// Typewriter effects
+// Typewriter only for Harbor Post
 typeWriterEffect(mainTitle, "HARBOR POST.", 220);
-typeWriterEffect(dateElement, editionString, 220);
+
+// Edition text instantly
+editionElement.innerHTML = editionString;
 </script>
 
 <div class="landing-section">
