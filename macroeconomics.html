@@ -1,585 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Macroeconomics Study Guide</title>
-<meta name="description" content="A complete macroeconomics study guide organized by units with detailed notes, formulas, examples, and graph guides." />
-<style>
-  :root{
-    --bg:#ffffff;
-    --surface:#f6f7fb;
-    --card:#ffffff;
-    --ink:#121417;
-    --muted:#6b7280;
-    --accent:#0ea5e9;
-    --accent-ink:#064663;
-    --ok:#10b981;
-    --warn:#f59e0b;
-    --danger:#ef4444;
-    --ring:rgba(14,165,233,.25);
-    --shadow:0 8px 24px rgba(2,6,23,.08);
-    --radius:16px;
-    --maxw:1200px;
-  }
-  *{ box-sizing:border-box }
-  html,body{ height:100% }
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
-    line-height:1.6;
-  }
-
-  /* Header */
-  .site-header{
-    position:sticky; top:0; z-index:40;
-    background:linear-gradient(180deg,#0ea5e9 0%, #0284c7 100%);
-    color:#fff; box-shadow:0 2px 12px rgba(2,6,23,.2);
-  }
-  .header-inner{
-    max-width:var(--maxw); margin:0 auto; padding:18px;
-    display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center;
-  }
-  .title h1{ margin:0; font-size:clamp(22px,2.4vw,32px); font-weight:800; letter-spacing:.2px }
-  .title p{ margin:2px 0 0; opacity:.9; font-size:14px }
-  .nav-links a{
-    color:#fff; text-decoration:none; font-weight:700; margin-left:14px; padding:8px 10px; border-radius:10px;
-    border:1px solid rgba(255,255,255,.25);
-  }
-  .nav-links a:hover{ background:rgba(255,255,255,.12) }
-
-  /* Layout */
-  .layout{
-    max-width:var(--maxw); margin:0 auto; padding:18px;
-    display:grid; grid-template-columns: 280px 1fr; gap:18px;
-  }
-  @media (max-width: 980px){
-    .layout{ grid-template-columns: 1fr }
-  }
-
-  /* Sidebar */
-  aside{
-    position:sticky; top:84px; align-self:start;
-    display:flex; flex-direction:column; gap:12px;
-  }
-  .card{
-    background:var(--card); border:1px solid #eaeef6; border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:14px;
-  }
-  .toc a{
-    display:block; text-decoration:none; color:inherit; padding:8px 10px; border-radius:10px;
-  }
-  .toc a:hover{ background:var(--surface) }
-  .hint{ font-size:13px; color:var(--muted) }
-
-  /* Main content */
-  main{ display:flex; flex-direction:column; gap:18px }
-  section.unit{
-    padding:18px; border:1px solid #eaeef6; border-radius:var(--radius); background:#fff; box-shadow:var(--shadow);
-  }
-  section.unit h2{
-    margin:0 0 6px 0; color:#0f172a; font-size:clamp(18px,2.2vw,26px)
-  }
-  .kicker{ margin:0 0 10px 0; color:var(--muted); font-size:14px }
-  h3{ margin:14px 0 6px 0 }
-  p{ margin:8px 0 }
-  ul,ol{ margin:6px 0 8px 22px }
-
-  /* Content blocks */
-  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
-  @media (max-width: 800px){ .grid-2{ grid-template-columns:1fr } }
-  .box{
-    padding:12px; border-radius:12px; border:1px solid #e5e7eb; background:#fff;
-  }
-  .def{ border-left:4px solid var(--accent); background:#f0f9ff }
-  .formula{ border-left:4px solid #6366f1; background:#eef2ff }
-  .example{ border-left:4px solid var(--ok); background:#ecfdf5 }
-  .graph{ border-left:4px solid #f97316; background:#fff7ed }
-  .pitfall{ border-left:4px solid var(--warn); background:#fffbeb }
-  .takeaway{ border-left:4px solid #0ea5e9; background:#e0f2fe }
-
-  code, .k{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.95em; background:#f5f7fb; padding:1px 6px; border-radius:6px; border:1px solid #e5e7eb }
-
-  /* Back to top */
-  #backtop{
-    position:fixed; right:18px; bottom:18px; z-index:50;
-    border:none; border-radius:999px; padding:10px 12px; cursor:pointer;
-    background:var(--accent); color:#fff; box-shadow:var(--shadow); display:none;
-  }
-  #backtop:hover{ filter:brightness(1.05) }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Macroeconomics Study Guide — Unit 1</title>
+  <meta name="description" content="Unit 1: Basic Economic Concepts — dense notes-style guide with subheadings and bullet points." />
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --ink:#17181a;
+      --muted:#616671;
+      --accent:#0f62fe;
+      --edge:#e9eaf0;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(2,6,23,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    header{
+      background: linear-gradient(180deg, #0b1b3f, #0c224f);
+      color:#fff; text-align:center; padding:32px 16px;
+      position:sticky; top:0; z-index:20;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    header h1{ margin:0 0 6px 0; font-size:clamp(22px,2.6vw,32px); letter-spacing:.2px }
+    header p{ margin:0; opacity:.9; font-size:14px }
+    main{ max-width:980px; margin:36px auto; padding:0 16px }
+    section.unit{
+      background:var(--card); border:1px solid var(--edge);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:26px 26px 8px 26px; margin-bottom:28px;
+    }
+    h2{
+      margin:0 0 10px 0; color:#0b1b3f; font-size:clamp(20px,2.2vw,26px)
+    }
+    .kicker{
+      margin:0 0 18px 0; color:var(--muted); font-size:14px
+    }
+    h3{
+      margin:18px 0 8px 0; color:#0c224f; font-size:clamp(16px,1.8vw,20px)
+    }
+    .sub{
+      margin:4px 0 10px 0; color:var(--muted); font-size:13px
+    }
+    ul{ margin:10px 0 14px 22px; padding:0 }
+    ul ul{ margin:6px 0 8px 18px }
+    li{ margin:4px 0 }
+    .box{
+      border:1px dashed var(--edge); border-radius:12px; padding:14px; background:#fff; margin:12px 0
+    }
+    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px }
+    @media (max-width: 820px){ .grid-2{ grid-template-columns:1fr } }
+    .tag{
+      display:inline-block; font-size:12px; color:#0c224f;
+      border:1px solid var(--edge); background:#f6f8ff; padding:2px 8px; border-radius:999px; margin-right:6px
+    }
+    .divider{ height:1px; background:var(--edge); margin:18px 0 }
+    .formula{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background:#f7f8fb; border:1px solid var(--edge); padding:2px 6px; border-radius:8px }
+    .note{ color:#374151 }
+    .muted{ color:var(--muted) }
+    .callout{
+      border-left:4px solid var(--accent);
+      background:linear-gradient(0deg,#f5f9ff,#ffffff);
+      padding:12px 14px; border-radius:10px; margin:12px 0; border:1px solid var(--edge)
+    }
+  </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <div class="title">
-      <h1>Macroeconomics Study Guide</h1>
-      <p>Complete notes by unit: definitions, formulas, examples, graph guides, and key takeaways.</p>
-    </div>
-    <nav class="nav-links">
-      <a href="#u1">Unit 1</a>
-      <a href="#u2">Unit 2</a>
-      <a href="#u3">Unit 3</a>
-      <a href="#u4">Unit 4</a>
-      <a href="#u5">Unit 5</a>
-      <a href="#u6">Unit 6</a>
-    </nav>
-  </div>
-</header>
-
-<div class="layout">
-  <aside>
-    <div class="card">
-      <strong>On this page</strong>
-      <div class="toc">
-        <a href="#u1">Unit 1 — Basic Economic Concepts</a>
-        <a href="#u2">Unit 2 — Indicators & Business Cycles</a>
-        <a href="#u3">Unit 3 — National Income & Price Determination</a>
-        <a href="#u4">Unit 4 — Financial Sector</a>
-        <a href="#u5">Unit 5 — Stabilization & Long-Run</a>
-        <a href="#u6">Unit 6 — Open Economy</a>
-      </div>
-      <p class="hint">Tip: Read the <em>Definitions</em> and <em>Formulas</em> boxes first, then the examples.</p>
-    </div>
-    <div class="card">
-      <strong>How to use</strong>
-      <ul style="margin:8px 0 0 18px">
-        <li>Skim each unit’s <em>takeaways</em>.</li>
-        <li>Study the <em>graph guides</em> to visualize shifts.</li>
-        <li>Rework the examples with your own numbers.</li>
-      </ul>
-    </div>
-  </aside>
+  <header>
+    <h1>Macroeconomics Study Guide</h1>
+    <p>Unit 1 — Basic Economic Concepts (dense notes)</p>
+  </header>
 
   <main>
 
     <!-- =========================
-         UNIT 1
-    ========================== -->
-    <section id="u1" class="unit">
+         UNIT 1 — BASIC ECONOMIC CONCEPTS
+         ========================= -->
+    <section class="unit" id="unit1">
       <h2>Unit 1 — Basic Economic Concepts</h2>
-      <p class="kicker">Scarcity forces choices. Choices create costs. Good models help us see trade-offs.</p>
+      <p class="kicker">Scarcity → choices → trade-offs → opportunity cost. How individuals, firms, and societies allocate limited resources. Models that simplify decision-making and show gains from specialization & trade.</p>
 
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Core Definitions</h3>
-          <ul>
-            <li><strong>Scarcity:</strong> Limited resources vs unlimited wants.</li>
-            <li><strong>Trade-off:</strong> Choosing more of one thing means less of another.</li>
-            <li><strong>Opportunity Cost:</strong> Value of the best alternative forgone.</li>
-            <li><strong>Marginal Analysis:</strong> Compare marginal benefit (MB) with marginal cost (MC); choose where MB ≥ MC.</li>
-          </ul>
-        </div>
-        <div class="box formula">
-          <h3>Key Relationships</h3>
-          <ul>
-            <li><span class="k">Net Benefit = Total Benefit − Total Cost</span></li>
-            <li><span class="k">Optimal Quantity</span> occurs near MB = MC.</li>
-            <li><span class="k">Opp. Cost of X = Loss of Y / Gain of X</span> (from a trade-off table).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box graph">
-        <h3>Production Possibilities Curve (PPC)</h3>
+      <div class="callout">
+        <span class="tag">Big Ideas</span>
         <ul>
-          <li>Points <em>on</em> the curve: efficient; <em>inside</em>: inefficient; <em>outside</em>: unattainable (without growth).</li>
-          <li>Bowed-out PPC: increasing opportunity cost; straight PPC: constant opportunity cost.</li>
-          <li>Growth shifts the entire PPC outward (more resources, better technology, human capital).</li>
+          <li>Every choice has a <strong>cost</strong> (the next best alternative forgone).</li>
+          <li>Rational decision makers think at the <strong>margin</strong>: compare <em>marginal benefit</em> (MB) to <em>marginal cost</em> (MC).</li>
+          <li><strong>Specialization</strong> according to comparative advantage raises total output and enables mutually beneficial trade.</li>
+          <li>Models (PPC, circular flow) help analyze trade-offs, efficiency, growth, and interactions among sectors.</li>
         </ul>
       </div>
 
-      <div class="grid-2">
-        <div class="box example">
-          <h3>Worked Example — Opportunity Cost</h3>
-          <p>A worker can produce either 10 loaves of bread or 5 shirts per day. The opportunity cost of 1 shirt is <span class="k">2 loaves</span> (10/5). The opportunity cost of 1 loaf is <span class="k">0.5 shirt</span>.</p>
-          <p><em>Use:</em> These ratios drive comparative advantage and terms of trade.</p>
-        </div>
-        <div class="box def">
-          <h3>Comparative vs. Absolute Advantage</h3>
+      <!-- Scarcity & Choice -->
+      <h3>1) Scarcity, Choice, and Trade-offs</h3>
+      <p class="sub">Resources are finite; wants are effectively unlimited. Scarcity forces choice.</p>
+      <ul>
+        <li><strong>Scarce resources (“factors of production”)</strong>
           <ul>
-            <li><strong>Absolute advantage:</strong> Produce more with the same inputs.</li>
-            <li><strong>Comparative advantage:</strong> Lower opportunity cost — basis for specialization and gains from trade.</li>
-            <li><strong>Terms of Trade:</strong> Acceptable price range lies between each party’s opportunity cost.</li>
+            <li><em>Land</em>: natural resources (land, water, minerals, timber).</li>
+            <li><em>Labor</em>: human effort, time, skills; measured in hours/quality of work.</li>
+            <li><em>Capital</em>:
+              <ul>
+                <li><em>Physical</em>: tools, machines, factories that raise productivity.</li>
+                <li><em>Human</em>: education, training, experience (skills embedded in workers).</li>
+              </ul>
+            </li>
+            <li><em>Entrepreneurship</em>: risk-taking + organization to combine inputs in new ways.</li>
+          </ul>
+        </li>
+        <li><strong>Choice & trade-offs</strong>
+          <ul>
+            <li>Choosing more of Good A means giving up some of Good B because inputs are limited.</li>
+            <li><em>Trade-off</em> ≠ <em>opportunity cost</em>: a choice has many trade-offs; <em>opportunity cost</em> is the single highest-valued alternative forgone.</li>
+          </ul>
+        </li>
+        <li><strong>Opportunity cost (OC)</strong>
+          <ul>
+            <li>Measures <em>value</em> of the next best option, not every alternative.</li>
+            <li>Includes <em>implicit costs</em> (time, foregone salary) and <em>explicit costs</em> (money outlays).</li>
+            <li class="note">Example: Attending a concert costs $60 (ticket) and 3 hours you could work for $20/hr ⇒ OC = $60 + $60 = $120.</li>
+          </ul>
+        </li>
+        <li><strong>Rational behavior & marginal analysis</strong>
+          <ul>
+            <li>Rational agents continue an activity if <span class="formula">MB ≥ MC</span> and stop when <span class="formula">MB &lt; MC</span>.</li>
+            <li><span class="formula">Net benefit = Total Benefit − Total Cost</span>; choose option with highest expected net benefit.</li>
+            <li><em>Sunk cost</em> is irrelevant to marginal decisions (don’t “throw good money after bad”).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- PPC -->
+      <h3>2) Production Possibilities Curve (PPC)</h3>
+      <p class="sub">Shows maximum attainable combinations of two goods given current resources and technology.</p>
+      <ul>
+        <li><strong>Reading the PPC</strong>
+          <ul>
+            <li>Points <em>on</em> the curve: <strong>productive efficiency</strong> (all resources fully employed).</li>
+            <li>Points <em>inside</em>: <strong>inefficient</strong> (unemployment, idle capacity, misallocation).</li>
+            <li>Points <em>outside</em>: currently <strong>unattainable</strong> (require growth or trade).</li>
+          </ul>
+        </li>
+        <li><strong>Shape</strong>
+          <ul>
+            <li><em>Bowed-out</em> (concave) PPC: increasing OC — resources specialized; as you produce more of Good A, you use resources less suited to A ⇒ OC rises.</li>
+            <li><em>Linear</em> PPC: constant OC — resources are perfectly adaptable between goods.</li>
+          </ul>
+        </li>
+        <li><strong>Opportunity cost on the PPC</strong>
+          <ul>
+            <li>Moving from one point to another reveals the quantity of the other good given up.</li>
+            <li>Compute OC as <span class="formula">ΔY / ΔX</span> (units of Y forgone per extra X).</li>
+          </ul>
+        </li>
+        <li><strong>Economic growth & shifts</strong>
+          <ul>
+            <li><em>Outward shift</em>: ↑ resources (labor force, capital), ↑ technology, ↑ human capital, institutional improvements.</li>
+            <li><em>Inward shift</em>: resource destruction (natural disasters, war), institutional collapse.</li>
+            <li><em>Biased growth</em>: tech improvement in one sector rotates the PPC outward more for that good.</li>
+          </ul>
+        </li>
+        <li><strong>Unemployment vs. underemployment on the PPC</strong>
+          <ul>
+            <li>Both show up as points inside the curve; moving to the curve increases real output without growth.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Comparative Advantage -->
+      <h3>3) Specialization, Comparative Advantage, and Terms of Trade</h3>
+      <p class="sub">Trade lets each party consume beyond its PPC if each specializes in what it produces at lower OC.</p>
+      <ul>
+        <li><strong>Absolute vs. comparative advantage</strong>
+          <ul>
+            <li><em>Absolute advantage</em>: produce more with the same inputs (or the same with fewer inputs).</li>
+            <li><em>Comparative advantage</em>: produce at <strong>lower opportunity cost</strong> — the key driver of trade gains.</li>
+            <li>Even if one party has absolute advantage in both goods, trade can be beneficial if OCs differ.</li>
+          </ul>
+        </li>
+        <li><strong>Finding opportunity costs</strong>
+          <ul>
+            <li>In an output table (e.g., tons of wheat or steel): <span class="formula">OC of Wheat = Steel<sub>forgone</sub> / Wheat<sub>gained</sub></span>.</li>
+            <li>In an input table (e.g., hours per unit): invert logic; lower input requirement ⇒ absolute advantage; for comparative advantage, compute per-unit input OCs.</li>
+          </ul>
+        </li>
+        <li><strong>Specialization rule</strong>
+          <ul>
+            <li>Each country (or person) specializes in the good where its OC is lower.</li>
+            <li>Specialization increases total world output (expands joint PPC).</li>
+          </ul>
+        </li>
+        <li><strong>Terms of Trade (ToT)</strong>
+          <ul>
+            <li>Trade is mutually beneficial when the ToT (the “price” of one good in units of the other) lies between each party’s OC for that good.</li>
+            <li class="note">Example: If OC<sub>A</sub>(1 wheat) = 0.5 steel and OC<sub>B</sub>(1 wheat) = 2 steel, a ToT of 1 wheat for 1 steel benefits both (0.5 &lt; 1 &lt; 2).</li>
+          </ul>
+        </li>
+        <li><strong>Gains from trade</strong>
+          <ul>
+            <li>Measured by consumption beyond the autarky (no-trade) consumption point.</li>
+            <li>Graphically: consumption point outside an individual PPC (with trade) vs. on/inside without trade.</li>
+          </ul>
+        </li>
+        <li><strong>Common pitfalls</strong>
+          <ul>
+            <li>Confusing absolute with comparative advantage.</li>
+            <li>Setting ToT outside the OC interval (one side would reject).</li>
+            <li>Mixing up input vs. output tables when computing OCs.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Economic Systems -->
+      <h3>4) Economic Systems & Incentives</h3>
+      <p class="sub">How societies answer the “what, how, for whom” questions.</p>
+      <ul>
+        <li><strong>Market (capitalist) system</strong>
+          <ul>
+            <li>Decentralized decisions by households and firms; prices convey information and incentives.</li>
+            <li>Private property rights, voluntary exchange, competition.</li>
+            <li><em>Strengths</em>: efficiency, innovation, consumer choice. <em>Weaknesses</em>: inequality, market failures (externalities, public goods), business cycles.</li>
+          </ul>
+        </li>
+        <li><strong>Command (planned) system</strong>
+          <ul>
+            <li>Central authority sets output, prices, and allocation.</li>
+            <li><em>Strengths</em>: can mobilize resources quickly for priorities. <em>Weaknesses</em>: information problems, weak incentives ⇒ inefficiency/shortages.</li>
+          </ul>
+        </li>
+        <li><strong>Mixed economies (most real-world systems)</strong>
+          <ul>
+            <li>Markets allocate most resources; government corrects market failures, provides public goods, redistributes income, stabilizes economy.</li>
+            <li>Extent of government role varies by country and over time.</li>
+          </ul>
+        </li>
+        <li><strong>Role of institutions & incentives</strong>
+          <ul>
+            <li>Well-defined property rights encourage investment and exchange.</li>
+            <li>Rule of law lowers transaction costs and uncertainty; corruption does the opposite.</li>
+            <li>Incentives shape behavior: taxes/subsidies, regulation, social norms.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Economic Goals -->
+      <h3>5) Economic Goals: Efficiency, Equity, Growth, Stability, Freedom</h3>
+      <p class="sub">Societies balance multiple objectives; policy often trades one goal for another.</p>
+      <ul>
+        <li><strong>Efficiency</strong>
+          <ul>
+            <li><em>Productive efficiency</em>: produce at lowest possible cost (on PPC; in firms, at min ATC in long run).</li>
+            <li><em>Allocative efficiency</em>: produce the mix of goods most valued by society; where <span class="formula">MB = MC</span>.</li>
+          </ul>
+        </li>
+        <li><strong>Equity</strong>
+          <ul>
+            <li>Fairness of income/wealth distribution; may conflict with efficiency.</li>
+            <li>Tools: progressive taxation, transfers, public services.</li>
+          </ul>
+        </li>
+        <li><strong>Growth</strong>
+          <ul>
+            <li>↑ productive capacity over time (outward shift of PPC; ↑ real GDP per capita).</li>
+            <li>Drivers: capital accumulation, tech progress, human capital, institutions, openness to trade.</li>
+          </ul>
+        </li>
+        <li><strong>Stability</strong>
+          <ul>
+            <li>Low and predictable inflation; low cyclical unemployment; stable financial system.</li>
+            <li>Macroeconomic stabilization uses fiscal and monetary policy (covered in later units).</li>
+          </ul>
+        </li>
+        <li><strong>Economic freedom</strong>
+          <ul>
+            <li>Ability to choose jobs, start businesses, consume desired goods, and trade.</li>
+          </ul>
+        </li>
+        <li><strong>Trade-offs across goals</strong>
+          <ul>
+            <li>Equity vs. efficiency; short-run stabilization vs. long-run growth; environmental protection vs. output today.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Positive vs Normative -->
+      <h3>6) Positive vs. Normative Economics</h3>
+      <p class="sub">Separate testable statements from value-based prescriptions.</p>
+      <ul>
+        <li><strong>Positive statements</strong>
+          <ul>
+            <li>Descriptive; can be proven true/false with evidence (e.g., “A rent ceiling below equilibrium creates shortages”).</li>
+          </ul>
+        </li>
+        <li><strong>Normative statements</strong>
+          <ul>
+            <li>Value judgments about what should be (e.g., “The minimum wage ought to be increased”).</li>
+            <li>Cannot be falsified purely by data; depend on societal preferences.</li>
+          </ul>
+        </li>
+        <li><strong>Why the distinction matters</strong>
+          <ul>
+            <li>Policy debates mix empirical predictions (positive) with goals (normative).</li>
+            <li>Clarity prevents talking past one another and helps evaluate evidence.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- The Circular Flow -->
+      <h3>7) Circular Flow of Income & Expenditure</h3>
+      <p class="sub">Tracks how money, goods/services, and resources move between sectors.</p>
+      <ul>
+        <li><strong>Basic two-sector model (households & firms)</strong>
+          <ul>
+            <li><em>Product market</em>: firms sell goods/services; households buy.</li>
+            <li><em>Factor market</em>: households sell resources (labor, land, capital); firms buy and pay incomes (wages, rent, interest, profit).</li>
+          </ul>
+        </li>
+        <li><strong>Expanded model</strong>
+          <ul>
+            <li><em>Government</em>: collects taxes; buys goods/services; makes transfers.</li>
+            <li><em>Financial sector</em>: intermediates saving into investment (loanable funds); determines interest rates.</li>
+            <li><em>Rest of world</em>: exports (X) and imports (M); capital flows (covered in open-economy unit).</li>
+          </ul>
+        </li>
+        <li><strong>Leakages & injections</strong>
+          <ul>
+            <li><em>Leakages</em>: saving, taxes, imports.</li>
+            <li><em>Injections</em>: investment, government purchases, exports.</li>
+            <li>In equilibrium (simplified): <span class="formula">Leakages = Injections</span>.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Price System & Demand/Supply (lite for Unit 1 context) -->
+      <h3>8) Price System Basics: Demand, Supply, and Market Coordination</h3>
+      <p class="sub">How prices guide allocation; deep elasticity/market structures come later, but the foundations belong here.</p>
+      <ul>
+        <li><strong>Demand</strong>
+          <ul>
+            <li><em>Law of demand</em>: holding other things constant, as price ↑, quantity demanded ↓.</li>
+            <li><em>Shifters</em> (non-price):
+              <ul>
+                <li>Income (normal vs inferior goods)</li>
+                <li>Prices of related goods (substitutes, complements)</li>
+                <li>Tastes/preferences</li>
+                <li>Expectations (future prices/income)</li>
+                <li>Number of buyers (market size)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Supply</strong>
+          <ul>
+            <li><em>Law of supply</em>: holding other things constant, as price ↑, quantity supplied ↑.</li>
+            <li><em>Shifters</em> (non-price):
+              <ul>
+                <li>Input costs</li>
+                <li>Technology/productivity</li>
+                <li>Taxes & subsidies</li>
+                <li>Producer expectations</li>
+                <li>Number of sellers</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Equilibrium</strong>
+          <ul>
+            <li>Where Q<sub>d</sub> = Q<sub>s</sub>; the market-clearing price and quantity.</li>
+            <li><em>Surplus</em>: price above equilibrium; downward pressure on price.</li>
+            <li><em>Shortage</em>: price below equilibrium; upward pressure on price.</li>
+          </ul>
+        </li>
+        <li><strong>Policy wedges (brief preview)</strong>
+          <ul>
+            <li>Price ceiling (binding) ⇒ shortage; non-price rationing; DWL.</li>
+            <li>Price floor (binding) ⇒ surplus; storage or wasted resources; DWL.</li>
+            <li>Tax wedge ⇒ buyers pay more, sellers receive less; incidence depends on elasticities.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Cost Types & Decision Rules -->
+      <h3>9) Costs, Benefits, and Decision Rules</h3>
+      <p class="sub">Micro logic you’ll reuse across macro topics (investment, labor, policy evaluation).</p>
+      <ul>
+        <li><strong>Accounting vs. economic profit</strong>
+          <ul>
+            <li><em>Accounting profit</em> = Total revenue − explicit costs.</li>
+            <li><em>Economic profit</em> = Total revenue − (explicit + implicit costs).</li>
+          </ul>
+        </li>
+        <li><strong>Marginal decision rule</strong>
+          <ul>
+            <li>Choose the level of activity where <span class="formula">MB = MC</span> (or last unit with MB ≥ MC).</li>
+            <li>In investment decisions, compare present values (time value of money in later units).</li>
+          </ul>
+        </li>
+        <li><strong>Common fallacies</strong>
+          <ul>
+            <li><em>Sunk cost fallacy</em>: considering past, unrecoverable costs in current decisions.</li>
+            <li><em>Post hoc fallacy</em>: assuming causation from mere sequence.</li>
+            <li><em>Composition fallacy</em>: what’s true for a part isn’t necessarily true for the whole (e.g., paradox of thrift).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Productivity & Growth (primer) -->
+      <h3>10) Productivity & Growth (Primer for Later Units)</h3>
+      <p class="sub">Foundational links between inputs, technology, and living standards.</p>
+      <ul>
+        <li><strong>Labor productivity</strong>
+          <ul>
+            <li>Output per worker (or per hour); driven by capital deepening, human capital, technology, and institutions.</li>
+            <li>Higher productivity ⇒ higher real wages over time.</li>
+          </ul>
+        </li>
+        <li><strong>Capital vs. consumer goods trade-off</strong>
+          <ul>
+            <li>Investing more in capital goods today (sacrificing consumption) can yield faster growth (larger PPC in future).</li>
+          </ul>
+        </li>
+        <li><strong>Human capital & externalities</strong>
+          <ul>
+            <li>Education and health raise worker effectiveness; positive spillovers justify public support.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Measurement Vocabulary -->
+      <h3>11) Key Vocabulary & Notation (Used Throughout Course)</h3>
+      <div class="grid-2">
+        <div class="box">
+          <ul>
+            <li><strong>Real vs. nominal</strong>: real adjusts for inflation; nominal is current dollars.</li>
+            <li><strong>Stocks vs. flows</strong>: stock is a quantity at a point in time (wealth); flow is over time (income, saving).</li>
+            <li><strong>Ceteris paribus</strong>: “holding other things constant,” used to isolate causal effects.</li>
+            <li><strong>Exogenous vs. endogenous</strong>: given vs. determined inside a model.</li>
+            <li><strong>Short run vs. long run</strong>: in macro, long run is when wages/prices fully adjust; in micro, long run is when all inputs are variable.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <ul>
+            <li><strong>MB, MC</strong>: marginal benefit/cost.</li>
+            <li><strong>ATC, AVC, AFC</strong>: average total/variable/fixed cost (micro, later use).</li>
+            <li><strong>LRAS, SRAS, AD</strong>: long-run/short-run aggregate supply & aggregate demand (later units).</li>
+            <li><strong>X, M, NX</strong>: exports, imports, net exports.</li>
+            <li><strong>π</strong>: inflation rate (context-dependent).</li>
           </ul>
         </div>
       </div>
 
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
+      <div class="divider"></div>
+
+      <!-- Worked Examples -->
+      <h3>12) Worked Examples (Text-Only)</h3>
+      <ul>
+        <li><strong>OC from PPC points</strong>
+          <ul>
+            <li>Suppose moving from A→B increases Good A by +10 but reduces Good B by −30 ⇒ <span class="formula">OC(ΔA=10) = 30</span> ⇒ <span class="formula">OC of 1 A = 3 B</span>.</li>
+            <li>Increasing OC: as you move further toward A, each additional A costs more B (resources less suited to A are pulled in).</li>
+          </ul>
+        </li>
+        <li><strong>Comparative advantage with outputs</strong>
+          <ul>
+            <li>Country 1: 20 wheat or 10 steel; Country 2: 12 wheat or 6 steel.</li>
+            <li>OC<sub>1</sub>(1 wheat) = 0.5 steel; OC<sub>2</sub>(1 wheat) = 0.5 steel ⇒ same OC ⇒ no gains from trade purely on CA; need different OCs for mutually beneficial trade.</li>
+            <li>Change: Country 2 becomes 12 wheat or 4 steel ⇒ OC<sub>2</sub>(1 wheat) = 0.33 steel; country 2 has CA in wheat, country 1 in steel.</li>
+          </ul>
+        </li>
+        <li><strong>Terms of trade</strong>
+          <ul>
+            <li>If OC<sub>1</sub>(1 steel) = 2 wheat and OC<sub>2</sub>(1 steel) = 3 wheat, any ToT where <span class="formula">2 &lt; ToT(steel in wheat) &lt; 3</span> benefits both (e.g., 1 steel for 2.5 wheat).</li>
+          </ul>
+        </li>
+        <li><strong>Demand/Supply shock intuition</strong>
+          <ul>
+            <li>Good weather raises crop yields ⇒ supply shifts right ⇒ price ↓, quantity ↑.</li>
+            <li>Higher consumer income for a normal good ⇒ demand shifts right ⇒ price ↑, quantity ↑.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Common Mistakes -->
+      <h3>13) Common Mistakes & Quick Fixes</h3>
+      <ul>
+        <li>Using <em>money price changes</em> to claim “demand changed” — a price change moves along the curve; demand shifts need a non-price determinant.</li>
+        <li>Swapping <em>trade-offs</em> with <em>opportunity cost</em> — OC is the single best alternative forgone.</li>
+        <li>Confusing <em>productive</em> with <em>allocative</em> efficiency — productive is “lowest cost”; allocative is “MB = MC.”</li>
+        <li>Setting <em>terms of trade</em> outside the OC interval — one side will refuse, so no mutual gain.</li>
+        <li>Treating <em>sunk costs</em> as relevant — ignore them; focus on MB and MC going forward.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- Micro-to-Macro Bridges -->
+      <h3>14) Bridges to Later Units</h3>
+      <div class="box">
         <ul>
-          <li>Scarcity → choices → opportunity costs. Always think at the margin.</li>
-          <li>PPC shows efficiency and growth; trade can allow consumption beyond a country’s PPC.</li>
-          <li>Comparative advantage (not absolute) determines who should specialize in what.</li>
+          <li><strong>From PPC to AD-AS</strong>: Growth (outward PPC) parallels rightward LRAS shifts; negative supply shocks resemble inward capacity moves.</li>
+          <li><strong>From specialization to trade balance</strong>: Comparative advantage underpins patterns of exports/imports and affects AD via NX.</li>
+          <li><strong>From marginal analysis to policy</strong>: Cost-benefit logic frames fiscal project selection and regulation design.</li>
         </ul>
       </div>
-    </section>
 
-    <!-- =========================
-         UNIT 2
-    ========================== -->
-    <section id="u2" class="unit">
-      <h2>Unit 2 — Economic Indicators & the Business Cycle</h2>
-      <p class="kicker">How we measure the economy: output, prices, and labor markets — and how they move over time.</p>
+      <div class="divider"></div>
 
-      <div class="grid-2">
-        <div class="box def">
-          <h3>GDP Basics</h3>
-          <ul>
-            <li><strong>GDP:</strong> Market value of all final goods & services produced within a country in a given period.</li>
-            <li>Excludes: intermediate goods, used goods, purely financial transactions, household production, illegal markets (usually).</li>
-            <li><strong>Expenditure approach:</strong> <span class="k">Y = C + I + G + (X − M)</span>.</li>
-            <li><strong>Income approach:</strong> Wages + Rent + Interest + Profit (should ≈ expenditure approach).</li>
-          </ul>
-        </div>
-        <div class="box formula">
-          <h3>Real vs. Nominal & Price Indices</h3>
-          <ul>
-            <li><strong>Nominal GDP:</strong> Output valued at current prices.</li>
-            <li><strong>Real GDP:</strong> Output valued at base-year prices.</li>
-            <li><strong>GDP Deflator:</strong> <span class="k">Deflator = (Nominal / Real) × 100</span></li>
-            <li><strong>Inflation (via CPI):</strong> <span class="k">π ≈ (CPIₜ − CPIₜ₋₁)/CPIₜ₋₁ × 100</span></li>
-            <li><strong>Real interest rate:</strong> <span class="k">r ≈ i − π</span></li>
-          </ul>
-        </div>
-      </div>
+      <!-- Mini Glossary -->
+      <h3>15) Mini-Glossary (Rapid Review)</h3>
+      <ul>
+        <li><strong>Scarcity</strong>: limited resources, unlimited wants.</li>
+        <li><strong>Opportunity cost</strong>: value of next best alternative forgone.</li>
+        <li><strong>Trade-off</strong>: giving up one thing to get another.</li>
+        <li><strong>Marginal</strong>: relating to an additional unit.</li>
+        <li><strong>Comparative advantage</strong>: lower opportunity cost.</li>
+        <li><strong>Absolute advantage</strong>: higher productivity.</li>
+        <li><strong>Terms of trade</strong>: rate of exchange in trade.</li>
+        <li><strong>Productive efficiency</strong>: on PPC (lowest cost).</li>
+        <li><strong>Allocative efficiency</strong>: MB = MC (right mix).</li>
+        <li><strong>Circular flow</strong>: money, goods/services, and resources moving between sectors.</li>
+      </ul>
 
-      <div class="grid-2">
-        <div class="box example">
-          <h3>Worked Example — Real vs. Nominal GDP</h3>
-          <p>Suppose Nominal GDP = 1,100 and GDP Deflator = 110. Then <span class="k">Real GDP = 1,100 / 1.10 = 1,000</span>.</p>
-          <p>If next year Real GDP rises to 1,030, real growth ≈ <span class="k">3%</span>.</p>
-        </div>
-        <div class="box pitfall">
-          <h3>Common Pitfalls</h3>
-          <ul>
-            <li>CPI overstates inflation due to substitution and new-goods bias.</li>
-            <li>Nominal wage increases can still mean lower <em>real</em> wages if inflation is higher.</li>
-          </ul>
-        </div>
-      </div>
+      <div class="divider"></div>
 
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Unemployment</h3>
-          <ul>
-            <li><strong>Labor Force:</strong> Employed + Unemployed (actively seeking).</li>
-            <li><strong>Unemployment rate:</strong> <span class="k">U / Labor Force × 100</span></li>
-            <li>Types: frictional (search), structural (skills mismatch), cyclical (business cycle), seasonal.</li>
-            <li><strong>Natural rate (NRU):</strong> Frictional + Structural (when output at potential).</li>
-          </ul>
-        </div>
-        <div class="box graph">
-          <h3>Business Cycle & Output Gaps</h3>
-          <ul>
-            <li>Phases: expansion → peak → contraction → trough.</li>
-            <li><strong>Recessionary gap:</strong> Actual output &lt; potential (higher cyclical unemployment).</li>
-            <li><strong>Inflationary gap:</strong> Actual output &gt; potential (low unemployment, rising inflation pressure).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
-        <ul>
-          <li>Use Real GDP to compare output; use CPI/Deflator to track prices.</li>
-          <li>Inflation distorts nominal values — convert to real.</li>
-          <li>NRU exists even at potential output; cyclical unemployment indicates gaps.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =========================
-         UNIT 3
-    ========================== -->
-    <section id="u3" class="unit">
-      <h2>Unit 3 — National Income & Price Determination (AD–AS)</h2>
-      <p class="kicker">Short-run fluctuations, long-run potential, and how the economy self-corrects.</p>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Aggregate Demand (AD)</h3>
-          <ul>
-            <li><strong>AD = C + I + G + (X − M)</strong></li>
-            <li>Downward sloping due to wealth effect, interest-rate effect, and net export effect.</li>
-            <li><strong>Shifters:</strong> changes in C, I, G, NX (consumer confidence, taxes, investment expectations, foreign income, exchange rates).</li>
-          </ul>
-        </div>
-        <div class="box def">
-          <h3>Aggregate Supply (AS)</h3>
-          <ul>
-            <li><strong>SRAS:</strong> Upward sloping (sticky wages/prices). Shifts with input costs (wages, commodities), productivity, taxes/regulation, expectations.</li>
-            <li><strong>LRAS:</strong> Vertical at potential output (full employment). Shifts with resources, technology, institutions, human capital.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box graph">
-        <h3>Equilibrium & Gaps</h3>
-        <ul>
-          <li>Short-run equilibrium at AD ∩ SRAS; price level and output determined there.</li>
-          <li>Long-run equilibrium when AD ∩ SRAS ∩ LRAS.</li>
-          <li>Recessionary gap: AD intersects SRAS left of LRAS → unemployment &gt; NRU.</li>
-          <li>Inflationary gap: AD intersects SRAS right of LRAS → unemployment &lt; NRU.</li>
-        </ul>
-        <p><em>Self-correction:</em> In a recession, wages fall → SRAS shifts right toward LRAS. In an inflation, wages rise → SRAS shifts left.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="box formula">
-          <h3>Multipliers</h3>
-          <ul>
-            <li><strong>Spending multiplier:</strong> <span class="k">1 / (1 − MPC) = 1 / MPS</span></li>
-            <li><strong>Tax multiplier:</strong> <span class="k">− MPC / MPS</span></li>
-            <li><strong>Balanced budget multiplier ≈ 1</strong></li>
-          </ul>
-        </div>
-        <div class="box example">
-          <h3>Worked Example — Closing a Recessionary Gap</h3>
-          <p>Output gap = $200b; MPC = 0.8 → spending multiplier = <span class="k">1 / 0.2 = 5</span>. A $40b ↑ in government spending could close the gap (40 × 5 = 200).</p>
-          <p>Using a tax cut instead: tax multiplier = <span class="k">−0.8 / 0.2 = −4</span>; need a $50b tax cut (50 × 4 = 200).</p>
-        </div>
-      </div>
-
-      <div class="box pitfall">
-        <h3>Watch Out</h3>
-        <ul>
-          <li>Shifts vs. movements along AD/AS — rate changes cause movement along AD via interest-rate effect, not an AD shift.</li>
-          <li>Supply shocks (oil) shift SRAS, not AD.</li>
-        </ul>
-      </div>
-
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
-        <ul>
-          <li>AD changes drive short-run output; SRAS changes drive cost-push inflation.</li>
-          <li>Long-run output is set by LRAS (resources & productivity), not by the price level.</li>
-          <li>Multipliers amplify fiscal changes; size depends on MPC/MPS.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =========================
-         UNIT 4
-    ========================== -->
-    <section id="u4" class="unit">
-      <h2>Unit 4 — Financial Sector</h2>
-      <p class="kicker">Money, banks, interest rates, and how policy moves from reserves to the real economy.</p>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Money & Banking</h3>
-          <ul>
-            <li>Functions: medium of exchange, unit of account, store of value.</li>
-            <li>Types: commodity, fiat. <strong>M1</strong> (currency + checkable deposits), <strong>M2</strong> (M1 + savings, small time deposits, money market funds).</li>
-            <li>Fractional reserve banking: banks keep required reserves (rr) and loan the rest.</li>
-          </ul>
-        </div>
-        <div class="box formula">
-          <h3>Money Creation</h3>
-          <ul>
-            <li><strong>Simple money multiplier ≈</strong> <span class="k">1 / rr</span> (upper bound; leakages reduce it).</li>
-            <li><strong>Excess reserves =</strong> Actual reserves − Required reserves.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box graph">
-          <h3>Money Market</h3>
-          <ul>
-            <li>Vertical money supply (set by central bank) vs. downward-sloping money demand.</li>
-            <li>Open market purchase → MS shifts right → lower nominal i → ↑ investment → ↑ AD.</li>
-            <li>Open market sale → MS left → higher i → ↓ I → ↓ AD.</li>
-          </ul>
-        </div>
-        <div class="box def">
-          <h3>Loanable Funds Market</h3>
-          <ul>
-            <li>Real interest rate on y-axis; supply = national saving; demand = investment (plus gov’t deficits).</li>
-            <li>↑ budget deficit → demand for funds ↑ (or supply of national saving ↓) → r<sub>real</sub> ↑ → crowding out of private investment.</li>
-            <li>↑ capital inflows from abroad → supply of funds ↑ → r<sub>real</sub> ↓ → investment ↑.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Monetary Policy Tools</h3>
-          <ul>
-            <li>Open market operations (buy/sell bonds).</li>
-            <li>Reserve requirement (rarely used for fine-tuning).</li>
-            <li>Discount rate & interest on reserves.</li>
-          </ul>
-        </div>
-        <div class="box example">
-          <h3>Worked Example — T-Account</h3>
-          <p>Bank has $100 in deposits; rr = 10% → required reserves = $10. If reserves = $20, excess reserves = $10; new loans up to $10. With a simple multiplier of 10, <em>maximum</em> potential money creation = $100 (if fully lent & re-deposited with no leakages).</p>
-        </div>
-      </div>
-
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
-        <ul>
-          <li>Money market sets nominal i in the short run; loanable funds sets r<sub>real</sub> via saving & investment.</li>
-          <li>Open market purchases lower i → stimulate investment and AD; sales do the opposite.</li>
-          <li>Deficits can crowd out investment by raising real interest rates.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =========================
-         UNIT 5
-    ========================== -->
-    <section id="u5" class="unit">
-      <h2>Unit 5 — Stabilization Policies & Long-Run Consequences</h2>
-      <p class="kicker">How fiscal and monetary tools affect inflation, unemployment, and growth — in the short and long run.</p>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Fiscal Policy</h3>
-          <ul>
-            <li><strong>Expansionary:</strong> ↑ G or ↓ T to close recessionary gaps (AD →).</li>
-            <li><strong>Contractionary:</strong> ↓ G or ↑ T to close inflationary gaps (AD ←).</li>
-            <li><strong>Automatic stabilizers:</strong> taxes & transfers that vary with income (progressive tax, unemployment benefits) — reduce volatility without new laws.</li>
-            <li><strong>Lags:</strong> recognition, decision, implementation.</li>
-          </ul>
-        </div>
-        <div class="box def">
-          <h3>Monetary Policy</h3>
-          <ul>
-            <li><strong>Expansionary:</strong> buy bonds → MS ↑ → i ↓ → I ↑ → AD →</li>
-            <li><strong>Contractionary:</strong> sell bonds → MS ↓ → i ↑ → I ↓ → AD ←</li>
-            <li>Strengths: speed & flexibility; Limits: liquidity traps, expectations, weak credit demand.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box graph">
-          <h3>Phillips Curve</h3>
-          <ul>
-            <li><strong>SRPC:</strong> inverse short-run relationship between inflation and unemployment.</li>
-            <li><strong>LRPC:</strong> vertical at NRU; no long-run trade-off.</li>
-            <li>Expected inflation shifts SRPC: if expectations rise, SRPC shifts up/right.</li>
-          </ul>
-        </div>
-        <div class="box example">
-          <h3>Worked Link — AD–AS and Phillips</h3>
-          <p>AD → (expansion) raises price level and output → unemployment falls (move down along SRPC); persistent demand-pull inflation can shift expectations → SRPC shifts up (long-run unemployment returns to NRU).</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Growth & LRAS</h3>
-          <ul>
-            <li>LRAS shifts right with higher productivity, capital formation, technology, and labor force growth.</li>
-            <li>Policy levers: education/human capital, infrastructure, R&amp;D, institutions & rule of law.</li>
-          </ul>
-        </div>
-        <div class="box pitfall">
-          <h3>Budget Deficits, Debt, & Crowding Out</h3>
-          <ul>
-            <li>Deficits add to public debt; sustained deficits can raise r<sub>real</sub> and crowd out private investment.</li>
-            <li>But during recessions, well-targeted deficits may raise future growth if they fund productive investment.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
-        <ul>
-          <li>Short-run trade-off (SRPC) disappears in the long run (LRPC at NRU).</li>
-          <li>Use fiscal/monetary to close gaps, but watch lags, expectations, and crowding out.</li>
-          <li>Long-run growth is supply-side: shift LRAS via productivity and capital.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =========================
-         UNIT 6
-    ========================== -->
-    <section id="u6" class="unit">
-      <h2>Unit 6 — Open Economy: International Trade & Finance</h2>
-      <p class="kicker">How goods, services, and capital cross borders — and how exchange rates connect everything.</p>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Balance of Payments (BOP)</h3>
-          <ul>
-            <li><strong>Current account:</strong> goods/services trade (NX), income flows, transfers.</li>
-            <li><strong>Financial (capital) account:</strong> asset transactions (bonds, stocks, real assets).</li>
-            <li>They sum to ~0 (ignoring statistical discrepancy): a current account deficit is offset by a financial account surplus.</li>
-          </ul>
-        </div>
-        <div class="box def">
-          <h3>Foreign Exchange (FOREX)</h3>
-          <ul>
-            <li>Price of a currency (e.g., USD/JPY) set by supply and demand.</li>
-            <li><strong>Drivers of demand for a currency:</strong> foreign purchases of that country’s goods/assets, higher relative interest rates, relatively lower inflation, expected appreciation.</li>
-            <li>Appreciation makes exports dearer, imports cheaper → NX falls; depreciation does the opposite.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box graph">
-          <h3>Policy & Exchange Rates</h3>
-          <ul>
-            <li><strong>Expansionary fiscal</strong> (closed economy: AD →) can raise r<sub>real</sub> (via deficits) → foreign capital inflows → currency appreciates → NX ↓ (net export effect dampens AD).</li>
-            <li><strong>Expansionary monetary</strong> lowers i → currency depreciates → NX ↑ → reinforces AD.</li>
-            <li>Fixed exchange rate regimes require central bank intervention (buy/sell currency) and adequate reserves.</li>
-          </ul>
-        </div>
-        <div class="box example">
-          <h3>Worked Example — FOREX Shift</h3>
-          <p>If domestic interest rates rise relative to abroad, foreigners demand more domestic bonds → demand for domestic currency ↑ → appreciation. Expect NX to fall as exports become relatively more expensive.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="box def">
-          <h3>Trade Policies</h3>
-          <ul>
-            <li>Tariffs: raise domestic prices, reduce imports, generate tariff revenue, create deadweight loss.</li>
-            <li>Quotas: limit quantity; similar welfare effects without revenue (unless quota licenses are sold).</li>
-            <li>Protection helps some producers but reduces total surplus.</li>
-          </ul>
-        </div>
-        <div class="box pitfall">
-          <h3>Watch Out</h3>
-          <ul>
-            <li>“Strong currency is always good” — not true: it hurts exporters.</li>
-            <li>“Trade deficit means weak economy” — not necessarily; often linked to strong capital inflows.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box takeaway">
-        <h3>Takeaways</h3>
-        <ul>
-          <li>BOP links trade flows with capital flows; they offset.</li>
-          <li>Exchange rates respond to interest rates, inflation, income, and expectations.</li>
-          <li>Open-economy effects can reinforce or weaken domestic policy impacts on AD.</li>
-        </ul>
+      <!-- End Unit 1 -->
+      <div class="callout">
+        <span class="tag">End of Unit 1</span>
+        <span class="muted">You can paste Unit 2 right below as another <code>&lt;section class="unit"&gt;</code> block with the same styling.</span>
       </div>
     </section>
 
   </main>
-</div>
-
-<button id="backtop" aria-label="Back to top">↑</button>
-
-<script>
-  // Back-to-top behavior only (no progress/print/quiz features)
-  const back = document.getElementById('backtop');
-  window.addEventListener('scroll', ()=>{
-    back.style.display = (window.scrollY > 400) ? '' : 'none';
-  });
-  back.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
-</script>
-
 </body>
 </html>
