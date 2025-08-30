@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post – Vintage Edition</title>
+<title>Harbor Post – Vintage Culture</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Libre+Franklin:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 html, body {
@@ -14,196 +14,207 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Libre Franklin', sans-serif;
-  background: #f9f6f1; /* Vintage cream background */
-  color: #1a1a1a;
+  background: #f7f5f1;
+  font-family: 'Roboto Slab', serif;
+  color: #222;
   overflow-x: hidden;
+}
+
+/* Subtle paper texture overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 /* Header */
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 40px;
+  text-align: center;
+  padding: 40px 20px 20px;
   position: relative;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #1a1a1a;
+  font-size: clamp(42px, 6vw, 80px);
+  letter-spacing: 3px;
   margin: 0;
+  text-transform: uppercase;
 }
 
-/* Edition "stamp" */
+.subheading {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  color: #555;
+}
+
+/* Divider line */
+.header-divider {
+  width: 60px;
+  height: 2px;
+  background: #333;
+  margin: 15px auto 0;
+}
+
+/* Edition badge */
 .edition-text {
   position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #5a4634;
-  border: 1px solid #5a4634;
-  padding: 6px 12px;
-  border-radius: 4px;
-  background: #fdfcf8;
+  top: 20px;
+  right: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border: 1px solid #333;
+  border-radius: 20px;
+  background: #f7f5f1;
+  color: #222;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
 }
 
-/* Typing intro overlay */
+.edition-text::before {
+  content: "✦ ";
+  font-size: 12px;
+  color: #555;
+}
+
+/* Typing overlay */
 .typing-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #f9f6f1;
+  inset: 0;
+  background: #f7f5f1;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 2000;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 600;
-  color: #1a1a1a;
-  z-index: 1000;
+  font-size: clamp(28px, 4vw, 60px);
+  color: #222;
 }
 
-.cursor {
-  display: inline-block;
-  animation: blink 0.8s steps(2, start) infinite;
+.typing {
+  border-right: 2px solid #222;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-/* Landing layout */
+/* Layout */
 .landing-section {
   display: flex;
   width: 100%;
-  height: calc(100vh - 120px);
-  padding: 20px 40px 40px 40px;
-  box-sizing: border-box;
-  gap: 30px;
+  min-height: calc(100vh - 120px);
+  padding: 40px;
+  gap: 40px;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 1s ease;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 2.8s; /* after typing ends */
 }
 
-/* Left feature image */
+/* Left large image */
 .large-image-wrapper {
-  flex: 0 0 45%;
-  height: 100%;
-  border-radius: 8px;
+  flex: 0 0 50%;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .large-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: sepia(0.15) contrast(1.05) brightness(0.95);
-  transition: transform 0.6s ease, filter 0.5s ease;
+  filter: sepia(0.15) contrast(1.05);
+  transition: transform 0.8s ease, filter 0.6s ease;
 }
 
 .large-image-wrapper:hover img {
-  transform: scale(1.04);
-  filter: sepia(0.25) contrast(1.1) brightness(1);
+  transform: scale(1.06);
+  filter: sepia(0.25) contrast(1.1);
 }
 
 /* Divider */
 .image-divider {
-  width: 2px;
-  background: #c7b89b;
+  width: 1px;
+  background: rgba(0,0,0,0.2);
   flex-shrink: 0;
-  border-radius: 1px;
 }
 
-/* Right image grid */
+/* Right column */
 .right-column {
-  flex: 0 0 45%;
+  flex: 0 0 40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 15px;
-  height: 100%;
+  gap: 20px;
 }
 
 .box {
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 .box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  filter: sepia(0.1) contrast(1.05);
-  transition: transform 0.6s ease, filter 0.5s ease;
+  filter: sepia(0.15) contrast(1.05);
+  transition: transform 0.8s ease, filter 0.6s ease, box-shadow 0.6s ease;
 }
 
 .box:hover img {
   transform: scale(1.05);
   filter: sepia(0.25) contrast(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .landing-section {
-    flex-direction: column;
-    height: auto;
-    min-height: 100vh;
-    padding: 20px;
-    gap: 20px;
-  }
+/* Fade in animation */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-  .large-image-wrapper, .right-column {
-    flex: 1 1 100%;
-    height: auto;
-  }
+/* Custom cursor effect */
+a, .box img, .large-image-wrapper img {
+  cursor: none;
+}
 
-  .right-column {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-  }
+body {
+  cursor: none;
+}
 
-  .image-divider { display: none; }
-
-  .edition-text {
-    position: static;
-    margin-top: 15px;
-    transform: none;
-    display: inline-block;
-  }
+body::before {
+  content: "";
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #222;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  z-index: 3000;
 }
 </style>
 </head>
 <body>
 
-<!-- Typing Intro -->
-<div class="typing-overlay" id="typingOverlay">
-  <span id="typingText"></span><span class="cursor">.</span>
-</div>
+<!-- Typing intro -->
+<div class="typing-overlay"><span class="typing"></span></div>
 
 <header>
   <h1>HARBOR POST</h1>
+  <div class="subheading">An Independent Cultural Journal</div>
+  <div class="header-divider"></div>
   <div class="edition-text" id="edition"></div>
 </header>
 
-<div class="landing-section" id="landing">
-  <!-- Left Image -->
+<div class="landing-section">
+  <!-- Left image -->
   <div class="large-image-wrapper">
     <a href="article1.html">
       <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="Feature Image" loading="lazy">
@@ -213,48 +224,46 @@ h1 {
   <!-- Divider -->
   <div class="image-divider"></div>
 
-  <!-- Right column -->
+  <!-- Grid -->
   <div class="right-column">
-    <div class="box">
-      <a href="article2.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a>
-    </div>
-    <div class="box">
-      <a href="article3.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a>
-    </div>
-    <div class="box">
-      <a href="article4.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a>
-    </div>
-    <div class="box">
-      <a href="article5.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a>
-    </div>
+    <div class="box"><a href="article2.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a></div>
+    <div class="box"><a href="article3.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a></div>
+    <div class="box"><a href="article4.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a></div>
+    <div class="box"><a href="article5.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a></div>
   </div>
 </div>
 
 <script>
-// Edition stamp
+// Edition text
 const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
                 "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
 
 // Typing effect
-const text = "Harbor Post";
+const typingText = "Harbor Post.";
+const typingElement = document.querySelector(".typing");
 let i = 0;
-const speed = 120;
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typingText").textContent += text.charAt(i);
+function type() {
+  if (i < typingText.length) {
+    typingElement.textContent += typingText.charAt(i);
     i++;
-    setTimeout(typeWriter, speed);
+    setTimeout(type, 120);
   } else {
     setTimeout(() => {
-      document.getElementById("typingOverlay").style.display = "none";
-      document.getElementById("landing").style.opacity = "1";
+      document.querySelector(".typing-overlay").style.display = "none";
     }, 800);
   }
 }
-window.onload = typeWriter;
-</script>
+window.onload = type;
 
+// Custom cursor follow
+const cursor = document.body;
+document.addEventListener("mousemove", e => {
+  cursor.style.setProperty("--x", e.clientX + "px");
+  cursor.style.setProperty("--y", e.clientY + "px");
+  document.body::before
+});
+</script>
 </body>
 </html>
