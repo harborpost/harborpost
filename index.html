@@ -15,8 +15,8 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'Libre Franklin', sans-serif;
-  background: #1e2f3f; /* Muted vintage navy */
-  color: #f9f6f1; /* Cream text for contrast */
+  background: #2f3d4c; /* Blue background */
+  color: #fdfcf8;
   overflow-x: hidden;
 }
 
@@ -35,8 +35,10 @@ h1 {
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #f9f6f1; /* Cream against navy */
+  color: #fdfcf8;
   margin: 0;
+  opacity: 0; /* Start hidden */
+  transition: opacity 1s ease;
 }
 
 /* Edition "stamp" */
@@ -49,11 +51,11 @@ h1 {
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #1e2f3f; /* Navy text */
-  border: 1px solid #f9f6f1; /* Cream border */
-  background: #f9f6f1; /* Cream background */
+  color: #c7d2e0;
+  border: 1px solid #c7d2e0;
   padding: 6px 12px;
   border-radius: 4px;
+  background: rgba(255,255,255,0.05);
 }
 
 /* Typing intro overlay */
@@ -63,26 +65,44 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #1e2f3f; /* Navy */
+  background: #2f3d4c;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 600;
-  color: #f9f6f1; /* Cream text */
+  font-size: clamp(36px, 6vw, 72px); /* Match h1 size */
+  font-weight: 700;
+  color: #fdfcf8;
   z-index: 1000;
+  overflow: hidden;
+}
+
+.typing-overlay span {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .cursor {
   display: inline-block;
-  color: #c7d6e5; /* Soft light blue cursor */
   animation: blink 0.8s steps(2, start) infinite;
 }
 
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
+}
+
+/* Floating animation */
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translate(-50vw, -40vh) scale(0.6); opacity: 0; }
+}
+
+.float-up {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatUp 1.5s ease forwards;
 }
 
 /* Landing layout */
@@ -105,8 +125,7 @@ h1 {
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .large-image-wrapper img {
@@ -119,26 +138,13 @@ h1 {
 
 .large-image-wrapper:hover img {
   transform: scale(1.04);
-  filter: sepia(0.2) contrast(1.1) brightness(1);
-}
-
-/* Light overlay on hover */
-.large-image-wrapper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(199,214,229,0.15); /* faded light blue overlay */
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.large-image-wrapper:hover::after {
-  opacity: 1;
+  filter: sepia(0.25) contrast(1.1) brightness(1);
 }
 
 /* Divider */
 .image-divider {
   width: 2px;
-  background: #c7d6e5; /* Light desaturated blue */
+  background: #c7d2e0;
   flex-shrink: 0;
   border-radius: 1px;
 }
@@ -156,8 +162,7 @@ h1 {
 .box {
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .box img {
@@ -171,19 +176,7 @@ h1 {
 
 .box:hover img {
   transform: scale(1.05);
-  filter: sepia(0.2) contrast(1.1);
-}
-
-.box::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(199,214,229,0.15);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.box:hover::after {
-  opacity: 1;
+  filter: sepia(0.25) contrast(1.1);
 }
 
 /* Responsive */
@@ -226,7 +219,7 @@ h1 {
 </div>
 
 <header>
-  <h1>HARBOR POST</h1>
+  <h1 id="mainTitle">HARBOR POST</h1>
   <div class="edition-text" id="edition"></div>
 </header>
 
@@ -275,10 +268,17 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, speed);
   } else {
+    // Float up
+    const overlay = document.getElementById("typingOverlay");
+    const typingText = document.getElementById("typingText");
+    typingText.classList.add("float-up");
+
+    // After float up, hide overlay and reveal main page
     setTimeout(() => {
-      document.getElementById("typingOverlay").style.display = "none";
+      overlay.style.display = "none";
       document.getElementById("landing").style.opacity = "1";
-    }, 800);
+      document.getElementById("mainTitle").style.opacity = "1";
+    }, 1600);
   }
 }
 window.onload = typeWriter;
