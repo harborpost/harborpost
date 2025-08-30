@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post</title>
+<title>Harbor Post – Vintage Culture</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
@@ -12,19 +12,17 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   background: #f7f5f1;
   font-family: 'Roboto Slab', serif;
   color: #222;
   overflow-x: hidden;
 }
 
-/* Subtle paper texture overlay */
+/* Paper texture overlay */
 body::after {
   content: "";
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
   opacity: 0.08;
   pointer-events: none;
@@ -54,7 +52,6 @@ h1 {
   color: #555;
 }
 
-/* Divider line */
 .header-divider {
   width: 60px;
   height: 2px;
@@ -75,7 +72,6 @@ h1 {
   background: #f7f5f1;
   color: #222;
   font-weight: 600;
-  font-family: 'Roboto Slab', serif;
 }
 
 .edition-text::before {
@@ -104,79 +100,49 @@ h1 {
   overflow: hidden;
 }
 
-/* Layout */
+/* Layout (restored exactly as OG) */
 .landing-section {
   display: flex;
-  width: 100%;
-  min-height: calc(100vh - 120px);
   padding: 40px;
-  gap: 40px;
-  align-items: stretch;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
-  animation-delay: 2.8s; /* after typing ends */
-}
-
-/* Left large image */
-.large-image-wrapper {
-  flex: 0 0 55%;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.large-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: sepia(0.15) contrast(1.05);
-  transition: transform 0.8s ease, filter 0.6s ease;
-}
-
-.large-image-wrapper:hover img {
-  transform: scale(1.06);
-  filter: sepia(0.25) contrast(1.1);
-}
-
-/* Divider */
-.image-divider {
-  width: 1px;
-  background: rgba(0,0,0,0.2);
-  flex-shrink: 0;
-}
-
-/* Right column */
-.right-column {
-  flex: 0 0 40%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 20px;
 }
 
-.box {
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
+/* Left big image */
+.left {
+  flex: 3;
 }
-
-.box img {
+.left img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  border-radius: 12px;
+  display: block;
   filter: sepia(0.15) contrast(1.05);
-  transition: transform 0.8s ease, filter 0.6s ease, box-shadow 0.6s ease;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+.left img:hover {
+  transform: scale(1.03);
+  filter: sepia(0.25) contrast(1.1);
 }
 
-.box:hover img {
+/* Right 4-box grid */
+.right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.right img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  filter: sepia(0.15) contrast(1.05);
+  transition: transform 0.6s ease, filter 0.5s ease, box-shadow 0.5s ease;
+}
+.right img:hover {
   transform: scale(1.05);
   filter: sepia(0.25) contrast(1.1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  to { opacity: 1; }
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
 </style>
 </head>
@@ -193,22 +159,19 @@ h1 {
 </header>
 
 <div class="landing-section">
-  <!-- Left image -->
-  <div class="large-image-wrapper">
+  <!-- Left large image -->
+  <div class="left">
     <a href="article1.html">
       <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="Feature Image" loading="lazy">
     </a>
   </div>
 
-  <!-- Divider -->
-  <div class="image-divider"></div>
-
-  <!-- Grid -->
-  <div class="right-column">
-    <div class="box"><a href="article2.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a></div>
-    <div class="box"><a href="article3.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a></div>
-    <div class="box"><a href="article4.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a></div>
-    <div class="box"><a href="article5.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a></div>
+  <!-- Right grid -->
+  <div class="right">
+    <a href="article2.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a>
+    <a href="article3.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a>
+    <a href="article4.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a>
+    <a href="article5.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a>
   </div>
 </div>
 
