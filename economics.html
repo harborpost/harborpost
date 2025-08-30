@@ -1,1147 +1,305 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Economics Study Guide</title>
-<meta name="description" content="Economics study guide organized by units with progress tracking, search, and collapsible topics." />
-
-<style>
-:root{
-  --bg:#ffffff;
-  --surface:#f6f7fb;
-  --card:#ffffff;
-  --ink:#121417;
-  --muted:#6b7280;
-  --accent:#0ea5e9;
-  --accent-ink:#033b51;
-  --ok:#10b981;
-  --warn:#f59e0b;
-  --danger:#ef4444;
-  --ring:rgba(14,165,233,.25);
-  --shadow:0 8px 24px rgba(2,6,23,.08);
-  --radius:16px;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.6;
-}
-
-/* Header */
-.site-header{
-  position:sticky; top:0; z-index:40;
-  backdrop-filter:saturate(180%) blur(10px);
-  background:color-mix(in srgb, var(--bg) 85%, #fff 15%);
-  border-bottom:1px solid #eaeef6;
-}
-.header-inner{
-  max-width:1200px; margin:0 auto; padding:14px 18px;
-  display:grid; gap:10px; grid-template-columns: 1fr auto;
-  align-items:center;
-}
-.title-wrap h1{
-  margin:0; font-size:clamp(20px, 2.2vw, 28px); font-weight:800; letter-spacing:.2px;
-}
-.title-wrap p{ margin:0; color:var(--muted); font-size:14px}
-.controls{
-  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
-}
-input[type="search"]{
-  width:min(46vw,360px);
-  padding:10px 12px; border:1px solid #e5e7eb; border-radius:12px; background:#fff; color:inherit;
-  outline:0; box-shadow: inset 0 1px 0 rgba(0,0,0,.02);
-}
-input[type="search"]:focus{border-color:var(--accent); box-shadow:0 0 0 4px var(--ring)}
-select,button{
-  appearance:none; border:1px solid #e5e7eb; background:#fff; color:inherit;
-  padding:10px 12px; border-radius:12px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,.02);
-}
-.btn{
-  display:inline-flex; gap:8px; align-items:center; font-weight:600;
-}
-button.primary{ background:var(--accent); color:#fff; border-color:transparent }
-button.ghost{ background:#fff }
-
-/* Layout */
-.layout{
-  max-width:1200px; margin:0 auto; padding:18px;
-  display:grid; grid-template-columns: 280px 1fr; gap:18px;
-}
-@media (max-width: 980px){
-  .layout{ grid-template-columns: 1fr }
-}
-.sidebar{
-  position:sticky; top:72px; align-self:start;
-  display:flex; flex-direction:column; gap:10px;
-}
-.card{
-  background:var(--card); border:1px solid #eaeef6; border-radius:var(--radius); box-shadow:var(--shadow);
-}
-.sidebar .card{ padding:14px }
-.nav{
-  display:flex; flex-direction:column; gap:8px; max-height:calc(100svh - 120px); overflow:auto; padding-right:4px;
-}
-.nav a{
-  display:grid; grid-template-columns: 1fr auto; align-items:center;
-  gap:10px; text-decoration:none; color:inherit; padding:10px 10px; border-radius:12px;
-}
-.nav a:hover{ background:var(--surface) }
-.nav .badge{
-  font-size:12px; color:#0b6b44; background:color-mix(in srgb, var(--ok) 14%, #fff 86%);
-  border:1px solid color-mix(in srgb, var(--ok) 24%, #fff 76%); padding:2px 6px; border-radius:999px;
-}
-.progress{
-  height:8px; background:#eef2f7; border-radius:999px; overflow:hidden;
-}
-.progress > span{ display:block; height:100%; width:0%; background:var(--accent); transition:width .25s ease }
-
-/* Main content */
-main{ display:flex; flex-direction:column; gap:16px }
-.unit{
-  padding:16px; border-radius:var(--radius); border:1px solid #eaeef6; background:var(--card); box-shadow:var(--shadow);
-}
-.unit-header{
-  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-}
-.unit h2{ margin:0; font-size:clamp(18px,1.8vw,22px) }
-.unit-meta{ color:var(--muted); font-size:13px }
-.tag{
-  padding:2px 8px; border-radius:999px; border:1px solid #e5e7eb; font-size:12px; color:#374151; background:#fff;
-}
-.topiclist{ display:grid; gap:10px; margin-top:10px }
-details.topic{
-  border:1px solid #eaeef6; border-radius:12px; background:var(--surface);
-}
-details.topic[open]{ background:#fff; border-color:#dfe6f2; }
-details.topic summary{
-  list-style:none; cursor:pointer; padding:12px 14px; font-weight:700; display:flex; align-items:center; gap:10px;
-}
-details.topic summary::-webkit-details-marker{ display:none }
-.topic-body{ padding:0 14px 14px 14px; display:grid; gap:10px }
-.kicker{ font-size:13px; color:var(--muted); margin:0 }
-.grid-2{
-  display:grid; grid-template-columns:1fr 1fr; gap:12px;
-}
-@media (max-width: 800px){ .grid-2{ grid-template-columns:1fr } }
-.box{
-  padding:12px; border:1px dashed #e1e6ef; border-radius:12px; background:#fff;
-}
-.box h4{ margin:0 0 6px 0 }
-ul,ol{ margin:0; padding-left:18px }
-small.muted{ color:var(--muted) }
-label.check{
-  display:inline-flex; align-items:center; gap:8px; user-select:none;
-  font-weight:600;
-}
-label.check input{ transform:translateY(1px) }
-
-/* Search highlight */
-mark.search-hit{ background: #fff3a3; padding:0 2px }
-
-/* Back to top */
-.backtop{
-  position:fixed; right:18px; bottom:18px; z-index:50;
-  border-radius:999px; padding:10px 12px;
-  box-shadow:var(--shadow);
-}
-
-/* Print */
-@media print{
-  .site-header, .sidebar, .backtop{ display:none !important }
-  .layout{ padding:0 }
-  .unit{ break-inside:avoid; border:none; box-shadow:none }
-  details.topic{ border:1px solid #bbb }
-  details.topic[open] > summary{ border-bottom:1px solid #ddd }
-}
-
-/* Tiny helper for empty search */
-.empty{
-  padding:22px; border:1px dashed #e1e6ef; background:var(--surface); border-radius:12px; color:var(--muted);
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economics Study Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f4f9;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      display: flex;
+    }
+    nav {
+      width: 250px;
+      background: #34495e;
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+    }
+    nav h2 {
+      font-size: 1.2rem;
+      border-bottom: 1px solid #777;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    nav a {
+      color: white;
+      display: block;
+      padding: 8px 0;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    section.unit {
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    section.unit h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+    details.topic {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f9f9f9;
+      border-left: 4px solid #3498db;
+      border-radius: 5px;
+    }
+    details.topic summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    details.topic ul {
+      margin: 10px 0 0 20px;
+    }
+    .progress {
+      height: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+      background: #3498db;
+      width: 0;
+    }
+    .controls {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .controls button {
+      padding: 10px 15px;
+      border: none;
+      background: #3498db;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background: #2980b9;
+    }
+    .backtop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      display: none;
+    }
+    .search {
+      margin: 20px 0;
+    }
+    .search input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Economics Study Guide</h1>
+  </header>
 
-<header class="site-header">
-  <div class="header-inner">
-    <div class="title-wrap">
-      <h1>Economics Study Guide</h1>
-      <p>Structured by units with concise theory, key formulas, graphs to know, and quick checks.</p>
-    </div>
-    <div class="controls">
-      <input id="search" type="search" placeholder="Search topics, formulas, or terms…" aria-label="Search" />
-      <select id="domainFilter" aria-label="Filter by domain">
-        <option value="all">Show: All domains</option>
-        <option value="foundations">Foundations</option>
-        <option value="micro">Microeconomics</option>
-        <option value="macro">Macroeconomics</option>
-        <option value="open">Open Economy</option>
-      </select>
-      <button id="expandAll" class="btn ghost" title="Expand all topics">Expand All</button>
-      <button id="collapseAll" class="btn ghost" title="Collapse all topics">Collapse All</button>
-      <button id="resetProgress" class="btn" title="Clear saved progress">Reset Progress</button>
-      <button id="printBtn" class="btn primary" title="Print or save to PDF">Print</button>
-    </div>
+  <div class="container">
+    <nav>
+      <h2>Units</h2>
+      <div id="nav"></div>
+    </nav>
+
+    <main>
+      <div class="controls">
+        <button id="expandAll">Expand All</button>
+        <button id="collapseAll">Collapse All</button>
+        <button id="resetProgress">Reset Progress</button>
+        <button id="printBtn">Print</button>
+      </div>
+
+      <div class="search">
+        <input type="text" id="search" placeholder="Search topics...">
+      </div>
+
+      <!-- === Example Units (you can expand) === -->
+      <section id="unit1" class="unit">
+        <h2>Unit 1: Basic Economic Concepts</h2>
+        <div class="progress"><span></span></div>
+        <details class="topic" id="topic1-1">
+          <summary>
+            Scarcity and Choice
+            <input type="checkbox" data-topic-complete>
+          </summary>
+          <ul>
+            <li>Definition of scarcity</li>
+            <li>Opportunity cost</li>
+            <li>Trade-offs in decision making</li>
+          </ul>
+        </details>
+        <details class="topic" id="topic1-2">
+          <summary>
+            Economic Systems
+            <input type="checkbox" data-topic-complete>
+          </summary>
+          <ul>
+            <li>Command economy</li>
+            <li>Market economy</li>
+            <li>Mixed economy</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="unit2" class="unit">
+        <h2>Unit 2: Supply and Demand</h2>
+        <div class="progress"><span></span></div>
+        <details class="topic" id="topic2-1">
+          <summary>
+            Demand
+            <input type="checkbox" data-topic-complete>
+          </summary>
+          <ul>
+            <li>Law of demand</li>
+            <li>Determinants of demand</li>
+            <li>Shifts vs. movement along curve</li>
+          </ul>
+        </details>
+        <details class="topic" id="topic2-2">
+          <summary>
+            Supply
+            <input type="checkbox" data-topic-complete>
+          </summary>
+          <ul>
+            <li>Law of supply</li>
+            <li>Determinants of supply</li>
+            <li>Shifts vs. movement along curve</li>
+          </ul>
+        </details>
+        <details class="topic" id="topic2-3">
+          <summary>
+            Market Equilibrium
+            <input type="checkbox" data-topic-complete>
+          </summary>
+          <ul>
+            <li>Equilibrium price and quantity</li>
+            <li>Surpluses and shortages</li>
+            <li>Government intervention (price floors/ceilings)</li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- add more units here -->
+
+    </main>
   </div>
-</header>
 
-<div class="layout">
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar">
-    <div class="card">
-      <strong>Units</strong>
-      <div class="nav" id="nav">
-        <!-- Filled dynamically -->
-      </div>
-    </div>
-    <div class="card">
-      <strong>Tips</strong>
-      <ul style="margin-top:8px">
-        <li>Use <em>Search</em> to filter topics and highlight matches.</li>
-        <li>Mark topics done; progress saves automatically.</li>
-        <li>Print to generate a clean PDF for offline review.</li>
-      </ul>
-    </div>
-  </aside>
+  <a href="#top" class="backtop" id="backtop">⬆</a>
 
-  <!-- Main Content -->
-  <main id="content">
-    <!-- ===== Foundations ===== -->
-    <section class="unit" data-domain="foundations" id="unit-foundations">
-      <div class="unit-header">
-        <h2>Unit 1 — Foundations of Economics</h2>
-        <div class="unit-meta">
-          <span class="tag">Foundations</span>
-        </div>
-      </div>
-      <p class="kicker">Core ideas: scarcity, tradeoffs, and how choices create costs and benefits.</p>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("nav");
+    const units = document.querySelectorAll(".unit");
 
-      <div class="progress" data-progress="unit-foundations"><span></span></div>
+    // Build sidebar navigation
+    units.forEach(unit => {
+      const title = unit.querySelector("h2").textContent;
+      const link = document.createElement("a");
+      link.href = "#" + unit.id;
+      link.textContent = title;
+      nav.appendChild(link);
+    });
 
-      <div class="topiclist">
+    // Track progress
+    document.querySelectorAll("details.topic").forEach(topic => {
+      const checkbox = topic.querySelector("[data-topic-complete]");
+      if (!checkbox) return;
+      const id = topic.id;
+      checkbox.checked = localStorage.getItem(id) === "1";
+      checkbox.addEventListener("change", () => {
+        localStorage.setItem(id, checkbox.checked ? "1" : "0");
+        updateProgress();
+      });
+    });
 
-        <details class="topic" id="t-scarcity-choice">
-          <summary>Scarcity, Trade-offs, and Opportunity Cost</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li><strong>Scarcity</strong>: limited resources vs. unlimited wants.</li>
-                  <li><strong>Trade-off</strong>: choosing more of one thing means less of another.</li>
-                  <li><strong>Opportunity cost</strong>: highest valued alternative forgone.</li>
-                  <li><strong>Marginal analysis</strong>: compare marginal benefit (MB) to marginal cost (MC).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Quick Checks</h4>
-                <ul>
-                  <li>Identify the opportunity cost in a scenario with two choices.</li>
-                  <li>Decide whether to continue an activity using MB vs. MC.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Net benefit = Total benefit − Total cost</li>
-                  <li>Optimal decision: choose level where <strong>MB ≥ MC</strong></li>
-                </ul>
-              </div>
-              <div class="box">
-                <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label><br/>
-                <small class="muted">Graph to know: simple MB & MC curves; optimal at intersection.</small>
-              </div>
-            </div>
-          </div>
-        </details>
+    function updateProgress() {
+      document.querySelectorAll(".unit").forEach(unit => {
+        const topics = unit.querySelectorAll("details.topic [data-topic-complete]");
+        const done = [...topics].filter(cb => cb.checked).length;
+        const span = unit.querySelector(".progress > span");
+        if (span) span.style.width = topics.length ? (done/topics.length*100)+"%" : "0%";
+      });
+    }
+    updateProgress();
 
-        <details class="topic" id="t-ppf-trade">
-          <summary>Production Possibilities & Comparative Advantage</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li><strong>PPF</strong>: shows maximum output combos; bowed-out from increasing opportunity cost.</li>
-                  <li><strong>Efficiency</strong>: on the curve; inefficiency inside; unattainable outside (w/o growth).</li>
-                  <li><strong>Comparative advantage</strong>: lower opportunity cost; basis for mutually beneficial trade.</li>
-                  <li><strong>Specialization</strong> raises total output; terms of trade lie between opportunity costs.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Opp. cost of X = (loss of Y)/(gain of X)</li>
-                  <li>Growth sources: ↑ resources, ↑ tech, ↑ human capital.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>PPF shifts; specialization & trade gains.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-              </div>
-            </div>
-          </div>
-        </details>
+    // Expand / Collapse all
+    document.getElementById("expandAll").onclick = () => {
+      document.querySelectorAll("details.topic").forEach(d => d.open = true);
+    };
+    document.getElementById("collapseAll").onclick = () => {
+      document.querySelectorAll("details.topic").forEach(d => d.open = false);
+    };
 
-        <details class="topic" id="t-systems">
-          <summary>Economic Systems & the Role of Incentives</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Market vs. command vs. mixed economies.</li>
-                  <li>Property rights & prices convey information and incentives.</li>
-                  <li>Positive vs. normative analysis.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Common Pitfalls</h4>
-                <ul>
-                  <li>Confusing <em>equity</em> with <em>efficiency</em> goals.</li>
-                  <li>Assuming markets always self-correct quickly.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
+    // Reset Progress
+    document.getElementById("resetProgress").onclick = () => {
+      localStorage.clear();
+      document.querySelectorAll("[data-topic-complete]").forEach(cb => cb.checked = false);
+      updateProgress();
+    };
 
-      </div>
-    </section>
+    // Print button
+    document.getElementById("printBtn").onclick = () => window.print();
 
-    <!-- ===== Microeconomics ===== -->
-    <section class="unit" data-domain="micro" id="unit-sd">
-      <div class="unit-header">
-        <h2>Unit 2 — Supply & Demand, Market Equilibrium, Elasticity</h2>
-        <div class="unit-meta">
-          <span class="tag">Microeconomics</span>
-        </div>
-      </div>
-      <p class="kicker">How prices and quantities are determined—and how responsive buyers and sellers are.</p>
+    // Search filter
+    const searchBox = document.getElementById("search");
+    searchBox.addEventListener("input", () => {
+      const q = searchBox.value.toLowerCase();
+      document.querySelectorAll("details.topic").forEach(topic => {
+        const text = topic.textContent.toLowerCase();
+        topic.style.display = text.includes(q) ? "" : "none";
+      });
+    });
 
-      <div class="progress" data-progress="unit-sd"><span></span></div>
-
-      <div class="topiclist">
-
-        <details class="topic" id="t-demand-supply">
-          <summary>Demand & Supply Shifters and Equilibrium</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Demand shifters: income, tastes, prices of related goods, expectations, # of buyers.</li>
-                  <li>Supply shifters: input costs, technology, taxes/subsidies, expectations, # of sellers.</li>
-                  <li>Equilibrium: where Q<sub>d</sub> = Q<sub>s</sub>; shocks cause new equilibrium prices/quantities.</li>
-                  <li>Surplus (price above equilibrium) vs. shortage (price below equilibrium).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>S & D shifts; surplus/shortage regions; comparative statics.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="box">
-                <h4>Policy Tools</h4>
-                <ul>
-                  <li>Price ceiling (binding ⇒ shortage, DWL)</li>
-                  <li>Price floor (binding ⇒ surplus, DWL)</li>
-                  <li>Tax ⇒ wedge: <em>incidence</em> depends on elasticity</li>
-                </ul>
-              </div>
-              <div class="box">
-                <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic" id="t-elasticity">
-          <summary>Elasticity & Tax Incidence</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Price elasticity of demand: <strong>E<sub>d</sub> = %ΔQ<sub>d</sub> / %ΔP</strong> (midpoint recommended)</li>
-                  <li>Cross-price: <strong>E<sub>xy</sub> = %ΔQ<sub>x</sub> / %ΔP<sub>y</sub></strong></li>
-                  <li>Income elasticity: <strong>E<sub>I</sub> = %ΔQ / %ΔI</strong></li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Interpretation</h4>
-                <ul>
-                  <li>|E<sub>d</sub>| &gt; 1 ⇒ elastic (price ↑ ⇒ revenue ↓)</li>
-                  <li>|E<sub>d</sub>| &lt; 1 ⇒ inelastic (price ↑ ⇒ revenue ↑)</li>
-                  <li>Tax burden falls more on the <em>less elastic</em> side of the market.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-surplus">
-          <summary>Consumer & Producer Surplus, Deadweight Loss</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>CS = area between demand and price; PS = area between price and supply.</li>
-                  <li>Efficient quantity maximizes total surplus.</li>
-                  <li>Taxes/price controls create DWL by reducing mutually beneficial trades.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Wedge tax; shaded CS/PS/DWL areas before & after policy.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-      </div>
-    </section>
-
-    <section class="unit" data-domain="micro" id="unit-costs">
-      <div class="unit-header">
-        <h2>Unit 3 — Production, Costs, and Perfect Competition</h2>
-        <div class="unit-meta"><span class="tag">Microeconomics</span></div>
-      </div>
-      <p class="kicker">From short-run cost curves to profit maximization.</p>
-
-      <div class="progress" data-progress="unit-costs"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-short-run-costs">
-          <summary>Short-Run Production & Cost Curves</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Diminishing marginal returns ⇒ rising MC.</li>
-                  <li>Curves: <strong>MC</strong>, <strong>ATC</strong>, <strong>AVC</strong>, <strong>AFC</strong> and their relationships.</li>
-                  <li>MC intersects ATC and AVC at their minima.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>ATC = TC/Q; AVC = VC/Q; AFC = FC/Q; MC = ΔTC/ΔQ</li>
-                  <li>Profit = (P − ATC) × Q</li>
-                  <li>Shutdown rule (SR): produce if P ≥ AVC</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-pc-firms">
-          <summary>Perfect Competition: Firm & Industry</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Price takers: P = MR = AR.</li>
-                  <li>Profit max at <strong>MR = MC</strong>.</li>
-                  <li>Long-run: entry/exit ⇒ P = min ATC (zero economic profit).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Firm: cost curves with P line; profit box; shutdown at P&lt;AVC.</li>
-                  <li>Industry: S/D with entry/exit shifts.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-long-run">
-          <summary>Long-Run Costs & Scale</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>LRATC: economies of scale → constant → diseconomies.</li>
-                  <li>Minimum efficient scale (MES): smallest Q at min LRATC.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Common Pitfalls</h4>
-                <ul>
-                  <li>Confusing SR diminishing returns with LR scale effects.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="unit" data-domain="micro" id="unit-imperfect">
-      <div class="unit-header">
-        <h2>Unit 4 — Imperfect Competition & Game Theory</h2>
-        <div class="unit-meta"><span class="tag">Microeconomics</span></div>
-      </div>
-      <p class="kicker">Monopoly, monopolistic competition, oligopoly, and strategic behavior.</p>
-
-      <div class="progress" data-progress="unit-imperfect"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-monopoly">
-          <summary>Monopoly & Price Discrimination</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Downward-sloping demand ⇒ MR below demand.</li>
-                  <li>Profit max: MR = MC; price from demand.</li>
-                  <li>Allocative inefficiency (P &gt; MC), DWL.</li>
-                  <li>Perfect price discrimination can eliminate DWL.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Demand, MR, MC, ATC with monopoly price/quantity & DWL.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-mmc">
-          <summary>Monopolistic Competition & Oligopoly</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Monopolistic competition: many firms, product differentiation, LR zero economic profit, excess capacity.</li>
-                  <li>Oligopoly: few firms; interdependence; collusion vs. competition.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Game Theory</h4>
-                <ul>
-                  <li>Dominant strategy, Nash equilibrium, prisoners’ dilemma.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-failure">
-          <summary>Market Failure: Externalities, Public Goods, Regulation</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Externalities: MSC vs. MPC; MSB vs. MPB.</li>
-                  <li>Internalize with Pigovian tax/subsidy; tradable permits; Coase theorem.</li>
-                  <li>Public goods: nonrival & nonexcludable ⇒ free rider; efficient provision where MSB = MSC.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Negative externality (MSC above supply) & tax; positive externality (MSB above demand) & subsidy.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-factor">
-          <summary>Factor Markets & Income Distribution</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>MRP = MP × P (or MR × MP for imperfect competition)</li>
-                  <li>Hire where MRP = MRC (wage for labor)</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Competitive labor market vs. monopsony (MRC above supply, lower W, lower L).</li>
-                  <li>Human capital, unions, minimum wage effects.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- ===== Macroeconomics ===== -->
-    <section class="unit" data-domain="macro" id="unit-measure">
-      <div class="unit-header">
-        <h2>Unit 5 — Measuring the Economy</h2>
-        <div class="unit-meta"><span class="tag">Macroeconomics</span></div>
-      </div>
-      <p class="kicker">GDP, inflation, and unemployment—what they mean and how they’re calculated.</p>
-
-      <div class="progress" data-progress="unit-measure"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-gdp">
-          <summary>Output & Income: GDP Concepts</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Expenditure: <strong>Y = C + I + G + (X − M)</strong></li>
-                  <li>Real GDP = Nominal GDP / GDP Deflator × 100</li>
-                  <li>Growth rate ≈ %ΔReal GDP</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Final goods/services only; avoids double counting.</li>
-                  <li>Real vs. nominal; base year; GDP deflator vs. CPI.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-cpi">
-          <summary>Inflation & Price Indices</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>CPI inflation ≈ (CPI<sub>t</sub> − CPI<sub>t−1</sub>) / CPI<sub>t−1</sub> × 100</li>
-                  <li>Real interest rate ≈ nominal − inflation</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Common Pitfalls</h4>
-                <ul>
-                  <li>Substitution bias and new goods in CPI.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-unemp">
-          <summary>Unemployment & Output Gaps</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Types: frictional, structural, cyclical.</li>
-                  <li>Natural rate of unemployment (NRU) when output at potential.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Relationships</h4>
-                <ul>
-                  <li>Okun’s law: unemployment gap relates to output gap (directionally).</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="unit" data-domain="macro" id="unit-adas">
-      <div class="unit-header">
-        <h2>Unit 6 — Aggregate Demand & Supply</h2>
-        <div class="unit-meta"><span class="tag">Macroeconomics</span></div>
-      </div>
-      <p class="kicker">Short-run fluctuations, long-run growth path, and output gaps.</p>
-
-      <div class="progress" data-progress="unit-adas"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-adas-basics">
-          <summary>Model Basics & Shifters</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>AD: C, I, G, NX; slopes down via wealth, interest rate, and net export effects.</li>
-                  <li>SRAS: input prices sticky; LRAS vertical at potential output.</li>
-                  <li>Shocks: demand-pull vs. cost-push inflation.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>AD–SRAS–LRAS with inflationary vs. recessionary gaps and self-correction (SRAS shifts).</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-fiscal">
-          <summary>Fiscal Policy & Multipliers</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Spending multiplier: <strong>1 / (1 − MPC) = 1 / MPS</strong></li>
-                  <li>Tax multiplier: <strong>− MPC / MPS</strong></li>
-                  <li>Balanced budget multiplier ≈ 1</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Discretionary vs. automatic stabilizers.</li>
-                  <li>Crowding out: ↑ G may ↑ interest rates → ↓ I.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="unit" data-domain="macro" id="unit-money">
-      <div class="unit-header">
-        <h2>Unit 7 — Money, Banking, & Monetary Policy</h2>
-        <div class="unit-meta"><span class="tag">Macroeconomics</span></div>
-      </div>
-      <p class="kicker">How the financial system creates money and how policy affects interest rates and output.</p>
-
-      <div class="progress" data-progress="unit-money"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-money-basics">
-          <summary>Money, Banks, and Creation of Money</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Formulas</h4>
-                <ul>
-                  <li>Money multiplier ≈ <strong>1 / rr</strong> (simple)</li>
-                  <li>Excess reserves = Actual reserves − Required reserves</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Balance sheets: assets vs. liabilities.</li>
-                  <li>Money market: nominal interest rate set by money supply & demand.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-monetary">
-          <summary>Monetary Policy & Loanable Funds</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Policy tools: open-market ops, reserve ratio, discount rate, interest on reserves.</li>
-                  <li>Transmission: money market → investment → AD → output & prices.</li>
-                  <li>Loanable funds: real interest rate; supply (savings) vs. demand (investment).</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Money market (MS shifts), Loanable funds (S/D shifts).</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-phillips">
-          <summary>Inflation, Unemployment, & the Phillips Curve</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>SRPC: inverse relationship between inflation and unemployment.</li>
-                  <li>LRPC vertical at NRU; expectations shift SRPC.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Common Pitfalls</h4>
-                <ul>
-                  <li>Assuming long-run trade-off exists—<em>it doesn’t</em>.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- ===== Open Economy ===== -->
-    <section class="unit" data-domain="open" id="unit-open">
-      <div class="unit-header">
-        <h2>Unit 8 — International Trade & Finance</h2>
-        <div class="unit-meta"><span class="tag">Open Economy</span></div>
-      </div>
-      <p class="kicker">Trade, exchange rates, and how capital flows link economies.</p>
-
-      <div class="progress" data-progress="unit-open"><span></span></div>
-
-      <div class="topiclist">
-        <details class="topic" id="t-trade">
-          <summary>Trade Gains, Tariffs, & Quotas</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Comparative advantage drives gains from trade.</li>
-                  <li>Tariffs/quotas: raise domestic prices; create DWL; redistribute surplus.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Small country model with world price (P<sub>w</sub>), tariff wedge, quota equivalent.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-
-        <details class="topic" id="t-forex">
-          <summary>Foreign Exchange & Balance of Payments</summary>
-          <div class="topic-body">
-            <div class="grid-2">
-              <div class="box">
-                <h4>Key Ideas</h4>
-                <ul>
-                  <li>Appreciation vs. depreciation driven by relative interest rates, prices, income, tastes.</li>
-                  <li>Balance of payments: current vs. financial (capital) account; they sum to zero.</li>
-                  <li>Exchange rate effects on net exports and AD.</li>
-                </ul>
-              </div>
-              <div class="box">
-                <h4>Graphs to Know</h4>
-                <ul>
-                  <li>Forex market (S/D for a currency) and shifts.</li>
-                </ul>
-              </div>
-            </div>
-            <label class="check"><input type="checkbox" data-topic-complete /> Mark topic complete</label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <div id="noResults" class="empty" style="display:none">No matches. Try a different keyword or clear filters.</div>
-  </main>
-</div>
-
-<button class="backtop" id="backtop" title="Back to top">↑</button>
-
-<script>
-/* =========================
-   Data & helpers
-========================= */
-const units = [
-  { id:"unit-foundations", title:"Unit 1 — Foundations of Economics", domain:"foundations" },
-  { id:"unit-sd",          title:"Unit 2 — Supply & Demand, Equilibrium, Elasticity", domain:"micro" },
-  { id:"unit-costs",       title:"Unit 3 — Production, Costs, Perfect Competition",   domain:"micro" },
-  { id:"unit-imperfect",   title:"Unit 4 — Imperfect Competition & Game Theory",      domain:"micro" },
-  { id:"unit-measure",     title:"Unit 5 — Measuring the Economy",                    domain:"macro" },
-  { id:"unit-adas",        title:"Unit 6 — Aggregate Demand & Supply",                domain:"macro" },
-  { id:"unit-money",       title:"Unit 7 — Money, Banking, & Policy",                 domain:"macro" },
-  { id:"unit-open",        title:"Unit 8 — International Trade & Finance",            domain:"open" },
-];
-
-const storeKey = "econGuide.v1";
-const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
-if(!saved.topics){ saved.topics = {}; }
-if(!saved.unitOpen){ saved.unitOpen = {}; }
-
-/* =========================
-   Sidebar nav + progress
-========================= */
-const nav = document.getElementById("nav");
-const content = document.getElementById("content");
-
-function calcUnitProgress(unitId){
-  const unitEl = document.getElementById(unitId);
-  const checks = unitEl.querySelectorAll('input[type="checkbox"][data-topic-complete]');
-  if(checks.length === 0) return 0;
-  const done = Array.from(checks).filter(c => c.checked).length;
-  return Math.round(done / checks.length * 100);
-}
-
-function renderNav(){
-  nav.innerHTML = "";
-  units.forEach(u=>{
-    const section = document.getElementById(u.id);
-    const a = document.createElement("a");
-    a.href = `#${u.id}`;
-    a.dataset.domain = u.domain;
-    a.innerHTML = `
-      <span>${u.title}</span>
-      <span class="badge" id="p-${u.id}">0%</span>
-    `;
-    nav.appendChild(a);
-    // progress bar
-    const barWrap = document.createElement("div");
-    barWrap.className = "progress";
-    barWrap.style.margin = "0 10px 10px 10px";
-    const bar = document.createElement("span");
-    bar.id = `bar-${u.id}`;
-    barWrap.appendChild(bar);
-    nav.appendChild(barWrap);
-  });
-  updateAllProgress();
-}
-
-function updateAllProgress(){
-  units.forEach(u=>{
-    const pct = calcUnitProgress(u.id);
-    const badge = document.getElementById(`p-${u.id}`);
-    const bar = document.getElementById(`bar-${u.id}`);
-    if(badge) badge.textContent = pct + "%";
-    if(bar) bar.style.width = pct + "%";
-    // also update in-section progress bars
-    const inUnit = document.querySelector(`[data-progress="${u.id}"] > span`);
-    if(inUnit){ inUnit.style.width = pct + "%"; }
-  });
-}
-
-/* =========================
-   Restore state
-========================= */
-function restoreState(){
-  // Topic checkboxes
-  document.querySelectorAll('input[type="checkbox"][data-topic-complete]').forEach(cb=>{
-    const id = cb.closest("details.topic").id;
-    cb.checked = !!saved.topics[id];
-    cb.addEventListener("change", ()=>{
-      saved.topics[id] = cb.checked;
-      localStorage.setItem(storeKey, JSON.stringify(saved));
-      updateAllProgress();
+    // Back-to-top button
+    const backtop = document.getElementById("backtop");
+    window.addEventListener("scroll", () => {
+      backtop.style.display = window.scrollY > 200 ? "block" : "none";
     });
   });
-
-  // Open states
-  document.querySelectorAll('details.topic').forEach(d=>{
-    const id = d.id;
-    if(saved.unitOpen[id] !== undefined){
-      d.open = !!saved.unitOpen[id];
-    }
-    d.addEventListener("toggle", ()=>{
-      saved.unitOpen[id] = d.open;
-      localStorage.setItem(storeKey, JSON.stringify(saved));
-    });
-  });
-
-  updateAllProgress();
-}
-
-/* =========================
-   Search & highlight
-========================= */
-const searchEl = document.getElementById("search");
-const noResults = document.getElementById("noResults");
-
-function clearMarks(root){
-  root.querySelectorAll("mark.search-hit").forEach(m=>{
-    const t = document.createTextNode(m.textContent);
-    m.replaceWith(t);
-  });
-}
-
-function highlightMatches(root, term){
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-  const parts = [];
-  const re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "i");
-  while(walker.nextNode()){
-    const node = walker.currentNode;
-    if(!node.nodeValue.trim()) continue;
-    const idx = node.nodeValue.search(re);
-    if(idx >= 0){
-      const span = document.createElement("span");
-      const before = node.nodeValue.slice(0, idx);
-      const match = node.nodeValue.slice(idx, idx + node.nodeValue.slice(idx).match(re)[0].length);
-      const after  = node.nodeValue.slice(idx + match.length);
-      if(before) span.appendChild(document.createTextNode(before));
-      const mark = document.createElement("mark"); mark.className="search-hit"; mark.textContent = match;
-      span.appendChild(mark);
-      if(after) span.appendChild(document.createTextNode(after));
-      parts.push({node, span});
-    }
-  }
-  parts.forEach(({node, span})=>node.parentNode.replaceChild(span, node));
-}
-
-function applySearch(){
-  const q = searchEl.value.trim();
-  const topics = Array.from(document.querySelectorAll("details.topic"));
-  let visibleCount = 0;
-
-  topics.forEach(t=>{
-    // reset previous highlights
-    clearMarks(t);
-
-    if(q === ""){
-      t.style.display = "";
-      visibleCount++;
-      return;
-    }
-    const text = t.innerText.toLowerCase();
-    const hit = text.includes(q.toLowerCase());
-    t.style.display = hit ? "" : "none";
-    if(hit){
-      // highlight within visible topic body
-      highlightMatches(t, q);
-      visibleCount++;
-    }
-  });
-
-  noResults.style.display = visibleCount === 0 ? "" : "none";
-}
-searchEl.addEventListener("input", applySearch);
-
-/* =========================
-   Domain filter
-========================= */
-const domainFilter = document.getElementById("domainFilter");
-function applyFilter(){
-  const val = domainFilter.value; // all, foundations, micro, macro, open
-  document.querySelectorAll(".unit").forEach(u=>{
-    const match = val==="all" || u.dataset.domain === val;
-    u.style.display = match ? "" : "none";
-  });
-  // hide nav entries that don't match
-  document.querySelectorAll("#nav a").forEach(a=>{
-    const domain = a.dataset.domain;
-    a.style.display = (val==="all" || val===domain) ? "" : "none";
-  });
-}
-domainFilter.addEventListener("change", applyFilter);
-
-/* =========================
-   Buttons
-========================= */
-document.getElementById("expandAll").addEventListener("click", ()=>{
-  document.querySelectorAll('details.topic').forEach(d=>{ d.open = true; saved.unitOpen[d.id] = true; });
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-});
-document.getElementById("collapseAll").addEventListener("click", ()=>{
-  document.querySelectorAll('details.topic').forEach(d=>{ d.open = false; saved.unitOpen[d.id] = false; });
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-});
-document.getElementById("resetProgress").addEventListener("click", ()=>{
-  if(!confirm("Clear all saved topic completions?")) return;
-  document.querySelectorAll('input[type="checkbox"][data-topic-complete]').forEach(cb=> cb.checked = false);
-  saved.topics = {};
-  localStorage.setItem(storeKey, JSON.stringify(saved));
-  updateAllProgress();
-});
-document.getElementById("printBtn").addEventListener("click", ()=>{
-  // ensure all topics open for print
-  const wasOpen = [];
-  document.querySelectorAll('details.topic').forEach(d=>{
-    wasOpen.push({id:d.id, open:d.open});
-    d.open = true;
-  });
-  setTimeout(()=>{ window.print(); 
-    // restore
-    wasOpen.forEach(s=>{
-      const d = document.getElementById(s.id);
-      if(d) d.open = s.open;
-    });
-  }, 50);
-});
-
-/* =========================
-   Back to top
-========================= */
-const backtop = document.getElementById("backtop");
-backtop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));
-window.addEventListener("scroll", ()=>{
-  backtop.style.display = (window.scrollY > 400) ? "" : "none";
-});
-backtop.style.display = "none";
-
-/* =========================
-   Build nav & init
-========================= */
-function initOpenStates(){
-  document.querySelectorAll('details.topic').forEach(d=>{
-    const id = d.id;
-    if(saved.unitOpen[id] !== undefined) d.open = !!saved.unitOpen[id];
-  });
-}
-function init(){
-  renderNav();
-  restoreState();
-  applyFilter();
-  applySearch();
-  initOpenStates();
-}
-document.addEventListener("DOMContentLoaded", init);
-</script>
-
+  </script>
 </body>
 </html>
+
