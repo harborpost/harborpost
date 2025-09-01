@@ -21,17 +21,20 @@ nav ul li:hover { text-decoration:underline; }
 
 /* Header */
 header {
-  text-align:center; padding:25px 20px 40px 20px; background:#004aad; color:#fff;
+  text-align:center; padding:120px 20px 40px 20px; /* top padding increased to fit sliding text */
+  background:#004aad; color:#fff;
+  position:relative;
+  min-height:150px; /* ensures space for sliding text */
 }
-header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:8px 0 0 0; opacity:0; transition:opacity 0.5s ease; }
-.edition-text { margin-top:14px; display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); }
+header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 10px 0; opacity:0; transition:opacity 0.5s ease; }
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:10px; }
 
 /* Typing full screen */
 .typing-overlay {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:#004aad;
   display:flex; justify-content:center; align-items:center;
-  font-family:'Lato',sans-serif; font-weight:900; /* bolder sliding text */
+  font-family:'Lato',sans-serif; font-weight:900; /* bold sliding text */
   color:#fafafa;
   letter-spacing:1px; text-transform:uppercase;
   z-index:1000; font-size:clamp(42px,6vw,70px); overflow:hidden;
@@ -69,7 +72,7 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 </nav>
 
 <header>
-  <!-- Removed h1 from header entirely -->
+  <!-- Only keep h2 and edition-text -->
   <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
@@ -109,9 +112,9 @@ function startTyping() {
       i++;
       setTimeout(typeWriter,speed);
     } else {
-      // calculate slide distance (slide to where h1 would have been)
+      // calculate slide distance (slide to top of header padding)
       const headerLeft = overlay.offsetLeft + overlay.offsetWidth/2 - typingText.offsetWidth/2;
-      const headerTop = 100; // approximate top padding of header
+      const headerTop = 60; // aligned nicely above h2
       const deltaX = headerLeft - typingText.offsetLeft;
       const deltaY = headerTop - typingText.offsetTop;
 
@@ -139,3 +142,4 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
+
