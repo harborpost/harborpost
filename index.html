@@ -64,7 +64,7 @@ main { flex:1; display:flex; flex-direction:column; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; transition:transform 0.4s ease; }
 .headline-link:hover .headline-img { transform:scale(1.03); }
 
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px; max-width:1300px; margin:auto; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
 .card:hover img { transform:scale(1.05); }
@@ -88,7 +88,7 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
     <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
   </a>
 
-  <!-- Grid for all 15 cards -->
+  <!-- 3x5 grid of cards -->
   <div class="grid" id="cardsGrid"></div>
 </main>
 
@@ -100,12 +100,11 @@ const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST",
 const today=new Date();
 document.getElementById("edition").textContent = months[today.getMonth()]+" EDITION";
 
-// Typing animation in header
+// Typing animation
 const mainTitle = document.getElementById("mainTitle");
 const text = "Harbor Post.";
 let i = 0;
 const speed = 120;
-
 function typeHeader() {
   if(i < text.length){
     mainTitle.textContent += text.charAt(i);
@@ -113,31 +112,27 @@ function typeHeader() {
     setTimeout(typeHeader, speed);
   }
 }
-
 if(document.fonts && document.fonts.ready){
   document.fonts.ready.then(typeHeader);
 } else {
   window.addEventListener('load', typeHeader);
 }
 
-// Images and links array
-const cardsData = [
-  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article2.html"},
-  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article3.html"},
-  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article4.html"},
-  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article5.html"},
-  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article6.html"},
-  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article7.html"},
-  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article8.html"},
-  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article9.html"},
-  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article10.html"},
-  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article11.html"},
-  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article12.html"},
-  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article13.html"},
-  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article14.html"},
-  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article15.html"},
-  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article16.html"}
-];
+// 3x5 cards with separate links
+const cardsData = [];
+const images = ["https://i.imgur.com/HIfqBkU.jpeg","https://i.imgur.com/Jao2q0j.jpeg","https://i.imgur.com/qafObwS.jpeg"];
+const titles = ["Yaks and the Himalayas","Tibet Monks","Nembutsu-ji"];
+
+for(let row=0; row<5; row++){
+  for(let col=0; col<3; col++){
+    const index = col % 3;
+    cardsData.push({
+      src: images[index],
+      title: titles[index],
+      link: `article${row*3+col+2}.html` // article2.html → article16.html
+    });
+  }
+}
 
 // Generate cards dynamically
 const grid = document.getElementById("cardsGrid");
