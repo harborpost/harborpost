@@ -23,31 +23,21 @@ nav ul { list-style:none; display:flex; gap:24px; margin:0; padding:0; }
 nav ul li { font-size:15px; letter-spacing:1px; cursor:pointer; }
 nav ul li:hover { text-decoration:underline; }
 
-/* Header - vertically compact and centered */
+/* Header - horizontal alignment with edition */
 header {
-  text-align:center; 
-  padding:10px 20px 5px 20px; /* reduced top & bottom padding */
-  background:#004aad;
   position:relative;
-  min-height:70px; /* tight height */
+  background:#004aad;
+  padding:10px 20px 5px 20px;
   display:flex;
   flex-direction:column;
-  justify-content:center; /* center vertically between nav and subtitle */
+  justify-content:flex-start;
 }
 
-/* Edition on top-right */
-.edition-text {
-  position:absolute;
-  top:12px;
-  right:20px;
-  display:inline-block;
-  font-size:13px;
-  letter-spacing:3px;
-  border:1px solid #fff;
-  padding:4px 10px;
-  border-radius:4px;
-  background:rgba(255,255,255,0.15);
-  color:#fff;
+/* Top row: Harbor Post and Edition */
+.header-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 /* Title */
@@ -60,13 +50,25 @@ header h1 {
   color:#fff;
 }
 
+/* Edition */
+.edition-text {
+  font-size:13px;
+  letter-spacing:3px;
+  border:1px solid #fff;
+  padding:4px 10px;
+  border-radius:4px;
+  background:rgba(255,255,255,0.15);
+  color:#fff;
+}
+
 /* Subtitle */
 header h2 { 
   font-size:clamp(16px,2vw,22px); 
   font-weight:400; 
   letter-spacing:2px; 
-  margin:5px 0 0 0; 
+  margin:5px 0 5px 0; 
   color:#fff;
+  text-align:center;
 }
 
 /* Main content */
@@ -95,8 +97,10 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 
 <!-- Header -->
 <header>
-  <div class="edition-text" id="edition"></div>
-  <h1 id="mainTitle"></h1>
+  <div class="header-top">
+    <h1 id="mainTitle"></h1>
+    <div class="edition-text" id="edition"></div>
+  </div>
   <h2 id="subTitle">History and Culture.</h2>
 </header>
 
