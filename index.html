@@ -21,13 +21,14 @@ nav ul li:hover { text-decoration:underline; }
 
 /* Header */
 header {
-  text-align:center; padding:120px 20px 40px 20px; /* top padding increased to fit sliding text */
+  text-align:center; 
+  padding:80px 20px 20px 20px; /* moved up sliding text, tightened bottom spacing */
   background:#004aad; color:#fff;
   position:relative;
-  min-height:150px; /* ensures space for sliding text */
+  min-height:140px; /* enough for sliding text */
 }
-header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 10px 0; opacity:0; transition:opacity 0.5s ease; }
-.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:10px; }
+header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 6px 0; opacity:0; transition:opacity 0.5s ease; }
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:4px; }
 
 /* Typing full screen */
 .typing-overlay {
@@ -112,22 +113,21 @@ function startTyping() {
       i++;
       setTimeout(typeWriter,speed);
     } else {
-      // calculate slide distance (slide to top of header padding)
+      // slide position to top of header padding
       const headerLeft = overlay.offsetLeft + overlay.offsetWidth/2 - typingText.offsetWidth/2;
-      const headerTop = 60; // aligned nicely above h2
+      const headerTop = 50; // slightly higher for tighter layout
       const deltaX = headerLeft - typingText.offsetLeft;
       const deltaY = headerTop - typingText.offsetTop;
 
-      // slide text
       typingText.style.transition="transform 1s ease";
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-      // reveal layout while keeping Harbor Post visible
+      // reveal layout while keeping sliding text visible
       setTimeout(()=>{
-        overlay.style.background="transparent"; // remove blue background
+        overlay.style.background="transparent";
         subTitle.style.opacity="1";
         grid.style.opacity="1";
-      },1000); // after slide
+      },1000);
     }
   }
   typeWriter();
@@ -142,4 +142,3 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
-
