@@ -27,7 +27,7 @@ header {
 /* Edition top-right, slightly lower */
 .edition-text {
   position:absolute;
-  top:50%; /* moved down slightly to align with title */
+  top:50%; /* vertically aligned with title */
   transform:translateY(-50%);
   right:20px;
   font-size:13px;
@@ -63,6 +63,7 @@ header h2 {
 /* Main content */
 main { flex:1; display:flex; flex-direction:column; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; display:block; }
+
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
@@ -85,7 +86,27 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
   <!-- Big headline image -->
   <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
 
-  <!-- Smaller images grid -->
+  <!-- Repeated 3-image rows (5 times) -->
+  <div class="grid">
+    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
+  </div>
+  <div class="grid">
+    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
+  </div>
+  <div class="grid">
+    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
+  </div>
+  <div class="grid">
+    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
+  </div>
   <div class="grid">
     <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
