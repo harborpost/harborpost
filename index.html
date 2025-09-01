@@ -64,7 +64,7 @@ header h1 {
   margin: 0;
   text-transform: uppercase;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 header h2 {
@@ -73,7 +73,7 @@ header h2 {
   letter-spacing: 2px;
   margin: 8px 0 0 0;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 .edition-text {
@@ -102,15 +102,11 @@ header h2 {
   letter-spacing: 1px;
   text-transform: uppercase;
   z-index: 1000;
-  overflow: hidden;
+  font-size: clamp(42px, 6vw, 70px); /* matches final h1 size */
 }
 
 #typingText {
   white-space: nowrap;
-  display: inline-block;
-  position: relative;
-  transition: transform 1s ease;
-  /* Font size will be set dynamically to match header */
 }
 
 /* Grid layout */
@@ -122,7 +118,7 @@ header h2 {
   max-width: 1300px;
   margin: auto;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 
 .card {
@@ -242,12 +238,8 @@ const overlay = document.getElementById("typingOverlay");
 const typingText = document.getElementById("typingText");
 
 const rawTyped = mainTitle.textContent.trim();
-mainTitle.style.opacity = "0"; // hide original
+mainTitle.style.opacity = "0"; // hide header
 typingText.textContent = "";
-
-// Match overlay font size to final <h1>
-const computedFontSize = window.getComputedStyle(mainTitle).fontSize;
-typingText.style.fontSize = computedFontSize;
 
 let i = 0;
 const speed = 120;
@@ -259,21 +251,15 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      // Slide overlay text to match <h1> position
-      const targetRect = mainTitle.getBoundingClientRect();
-      const overlayRect = overlay.getBoundingClientRect();
-      const deltaX = targetRect.left - overlayRect.left;
-      const deltaY = targetRect.top - overlayRect.top;
-
-      typingText.style.transition = "transform 1s ease";
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-
+      // Typing done, fade overlay out smoothly
+      overlay.style.transition = "opacity 0.8s ease";
+      overlay.style.opacity = "0";
       setTimeout(() => {
         overlay.style.display = "none";
         mainTitle.style.opacity = "1";
         subTitle.style.opacity = "1";
         grid.style.opacity = "1";
-      }, 1000);
+      }, 800);
     }
   }
   typeWriter();
