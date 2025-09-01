@@ -11,7 +11,7 @@
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
   overflow-x:hidden; display:flex; flex-direction:column; 
-  background:black;
+  background:#fff;
 }
 
 /* Navigation bar */
@@ -26,23 +26,19 @@ nav ul li:hover { text-decoration:underline; }
 /* Header - tightened */
 header {
   text-align:center; 
-  padding:25px 20px 8px 20px; /* reduced top padding */
+  padding:25px 20px 8px 20px;
   background:#004aad;
   position:relative;
   min-height:80px;
 }
-
-/* Harbor Post title */
 header h1 {
   font-family:'Lato', sans-serif;
-  font-size:clamp(42px,5vw,60px); /* slightly smaller */
+  font-size:clamp(42px,5vw,60px);
   font-weight:900;
   margin:0;
   text-transform:uppercase;
   color:#fff;
 }
-
-/* Subtitle */
 header h2 { 
   font-size:clamp(16px,2vw,22px); 
   font-weight:400; 
@@ -50,8 +46,6 @@ header h2 {
   margin:4px 0 0 0;
   color:#fff;
 }
-
-/* Edition in top-right */
 .edition-text {
   position:absolute;
   top:12px;
@@ -66,24 +60,10 @@ header h2 {
   color:#fff;
 }
 
-/* Typing overlay */
-.typing-overlay {
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:#004aad;
-  display:flex; justify-content:center; align-items:center;
-  font-family:'Lato',sans-serif; font-weight:900;
-  color:#fafafa;
-  letter-spacing:1px; text-transform:uppercase;
-  z-index:1000; font-size:clamp(42px,6vw,70px); overflow:hidden;
-}
-
-/* Typing text */
-#typingText { white-space:nowrap; }
-
 /* Main content */
 main { flex:1; display:flex; flex-direction:column; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; display:block; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; opacity:0; transition:none; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
 .card:hover img { transform:scale(1.05); }
@@ -93,9 +73,6 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 </style>
 </head>
 <body>
-
-<!-- Typing Overlay -->
-<div class="typing-overlay" id="typingOverlay"><span id="typingText"></span></div>
 
 <!-- Navigation -->
 <nav>
@@ -109,7 +86,7 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 
 <!-- Header -->
 <header>
-  <h1>Harbor Post</h1>
+  <h1 id="mainTitle"></h1>
   <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
@@ -119,7 +96,7 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
   <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
 
   <!-- Smaller images grid -->
-  <div class="grid" id="grid">
+  <div class="grid">
     <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
@@ -134,37 +111,24 @@ const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST",
 const today=new Date();
 document.getElementById("edition").textContent = months[today.getMonth()]+" EDITION";
 
-// Typing animation for overlay
-const typingText = document.getElementById("typingText");
-const overlay = document.getElementById("typingOverlay");
-const grid = document.getElementById("grid");
-
-const rawTyped = "Harbor Post.";
-typingText.textContent = "";
+// Typing animation in header
+const mainTitle = document.getElementById("mainTitle");
+const text = "Harbor Post.";
 let i = 0;
 const speed = 120;
 
-function startTyping() {
-  function typeWriter() {
-    if (i < rawTyped.length) {
-      typingText.textContent += rawTyped.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else {
-      // Freeze for 0.75s before instantly removing overlay
-      setTimeout(() => {
-        overlay.style.display = "none";
-        grid.style.opacity = "1";
-      }, 750);
-    }
+function typeHeader() {
+  if(i < text.length){
+    mainTitle.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeHeader, speed);
   }
-  typeWriter();
 }
 
 if(document.fonts && document.fonts.ready){
-  document.fonts.ready.then(startTyping);
+  document.fonts.ready.then(typeHeader);
 } else {
-  window.addEventListener('load', startTyping);
+  window.addEventListener('load', typeHeader);
 }
 </script>
 
