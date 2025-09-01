@@ -14,7 +14,7 @@ html, body {
   background:#fff;
 }
 
-/* Header - compact and balanced */
+/* Header */
 header {
   position:relative;
   background:#004aad;
@@ -24,10 +24,9 @@ header {
   justify-content:flex-start;
 }
 
-/* Edition top-right, slightly lower */
 .edition-text {
   position:absolute;
-  top:50%; /* vertically aligned with title */
+  top:50%;
   transform:translateY(-50%);
   right:20px;
   font-size:13px;
@@ -39,7 +38,6 @@ header {
   color:#fff;
 }
 
-/* Title centered horizontally */
 header h1 {
   font-family:'Lato', sans-serif;
   font-size:clamp(42px,5vw,60px);
@@ -50,7 +48,6 @@ header h1 {
   text-align:center;
 }
 
-/* Subtitle */
 header h2 { 
   font-size:clamp(16px,2vw,22px); 
   font-weight:400; 
@@ -62,7 +59,10 @@ header h2 {
 
 /* Main content */
 main { flex:1; display:flex; flex-direction:column; }
-.headline-img { width:100%; max-height:500px; object-fit:cover; display:block; }
+
+.headline-link { display:block; }
+.headline-img { width:100%; max-height:500px; object-fit:cover; transition:transform 0.4s ease; }
+.headline-link:hover .headline-img { transform:scale(1.03); }
 
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
@@ -83,35 +83,13 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 </header>
 
 <main>
-  <!-- Big headline image -->
-  <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
+  <!-- Big headline image clickable -->
+  <a href="article1.html" class="headline-link">
+    <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
+  </a>
 
-  <!-- Repeated 3-image rows (5 times) -->
-  <div class="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-  </div>
-  <div class="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-  </div>
-  <div class="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-  </div>
-  <div class="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-  </div>
-  <div class="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-  </div>
+  <!-- Grid for all 15 cards -->
+  <div class="grid" id="cardsGrid"></div>
 </main>
 
 <footer><p>Follow us on TikTok @harborpost</p></footer>
@@ -141,6 +119,34 @@ if(document.fonts && document.fonts.ready){
 } else {
   window.addEventListener('load', typeHeader);
 }
+
+// Images and links array
+const cardsData = [
+  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article2.html"},
+  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article3.html"},
+  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article4.html"},
+  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article5.html"},
+  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article6.html"},
+  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article7.html"},
+  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article8.html"},
+  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article9.html"},
+  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article10.html"},
+  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article11.html"},
+  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article12.html"},
+  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article13.html"},
+  {src:"https://i.imgur.com/HIfqBkU.jpeg", title:"Yaks and the Himalayas", link:"article14.html"},
+  {src:"https://i.imgur.com/Jao2q0j.jpeg", title:"Tibet Monks", link:"article15.html"},
+  {src:"https://i.imgur.com/qafObwS.jpeg", title:"Nembutsu-ji", link:"article16.html"}
+];
+
+// Generate cards dynamically
+const grid = document.getElementById("cardsGrid");
+cardsData.forEach((card) => {
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `<a href="${card.link}"><img src="${card.src}" alt="${card.title}"><div class="card-title">${card.title}</div></a>`;
+  grid.appendChild(div);
+});
 </script>
 
 </body>
