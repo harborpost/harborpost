@@ -64,11 +64,11 @@ main { flex:1; display:flex; flex-direction:column; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; transition:transform 0.4s ease; }
 .headline-link:hover .headline-img { transform:scale(1.03); }
 
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px; max-width:1300px; margin:auto; }
+.grid { display:grid; grid-template-columns:repeat(5,1fr); grid-auto-rows:150px; gap:20px; padding:40px; max-width:1300px; margin:auto; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
 .card:hover img { transform:scale(1.05); }
-.card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:20px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
+.card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:16px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
 
 footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; }
 </style>
@@ -118,30 +118,28 @@ if(document.fonts && document.fonts.ready){
   window.addEventListener('load', typeHeader);
 }
 
-// 3x5 cards with separate links
-const cardsData = [];
-const images = ["https://i.imgur.com/HIfqBkU.jpeg","https://i.imgur.com/Jao2q0j.jpeg","https://i.imgur.com/qafObwS.jpeg"];
-const titles = ["Yaks and the Himalayas","Tibet Monks","Nembutsu-ji"];
+// 3x5 cards with unique images, titles, and links
+const images = [
+  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
+  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
+  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
+  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
+  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg"
+];
 
-for(let row=0; row<5; row++){
-  for(let col=0; col<3; col++){
-    const index = col % 3;
-    cardsData.push({
-      src: images[index],
-      title: titles[index],
-      link: `article${row*3+col+2}.html` // article2.html → article16.html
-    });
-  }
-}
+const titles = [
+  "Title 1","Title 2","Title 3","Title 4","Title 5",
+  "Title 6","Title 7","Title 8","Title 9","Title 10",
+  "Title 11","Title 12","Title 13","Title 14","Title 15"
+];
 
-// Generate cards dynamically
 const grid = document.getElementById("cardsGrid");
-cardsData.forEach((card) => {
+for(let i=0; i<15; i++){
   const div = document.createElement("div");
   div.className = "card";
-  div.innerHTML = `<a href="${card.link}"><img src="${card.src}" alt="${card.title}"><div class="card-title">${card.title}</div></a>`;
+  div.innerHTML = `<a href="article${i+2}.html"><img src="${images[i]}" alt="${titles[i]}"><div class="card-title">${titles[i]}</div></a>`;
   grid.appendChild(div);
-});
+}
 </script>
 
 </body>
