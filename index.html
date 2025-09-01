@@ -5,175 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harbor Post</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Lato', sans-serif;
-  background: #fafafa;
-  color: #111;
-  overflow-x: hidden;
-}
+html, body { margin:0; padding:0; font-family:'Lato',sans-serif; background:#fafafa; color:#111; overflow-x:hidden; }
 
-/* Navigation bar */
 nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 40px;
-  background: #004aad;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  display:flex; justify-content:center; align-items:center; padding:18px 40px;
+  background:#004aad; color:#fff; position:sticky; top:0; z-index:100;
 }
+nav ul { list-style:none; display:flex; gap:24px; margin:0; padding:0; }
+nav ul li { font-size:15px; letter-spacing:1px; cursor:pointer; }
+nav ul li:hover { text-decoration:underline; }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  font-size: 15px;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-nav ul li:hover {
-  text-decoration: underline;
-}
-
-/* Hero section */
 header {
-  text-align: center;
-  padding: 25px 20px 40px 20px;
-  background: #004aad;
-  color: #fff;
+  text-align:center; padding:25px 20px 40px 20px; background:#004aad; color:#fff;
 }
+header h1 { font-family:'Lato',sans-serif; font-size:clamp(42px,6vw,70px); font-weight:700; margin:0; text-transform:uppercase; opacity:0; transition:opacity 0.5s ease; }
+header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:8px 0 0 0; opacity:0; transition:opacity 0.5s ease; }
+.edition-text { margin-top:14px; display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); }
 
-header h1 {
-  font-family: 'Lato', sans-serif;
-  font-size: clamp(42px, 6vw, 70px);
-  font-weight: 700;
-  margin: 0;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-header h2 {
-  font-size: clamp(18px, 2.5vw, 24px);
-  font-weight: 400;
-  letter-spacing: 2px;
-  margin: 8px 0 0 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.edition-text {
-  margin-top: 14px;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: 3px;
-  border: 1px solid #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.15);
-}
-
-/* Typing overlay */
 .typing-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #004aad;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
-  color: #fafafa;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 1000;
-  font-size: clamp(42px, 6vw, 70px); /* matches final h1 size */
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  display:flex; justify-content:center; align-items:center;
+  font-family:'Lato',sans-serif; font-weight:bold; color:#fafafa; letter-spacing:1px; text-transform:uppercase;
+  z-index:1000; font-size:clamp(42px,6vw,70px); background:#004aad;
 }
+#typingText { white-space:nowrap; display:inline-block; position:relative; }
 
-#typingText {
-  white-space: nowrap;
-}
-
-/* Grid layout */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 40px;
-  max-width: 1300px;
-  margin: auto;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px;
+  max-width:1300px; margin:auto; opacity:0; transition:opacity 0.5s ease;
 }
+.card { position:relative; overflow:hidden; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.08); cursor:pointer; }
+.card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
+.card:hover img { transform:scale(1.05); }
+.card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:20px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
 
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  cursor: pointer;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.card-title {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  font-family: 'Merriweather', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  letter-spacing: 1px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  background: #111;
-  color: #eee;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-top: 40px;
-}
+footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; margin-top:40px; }
 </style>
 </head>
 <body>
 
-<!-- Typing Intro -->
-<div class="typing-overlay" id="typingOverlay">
-  <span id="typingText"></span>
-</div>
+<div class="typing-overlay" id="typingOverlay"><span id="typingText"></span></div>
 
-<!-- Navigation -->
 <nav>
   <ul>
     <li>Home</li>
@@ -183,54 +58,28 @@ footer {
   </ul>
 </nav>
 
-<!-- Hero -->
 <header>
   <h1 id="mainTitle">Harbor Post.</h1>
   <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
 
-<!-- Article grid -->
 <div class="grid" id="grid">
-  <div class="card">
-    <a href="article1.html">
-      <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="">
-      <div class="card-title">Norilsk</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article2.html">
-      <img src="https://i.imgur.com/HIfqBkU.jpeg" alt="">
-      <div class="card-title">Yaks and the Himalayas</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article3.html">
-      <img src="https://i.imgur.com/Jao2q0j.jpeg" alt="">
-      <div class="card-title">Tibet Monks</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article4.html">
-      <img src="https://i.imgur.com/qafObwS.jpeg" alt="">
-      <div class="card-title">Nembutsu-ji</div>
-    </a>
-  </div>
+  <div class="card"><a href="#"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""><div class="card-title">Norilsk</div></a></div>
+  <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+  <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+  <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
 </div>
 
-<!-- Footer -->
-<footer>
-  <p>Follow us on TikTok @harborpost</p>
-</footer>
+<footer><p>Follow us on TikTok @harborpost</p></footer>
 
 <script>
-// Edition stamp
-const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
-                "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
-const today = new Date();
-document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
+// Edition
+const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+const today=new Date();
+document.getElementById("edition").textContent = months[today.getMonth()]+" EDITION";
 
-// Typing animation
+// Typing animation with slide to header
 const mainTitle = document.getElementById("mainTitle");
 const subTitle = document.getElementById("subTitle");
 const grid = document.getElementById("grid");
@@ -238,37 +87,44 @@ const overlay = document.getElementById("typingOverlay");
 const typingText = document.getElementById("typingText");
 
 const rawTyped = mainTitle.textContent.trim();
-mainTitle.style.opacity = "0"; // hide header
-typingText.textContent = "";
+mainTitle.style.opacity="0";
+typingText.textContent="";
+typingText.style.fontSize = window.getComputedStyle(mainTitle).fontSize;
 
-let i = 0;
-const speed = 120;
+let i=0;
+const speed=120;
 
 function startTyping() {
   function typeWriter() {
-    if (i < rawTyped.length) {
-      typingText.textContent += rawTyped.charAt(i);
+    if(i<rawTyped.length){
+      typingText.textContent+=rawTyped.charAt(i);
       i++;
-      setTimeout(typeWriter, speed);
+      setTimeout(typeWriter,speed);
     } else {
-      // Typing done, fade overlay out smoothly
-      overlay.style.transition = "opacity 0.8s ease";
-      overlay.style.opacity = "0";
-      setTimeout(() => {
-        overlay.style.display = "none";
-        mainTitle.style.opacity = "1";
-        subTitle.style.opacity = "1";
-        grid.style.opacity = "1";
-      }, 800);
+      // compute exact translation
+      const targetRect = mainTitle.getBoundingClientRect();
+      const overlayRect = typingText.getBoundingClientRect();
+      const deltaX = targetRect.left - overlayRect.left;
+      const deltaY = targetRect.top - overlayRect.top;
+
+      typingText.style.transition="transform 1s ease";
+      typingText.style.transform=`translate(${deltaX}px, ${deltaY}px)`;
+
+      setTimeout(()=>{
+        overlay.style.display="none";
+        mainTitle.style.opacity="1";
+        subTitle.style.opacity="1";
+        grid.style.opacity="1";
+      },1000);
     }
   }
   typeWriter();
 }
 
-if (document.fonts && document.fonts.ready) {
+if(document.fonts && document.fonts.ready){
   document.fonts.ready.then(startTyping);
 } else {
-  window.addEventListener('load', startTyping);
+  window.addEventListener('load',startTyping);
 }
 </script>
 
