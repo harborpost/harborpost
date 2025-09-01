@@ -1,286 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harbor Post – Modern Edition</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    header {
+      background-color: #1a3d5d;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      position: relative;
+    }
 
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Lato', sans-serif;
-  background: #fafafa;
-  color: #111;
-  overflow-x: hidden;
-}
+    nav {
+      margin-top: 0.5rem;
+    }
 
-/* Navigation bar */
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 40px;
-  background: #004aad;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-}
+    h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0 0.2rem 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+      margin-top: -10px; /* moves Harbor Post slightly higher */
+    }
 
-nav ul li {
-  font-size: 15px;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: normal;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
 
-nav ul li:hover {
-  text-decoration: underline;
-}
+    .tiktok {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
 
-/* Hero section */
-header {
-  text-align: center;
-  padding: 25px 20px 40px 20px; /* moved higher */
-  background: #004aad;
-  color: #fff;
-}
+    .edition {
+      background: #fff;
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #1a3d5d;
+    }
 
-header h1 {
-  font-family: 'Lato', sans-serif;
-  font-size: clamp(42px, 6vw, 70px);
-  font-weight: 700;
-  margin: 0;
-  text-transform: uppercase;
-  opacity: 0; /* hidden until animation */
-  transition: opacity 0.3s ease;
-}
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
 
-header h2 {
-  font-size: clamp(18px, 2.5vw, 24px);
-  font-weight: 400;
-  letter-spacing: 2px;
-  margin: 8px 0 0 0;
-  opacity: 0; /* hidden until animation */
-  transition: opacity 0.3s ease;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
 
-.edition-text {
-  margin-top: 14px;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: 3px;
-  border: 1px solid #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.15);
-}
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
 
-/* Typing overlay */
-.typing-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #004aad;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Lato', sans-serif;
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: bold;
-  color: #fafafa;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 1000;
-}
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-.typing-overlay span {
-  white-space: nowrap;
-}
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-#typingText { transform-origin: left top; }
+    .card h3 {
+      margin: 1rem;
+      font-size: 1.2rem;
+    }
 
-.float-up {
-  transition: transform 1.5s ease;
-}
+    .card p {
+      margin: 0 1rem 1rem;
+      color: #555;
+    }
 
-/* Grid layout */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 40px;
-  max-width: 1300px;
-  margin: auto;
-  opacity: 0; /* hidden until typing done */
-  transition: opacity 1s ease;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  cursor: pointer;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.card-title {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  font-family: 'Merriweather', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  letter-spacing: 1px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  background: #111;
-  color: #eee;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-top: 40px;
-}
-</style>
+    /* Typing overlay */
+    #typingOverlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      font-family: "Georgia", serif;
+      color: white;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div id="typingOverlay"><span id="typingText"></span></div>
+    <h1 id="mainTitle">HARBOR POST.</h1>
+    <h2 id="subTitle">HISTORY AND CULTURE.</h2>
+    <div class="tiktok" id="tiktokText">Follow us on TikTok @harborpost.</div>
+    <div class="edition" id="edition">Loading...</div>
+    <nav>
+      <a href="#">Home</a>
+    </nav>
+  </header>
 
-<!-- Typing Intro -->
-<div class="typing-overlay" id="typingOverlay">
-  <span id="typingText"></span>
-</div>
+  <main id="grid">
+    <div class="grid">
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Norilsk_russia.jpg" alt="Norilsk">
+        <h3>NORILSK: The Soviet Mining City</h3>
+        <p>Explore the history of Norilsk, one of the northernmost cities in the world.</p>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Sari_in_India.jpg" alt="Sari">
+        <h3>The History of the Sari</h3>
+        <p>A cultural garment spanning thousands of years in South Asia.</p>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Himalayan_yak.jpg" alt="Yak">
+        <h3>Yaks in the Himalayas</h3>
+        <p>The animals that shaped survival in one of the harshest climates on Earth.</p>
+      </div>
+    </div>
+  </main>
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li>Home</li>
-    <li>Articles</li>
-    <li>Archive</li>
-    <li>About</li>
-  </ul>
-</nav>
+  <script>
+    // Edition stamp
+    const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+                    "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+    const today = new Date();
+    document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
 
-<!-- Hero -->
-<header>
-  <h1 id="mainTitle">Harbor Post.</h1>
-  <h2 id="subTitle">History and Culture.</h2>
-  <div class="edition-text" id="edition"></div>
-</header>
+    // Typing animation
+    const mainTitle = document.getElementById("mainTitle");
+    const subTitle = document.getElementById("subTitle");
+    const tiktokText = document.getElementById("tiktokText");
+    const grid = document.getElementById("grid");
+    const typingOverlay = document.getElementById("typingOverlay");
+    const typingText = document.getElementById("typingText");
 
-<!-- Article grid -->
-<div class="grid" id="grid">
-  <div class="card">
-    <a href="article1.html">
-      <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="">
-      <div class="card-title">Norilsk</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article2.html">
-      <img src="https://i.imgur.com/HIfqBkU.jpeg" alt="">
-      <div class="card-title">Yaks and the Himalayas</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article3.html">
-      <img src="https://i.imgur.com/Jao2q0j.jpeg" alt="">
-      <div class="card-title">Tibet Monks</div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="article4.html">
-      <img src="https://i.imgur.com/qafObwS.jpeg" alt="">
-      <div class="card-title">Nembutsu-ji</div>
-    </a>
-  </div>
-</div>
+    const rawTyped = mainTitle.textContent.trim();
+    let i = 0;
+    const speed = 120;
 
-<!-- Footer -->
-<footer>
-  <p>Follow us on TikTok @harborpost</p>
-</footer>
-
-<script>
-// Edition stamp
-const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
-                "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
-const today = new Date();
-document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
-
-// Typing animation
-const mainTitle = document.getElementById("mainTitle");
-const subTitle = document.getElementById("subTitle");
-const grid = document.getElementById("grid");
-
-const rawTyped = mainTitle.textContent.trim();
-let i = 0;
-const speed = 120;
-
-function startTyping() {
-  function typeWriter() {
-    if (i < rawTyped.length) {
-      document.getElementById("typingText").textContent += rawTyped.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else {
-      const overlay = document.getElementById("typingOverlay");
-      const typingText = document.getElementById("typingText");
-
-      const targetRect = mainTitle.getBoundingClientRect();
-      const srcRect = typingText.getBoundingClientRect();
-
-      const deltaX = targetRect.left - srcRect.left;
-      const deltaY = targetRect.top - srcRect.top;
-
-      typingText.classList.add("float-up");
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-
-      setTimeout(() => {
-        overlay.style.display = "none";
-        mainTitle.style.opacity = "1";
-        subTitle.style.opacity = "1";
-        grid.style.opacity = "1";
-      }, 1500);
+    function startTyping() {
+      function typeWriter() {
+        if (i < rawTyped.length) {
+          typingText.textContent += rawTyped.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        } else {
+          // Fade overlay away
+          setTimeout(() => {
+            typingOverlay.style.opacity = "0";
+            typingOverlay.style.transition = "opacity 0.8s ease";
+            setTimeout(() => {
+              typingOverlay.style.display = "none";
+              mainTitle.style.opacity = "1";
+              subTitle.style.opacity = "1";
+              tiktokText.style.opacity = "1";
+              grid.style.opacity = "1";
+            }, 800);
+          }, 400);
+        }
+      }
+      typeWriter();
     }
-  }
-  typeWriter();
-}
 
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(startTyping);
-} else {
-  window.addEventListener('load', startTyping);
-}
-</script>
-
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(startTyping);
+    } else {
+      window.addEventListener('load', startTyping);
+    }
+  </script>
 </body>
 </html>
