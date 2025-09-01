@@ -8,11 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* Body and html */
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
   overflow-x:hidden; display:flex; flex-direction:column; 
-  background:black; /* extra scroll area is black */
+  background:black;
 }
 
 /* Navigation bar */
@@ -39,11 +38,11 @@ header h2 {
   margin:10px 0 6px 0;
   opacity:0; 
   transition:opacity 0.5s ease; 
-  color:#fff; /* force white */
+  color:#fff;
 }
-.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; color:#fff; } /* force white */
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; color:#fff; }
 
-/* Typing full screen overlay */
+/* Typing overlay */
 .typing-overlay {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:#004aad;
@@ -55,34 +54,20 @@ header h2 {
 }
 
 #typingText {
-  white-space:nowrap; display:inline-block; position:fixed; /* fixed so it doesn't scroll */
+  white-space:nowrap; display:inline-block; position:fixed;
   transform:translate(0,0);
 }
 
-/* Main content wrapper */
+/* Main content */
 main { flex:1; display:flex; flex-direction:column; }
-
-/* Headline image */
-.headline-img {
-  width:100%;
-  max-height:500px;
-  object-fit:cover;
-  display:block;
-}
-
-/* Grid */
-.grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px;
-  max-width:1300px; margin:auto; opacity:0; transition:opacity 0.5s ease;
-}
+.headline-img { width:100%; max-height:500px; object-fit:cover; display:block; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; opacity:0; transition:opacity 0.5s ease; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
 .card:hover img { transform:scale(1.05); }
 .card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:20px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
 
-footer { 
-  text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; 
-}
+footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; }
 </style>
 </head>
 <body>
@@ -104,10 +89,7 @@ footer {
 </header>
 
 <main>
-  <!-- Big headline image -->
   <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
-
-  <!-- Smaller images grid -->
   <div class="grid" id="grid">
     <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
@@ -123,7 +105,7 @@ const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST",
 const today=new Date();
 document.getElementById("edition").textContent = months[today.getMonth()]+" EDITION";
 
-// Typing + slide animation
+// Typing + "fall into header" animation
 const subTitle = document.getElementById("subTitle");
 const grid = document.getElementById("grid");
 const overlay = document.getElementById("typingOverlay");
@@ -143,13 +125,14 @@ function startTyping() {
       i++;
       setTimeout(typeWriter,speed);
     } else {
-      // Compute target position relative to viewport (header area)
+      // Slide animation to header position
       const headerRect = document.querySelector('header').getBoundingClientRect();
-      const deltaX = window.innerWidth/2 - typingText.offsetWidth/2 - typingText.getBoundingClientRect().left;
-      const deltaY = headerRect.top + 10 - typingText.getBoundingClientRect().top; // slide into header
+      const targetX = window.innerWidth/2 - typingText.offsetWidth/2;
+      const targetY = headerRect.top + 10; // slight offset inside header
 
-      typingText.style.transition="transform 1s ease";
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      // Animate falling effect
+      typingText.style.transition="transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // ease-out bounce
+      typingText.style.transform = `translate(${targetX - typingText.getBoundingClientRect().left}px, ${targetY - typingText.getBoundingClientRect().top}px)`;
 
       setTimeout(()=>{
         overlay.style.background="transparent";
