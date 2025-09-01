@@ -121,17 +121,13 @@ function startTyping() {
       typingText.style.transition="transform 1s ease";
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-      // only fade overlay AFTER slide is complete
+      // reveal layout while keeping Harbor Post visible
       setTimeout(()=>{
-        overlay.style.transition="opacity 0.5s ease";
-        overlay.style.opacity="0";
-        setTimeout(()=>{
-          overlay.style.display="none";
-          mainTitle.style.opacity="1";
-          subTitle.style.opacity="1";
-          grid.style.opacity="1";
-        },500);
-      },1000); // wait for slide to finish
+        overlay.style.background="transparent"; // remove blue background
+        mainTitle.style.opacity="1";
+        subTitle.style.opacity="1";
+        grid.style.opacity="1";
+      },1000); // after slide
     }
   }
   typeWriter();
