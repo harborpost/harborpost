@@ -52,7 +52,7 @@ nav ul li:hover {
 /* Hero section */
 header {
   text-align: center;
-  padding: 40px 20px 40px 20px; /* reduced top padding */
+  padding: 25px 20px 40px 20px; /* moved higher */
   background: #004aad;
   color: #fff;
 }
@@ -63,6 +63,8 @@ header h1 {
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
+  opacity: 0; /* hidden until animation */
+  transition: opacity 0.3s ease;
 }
 
 header h2 {
@@ -70,6 +72,8 @@ header h2 {
   font-weight: 400;
   letter-spacing: 2px;
   margin: 8px 0 0 0;
+  opacity: 0; /* hidden until animation */
+  transition: opacity 0.3s ease;
 }
 
 .edition-text {
@@ -83,6 +87,34 @@ header h2 {
   background: rgba(255,255,255,0.15);
 }
 
+/* Typing overlay */
+.typing-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #004aad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: bold;
+  color: #fafafa;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 1000;
+}
+
+.typing-overlay span {
+  white-space: nowrap;
+}
+
+#typingText { transform-origin: left top; }
+
+.float-up {
+  transition: transform 1.5s ease;
+}
+
 /* Grid layout */
 .grid {
   display: grid;
@@ -91,6 +123,8 @@ header h2 {
   padding: 40px;
   max-width: 1300px;
   margin: auto;
+  opacity: 0; /* hidden until typing done */
+  transition: opacity 1s ease;
 }
 
 .card {
@@ -136,19 +170,14 @@ footer {
   letter-spacing: 1px;
   margin-top: 40px;
 }
-
-footer a {
-  color: #ddd;
-  margin-left: 10px;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
 </style>
 </head>
 <body>
+
+<!-- Typing Intro -->
+<div class="typing-overlay" id="typingOverlay">
+  <span id="typingText"></span>
+</div>
 
 <!-- Navigation -->
 <nav>
@@ -162,13 +191,13 @@ footer a:hover {
 
 <!-- Hero -->
 <header>
-  <h1>Harbor Post.</h1>
-  <h2>History and Culture.</h2>
+  <h1 id="mainTitle">Harbor Post.</h1>
+  <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
 
 <!-- Article grid -->
-<div class="grid">
+<div class="grid" id="grid">
   <div class="card">
     <a href="article1.html">
       <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="">
@@ -197,7 +226,7 @@ footer a:hover {
 
 <!-- Footer -->
 <footer>
-  <p>Follow us on <a href="#">TikTok</a></p>
+  <p>Follow us on TikTok @harborpost</p>
 </footer>
 
 <script>
@@ -206,6 +235,51 @@ const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
                 "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
+
+// Typing animation
+const mainTitle = document.getElementById("mainTitle");
+const subTitle = document.getElementById("subTitle");
+const grid = document.getElementById("grid");
+
+const rawTyped = mainTitle.textContent.trim();
+let i = 0;
+const speed = 120;
+
+function startTyping() {
+  function typeWriter() {
+    if (i < rawTyped.length) {
+      document.getElementById("typingText").textContent += rawTyped.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      const overlay = document.getElementById("typingOverlay");
+      const typingText = document.getElementById("typingText");
+
+      const targetRect = mainTitle.getBoundingClientRect();
+      const srcRect = typingText.getBoundingClientRect();
+
+      const deltaX = targetRect.left - srcRect.left;
+      const deltaY = targetRect.top - srcRect.top;
+
+      typingText.classList.add("float-up");
+      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+      setTimeout(() => {
+        overlay.style.display = "none";
+        mainTitle.style.opacity = "1";
+        subTitle.style.opacity = "1";
+        grid.style.opacity = "1";
+      }, 1500);
+    }
+  }
+  typeWriter();
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(startTyping);
+} else {
+  window.addEventListener('load', startTyping);
+}
 </script>
 
 </body>
