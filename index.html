@@ -8,7 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-html, body { margin:0; padding:0; font-family:'Lato',sans-serif; background:#fafafa; color:#111; overflow-x:hidden; height:100%; }
+html, body { 
+  margin:0; padding:0; font-family:'Lato',sans-serif; background:#fafafa; color:#111; overflow-x:hidden; 
+  height:100%; 
+  display:flex; flex-direction:column; /* flex for sticky footer */
+}
 
 /* Navigation bar */
 nav {
@@ -22,7 +26,7 @@ nav ul li:hover { text-decoration:underline; }
 /* Header */
 header {
   text-align:center; 
-  padding:65px 20px 8px 20px; /* same as before */
+  padding:65px 20px 8px 20px; 
   background:#004aad; color:#fff;
   position:relative;
   min-height:115px;
@@ -31,7 +35,7 @@ header h2 {
   font-size:clamp(18px,2.5vw,24px); 
   font-weight:400; 
   letter-spacing:2px; 
-  margin:10px 0 6px 0; /* added top margin to move below Harbor Post */
+  margin:10px 0 6px 0; /* moved slightly below Harbor Post */ 
   opacity:0; 
   transition:opacity 0.5s ease; 
 }
@@ -53,6 +57,9 @@ header h2 {
   transform:translate(0,0);
 }
 
+/* Main content wrapper to fill space */
+main { flex:1; display:flex; flex-direction:column; }
+
 /* Grid */
 .grid {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px;
@@ -63,7 +70,9 @@ header h2 {
 .card:hover img { transform:scale(1.05); }
 .card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:20px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
 
-footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; margin-top:40px; }
+footer { 
+  text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; 
+}
 </style>
 </head>
 <body>
@@ -84,12 +93,14 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
   <div class="edition-text" id="edition"></div>
 </header>
 
-<div class="grid" id="grid">
-  <div class="card"><a href="#"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""><div class="card-title">Norilsk</div></a></div>
-  <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
-  <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
-  <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
-</div>
+<main>
+  <div class="grid" id="grid">
+    <div class="card"><a href="#"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""><div class="card-title">Norilsk</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
+    <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
+  </div>
+</main>
 
 <footer><p>Follow us on TikTok @harborpost</p></footer>
 
