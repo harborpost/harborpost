@@ -11,7 +11,7 @@
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
   overflow-x:hidden; display:flex; flex-direction:column; 
-  background:black;
+  background:black; /* extra scroll area black */
 }
 
 /* Navigation bar */
@@ -31,13 +31,19 @@ header {
   position:relative;
   min-height:115px;
 }
+header h1 {
+  font-family:'Lato', sans-serif;
+  font-size:clamp(42px,6vw,70px);
+  font-weight:900;
+  margin:0;
+  text-transform:uppercase;
+  color:#fff;
+}
 header h2 { 
   font-size:clamp(18px,2.5vw,24px); 
   font-weight:400; 
   letter-spacing:2px; 
   margin:10px 0 6px 0;
-  opacity:0; 
-  transition:opacity 0.5s ease; 
   color:#fff;
 }
 .edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; color:#fff; }
@@ -53,9 +59,9 @@ header h2 {
   z-index:1000; font-size:clamp(42px,6vw,70px); overflow:hidden;
 }
 
+/* Typing text */
 #typingText {
-  white-space:nowrap; display:inline-block; position:fixed;
-  transform:translate(0,0);
+  white-space:nowrap;
 }
 
 /* Main content */
@@ -72,8 +78,10 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 </head>
 <body>
 
+<!-- Typing Overlay -->
 <div class="typing-overlay" id="typingOverlay"><span id="typingText"></span></div>
 
+<!-- Navigation -->
 <nav>
   <ul>
     <li>Home</li>
@@ -83,13 +91,18 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
   </ul>
 </nav>
 
+<!-- Header -->
 <header>
+  <h1>Harbor Post</h1>
   <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
 
 <main>
+  <!-- Big headline image -->
   <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
+
+  <!-- Smaller images grid -->
   <div class="grid" id="grid">
     <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
@@ -100,45 +113,35 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 <footer><p>Follow us on TikTok @harborpost</p></footer>
 
 <script>
-// Edition
+// Edition stamp
 const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 const today=new Date();
 document.getElementById("edition").textContent = months[today.getMonth()]+" EDITION";
 
-// Typing + "fall into header" animation
-const subTitle = document.getElementById("subTitle");
-const grid = document.getElementById("grid");
-const overlay = document.getElementById("typingOverlay");
+// Typing animation for overlay
 const typingText = document.getElementById("typingText");
+const overlay = document.getElementById("typingOverlay");
+const grid = document.getElementById("grid");
 
 const rawTyped = "Harbor Post.";
-typingText.textContent="";
-typingText.style.fontSize = "clamp(42px,6vw,70px)";
-
-let i=0;
-const speed=120;
+typingText.textContent = "";
+let i = 0;
+const speed = 120;
 
 function startTyping() {
   function typeWriter() {
-    if(i<rawTyped.length){
-      typingText.textContent+=rawTyped.charAt(i);
+    if (i < rawTyped.length) {
+      typingText.textContent += rawTyped.charAt(i);
       i++;
-      setTimeout(typeWriter,speed);
+      setTimeout(typeWriter, speed);
     } else {
-      // Slide animation to header position
-      const headerRect = document.querySelector('header').getBoundingClientRect();
-      const targetX = window.innerWidth/2 - typingText.offsetWidth/2;
-      const targetY = headerRect.top + 10; // slight offset inside header
-
-      // Animate falling effect
-      typingText.style.transition="transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // ease-out bounce
-      typingText.style.transform = `translate(${targetX - typingText.getBoundingClientRect().left}px, ${targetY - typingText.getBoundingClientRect().top}px)`;
-
-      setTimeout(()=>{
-        overlay.style.background="transparent";
-        subTitle.style.opacity="1";
-        grid.style.opacity="1";
-      },1000);
+      // After typing finishes, fade out overlay and show main layout
+      overlay.style.transition = "opacity 0.5s ease";
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+        grid.style.opacity = "1";
+      }, 500);
     }
   }
   typeWriter();
@@ -147,7 +150,7 @@ function startTyping() {
 if(document.fonts && document.fonts.ready){
   document.fonts.ready.then(startTyping);
 } else {
-  window.addEventListener('load',startTyping);
+  window.addEventListener('load', startTyping);
 }
 </script>
 
