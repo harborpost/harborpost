@@ -5,271 +5,208 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harbor Post</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
-  font-family: Arial, sans-serif;
-  background: #fdfcf8; /* Softer off-white background */
+  font-family: 'Lato', sans-serif;
+  background: #fafafa;
   color: #111;
   overflow-x: hidden;
 }
 
-/* Header (blue strip) */
-header, footer {
+/* Navigation bar */
+nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
-  position: relative;
-  background: #004aad; /* Professional deep blue strip */
-  color: #ffffff;
-  flex-direction: column;
+  padding: 18px 40px;
+  background: #004aad;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-h1 {
-  font-family: Arial, sans-serif;
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+nav h1 {
+  font-size: 24px;
+  font-weight: 700;
   margin: 0;
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.3s ease;
+  letter-spacing: 1px;
 }
 
-#subTitle {
-  font-family: Arial, sans-serif;
-  font-size: clamp(18px, 2.5vw, 28px);
-  font-weight: bold;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  text-decoration: underline;
+}
+
+/* Hero section */
+header {
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+  background: #004aad;
+  color: #fff;
+}
+
+header h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(42px, 6vw, 70px);
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+header h2 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 400;
   letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 8px 0 0 0;
-  opacity: 0; /* hidden until animation done */
-  transition: opacity 0.3s ease;
+  margin: 12px 0 0 0;
 }
 
-/* Edition "stamp" */
 .edition-text {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+  margin-top: 14px;
+  display: inline-block;
+  font-size: 13px;
   letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   padding: 6px 12px;
   border-radius: 4px;
   background: rgba(255,255,255,0.15);
 }
 
-/* Footer text */
-footer p {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Typing intro overlay (full screen at start) */
-.typing-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #004aad; /* Blue overlay at start */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: bold;
-  color: #fdfcf8;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 1000;
-  overflow: hidden;
-}
-
-.typing-overlay span {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-#typingText { transform-origin: left top; }
-
-.float-up {
-  transition: transform 1.5s ease;
-}
-
-/* Landing layout */
-.landing-section {
-  display: flex;
-  width: 100%;
-  height: calc(100vh - 120px);
-  padding: 20px 40px 40px 40px;
-  box-sizing: border-box;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1s ease;
-  background: #fdfcf8; /* Softer off-white background */
-}
-
-/* First spread starts hidden (for typing animation) */
-#landing {
-  opacity: 0;
-}
-
-/* Image styling */
-.large-image-wrapper {
-  flex: 0 0 45%;
-  height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.large-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: contrast(1.05) brightness(0.95);
-  transition: transform 0.6s ease, filter 0.5s ease;
-}
-
-.large-image-wrapper:hover img {
-  transform: scale(1.04);
-  filter: contrast(1.1) brightness(1);
-}
-
-.image-divider {
-  width: 2px;
-  background: #c7d2e0;
-  flex-shrink: 0;
-  border-radius: 1px;
-}
-
-.right-column {
-  flex: 0 0 45%;
+/* Grid layout */
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 15px;
-  height: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-width: 1300px;
+  margin: auto;
 }
 
-.box {
-  border-radius: 8px;
+.card {
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  cursor: pointer;
 }
 
-.box img {
+.card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: contrast(1.05);
-  transition: transform 0.6s ease, filter 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
-.box:hover img {
+.card:hover img {
   transform: scale(1.05);
-  filter: contrast(1.1);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .landing-section {
-    flex-direction: column;
-    height: auto;
-    min-height: 100vh;
-    padding: 20px;
-    gap: 20px;
-  }
+.card-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  font-family: 'Merriweather', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+}
 
-  .large-image-wrapper, .right-column {
-    flex: 1 1 100%;
-    height: auto;
-  }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #111;
+  color: #eee;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-top: 40px;
+}
 
-  .right-column {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-  }
+footer a {
+  color: #ddd;
+  margin-left: 10px;
+  text-decoration: none;
+}
 
-  .image-divider { display: none; }
-
-  .edition-text {
-    position: static;
-    margin-top: 15px;
-    transform: none;
-    display: inline-block;
-  }
+footer a:hover {
+  text-decoration: underline;
 }
 </style>
 </head>
 <body>
 
-<!-- Typing Intro -->
-<div class="typing-overlay" id="typingOverlay">
-  <span id="typingText"></span>
-</div>
+<!-- Navigation -->
+<nav>
+  <h1>Harbor Post</h1>
+  <ul>
+    <li>Articles</li>
+    <li>Archive</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+</nav>
 
+<!-- Hero -->
 <header>
-  <h1 id="mainTitle">HARBOR POST.</h1>
-  <h2 id="subTitle">HISTORY AND CULTURE.</h2>
+  <h1>Harbor Post.</h1>
+  <h2>History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
 
-<!-- First spread -->
-<div class="landing-section" id="landing">
-  <div class="large-image-wrapper">
+<!-- Article grid -->
+<div class="grid">
+  <div class="card">
     <a href="article1.html">
-      <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="Feature Image" loading="lazy">
+      <img src="https://i.imgur.com/i0PmuOX.jpeg" alt="">
+      <div class="card-title">Norilsk</div>
     </a>
   </div>
-
-  <div class="image-divider"></div>
-
-  <div class="right-column">
-    <div class="box"><a href="article2.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a></div>
-    <div class="box"><a href="article3.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a></div>
-    <div class="box"><a href="article4.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a></div>
-    <div class="box"><a href="article5.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a></div>
+  <div class="card">
+    <a href="article2.html">
+      <img src="https://i.imgur.com/HIfqBkU.jpeg" alt="">
+      <div class="card-title">Yaks and the Himalayas</div>
+    </a>
   </div>
-</div>
-
-<!-- Second spread (flipped) -->
-<div class="landing-section">
-  <div class="right-column">
-    <div class="box"><a href="article6.html"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""></a></div>
-    <div class="box"><a href="article7.html"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""></a></div>
-    <div class="box"><a href="article8.html"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""></a></div>
-    <div class="box"><a href="article9.html"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""></a></div>
+  <div class="card">
+    <a href="article3.html">
+      <img src="https://i.imgur.com/Jao2q0j.jpeg" alt="">
+      <div class="card-title">Tibet Monks</div>
+    </a>
   </div>
-
-  <div class="image-divider"></div>
-
-  <div class="large-image-wrapper">
-    <a href="article10.html">
-      <img src="https://i.imgur.com/HIfqBkU.jpeg" alt="Feature Image 2" loading="lazy">
+  <div class="card">
+    <a href="article4.html">
+      <img src="https://i.imgur.com/qafObwS.jpeg" alt="">
+      <div class="card-title">Nembutsu-ji</div>
     </a>
   </div>
 </div>
 
 <!-- Footer -->
 <footer>
-  <p>Follow us @harborpost on TikTok</p>
+  <p>© 2025 Harbor Post · All Rights Reserved</p>
+  <p>Follow us on <a href="#">TikTok</a> | <a href="#">Instagram</a></p>
 </footer>
 
 <script>
@@ -278,56 +215,7 @@ const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
                 "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
-
-const mainTitle = document.getElementById("mainTitle");
-const subTitle = document.getElementById("subTitle");
-mainTitle.textContent = "HARBOR POST.";
-
-const rawTyped = mainTitle.textContent.trim();
-const typedSource = rawTyped;
-
-let i = 0;
-const speed = 120;
-
-function startTyping() {
-  function typeWriter() {
-    if (i < typedSource.length) {
-      document.getElementById("typingText").textContent += typedSource.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else {
-      const overlay = document.getElementById("typingOverlay");
-      const typingText = document.getElementById("typingText");
-
-      const targetRect = mainTitle.getBoundingClientRect();
-      const srcRect = typingText.getBoundingClientRect();
-
-      const deltaX = targetRect.left - srcRect.left;
-      const deltaY = targetRect.top - srcRect.top;
-
-      typingText.classList.add("float-up");
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-
-      setTimeout(() => {
-        overlay.style.background = "transparent";
-        overlay.style.pointerEvents = "none";
-        mainTitle.style.opacity = "1";
-        subTitle.style.opacity = "1"; // show subtitle after animation
-        typingText.style.display = "none";
-        document.getElementById("landing").style.opacity = "1";
-      }, 1500);
-    }
-  }
-  typeWriter();
-}
-
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(startTyping);
-} else {
-  window.addEventListener('load', startTyping);
-}
 </script>
 
 </body>
 </html>
-
