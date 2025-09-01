@@ -22,20 +22,27 @@ nav ul li:hover { text-decoration:underline; }
 /* Header */
 header {
   text-align:center; 
-  padding:65px 20px 8px 20px; /* slightly reduced top, same bottom */
+  padding:65px 20px 8px 20px; /* same as before */
   background:#004aad; color:#fff;
   position:relative;
-  min-height:115px; /* slightly shorter header */
+  min-height:115px;
 }
-header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 6px 0; opacity:0; transition:opacity 0.5s ease; }
-.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; } /* increased breathing room */
+header h2 { 
+  font-size:clamp(18px,2.5vw,24px); 
+  font-weight:400; 
+  letter-spacing:2px; 
+  margin:10px 0 6px 0; /* added top margin to move below Harbor Post */
+  opacity:0; 
+  transition:opacity 0.5s ease; 
+}
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; }
 
 /* Typing full screen */
 .typing-overlay {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:#004aad;
   display:flex; justify-content:center; align-items:center;
-  font-family:'Lato',sans-serif; font-weight:900; /* bold sliding text */
+  font-family:'Lato',sans-serif; font-weight:900;
   color:#fafafa;
   letter-spacing:1px; text-transform:uppercase;
   z-index:1000; font-size:clamp(42px,6vw,70px); overflow:hidden;
@@ -73,7 +80,6 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 </nav>
 
 <header>
-  <!-- Only keep h2 and edition-text -->
   <h2 id="subTitle">History and Culture.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
@@ -113,7 +119,6 @@ function startTyping() {
       i++;
       setTimeout(typeWriter,speed);
     } else {
-      // slide position to top of header padding
       const headerLeft = overlay.offsetLeft + overlay.offsetWidth/2 - typingText.offsetWidth/2;
       const headerTop = 50;
       const deltaX = headerLeft - typingText.offsetLeft;
@@ -122,7 +127,6 @@ function startTyping() {
       typingText.style.transition="transform 1s ease";
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-      // reveal layout while keeping sliding text visible
       setTimeout(()=>{
         overlay.style.background="transparent";
         subTitle.style.opacity="1";
