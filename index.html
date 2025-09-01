@@ -133,9 +133,11 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      // IMMEDIATE change: hide overlay instantly and show layout
-      overlay.style.display = "none";
-      grid.style.opacity = "1";
+      // Freeze for 0.75s before instantly removing overlay
+      setTimeout(() => {
+        overlay.style.display = "none";
+        grid.style.opacity = "1";
+      }, 750);
     }
   }
   typeWriter();
