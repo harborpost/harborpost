@@ -21,7 +21,7 @@ html, body {
 /* Navigation bar */
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 18px 40px;
   background: #004aad;
@@ -29,13 +29,6 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-}
-
-nav h1 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 1px;
 }
 
 nav ul {
@@ -59,7 +52,7 @@ nav ul li:hover {
 /* Hero section */
 header {
   text-align: center;
-  padding: 60px 20px 40px 20px;
+  padding: 40px 20px 40px 20px; /* reduced top padding */
   background: #004aad;
   color: #fff;
 }
@@ -76,7 +69,7 @@ header h2 {
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 400;
   letter-spacing: 2px;
-  margin: 12px 0 0 0;
+  margin: 8px 0 0 0;
 }
 
 .edition-text {
@@ -159,12 +152,11 @@ footer a:hover {
 
 <!-- Navigation -->
 <nav>
-  <h1>Harbor Post</h1>
   <ul>
+    <li>Home</li>
     <li>Articles</li>
     <li>Archive</li>
     <li>About</li>
-    <li>Contact</li>
   </ul>
 </nav>
 
@@ -205,8 +197,7 @@ footer a:hover {
 
 <!-- Footer -->
 <footer>
-  <p>© 2025 Harbor Post · All Rights Reserved</p>
-  <p>Follow us on <a href="#">TikTok</a> | <a href="#">Instagram</a></p>
+  <p>Follow us on <a href="#">TikTok</a></p>
 </footer>
 
 <script>
