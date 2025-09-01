@@ -52,7 +52,7 @@ nav ul li:hover {
 /* Hero section */
 header {
   text-align: center;
-  padding: 25px 20px 40px 20px; /* moved higher */
+  padding: 25px 20px 40px 20px;
   background: #004aad;
   color: #fff;
 }
@@ -63,7 +63,7 @@ header h1 {
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
-  opacity: 0; /* hidden until animation */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -72,7 +72,7 @@ header h2 {
   font-weight: 400;
   letter-spacing: 2px;
   margin: 8px 0 0 0;
-  opacity: 0; /* hidden until animation */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -103,13 +103,15 @@ header h2 {
   letter-spacing: 1px;
   text-transform: uppercase;
   z-index: 1000;
+  overflow: hidden;
 }
 
-.typing-overlay span {
+#typingText {
   white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  transition: transform 1s ease;
 }
-
-#typingText { transform-origin: left top; }
 
 /* Grid layout */
 .grid {
@@ -119,7 +121,7 @@ header h2 {
   padding: 40px;
   max-width: 1300px;
   margin: auto;
-  opacity: 0; /* hidden until typing done */
+  opacity: 0;
   transition: opacity 1s ease;
 }
 
@@ -240,7 +242,10 @@ const overlay = document.getElementById("typingOverlay");
 const typingText = document.getElementById("typingText");
 
 const rawTyped = mainTitle.textContent.trim();
-mainTitle.textContent = ""; // clear original
+mainTitle.style.opacity = "0"; // hide original h1
+mainTitle.textContent = rawTyped; // keep content
+typingText.textContent = "";
+
 let i = 0;
 const speed = 120;
 
@@ -251,33 +256,18 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
+      // Typing done, slide animation
       const targetRect = mainTitle.getBoundingClientRect();
-      const srcRect = typingText.getBoundingClientRect();
+      const overlayRect = overlay.getBoundingClientRect();
+      const deltaX = targetRect.left + targetRect.width/2 - overlayRect.width/2;
+      const deltaY = targetRect.top + targetRect.height/2 - overlayRect.height/2;
 
-      // Step 1: hide overlay background but keep text visible
-      overlay.style.background = "transparent";
+      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0.5)`;
+      typingText.style.transition = "transform 1s ease";
 
-      // Step 2: set mainTitle to typed text and position fixed at overlay
-      mainTitle.textContent = typingText.textContent;
-      mainTitle.style.position = "fixed";
-      mainTitle.style.left = srcRect.left + "px";
-      mainTitle.style.top = srcRect.top + "px";
-      mainTitle.style.fontSize = getComputedStyle(typingText).fontSize;
-      mainTitle.style.opacity = "1";
-      mainTitle.style.transition = "all 1s ease";
-
-      // Force reflow
-      void mainTitle.offsetWidth;
-
-      // Step 3: animate to final header position
-      mainTitle.style.left = targetRect.left + "px";
-      mainTitle.style.top = targetRect.top + "px";
-      mainTitle.style.fontSize = ""; // revert font size
-
-      // Step 4: after animation, reset position to static
       setTimeout(() => {
-        mainTitle.style.position = "static";
         overlay.style.display = "none";
+        mainTitle.style.opacity = "1";
         subTitle.style.opacity = "1";
         grid.style.opacity = "1";
       }, 1000);
@@ -286,7 +276,6 @@ function startTyping() {
   typeWriter();
 }
 
-// Start typing after fonts load
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(startTyping);
 } else {
