@@ -111,10 +111,6 @@ header h2 {
 
 #typingText { transform-origin: left top; }
 
-.float-up {
-  transition: transform 1.5s ease;
-}
-
 /* Grid layout */
 .grid {
   display: grid;
@@ -240,51 +236,60 @@ document.getElementById("edition").textContent = months[today.getMonth()] + " ED
 const mainTitle = document.getElementById("mainTitle");
 const subTitle = document.getElementById("subTitle");
 const grid = document.getElementById("grid");
+const overlay = document.getElementById("typingOverlay");
+const typingText = document.getElementById("typingText");
 
 const rawTyped = mainTitle.textContent.trim();
+mainTitle.textContent = ""; // clear original
 let i = 0;
 const speed = 120;
 
 function startTyping() {
   function typeWriter() {
     if (i < rawTyped.length) {
-      document.getElementById("typingText").textContent += rawTyped.charAt(i);
+      typingText.textContent += rawTyped.charAt(i);
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      const overlay = document.getElementById("typingOverlay");
-      const typingText = document.getElementById("typingText");
-
-      // Get position of final h1
+      // Step 1: Get final header position
       const targetRect = mainTitle.getBoundingClientRect();
       const srcRect = typingText.getBoundingClientRect();
 
-      // Set fixed position at current viewport spot
-      typingText.style.position = "fixed";
-      typingText.style.left = srcRect.left + "px";
-      typingText.style.top = srcRect.top + "px";
+      // Step 2: Move typed text into header
+      overlay.style.display = "none"; // hide overlay
+      mainTitle.textContent = typingText.textContent; // set typed text into h1
+
+      // Step 3: Temporarily position h1 at overlay position
+      mainTitle.style.position = "fixed";
+      mainTitle.style.left = srcRect.left + "px";
+      mainTitle.style.top = srcRect.top + "px";
+      mainTitle.style.fontSize = getComputedStyle(typingText).fontSize;
+      mainTitle.style.opacity = "1";
 
       // Force reflow so transition triggers
-      void typingText.offsetWidth;
+      void mainTitle.offsetWidth;
 
-      // Animate to h1 position
-      const deltaX = targetRect.left - srcRect.left;
-      const deltaY = targetRect.top - srcRect.top;
-      typingText.style.transition = "transform 1.5s ease, font-size 1.5s ease";
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1)`;
+      // Step 4: Animate h1 to its natural header spot
+      const finalLeft = targetRect.left;
+      const finalTop = targetRect.top;
 
-      // After animation, hide overlay and show header
+      mainTitle.style.transition = "all 1s ease";
+      mainTitle.style.left = finalLeft + "px";
+      mainTitle.style.top = finalTop + "px";
+      mainTitle.style.fontSize = ""; // revert to normal h1 size
+      mainTitle.style.position = "static"; // let it stay in header flow after animation
+
+      // Show subtitle and grid after animation
       setTimeout(() => {
-        overlay.style.display = "none";
-        mainTitle.style.opacity = "1";
         subTitle.style.opacity = "1";
         grid.style.opacity = "1";
-      }, 1600);
+      }, 1000);
     }
   }
   typeWriter();
 }
 
+// Start typing after fonts load
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(startTyping);
 } else {
