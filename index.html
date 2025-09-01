@@ -11,7 +11,7 @@
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; background:#fafafa; color:#111; overflow-x:hidden; 
   height:100%; 
-  display:flex; flex-direction:column; /* flex for sticky footer */
+  display:flex; flex-direction:column;
 }
 
 /* Navigation bar */
@@ -35,7 +35,7 @@ header h2 {
   font-size:clamp(18px,2.5vw,24px); 
   font-weight:400; 
   letter-spacing:2px; 
-  margin:10px 0 6px 0; /* moved slightly below Harbor Post */ 
+  margin:10px 0 6px 0;
   opacity:0; 
   transition:opacity 0.5s ease; 
 }
@@ -57,16 +57,24 @@ header h2 {
   transform:translate(0,0);
 }
 
-/* Main content wrapper to fill space */
+/* Main content wrapper */
 main { flex:1; display:flex; flex-direction:column; }
+
+/* Headline image */
+.headline-img {
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  display:block;
+}
 
 /* Grid */
 .grid {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px;
   max-width:1300px; margin:auto; opacity:0; transition:opacity 0.5s ease;
 }
-.card { position:relative; overflow:hidden; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.08); cursor:pointer; }
-.card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
+.card { position:relative; overflow:hidden; cursor:pointer; } /* removed border-radius for sharp edges */
+.card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; } /* sharp edges */
 .card:hover img { transform:scale(1.05); }
 .card-title { position:absolute; bottom:12px; left:12px; right:12px; font-family:'Merriweather',serif; font-size:20px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.5); letter-spacing:1px; }
 
@@ -94,8 +102,11 @@ footer {
 </header>
 
 <main>
+  <!-- Big headline image -->
+  <img class="headline-img" src="https://i.imgur.com/i0PmuOX.jpeg" alt="Headline Image">
+
+  <!-- Smaller images grid -->
   <div class="grid" id="grid">
-    <div class="card"><a href="#"><img src="https://i.imgur.com/i0PmuOX.jpeg" alt=""><div class="card-title">Norilsk</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/HIfqBkU.jpeg" alt=""><div class="card-title">Yaks and the Himalayas</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/Jao2q0j.jpeg" alt=""><div class="card-title">Tibet Monks</div></a></div>
     <div class="card"><a href="#"><img src="https://i.imgur.com/qafObwS.jpeg" alt=""><div class="card-title">Nembutsu-ji</div></a></div>
