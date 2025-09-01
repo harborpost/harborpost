@@ -255,21 +255,31 @@ function startTyping() {
       const overlay = document.getElementById("typingOverlay");
       const typingText = document.getElementById("typingText");
 
+      // Get position of final h1
       const targetRect = mainTitle.getBoundingClientRect();
       const srcRect = typingText.getBoundingClientRect();
 
+      // Set fixed position at current viewport spot
+      typingText.style.position = "fixed";
+      typingText.style.left = srcRect.left + "px";
+      typingText.style.top = srcRect.top + "px";
+
+      // Force reflow so transition triggers
+      void typingText.offsetWidth;
+
+      // Animate to h1 position
       const deltaX = targetRect.left - srcRect.left;
       const deltaY = targetRect.top - srcRect.top;
+      typingText.style.transition = "transform 1.5s ease, font-size 1.5s ease";
+      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1)`;
 
-      typingText.classList.add("float-up");
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-
+      // After animation, hide overlay and show header
       setTimeout(() => {
         overlay.style.display = "none";
         mainTitle.style.opacity = "1";
         subTitle.style.opacity = "1";
         grid.style.opacity = "1";
-      }, 1500);
+      }, 1600);
     }
   }
   typeWriter();
