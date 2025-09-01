@@ -251,36 +251,33 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      // Step 1: Get final header position
       const targetRect = mainTitle.getBoundingClientRect();
       const srcRect = typingText.getBoundingClientRect();
 
-      // Step 2: Move typed text into header
-      overlay.style.display = "none"; // hide overlay
-      mainTitle.textContent = typingText.textContent; // set typed text into h1
+      // Step 1: hide overlay background but keep text visible
+      overlay.style.background = "transparent";
 
-      // Step 3: Temporarily position h1 at overlay position
+      // Step 2: set mainTitle to typed text and position fixed at overlay
+      mainTitle.textContent = typingText.textContent;
       mainTitle.style.position = "fixed";
       mainTitle.style.left = srcRect.left + "px";
       mainTitle.style.top = srcRect.top + "px";
       mainTitle.style.fontSize = getComputedStyle(typingText).fontSize;
       mainTitle.style.opacity = "1";
+      mainTitle.style.transition = "all 1s ease";
 
-      // Force reflow so transition triggers
+      // Force reflow
       void mainTitle.offsetWidth;
 
-      // Step 4: Animate h1 to its natural header spot
-      const finalLeft = targetRect.left;
-      const finalTop = targetRect.top;
+      // Step 3: animate to final header position
+      mainTitle.style.left = targetRect.left + "px";
+      mainTitle.style.top = targetRect.top + "px";
+      mainTitle.style.fontSize = ""; // revert font size
 
-      mainTitle.style.transition = "all 1s ease";
-      mainTitle.style.left = finalLeft + "px";
-      mainTitle.style.top = finalTop + "px";
-      mainTitle.style.fontSize = ""; // revert to normal h1 size
-      mainTitle.style.position = "static"; // let it stay in header flow after animation
-
-      // Show subtitle and grid after animation
+      // Step 4: after animation, reset position to static
       setTimeout(() => {
+        mainTitle.style.position = "static";
+        overlay.style.display = "none";
         subTitle.style.opacity = "1";
         grid.style.opacity = "1";
       }, 1000);
