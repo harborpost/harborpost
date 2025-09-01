@@ -24,10 +24,11 @@ header {
   justify-content:flex-start;
 }
 
-/* Edition top-right */
+/* Edition top-right, slightly lower */
 .edition-text {
   position:absolute;
-  top:12px;
+  top:50%; /* moved down slightly to align with title */
+  transform:translateY(-50%);
   right:20px;
   font-size:13px;
   letter-spacing:3px;
