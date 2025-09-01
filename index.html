@@ -117,10 +117,11 @@ function startTyping() {
       const deltaX = targetRect.left + targetRect.width/2 - (overlayRect.left + overlayRect.width/2);
       const deltaY = targetRect.top + targetRect.height/2 - (overlayRect.top + overlayRect.height/2);
 
+      // slide text
       typingText.style.transition="transform 1s ease";
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
-      // fade out overlay and reveal layout
+      // only fade overlay AFTER slide is complete
       setTimeout(()=>{
         overlay.style.transition="opacity 0.5s ease";
         overlay.style.opacity="0";
@@ -130,7 +131,7 @@ function startTyping() {
           subTitle.style.opacity="1";
           grid.style.opacity="1";
         },500);
-      },1000);
+      },1000); // wait for slide to finish
     }
   }
   typeWriter();
