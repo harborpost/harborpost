@@ -11,7 +11,7 @@
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
   overflow-x:hidden; display:flex; flex-direction:column; 
-  background:black; /* extra scroll area black */
+  background:black;
 }
 
 /* Navigation bar */
@@ -60,14 +60,12 @@ header h2 {
 }
 
 /* Typing text */
-#typingText {
-  white-space:nowrap;
-}
+#typingText { white-space:nowrap; }
 
 /* Main content */
 main { flex:1; display:flex; flex-direction:column; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; display:block; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; opacity:0; transition:opacity 0.5s ease; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px; max-width:1300px; margin:auto; opacity:0; transition:none; }
 .card { position:relative; overflow:hidden; cursor:pointer; }
 .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
 .card:hover img { transform:scale(1.05); }
@@ -135,13 +133,9 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      // After typing finishes, fade out overlay and show main layout
-      overlay.style.transition = "opacity 0.5s ease";
-      overlay.style.opacity = "0";
-      setTimeout(() => {
-        overlay.style.display = "none";
-        grid.style.opacity = "1";
-      }, 500);
+      // IMMEDIATE change: hide overlay instantly and show layout
+      overlay.style.display = "none";
+      grid.style.opacity = "1";
     }
   }
   typeWriter();
