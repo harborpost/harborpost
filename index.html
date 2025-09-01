@@ -26,6 +26,7 @@ header, footer {
   position: relative;
   background: #004aad; /* Professional deep blue strip */
   color: #ffffff;
+  flex-direction: column;
 }
 
 h1 {
@@ -36,6 +37,17 @@ h1 {
   text-transform: uppercase;
   margin: 0;
   opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease;
+}
+
+#subTitle {
+  font-family: Arial, sans-serif;
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 8px 0 0 0;
+  opacity: 0; /* hidden until animation done */
   transition: opacity 0.3s ease;
 }
 
@@ -215,6 +227,7 @@ footer p {
 
 <header>
   <h1 id="mainTitle">HARBOR POST.</h1>
+  <h2 id="subTitle">HISTORY AND CULTURE.</h2>
   <div class="edition-text" id="edition"></div>
 </header>
 
@@ -267,6 +280,7 @@ const today = new Date();
 document.getElementById("edition").textContent = months[today.getMonth()] + " EDITION";
 
 const mainTitle = document.getElementById("mainTitle");
+const subTitle = document.getElementById("subTitle");
 mainTitle.textContent = "HARBOR POST.";
 
 const rawTyped = mainTitle.textContent.trim();
@@ -298,6 +312,7 @@ function startTyping() {
         overlay.style.background = "transparent";
         overlay.style.pointerEvents = "none";
         mainTitle.style.opacity = "1";
+        subTitle.style.opacity = "1"; // show subtitle after animation
         typingText.style.display = "none";
         document.getElementById("landing").style.opacity = "1";
       }, 1500);
@@ -315,3 +330,4 @@ if (document.fonts && document.fonts.ready) {
 
 </body>
 </html>
+
