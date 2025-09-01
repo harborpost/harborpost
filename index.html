@@ -12,7 +12,7 @@
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
   overflow-x:hidden; display:flex; flex-direction:column; 
-  background:black; /* ensures extra scroll is black */
+  background:black; /* extra scroll area is black */
 }
 
 /* Navigation bar */
@@ -39,8 +39,9 @@ header h2 {
   margin:10px 0 6px 0;
   opacity:0; 
   transition:opacity 0.5s ease; 
+  color:#fff; /* force white */
 }
-.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; }
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:6px; color:#fff; } /* force white */
 
 /* Typing full screen overlay */
 .typing-overlay {
@@ -54,7 +55,7 @@ header h2 {
 }
 
 #typingText {
-  white-space:nowrap; display:inline-block; position:relative;
+  white-space:nowrap; display:inline-block; position:fixed; /* fixed so it doesn't scroll */
   transform:translate(0,0);
 }
 
@@ -142,10 +143,10 @@ function startTyping() {
       i++;
       setTimeout(typeWriter,speed);
     } else {
-      const headerLeft = overlay.offsetLeft + overlay.offsetWidth/2 - typingText.offsetWidth/2;
-      const headerTop = 50;
-      const deltaX = headerLeft - typingText.offsetLeft;
-      const deltaY = headerTop - typingText.offsetTop;
+      // Compute target position relative to viewport (header area)
+      const headerRect = document.querySelector('header').getBoundingClientRect();
+      const deltaX = window.innerWidth/2 - typingText.offsetWidth/2 - typingText.getBoundingClientRect().left;
+      const deltaY = headerRect.top + 10 - typingText.getBoundingClientRect().top; // slide into header
 
       typingText.style.transition="transform 1s ease";
       typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
