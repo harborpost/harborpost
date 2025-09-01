@@ -242,8 +242,7 @@ const overlay = document.getElementById("typingOverlay");
 const typingText = document.getElementById("typingText");
 
 const rawTyped = mainTitle.textContent.trim();
-mainTitle.style.opacity = "0"; // hide original h1
-mainTitle.textContent = rawTyped; // keep content
+mainTitle.style.opacity = "0";
 typingText.textContent = "";
 
 let i = 0;
@@ -256,14 +255,16 @@ function startTyping() {
       i++;
       setTimeout(typeWriter, speed);
     } else {
-      // Typing done, slide animation
+      // Get positions
       const targetRect = mainTitle.getBoundingClientRect();
       const overlayRect = overlay.getBoundingClientRect();
+
       const deltaX = targetRect.left + targetRect.width/2 - overlayRect.width/2;
       const deltaY = targetRect.top + targetRect.height/2 - overlayRect.height/2;
 
-      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0.5)`;
+      // Animate only with translate (no scale)
       typingText.style.transition = "transform 1s ease";
+      typingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 
       setTimeout(() => {
         overlay.style.display = "none";
