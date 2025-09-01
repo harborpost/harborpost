@@ -22,13 +22,13 @@ nav ul li:hover { text-decoration:underline; }
 /* Header */
 header {
   text-align:center; 
-  padding:80px 20px 10px 20px; /* reduced bottom padding to bring bottom closer */
+  padding:70px 20px 8px 20px; /* top and bottom tightened for perfect fit */
   background:#004aad; color:#fff;
   position:relative;
-  min-height:130px; /* slightly reduced to match new bottom spacing */
+  min-height:120px; /* enough for sliding text without overlap */
 }
-header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 4px 0; opacity:0; transition:opacity 0.5s ease; }
-.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:2px; }
+header h2 { font-size:clamp(18px,2.5vw,24px); font-weight:400; letter-spacing:2px; margin:0 0 2px 0; opacity:0; transition:opacity 0.5s ease; }
+.edition-text { display:inline-block; font-size:13px; letter-spacing:3px; border:1px solid #fff; padding:6px 12px; border-radius:4px; background:rgba(255,255,255,0.15); margin-top:1px; }
 
 /* Typing full screen */
 .typing-overlay {
@@ -115,7 +115,7 @@ function startTyping() {
     } else {
       // slide position to top of header padding
       const headerLeft = overlay.offsetLeft + overlay.offsetWidth/2 - typingText.offsetWidth/2;
-      const headerTop = 50; // slightly higher for tighter layout
+      const headerTop = 50; // perfectly aligned for tight bottom spacing
       const deltaX = headerLeft - typingText.offsetLeft;
       const deltaY = headerTop - typingText.offsetTop;
 
