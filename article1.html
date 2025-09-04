@@ -7,6 +7,27 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HYQWJ8KV39"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HYQWJ8KV39');
+
+  // Custom "entries" event function
+  function sendEntryEvent() {
+    gtag('event', 'entries', {
+      'event_category': 'interaction',
+      'event_label': 'page_entry'
+    });
+  }
+
+  // Example: send "entries" event when page loads
+  window.addEventListener('load', sendEntryEvent);
+</script>
+<!-- End Google Analytics -->
+
 <style>
 html, body {
   margin:0;
@@ -45,20 +66,20 @@ header a {
 .article-img-wrapper {
   width:100%;
   overflow:hidden;
-  height:400px; /* cropped height for clean article look */
+  height:400px;
 }
 
 .article-img {
   width:100%;
   height:100%;
-  object-fit:cover; /* crops but keeps center/top visible */
+  object-fit:cover;
   display:block;
 }
 
 /* Mobile adjustments */
 @media (max-width:768px) {
   .article-img-wrapper {
-    height:250px; /* smaller crop on mobile */
+    height:250px;
   }
 }
 
