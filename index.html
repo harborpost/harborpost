@@ -49,15 +49,12 @@ main { flex:1; display:flex; flex-direction:column; align-items:center; }
 .headline-link { 
   display:block; 
   width:100%; 
-  height:400px; /* fixed height for cropping */
-  overflow:hidden;
 }
 
 .headline-img { 
-  width:100%; 
-  height:100%; 
-  object-fit:cover; /* fills container, crops bottom if needed */
-  object-position: center top; /* keeps top visible */
+  width: 100%;
+  height: auto;  /* maintains original aspect ratio */
+  display: block;
   transition: transform 0.4s ease;
 }
 
