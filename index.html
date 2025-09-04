@@ -58,16 +58,19 @@ header h2 {
 }
 
 /* Main content */
-main { flex:1; display:flex; flex-direction:column; }
+main { flex:1; display:flex; flex-direction:column; align-items:center; }
 
-.headline-link { display:block; }
+.headline-link { display:block; width:100%; }
 .headline-img { width:100%; max-height:500px; object-fit:cover; transition:transform 0.4s ease; }
 .headline-link:hover .headline-img { transform:scale(1.03); }
 
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px; max-width:1300px; margin:auto; }
-.card { position:relative; overflow:hidden; cursor:pointer; }
-.card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; border-radius:0; }
-.card:hover img { transform:scale(1.05); }
+.more-coming {
+  margin:40px 0;
+  font-size:20px;
+  font-weight:600;
+  color:#333;
+  text-align:center;
+}
 
 footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font-size:14px; letter-spacing:1px; }
 </style>
@@ -84,11 +87,11 @@ footer { text-align:center; padding:30px 20px; background:#111; color:#eee; font
 <main>
   <!-- Big headline image clickable -->
   <a href="article1.html" class="headline-link">
-    <img class="headline-img" src="https://i.imgur.com/yMgXBe6.jpeg"
+    <img class="headline-img" src="https://i.imgur.com/yMgXBe6.jpeg" alt="Headline Image">
   </a>
 
-  <!-- 3x5 grid of cards -->
-  <div class="grid" id="cardsGrid"></div>
+  <!-- More coming soon text -->
+  <p class="more-coming">More coming soon...</p>
 </main>
 
 <footer><p>Follow us on TikTok @harborpost</p></footer>
@@ -116,26 +119,8 @@ if(document.fonts && document.fonts.ready){
 } else {
   window.addEventListener('load', typeHeader);
 }
-
-// 15 unique images for 3x5 grid
-const images = [
-  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/STZepF1.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
-  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
-  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
-  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg",
-  "https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg","https://i.imgur.com/h6TLb6S.jpeg"
-];
-
-const grid = document.getElementById("cardsGrid");
-
-// Generate cards without titles
-for(let i=0; i<15; i++){
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `<a href="article${i+2}.html"><img src="${images[i]}" alt="Article Image ${i+2}"></a>`;
-  grid.appendChild(div);
-}
 </script>
 
 </body>
 </html>
+
