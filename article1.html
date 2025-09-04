@@ -7,6 +7,15 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HYQWJ8KV39'); // Replace with your Measurement ID
+</script>
+
 <style>
 html, body {
   margin:0;
@@ -45,14 +54,11 @@ header a {
 .article-img-wrapper {
   width:100%;
   overflow:hidden;
-  height:300px; /* fixed height to crop bottom ~25% */
 }
 
 .article-img {
   width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position: top center; /* top visible, bottom cropped */
+  height:auto;  /* keeps original proportions */
   display:block;
 }
 
@@ -103,7 +109,7 @@ footer {
 <main>
   <!-- Headline image -->
   <div class="article-img-wrapper">
-    <img class="article-img" src="https://i.imgur.com/rJS3CNI.jpeg" alt="Lucy Higgs Nichols">
+    <img class="article-img" src="https://i.imgur.com/v1dhMns.jpeg" alt="Lucy Higgs Nichols">
   </div>
   <p class="image-credit">Image credit: British Library</p>
 
