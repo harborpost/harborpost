@@ -46,12 +46,15 @@ header h2 {
 /* Main content */
 main { flex:1; display:flex; flex-direction:column; align-items:center; }
 
-.headline-link { display:block; width:100%; }
+.headline-link { display:block; width:100%; height:400px; overflow:hidden; }
 .headline-img { 
   width:100%; 
-  max-height:500px; 
-  object-fit:cover; /* cropped like MacBook */
+  height:100%; 
+  object-fit:cover; /* crops like MacBook */
+  object-position: center top; /* controls visible part */
+  transition: transform 0.4s ease;
 }
+.headline-link:hover .headline-img { transform:scale(1.03); }
 
 .more-coming {
   margin:30px 0;
