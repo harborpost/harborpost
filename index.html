@@ -10,7 +10,10 @@
 <style>
 html, body { 
   margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
-  overflow-x:hidden; display:flex; flex-direction:column; 
+  overflow-x:hidden; 
+  display:flex; 
+  flex-direction:column; 
+  min-height:100vh;
   background:#fff;
 }
 
@@ -60,6 +63,7 @@ footer {
   color:#eee; 
   font-size:13px; 
   letter-spacing:1px; 
+  margin-top:auto; /* keeps it at the bottom */
 }
 </style>
 </head>
@@ -72,10 +76,12 @@ footer {
 </header>
 
 <main>
-  <!-- You can add new content here later -->
+  <!-- Add your new homepage content here -->
 </main>
 
-<footer><p>Follow us on TikTok @harborpost</p></footer>
+<footer>
+  <p>TikTok: @harborpost &nbsp; | &nbsp; Instagram: @_harborpost</p>
+</footer>
 
 <script>
 // Typing animation
@@ -99,5 +105,4 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
-
 
