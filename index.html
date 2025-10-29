@@ -44,32 +44,15 @@ header h2 {
 }
 
 /* Main content */
-main { flex:1; display:flex; flex-direction:column; align-items:center; }
-
-.headline-link { 
-  display:block; 
-  width:100%; 
+main { 
+  flex:1; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  justify-content:center;
 }
 
-.headline-img { 
-  width: 100%;
-  height: auto;  /* maintains original aspect ratio */
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.headline-link:hover .headline-img { 
-  transform:scale(1.03); 
-}
-
-.more-coming {
-  margin:30px 0;
-  font-size:18px;
-  font-weight:600;
-  color:#333;
-  text-align:center;
-}
-
+/* Footer */
 footer { 
   text-align:center; 
   padding:20px 15px; 
@@ -89,13 +72,7 @@ footer {
 </header>
 
 <main>
-  <!-- Big headline image clickable -->
-  <a href="article1.html" class="headline-link">
-    <img class="headline-img" src="https://i.imgur.com/rJS3CNI.jpeg" alt="Headline Image">
-  </a>
-
-  <!-- More coming soon text -->
-  <p class="more-coming">More coming soon...</p>
+  <!-- You can add new content here later -->
 </main>
 
 <footer><p>Follow us on TikTok @harborpost</p></footer>
@@ -122,4 +99,5 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
+
 
