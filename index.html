@@ -1,21 +1,62 @@
-<main>
-  <!-- Clickable square box -->
-  <a href="#" class="card">
-    <div class="card-image">
-      <img src="https://raw.githubusercontent.com/username/repo-name/main/images/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-    </div>
-    <div class="card-text">
-      <p>Read More</p>
-    </div>
-  </a>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Post</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+html, body { 
+  margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
+  overflow-x:hidden; display:flex; flex-direction:column; min-height:100vh;
+  background:#fff;
+}
+
+/* Header */
+header {
+  background:#004aad;
+  padding:10px 20px 15px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+header h1 {
+  font-family:'Lato', sans-serif;
+  font-size:clamp(36px,6vw,60px);
+  font-weight:900;
+  margin:0 auto;
+  text-transform:uppercase;
+  color:#fff;
+  text-align:center;
+}
+
+header h2 { 
+  font-size:clamp(14px,2vw,20px); 
+  font-weight:400; 
+  letter-spacing:2px; 
+  margin:5px 0 5px 0; 
+  color:#fff;
+  text-align:center;
+}
+
+/* Main content */
+main { 
+  flex:1; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  justify-content:center;
+}
+
 /* Card styling */
 .card {
   display:flex;
   flex-direction:column;
-  width:200px;  /* square width */
+  width:200px;
   text-decoration:none;
   border-radius:10px;
   overflow:hidden;
@@ -32,7 +73,7 @@
 
 .card-image img {
   width:100%;
-  height:200px;  /* square height */
+  height:200px;
   object-fit:cover;
   display:block;
 }
@@ -45,5 +86,65 @@
   font-weight:700;
   font-size:16px;
 }
+
+/* Footer */
+footer { 
+  text-align:center; 
+  padding:20px 15px; 
+  background:#111; 
+  color:#eee; 
+  font-size:13px; 
+  letter-spacing:1px; 
+  margin-top:auto;
+}
 </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1 id="mainTitle"></h1>
+  <h2 id="subTitle">History</h2>
+</header>
+
+<main>
+  <!-- Existing homepage content can go here -->
+
+  <!-- Clickable square card -->
+  <a href="#" class="card">
+    <div class="card-image">
+      <img src="https://raw.githubusercontent.com/username/repo-name/main/images/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+    </div>
+    <div class="card-text">
+      <p>Read More</p>
+    </div>
+  </a>
+</main>
+
+<footer>
+  <p>TikTok: @harborpost &nbsp; | &nbsp; Instagram: @_harborpost</p>
+</footer>
+
+<script>
+// Typing animation
+const mainTitle = document.getElementById("mainTitle");
+const text = "Harbor Post.";
+let i = 0;
+const speed = 120;
+function typeHeader() {
+  if(i < text.length){
+    mainTitle.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeHeader, speed);
+  }
+}
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(typeHeader);
+} else {
+  window.addEventListener('load', typeHeader);
+}
+</script>
+
+</body>
+</html>
 
