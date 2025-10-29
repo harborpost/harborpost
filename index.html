@@ -1,3 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Post</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+html, body { 
+  margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
+  overflow-x:hidden; min-height:100vh;
+  background:#fff;
+}
+
+/* Header */
+header {
+  background:#004aad;
+  padding:10px 20px 15px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+header h1 {
+  font-family:'Lato', sans-serif;
+  font-size:clamp(36px,6vw,60px);
+  font-weight:900;
+  margin:0 auto;
+  text-transform:uppercase;
+  color:#fff;
+  text-align:center;
+}
+
+/* Main content grid */
+main {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Card styling */
+.card {
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color:#fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Image container forcing square */
+.card-image {
+  width:100%;
+  aspect-ratio:1/1; /* force perfect square */
+  overflow:hidden;
+}
+
+.card-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover; /* crop image to fit square */
+  display:block;
+}
+
+/* Blue footer fully covering bottom region */
+.card-text {
+  background-color:#004aad;
+  color:#fff;
+  text-align:center;
+  padding:15px 0;
+  font-weight:700;
+  font-size:16px;
+  flex-shrink:0;
+}
+
+/* Footer */
+footer { 
+  text-align:center; 
+  padding:20px 15px; 
+  background:#111; 
+  color:#eee; 
+  font-size:13px; 
+  letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="mainTitle"></h1>
+</header>
+
 <main>
   <div class="card-grid">
     <!-- Row 1 -->
@@ -105,3 +217,31 @@
     </a>
   </div>
 </main>
+
+<footer>
+  <p>TikTok: @harborpost &nbsp; | &nbsp; Instagram: @_harborpost</p>
+</footer>
+
+<script>
+// Typing animation
+const mainTitle = document.getElementById("mainTitle");
+const text = "Harbor Post.";
+let i = 0;
+const speed = 120;
+function typeHeader() {
+  if(i < text.length){
+    mainTitle.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeHeader, speed);
+  }
+}
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(typeHeader);
+} else {
+  window.addEventListener('load', typeHeader);
+}
+</script>
+
+</body>
+</html>
+
