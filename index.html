@@ -44,7 +44,7 @@ main {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
   gap: 20px;
   width: 90%;
   max-width: 1200px;
@@ -71,14 +71,14 @@ main {
 /* Image container forcing square */
 .card-image {
   width:100%;
-  aspect-ratio:1/1; /* force perfect square */
+  aspect-ratio:1/1; /* perfect square */
   overflow:hidden;
 }
 
 .card-image img {
   width:100%;
   height:100%;
-  object-fit:cover; /* crop image to fit square */
+  object-fit:cover; /* crop to square */
   display:block;
 }
 
@@ -102,6 +102,18 @@ footer {
   font-size:13px; 
   letter-spacing:1px;
 }
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr; /* 1 per row on phones */
+  }
+}
 </style>
 </head>
 <body>
@@ -112,108 +124,102 @@ footer {
 
 <main>
   <div class="card-grid">
-    <!-- Row 1 -->
+    <!-- 16 Cards -->
     <a href="article1.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>The Forgotten Harbor</p></div>
+      <div class="card-text">The Forgotten Harbor</div>
     </a>
     <a href="article2.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Sailing Through Time</p></div>
+      <div class="card-text">Sailing Through Time</div>
     </a>
     <a href="article3.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Legends of the Pier</p></div>
+      <div class="card-text">Legends of the Pier</div>
     </a>
     <a href="article4.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Waves and Wonders</p></div>
+      <div class="card-text">Waves and Wonders</div>
     </a>
-
-    <!-- Row 2 -->
     <a href="article5.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Dockside Dreams</p></div>
+      <div class="card-text">Dockside Dreams</div>
     </a>
     <a href="article6.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Harbor Lights</p></div>
+      <div class="card-text">Harbor Lights</div>
     </a>
     <a href="article7.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>The Old Lighthouse</p></div>
+      <div class="card-text">The Old Lighthouse</div>
     </a>
     <a href="article8.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Seaside Stories</p></div>
+      <div class="card-text">Seaside Stories</div>
     </a>
-
-    <!-- Row 3 -->
     <a href="article9.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Captain’s Log</p></div>
+      <div class="card-text">Captain’s Log</div>
     </a>
     <a href="article10.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Stormy Horizons</p></div>
+      <div class="card-text">Stormy Horizons</div>
     </a>
     <a href="article11.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Mariner’s Tale</p></div>
+      <div class="card-text">Mariner’s Tale</div>
     </a>
     <a href="article12.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Hidden Coves</p></div>
+      <div class="card-text">Hidden Coves</div>
     </a>
-
-    <!-- Row 4 -->
     <a href="article13.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Sunset Dock</p></div>
+      <div class="card-text">Sunset Dock</div>
     </a>
     <a href="article14.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Baywatch Chronicles</p></div>
+      <div class="card-text">Baywatch Chronicles</div>
     </a>
     <a href="article15.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Harbor Mysteries</p></div>
+      <div class="card-text">Harbor Mysteries</div>
     </a>
     <a href="article16.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Coastal Tales</p></div>
+      <div class="card-text">Coastal Tales</div>
     </a>
   </div>
 </main>
@@ -244,4 +250,3 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
-
