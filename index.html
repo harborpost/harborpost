@@ -1,162 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harbor Post</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-html, body { 
-  margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
-  overflow-x:hidden; display:flex; flex-direction:column; min-height:100vh;
-  background:#fff;
-}
-
-/* Header */
-header {
-  background:#004aad;
-  padding:10px 20px 15px 20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:center;
-}
-
-header h1 {
-  font-family:'Lato', sans-serif;
-  font-size:clamp(36px,6vw,60px);
-  font-weight:900;
-  margin:0 auto;
-  text-transform:uppercase;
-  color:#fff;
-  text-align:center;
-}
-
-/* Main content grid */
-main {
-  flex:1;
-  display:flex;
-  justify-content:center;
-  padding:20px 0;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  width: 90%;
-  max-width: 1200px;
-}
-
-/* Card styling */
-.card {
-  display:flex;
-  flex-direction:column;
-  text-decoration:none;
-  border-radius:10px;
-  overflow:hidden;
-  cursor:pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-/* Image container to force square and crop */
-.card-image {
-  width:100%;
-  aspect-ratio:1/1; /* forces a square */
-  overflow:hidden;
-}
-
-.card-image img {
-  width:100%;
-  height:100%;
-  object-fit:cover; /* crops image to fit square */
-  display:block;
-}
-
-/* Blue footer text under image */
-.card-text {
-  background-color:#004aad;
-  color:#fff;
-  text-align:center;
-  padding:10px 0;
-  font-weight:700;
-  font-size:16px;
-}
-
-/* Footer */
-footer { 
-  text-align:center; 
-  padding:20px 15px; 
-  background:#111; 
-  color:#eee; 
-  font-size:13px; 
-  letter-spacing:1px; 
-  margin-top:auto;
-}
-</style>
-</head>
-<body>
-
-<header>
-  <h1 id="mainTitle"></h1>
-</header>
-
 <main>
   <div class="card-grid">
-    <!-- Example cards -->
-    <a href="#" class="card">
+    <!-- Row 1 -->
+    <a href="article1.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Read More</p></div>
+      <div class="card-text"><p>The Forgotten Harbor</p></div>
     </a>
-    <a href="#" class="card">
+    <a href="article2.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Read More</p></div>
+      <div class="card-text"><p>Sailing Through Time</p></div>
     </a>
-    <a href="#" class="card">
+    <a href="article3.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
-      <div class="card-text"><p>Read More</p></div>
+      <div class="card-text"><p>Legends of the Pier</p></div>
     </a>
-    <!-- Add more cards as needed -->
+    <a href="article4.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Waves and Wonders</p></div>
+    </a>
+
+    <!-- Row 2 -->
+    <a href="article5.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Dockside Dreams</p></div>
+    </a>
+    <a href="article6.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Harbor Lights</p></div>
+    </a>
+    <a href="article7.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>The Old Lighthouse</p></div>
+    </a>
+    <a href="article8.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Seaside Stories</p></div>
+    </a>
+
+    <!-- Row 3 -->
+    <a href="article9.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Captain’s Log</p></div>
+    </a>
+    <a href="article10.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Stormy Horizons</p></div>
+    </a>
+    <a href="article11.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Mariner’s Tale</p></div>
+    </a>
+    <a href="article12.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Hidden Coves</p></div>
+    </a>
+
+    <!-- Row 4 -->
+    <a href="article13.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Sunset Dock</p></div>
+    </a>
+    <a href="article14.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Baywatch Chronicles</p></div>
+    </a>
+    <a href="article15.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Harbor Mysteries</p></div>
+    </a>
+    <a href="article16.html" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Coastal Tales</p></div>
+    </a>
   </div>
 </main>
-
-<footer>
-  <p>TikTok: @harborpost &nbsp; | &nbsp; Instagram: @_harborpost</p>
-</footer>
-
-<script>
-// Typing animation
-const mainTitle = document.getElementById("mainTitle");
-const text = "Harbor Post.";
-let i = 0;
-const speed = 120;
-function typeHeader() {
-  if(i < text.length){
-    mainTitle.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeHeader, speed);
-  }
-}
-if(document.fonts && document.fonts.ready){
-  document.fonts.ready.then(typeHeader);
-} else {
-  window.addEventListener('load', typeHeader);
-}
-</script>
-
-</body>
-</html>
