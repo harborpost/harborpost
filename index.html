@@ -34,6 +34,17 @@ header h1 {
   text-align:center;
 }
 
+/* Sub-header text under main title */
+.sub-header {
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  color: #eee;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
 /* Main content grid */
 main {
   flex:1;
@@ -44,7 +55,7 @@ main {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 90%;
   max-width: 1200px;
@@ -110,6 +121,7 @@ footer {
 
 <header>
   <h1 id="mainTitle"></h1>
+  <p class="sub-header">Extended Information From My Favorite Posts</p>
 </header>
 
 <main>
@@ -222,3 +234,4 @@ if(document.fonts && document.fonts.ready){
 
 </body>
 </html>
+
