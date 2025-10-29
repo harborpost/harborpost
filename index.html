@@ -34,25 +34,29 @@ header h1 {
   text-align:center;
 }
 
-/* Main content */
-main { 
-  flex:1; 
-  display:flex; 
-  flex-direction:column; 
-  align-items:center; 
-  justify-content:flex-start; /* move content up */
-  padding-top:20px; /* small space below header */
+/* Main content grid */
+main {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
 }
 
 /* Card styling */
 .card {
   display:flex;
   flex-direction:column;
-  width:200px;
   text-decoration:none;
   border-radius:10px;
   overflow:hidden;
-  margin:20px 0;
   cursor:pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -63,13 +67,21 @@ main {
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
+/* Image container to force square and crop */
+.card-image {
+  width:100%;
+  aspect-ratio:1/1; /* forces a square */
+  overflow:hidden;
+}
+
 .card-image img {
   width:100%;
-  height:200px;
-  object-fit:cover;
+  height:100%;
+  object-fit:cover; /* crops image to fit square */
   display:block;
 }
 
+/* Blue footer text under image */
 .card-text {
   background-color:#004aad;
   color:#fff;
@@ -93,21 +105,33 @@ footer {
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <h1 id="mainTitle"></h1>
 </header>
 
 <main>
-  <!-- Clickable square card -->
-  <a href="#" class="card">
-    <div class="card-image">
-      <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-    </div>
-    <div class="card-text">
-      <p>Read More</p>
-    </div>
-  </a>
+  <div class="card-grid">
+    <!-- Example cards -->
+    <a href="#" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Read More</p></div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Read More</p></div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
+      </div>
+      <div class="card-text"><p>Read More</p></div>
+    </a>
+    <!-- Add more cards as needed -->
+  </div>
 </main>
 
 <footer>
