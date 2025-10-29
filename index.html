@@ -58,31 +58,22 @@ main {
   border-radius:10px;
   overflow:hidden;
   cursor:pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color:#fff;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-/* Image container forcing square */
 .card-image {
   width:100%;
-  aspect-ratio:1/1; /* perfect square */
+  aspect-ratio:1/1;
   overflow:hidden;
 }
 
 .card-image img {
   width:100%;
   height:100%;
-  object-fit:cover; /* crop to square */
+  object-fit:cover;
   display:block;
 }
 
-/* Blue footer fully covering bottom region */
 .card-text {
   background-color:#004aad;
   color:#fff;
@@ -90,7 +81,6 @@ main {
   padding:15px 0;
   font-weight:700;
   font-size:16px;
-  flex-shrink:0;
 }
 
 /* Footer */
@@ -103,15 +93,15 @@ footer {
   letter-spacing:1px;
 }
 
-/* Responsive for smaller screens */
+/* Responsive */
 @media (max-width: 900px) {
   .card-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
   .card-grid {
-    grid-template-columns: 1fr; /* 1 per row on phones */
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -124,7 +114,7 @@ footer {
 
 <main>
   <div class="card-grid">
-    <!-- 16 Cards -->
+    <!-- Row 1 -->
     <a href="article1.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
@@ -143,6 +133,8 @@ footer {
       </div>
       <div class="card-text">Legends of the Pier</div>
     </a>
+
+    <!-- Row 2 -->
     <a href="article4.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
@@ -161,6 +153,8 @@ footer {
       </div>
       <div class="card-text">Harbor Lights</div>
     </a>
+
+    <!-- Row 3 -->
     <a href="article7.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
@@ -179,6 +173,8 @@ footer {
       </div>
       <div class="card-text">Captain’s Log</div>
     </a>
+
+    <!-- Row 4 -->
     <a href="article10.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
@@ -196,30 +192,6 @@ footer {
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
       </div>
       <div class="card-text">Hidden Coves</div>
-    </a>
-    <a href="article13.html" class="card">
-      <div class="card-image">
-        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-      </div>
-      <div class="card-text">Sunset Dock</div>
-    </a>
-    <a href="article14.html" class="card">
-      <div class="card-image">
-        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-      </div>
-      <div class="card-text">Baywatch Chronicles</div>
-    </a>
-    <a href="article15.html" class="card">
-      <div class="card-image">
-        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-      </div>
-      <div class="card-text">Harbor Mysteries</div>
-    </a>
-    <a href="article16.html" class="card">
-      <div class="card-image">
-        <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/01029B09-4C16-427B-A152-446F897BF532.jpeg" alt="Harbor Post Image">
-      </div>
-      <div class="card-text">Coastal Tales</div>
     </a>
   </div>
 </main>
