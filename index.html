@@ -9,15 +9,19 @@
 
 <style>
 html, body { 
-  margin:0; padding:0; font-family:'Lato',sans-serif; color:#111; 
-  overflow-x:hidden; min-height:100vh;
+  margin:0;
+  padding:0;
+  font-family:'Lato',sans-serif;
+  color:#111;
+  overflow-x:hidden;
+  min-height:100vh;
   background:#fff;
 }
 
 /* Header */
 header {
   background:#004aad;
-  padding:10px 20px 15px 20px;
+  padding:10px 20px 8px 20px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
@@ -34,18 +38,18 @@ header h1 {
   text-align:center;
 }
 
-/* Sub-header text under main title */
+/* Sub-header text */
 .sub-header {
-  font-family: 'Merriweather', serif;
-  font-size: 14px;
-  color: #eee;
-  margin-top: 5px;
-  text-align: center;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+  font-family:'Merriweather', serif;
+  font-size:14px;
+  color:#eee;
+  margin-top:5px;
+  text-align:center;
+  font-weight:400;
+  letter-spacing:0.5px;
 }
 
-/* Main content grid */
+/* Main content */
 main {
   flex:1;
   display:flex;
@@ -54,14 +58,14 @@ main {
 }
 
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 90%;
-  max-width: 1200px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+  width:90%;
+  max-width:1200px;
 }
 
-/* Card styling */
+/* Cards */
 .card {
   display:flex;
   flex-direction:column;
@@ -105,18 +109,20 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:repeat(2, 1fr);
   }
 }
-@media (max-width: 600px) {
+
+@media (max-width:600px) {
   .card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -126,19 +132,21 @@ footer {
 
 <main>
   <div class="card-grid">
-    <!-- Row 1 -->
+
     <a href="article1.html" class="card">
       <div class="card-image">
         <img src="https://raw.githubusercontent.com/harborpost/harborpost/main/the-cleveland-museum-of-art-mPu67EOzYvU-unsplash.jpeg" alt="Harbor Post Image">
       </div>
       <div class="card-text">HYPATIA OF ALEXANDRIA</div>
     </a>
+
     <a href="article2.html" class="card">
       <div class="card-image">
         <img src="emile-guillemot-bX-kR79cl9c-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">BERLIN WALL CONFUSION</div>
     </a>
+
     <a href="article3.html" class="card">
       <div class="card-image">
         <img src="qian-zhui-sweED-Diwo0-unsplash.jpg" alt="Harbor Post Image">
@@ -146,19 +154,20 @@ footer {
       <div class="card-text">JAPAN'S FASHION SCENE</div>
     </a>
 
-    <!-- Row 2 -->
     <a href="article4.html" class="card">
       <div class="card-image">
         <img src="nursultan-abakirov-4Ew1349jn28-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">NORLISK, RUSSIA</div>
     </a>
+
     <a href="article5.html" class="card">
       <div class="card-image">
         <img src="the-new-york-public-library-gMxROgPuef8-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">JOAN OF ARC</div>
     </a>
+
     <a href="article6.html" class="card">
       <div class="card-image">
         <img src="the-royal-danish-library-uvp_v1pH4Ac-unsplash.jpg" alt="Harbor Post Image">
@@ -166,19 +175,20 @@ footer {
       <div class="card-text">EIFFEL TOWER IN WORLD WAR 2</div>
     </a>
 
-    <!-- Row 3 -->
     <a href="article7.html" class="card">
       <div class="card-image">
         <img src="abigail-keenan-8-s5QuUBtyM-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">THE SOCCER PLAYER WHO STOPPED A CIVIL WAR</div>
     </a>
+
     <a href="article8.html" class="card">
       <div class="card-image">
         <img src="customerly-DKKkMfzQE3o-unsplash.jpeg" alt="Harbor Post Image">
       </div>
       <div class="card-text">MONT SAINT-MICHEL</div>
     </a>
+
     <a href="article9.html" class="card">
       <div class="card-image">
         <img src="british-library-8US1_1QMHi0-unsplash.jpg" alt="Harbor Post Image">
@@ -186,25 +196,27 @@ footer {
       <div class="card-text">LUCY HIGGS NICHOLS</div>
     </a>
 
-    <!-- Row 4 -->
     <a href="article10.html" class="card">
       <div class="card-image">
         <img src="deepavali-gaind-Zq6mwqV56fE-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">NEMBUTSU_JI</div>
     </a>
+
     <a href="article11.html" class="card">
       <div class="card-image">
         <img src="florian-van-duyn-d6M_h2X3r3E-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">DEFENSTRATION OF PRAGUE</div>
     </a>
+
     <a href="article12.html" class="card">
       <div class="card-image">
         <img src="shaida-safi-BoHyTJfmVdg-unsplash.jpg" alt="Harbor Post Image">
       </div>
       <div class="card-text">ROME'S UNDERGROUND CATACOMBS</div>
     </a>
+
   </div>
 </main>
 
@@ -213,19 +225,20 @@ footer {
 </footer>
 
 <script>
-// Typing animation
 const mainTitle = document.getElementById("mainTitle");
 const text = "Harbor Post.";
 let i = 0;
 const speed = 120;
+
 function typeHeader() {
-  if(i < text.length){
+  if (i < text.length) {
     mainTitle.textContent += text.charAt(i);
     i++;
     setTimeout(typeHeader, speed);
   }
 }
-if(document.fonts && document.fonts.ready){
+
+if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(typeHeader);
 } else {
   window.addEventListener('load', typeHeader);
