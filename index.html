@@ -26,6 +26,7 @@ header {
   flex-direction:column;
   justify-content:flex-start;
   align-items:center;
+  position:relative;
 }
 
 header h1 {
@@ -36,6 +37,22 @@ header h1 {
   text-transform:uppercase;
   color:#fff;
   text-align:center;
+}
+
+/* ABOUT link */
+.about-link {
+  position:absolute;
+  top:12px;
+  left:20px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.about-link:hover {
+  text-decoration:underline;
 }
 
 /* Sub-header text */
@@ -126,6 +143,7 @@ footer {
 <body>
 
 <header>
+  <a href="aboutus.html" class="about-link">ABOUT</a>
   <h1 id="mainTitle"></h1>
   <p class="sub-header">STORIES HISTORY OVERLOOKED</p>
 </header>
