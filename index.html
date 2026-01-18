@@ -39,11 +39,12 @@ header h1 {
   text-align:center;
 }
 
-/* ABOUT link */
+/* Top items */
+.header-top {
+  width:100%;
+}
+
 .about-link {
-  position:absolute;
-  top:14px;
-  left:20px;
   color:#fff;
   text-decoration:none;
   font-weight:900;
@@ -55,20 +56,47 @@ header h1 {
   text-decoration:underline;
 }
 
-/* Views badge */
 .views-badge {
-  position:absolute;
-  top:14px;
-  right:20px;
   color:#fff;
   font-weight:900;
   font-size:18px;
   letter-spacing:1.5px;
 }
 
-/* Mobile header row (hidden on desktop) */
-.header-top-row {
-  display:none;
+/* Desktop layout: corners */
+@media (min-width:601px) {
+  .about-link {
+    position:absolute;
+    top:14px;
+    left:20px;
+  }
+  .views-badge {
+    position:absolute;
+    top:14px;
+    right:20px;
+  }
+}
+
+/* Mobile layout: row above title */
+@media (max-width:600px) {
+  header {
+    padding:12px 14px 10px 14px;
+  }
+
+  .header-top {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+  }
+
+  .about-link,
+  .views-badge {
+    position:static;
+    font-size:14px;
+    letter-spacing:1px;
+    white-space:nowrap;
+  }
 }
 
 /* Sub-header text */
@@ -152,31 +180,6 @@ footer {
   .card-grid {
     grid-template-columns:1fr;
   }
-
-  header {
-    padding:12px 14px 10px 14px;
-  }
-
-  /* turn off absolute corner layout */
-  .about-link,
-  .views-badge {
-    position:static;
-    top:auto;
-    left:auto;
-    right:auto;
-    font-size:14px;
-    letter-spacing:1px;
-  }
-
-  /* show a top row for mobile */
-  .header-top-row {
-    display:flex;
-    width:100%;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:6px;
-  }
-
   .sub-header {
     font-size:13px;
   }
@@ -187,13 +190,10 @@ footer {
 <body>
 
 <header>
-  <div class="header-top-row">
+  <div class="header-top">
     <a href="aboutus.html" class="about-link">ABOUT</a>
     <div class="views-badge">25+ MILLION VIEWS</div>
   </div>
-
-  <a href="aboutus.html" class="about-link">ABOUT</a>
-  <div class="views-badge">25+ MILLION VIEWS</div>
 
   <h1 id="mainTitle"></h1>
   <p class="sub-header">STORIES HISTORY OVERLOOKED</p>
@@ -316,5 +316,4 @@ if (document.fonts && document.fonts.ready) {
 
 </body>
 </html>
-
 
