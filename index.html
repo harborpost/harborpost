@@ -15,7 +15,7 @@ html, body {
   background:#fff;
 }
 
-/* HEADER (unchanged) */
+/* HEADER */
 header {
   padding:20px;
   display:flex;
@@ -24,11 +24,8 @@ header {
   position:relative;
 }
 
-header h1 {
-  font-family:'UnifrakturCook', serif;
-  font-size:clamp(42px,7vw,70px);
-  color:#004aad;
-  margin:0;
+.logo{
+  height:80px;
 }
 
 .about-link {
@@ -40,7 +37,7 @@ header h1 {
   text-decoration:none;
 }
 
-.views-badge {
+.month {
   position:absolute;
   right:20px;
   top:20px;
@@ -155,8 +152,11 @@ footer {
 
 <header>
   <a href="aboutus.html" class="about-link">ABOUT</a>
-  <div class="views-badge">25+ MILLION VIEWS</div>
-  <h1 id="mainTitle"></h1>
+
+  <img src="Untitled design-8.png" class="logo" alt="Harbor Post Logo">
+
+  <div class="month" id="month"></div>
+
   <div class="sub-header">STORIES HISTORY OVERLOOKED</div>
 </header>
 
@@ -241,18 +241,8 @@ TikTok: @harborpost | Instagram: @_harborpost
 </footer>
 
 <script>
-const mainTitle = document.getElementById("mainTitle");
-const text = "HARBOR POST";
-let i = 0;
-
-function typeHeader() {
-  if (i < text.length) {
-    mainTitle.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeHeader, 120);
-  }
-}
-window.addEventListener('load', typeHeader);
+const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+document.getElementById("month").textContent=months[new Date().getMonth()];
 </script>
 
 </body>
