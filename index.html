@@ -24,7 +24,6 @@ header {
   padding:20px 20px 12px 20px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
   align-items:center;
   position:relative;
 }
@@ -39,7 +38,7 @@ header h1 {
   text-align:center;
 }
 
-/* ABOUT link (same as views font) */
+/* ABOUT */
 .about-link {
   position:absolute;
   top:20px;
@@ -56,7 +55,7 @@ header h1 {
   text-decoration:underline;
 }
 
-/* Views badge */
+/* Views */
 .views-badge {
   position:absolute;
   top:20px;
@@ -68,7 +67,7 @@ header h1 {
   letter-spacing:1.5px;
 }
 
-/* Subtitle now blue + same font as views */
+/* Subtitle */
 .sub-header {
   font-family:'Lato', sans-serif;
   font-weight:900;
@@ -79,16 +78,8 @@ header h1 {
   letter-spacing:1px;
 }
 
-/* Mobile meta row */
-.mobile-meta {
-  display:none;
-  margin-top:6px;
-  gap:16px;
-}
-
 /* Main content */
 main {
-  flex:1;
   display:flex;
   justify-content:center;
   padding:20px 0;
@@ -110,7 +101,7 @@ main {
   border-radius:10px;
   overflow:hidden;
   cursor:pointer;
-  background-color:#fff;
+  background:#fff;
 }
 
 .card-image {
@@ -123,11 +114,10 @@ main {
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
 
 .card-text {
-  background-color:#004aad;
+  background:#004aad;
   color:#fff;
   text-align:center;
   padding:15px 0;
@@ -147,41 +137,11 @@ footer {
 
 /* Responsive */
 @media (max-width:900px) {
-  .card-grid {
-    grid-template-columns:repeat(2, 1fr);
-  }
+  .card-grid { grid-template-columns:repeat(2, 1fr); }
 }
 
 @media (max-width:600px) {
-  .card-grid {
-    grid-template-columns:1fr;
-  }
-
-  .about-link,
-  .views-badge {
-    display:none;
-  }
-
-  .mobile-meta {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
-
-  .mobile-meta a,
-  .mobile-meta span {
-    color:#004aad;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-decoration:none;
-    opacity:0.9;
-    white-space:nowrap;
-  }
-
-  .sub-header {
-    font-size:13px;
-  }
+  .card-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -194,16 +154,95 @@ footer {
 
   <h1 id="mainTitle"></h1>
   <p class="sub-header">STORIES HISTORY OVERLOOKED</p>
-
-  <div class="mobile-meta">
-    <a href="aboutus.html">ABOUT</a>
-    <span>25+ MILLION VIEWS</span>
-  </div>
 </header>
 
 <main>
   <div class="card-grid">
-    <!-- cards unchanged -->
+
+    <a href="article1.html" class="card">
+      <div class="card-image">
+        <img src="Image 5.jpeg">
+      </div>
+      <div class="card-text">WORLD WAR 2 CODE BREAKERS</div>
+    </a>
+
+    <a href="article2.html" class="card">
+      <div class="card-image">
+        <img src="Image 3.jpeg">
+      </div>
+      <div class="card-text">FANNIE LOU HAMER</div>
+    </a>
+
+    <a href="article3.html" class="card">
+      <div class="card-image">
+        <img src="Image 4.jpeg">
+      </div>
+      <div class="card-text">THE BALTIC WAY</div>
+    </a>
+
+    <a href="article4.html" class="card">
+      <div class="card-image">
+        <img src="2.png">
+      </div>
+      <div class="card-text">FALL OF THE BERLIN WALL</div>
+    </a>
+
+    <a href="article5.html" class="card">
+      <div class="card-image">
+        <img src="Image 7.jpeg">
+      </div>
+      <div class="card-text">FASHION IN JAPAN</div>
+    </a>
+
+    <a href="article6.html" class="card">
+      <div class="card-image">
+        <img src="Image 8.jpeg">
+      </div>
+      <div class="card-text">THE SALT MATCH</div>
+    </a>
+
+    <a href="article7.html" class="card">
+      <div class="card-image">
+        <img src="Image 9.jpeg">
+      </div>
+      <div class="card-text">THE FALL OF SAIGON</div>
+    </a>
+
+    <a href="article8.html" class="card">
+      <div class="card-image">
+        <img src="Image.jpeg">
+      </div>
+      <div class="card-text">OPERATION WETBACK</div>
+    </a>
+
+    <a href="article9.html" class="card">
+      <div class="card-image">
+        <img src="Image 10.jpeg">
+      </div>
+      <div class="card-text">LUCY HIGGS NICHOLS</div>
+    </a>
+
+    <a href="article10.html" class="card">
+      <div class="card-image">
+        <img src="Image 11.jpeg">
+      </div>
+      <div class="card-text">BLACK WALL STREET</div>
+    </a>
+
+    <a href="article11.html" class="card">
+      <div class="card-image">
+        <img src="Image 12.jpeg">
+      </div>
+      <div class="card-text">INDIGENOUS SCHOOLS</div>
+    </a>
+
+    <a href="article12.html" class="card">
+      <div class="card-image">
+        <img src="Image 14.jpeg">
+      </div>
+      <div class="card-text">THE TIANANMEN SQUARE PROTESTS</div>
+    </a>
+
   </div>
 </main>
 
@@ -225,11 +264,7 @@ function typeHeader() {
   }
 }
 
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(typeHeader);
-} else {
-  window.addEventListener('load', typeHeader);
-}
+window.addEventListener('load', typeHeader);
 </script>
 
 </body>
