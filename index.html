@@ -25,7 +25,9 @@ header {
 }
 
 .logo{
-  height:170px;
+  height:200px;
+  max-width:90%;
+  height:auto;
 }
 
 .about-link {
@@ -134,13 +136,58 @@ a {
   text-decoration:none;
 }
 
-/* MOBILE */
+/* MOBILE FIXES ONLY */
 @media(max-width:900px){
+
+  header {
+    padding:14px;
+  }
+
+  .logo {
+    width:180px;
+    height:auto;
+  }
+
+  .about-link {
+    left:12px;
+    top:12px;
+    font-size:14px;
+  }
+
+  .month {
+    right:12px;
+    top:12px;
+    font-size:14px;
+  }
+
+  .sub-header {
+    font-size:14px;
+    text-align:center;
+    padding:0 10px;
+  }
+
   .feature-layout {
     grid-template-columns:1fr;
+    gap:24px;
   }
-  .feature-main { grid-column:auto; transform:none; }
-  .archive-grid { grid-template-columns:1fr; }
+
+  .feature-main { 
+    grid-column:auto; 
+    transform:none; 
+  }
+
+  .feature-title {
+    font-size:22px;
+    padding:10px;
+  }
+
+  .card-text {
+    font-size:16px;
+  }
+
+  .archive-grid { 
+    grid-template-columns:1fr; 
+  }
 }
 </style>
 </head>
