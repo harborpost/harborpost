@@ -49,25 +49,17 @@ header {
   font-weight:900;
   color:#004aad;
   margin-top:6px;
+  letter-spacing:1px;
 }
 
 /* FEATURE SECTION */
 .feature-layout {
   width:90%;
-  max-width:1200px;
+  max-width:900px;
   margin:30px auto;
-  display:grid;
-  grid-template-columns:1fr 2fr 1fr;
-  gap:20px;
-  align-items:center;
 }
 
-/* FEATURED CENTER STORY */
-.feature-main {
-  grid-column:2;
-  transform:scale(1.05);
-}
-
+/* MAIN FEATURE */
 .feature-main img {
   width:100%;
   aspect-ratio:1/1;
@@ -76,36 +68,14 @@ header {
 }
 
 .feature-title {
-  background:#004aad;
-  color:#fff;
+  color:#004aad;
   text-align:center;
-  padding:18px;
-  font-weight:700;
+  font-weight:900;
+  font-size:34px;
+  margin-top:14px;
 }
 
-/* SIDE STORIES */
-.feature-side {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.feature-card img {
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:10px;
-}
-
-.feature-card .card-text {
-  background:#004aad;
-  color:#fff;
-  text-align:center;
-  padding:10px;
-  font-weight:700;
-}
-
-/* NORMAL GRID BELOW */
+/* ARCHIVE GRID BELOW */
 .archive-grid {
   width:90%;
   max-width:1200px;
@@ -123,11 +93,11 @@ header {
 }
 
 .card-text {
-  background:#004aad;
-  color:#fff;
+  color:#004aad;
   text-align:center;
-  padding:15px;
-  font-weight:700;
+  font-weight:900;
+  font-size:20px;
+  margin-top:8px;
 }
 
 footer {
@@ -139,10 +109,6 @@ footer {
 
 /* MOBILE */
 @media(max-width:900px){
-  .feature-layout {
-    grid-template-columns:1fr;
-  }
-  .feature-main { grid-column:auto; transform:none; }
   .archive-grid { grid-template-columns:1fr; }
 }
 </style>
@@ -157,47 +123,48 @@ footer {
 
   <div class="month" id="month"></div>
 
-  <div class="sub-header">MARGINALIZED HISTORY</div>
+  <div class="sub-header">A DIGITAL MAGAZINE OF OVERLOOKED HISTORY</div>
 </header>
 
-<!-- FEATURED AREA -->
+<!-- MAIN FEATURE -->
 <section class="feature-layout">
 
-  <div class="feature-side">
-    <a href="article1.html" class="feature-card">
-      <img src="Image 5.jpeg">
-      <div class="card-text">WORLD WAR 2 CODE BREAKERS</div>
-    </a>
-
-    <a href="article2.html" class="feature-card">
-      <img src="Image 3.jpeg">
-      <div class="card-text">FANNIE LOU HAMER</div>
-    </a>
-  </div>
-
   <div class="feature-main">
-    <a href="article4.html">
-      <img src="2.png">
-      <div class="feature-title">FALL OF THE BERLIN WALL</div>
-    </a>
-  </div>
-
-  <div class="feature-side">
-    <a href="article3.html" class="feature-card">
-      <img src="Image 4.jpeg">
-      <div class="card-text">THE BALTIC WAY</div>
-    </a>
-
-    <a href="article7.html" class="feature-card">
-      <img src="Image 9.jpeg">
-      <div class="card-text">THE FALL OF SAIGON</div>
+    <a href="article12.html">
+      <img src="Image 14.jpeg">
+      <div class="feature-title">How Students Shocked a Communist Nation</div>
     </a>
   </div>
 
 </section>
 
-<!-- ARCHIVE GRID -->
+<!-- ARTICLES BELOW -->
 <section class="archive-grid">
+
+  <a href="article1.html" class="card">
+    <img src="Image 5.jpeg">
+    <div class="card-text">WORLD WAR 2 CODE BREAKERS</div>
+  </a>
+
+  <a href="article2.html" class="card">
+    <img src="Image 3.jpeg">
+    <div class="card-text">FANNIE LOU HAMER</div>
+  </a>
+
+  <a href="article4.html" class="card">
+    <img src="2.png">
+    <div class="card-text">FALL OF THE BERLIN WALL</div>
+  </a>
+
+  <a href="article3.html" class="card">
+    <img src="Image 4.jpeg">
+    <div class="card-text">THE BALTIC WAY</div>
+  </a>
+
+  <a href="article7.html" class="card">
+    <img src="Image 9.jpeg">
+    <div class="card-text">THE FALL OF SAIGON</div>
+  </a>
 
   <a href="article5.html" class="card">
     <img src="Image 7.jpeg">
@@ -206,7 +173,7 @@ footer {
 
   <a href="article6.html" class="card">
     <img src="Image 8.jpeg">
-    <div class="card-text">THE SALT MATCH</div>
+    <div class="card-text">THE SALT MARCH</div>
   </a>
 
   <a href="article8.html" class="card">
@@ -227,11 +194,6 @@ footer {
   <a href="article11.html" class="card">
     <img src="Image 12.jpeg">
     <div class="card-text">INDIGENOUS SCHOOLS</div>
-  </a>
-
-  <a href="article12.html" class="card">
-    <img src="Image 14.jpeg">
-    <div class="card-text">THE TIANANMEN SQUARE PROTESTS</div>
   </a>
 
 </section>
