@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harbor Post</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 html, body { 
@@ -15,7 +15,8 @@ html, body {
   background:#fff;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
+
 header {
   padding:20px;
   display:flex;
@@ -25,9 +26,7 @@ header {
 }
 
 .logo{
-  height:200px;
-  max-width:90%;
-  height:auto;
+  height:180px;
 }
 
 .about-link {
@@ -53,7 +52,8 @@ header {
   margin-top:6px;
 }
 
-/* FEATURE SECTION */
+/* ===== DESKTOP LAYOUT ===== */
+
 .feature-layout {
   width:90%;
   max-width:1200px;
@@ -64,7 +64,6 @@ header {
   align-items:center;
 }
 
-/* FEATURED CENTER STORY */
 .feature-main {
   grid-column:2;
   transform:scale(1.05);
@@ -80,12 +79,11 @@ header {
 .feature-title {
   color:#004aad;
   text-align:center;
-  padding:12px;
   font-weight:900;
   font-size:28px;
+  margin-top:12px;
 }
 
-/* SIDE STORIES */
 .feature-side {
   display:flex;
   flex-direction:column;
@@ -102,12 +100,11 @@ header {
 .card-text {
   color:#004aad;
   text-align:center;
-  padding:8px;
   font-weight:900;
   font-size:18px;
+  margin-top:8px;
 }
 
-/* NORMAL GRID BELOW */
 .archive-grid {
   width:90%;
   max-width:1200px;
@@ -131,62 +128,56 @@ footer {
   color:#eee;
 }
 
-/* REMOVE LINK UNDERLINES */
-a {
-  text-decoration:none;
-}
+a { text-decoration:none; }
 
-/* MOBILE FIXES ONLY */
-@media(max-width:900px){
+/* ===== PHONE LAYOUT ===== */
 
-  header {
-    padding:14px;
-  }
+@media(max-width:700px){
 
+  /* Smaller header */
   .logo {
-    width:180px;
     height:auto;
+    width:140px;
   }
 
-  .about-link {
-    left:12px;
-    top:12px;
-    font-size:14px;
-  }
-
-  .month {
-    right:12px;
-    top:12px;
-    font-size:14px;
+  .about-link, .month {
+    font-size:12px;
+    top:10px;
   }
 
   .sub-header {
-    font-size:14px;
+    font-size:13px;
     text-align:center;
-    padding:0 10px;
   }
 
+  /* STACKED FEATURE */
   .feature-layout {
-    grid-template-columns:1fr;
-    gap:24px;
+    display:block;
+    width:92%;
   }
 
-  .feature-main { 
-    grid-column:auto; 
-    transform:none; 
+  .feature-main {
+    transform:none;
+    margin-bottom:24px;
   }
 
   .feature-title {
     font-size:22px;
-    padding:10px;
+  }
+
+  /* Side stories become vertical list */
+  .feature-side {
+    gap:26px;
+  }
+
+  /* Archive becomes single column news feed */
+  .archive-grid {
+    grid-template-columns:1fr;
+    gap:26px;
   }
 
   .card-text {
     font-size:16px;
-  }
-
-  .archive-grid { 
-    grid-template-columns:1fr; 
   }
 }
 </style>
@@ -204,7 +195,6 @@ a {
   <div class="sub-header">A DIGITAL MAGAZINE OF OVERLOOKED HISTORY</div>
 </header>
 
-<!-- FEATURED AREA -->
 <section class="feature-layout">
 
   <div class="feature-side">
@@ -240,7 +230,6 @@ a {
 
 </section>
 
-<!-- ARCHIVE GRID -->
 <section class="archive-grid">
 
   <a href="article5.html" class="card">
